@@ -4,8 +4,8 @@
 
 <template>
   <q-page class="flex flex-center">
-    <h1>Home</h1>
+    <h1>FAQ</h1>
   </q-page>
 </template>
 
-
+<style scoped></style>
