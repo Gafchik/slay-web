@@ -30,9 +30,9 @@ const routes = [
         component: () => import('pages/terms-privacy/TermsPrivacyPage.vue')
       },
       {
-        path: '/membership',
-        name: 'membership',
-        component: () => import('pages/membership/MembershipPage.vue')
+        path: '/pricing',
+        name: 'pricing',
+        component: () => import('pages/pricing/PricingPage.vue')
       },
     ],
   },

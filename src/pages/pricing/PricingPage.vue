@@ -4,7 +4,7 @@
 
 <template>
   <q-page class="flex flex-center">
-    <h1>Membership</h1>
+    <h1>pricing</h1>
   </q-page>
 </template>
 

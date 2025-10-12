@@ -1,1 +1,8 @@
 // app global css in SCSS form
+.bg {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg,rgba(7, 28, 89, 1) 0%, rgba(10, 151, 245, 1) 50%, rgba(7, 28, 89, 1));
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

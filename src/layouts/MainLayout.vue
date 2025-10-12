@@ -10,9 +10,9 @@ const linksList = [
     route_name: 'download',
   },
   {
-    title: t('routes.membership'),
+    title: t('routes.pricing'),
     icon: 'list',
-    route_name: 'membership',
+    route_name: 'pricing',
   },
   {
     title: t('routes.faq'),
@@ -60,7 +60,7 @@ function toggleLeftDrawer() {
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="bg">
       <router-view />
     </q-page-container>
   </q-layout>
