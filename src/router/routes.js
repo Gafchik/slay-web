@@ -7,7 +7,17 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        component: () => import('pages/IndexPage.vue')
+        component: () => import('pages/home/HomePage.vue')
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('pages/Auth/LoginPage.vue'),
+      },
+      {
+        path: '/registration',
+        name: 'registration',
+        component: () => import('pages/Auth/RegistrationPage.vue'),
       },
       {
         path: '/faq',
@@ -17,7 +27,8 @@ const routes = [
       {
         path: '/download',
         name: 'download',
-        component: () => import('pages/download/DownloadPage.vue')
+        component: () => import('pages/download/DownloadPage.vue'),
+        meta: { requiresAuth: true } // only auth route
       },
       {
         path: '/contact-us',

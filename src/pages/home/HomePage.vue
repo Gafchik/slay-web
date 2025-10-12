@@ -1,10 +1,10 @@
 <script setup>
-//
+import ProdjectsBlock from './components/ProdjectsBlock.vue'
 </script>
 
 <template>
   <q-page class="flex flex-center">
-    <h1>Home</h1>
+    <prodjects-block/>
   </q-page>
 </template>
 
