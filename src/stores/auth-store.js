@@ -13,6 +13,17 @@ export const useAuthStore = defineStore('useAuthStore', () => {
 
   const isLoggedIn = computed(() => !!accessToken.value)
 
+  const updateUserDataRequest = async (userData) => {
+    if (!accessToken.value) return
+    showLoading()
+    try {
+      await api.put('/user/update', userData)
+      await getUserData()
+    } finally {
+      hideLoading()
+    }
+  }
+
   /** Получить пользователя по токену */
   const getUserData = async () => {
     if (!accessToken.value) return
@@ -69,10 +80,10 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     Cookies.remove('access_token')
     accessToken.value = null
     user.value = null
-    
+
     // Очищаем axios headers
     delete api.defaults.headers.common['Authorization']
-    
+
     return { success: true }
   }
 
@@ -110,5 +121,6 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     logoutRequest,
     initAuth,
     checkAuth,
+    updateUserDataRequest,
   }
 })

@@ -19,22 +19,24 @@ export default defineBoot(({ app, router }) => {
   const notifySuccess = (message) => {
     Notify.create({
       message,
-      color: 'positive',
+      textColor: 'black',
+      classes: 'glass',
       icon: 'check_circle',
       position: 'top',
       timeout: 1000,
-      actions: [{ icon: 'close', color: 'white' }]
+      actions: [{ icon: 'close', color: 'black' }]
     })
   }
 
   const notifyError = (message) => {
     Notify.create({
       message,
-      color: 'negative',
+      textColor: 'black',
+      classes: 'glass',
       icon: 'error',
       position: 'top',
       timeout: 1000,
-      actions: [{ icon: 'close', color: 'white' }]
+      actions: [{ icon: 'close', color: 'black' }]
     })
   }
 

@@ -2,11 +2,9 @@
 .bg {
   margin: 0;
   padding: 0;
-  background: linear-gradient(90deg,rgba(7, 28, 89, 1) 0%, rgba(10, 151, 245, 1) 50%, rgba(7, 28, 89, 1));
-  //background: linear-gradient(221deg,rgba(0, 168, 165, 1) 30%, rgba(255, 255, 255, 1) 100%);
-  //background: linear-gradient(245deg,rgba(18, 18, 138, 1) 70%, rgba(255, 255, 255, 1) 100%);
-  //background: linear-gradient(90deg,rgba(232, 23, 190, 1) 0%, rgba(217, 24, 24, 1) 49%, rgba(0, 51, 255, 1) 100%);
-  //background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: #222626;
+  //background: linear-gradient(331deg,rgba(34, 38, 38, 1) 9%, rgba(116, 125, 124, 1) 91%);
+  background: linear-gradient(323deg,rgba(60, 71, 71, 1) 21%, rgba(134, 138, 137, 1) 74%);
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -23,6 +21,23 @@
   color: inherit;
 }
 
+.responsive-width {
+  width: 80%; /* Мобилки по умолчанию */
+}
+
+/* Планшеты (600px - 1023px) */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .responsive-width {
+    width: 50%;
+  }
+}
+
+/* Десктоп (1024px+) */
+@media (min-width: 1024px) {
+  .responsive-width {
+    width: 25%;
+  }
+}
 
 ///* Chrome autofill fix for Quasar outlined dark inputs */
 //.q-field--outlined .q-field__control input:-webkit-autofill {
@@ -37,8 +52,8 @@
 
 /* Chrome autofill fix — применяется только к .autofill-fix */
 .auto-field.q-field--outlined .q-field__control input:-webkit-autofill {
-  -webkit-text-fill-color: #fff !important;
-  caret-color: #fff !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
   border-radius: inherit !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;

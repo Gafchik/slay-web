@@ -10,7 +10,9 @@ export default {
     auth: {
       login: 'Login',
       registration: 'Registration',
-      logout: 'Logout'
+      logout: 'Logout',
+      profile: 'Profile',
+      download: 'Download',
     },
   },
   routes: {
@@ -46,4 +48,14 @@ export default {
     password_mismatch: 'Passwords do not match',
     min_length: 'The minimum length is {min} characters',
   },
+  profile: {
+    title: 'Profile',
+    first_name: 'First name',
+    last_name: 'Last name',
+    email: 'Email',
+    password: 'Password',
+    password_confirmation: 'Confirm password',
+    created_at: 'Created at',
+    updated_at: 'Last update',
+  }
 }

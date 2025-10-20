@@ -8,11 +8,12 @@ export const useAppStore = defineStore('appStore', () => {
   function notifySuccess(message) {
     $q.notify({
       message: message,
-      color: 'positive',
       icon: 'check_circle',
+      textColor: 'black',
       position: 'top',
       timeout: 1000,
-      actions: [{ icon: 'close', color: 'white' }]
+      classes: 'glass',
+      actions: [{ icon: 'close', color: 'black' }]
     });
   }
 
@@ -24,11 +25,12 @@ export const useAppStore = defineStore('appStore', () => {
 
     $q.notify({
       message: cleanMessage,
-      color: 'negative',
+      textColor: 'black',
+      classes: 'glass',
       icon: 'error',
       position: 'top',
       timeout: 1000,
-      actions: [{ icon: 'close', color: 'white' }]
+      actions: [{ icon: 'close', color: 'black' }]
     });
   }
 

@@ -1,14 +1,13 @@
 <script setup>
-
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-import {useAuthStore} from 'stores/auth-store.js'
+import { useAuthStore } from 'stores/auth-store.js'
 import { storeToRefs } from 'pinia'
 
 const authStore = useAuthStore()
 
-const {isLoggedIn} = storeToRefs(authStore)
-const {logoutRequest} = authStore
+const { isLoggedIn } = storeToRefs(authStore)
+const { logoutRequest } = authStore
 
 const handleLogout = async () => {
   const result = await logoutRequest()
@@ -55,16 +54,16 @@ const handleLogout = async () => {
 
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated bordered class="glass q-py-md">
+    <q-header elevated bordered class="glass q-py-md text-primary">
       <q-toolbar>
-<!--        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />-->
-<!--        <q-avatar>-->
-<!--          <img src="~assets/3.png">-->
-<!--        </q-avatar>-->
+        <!--        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />-->
+        <!--        <q-avatar>-->
+        <!--          <img src="~assets/3.png">-->
+        <!--        </q-avatar>-->
 
-<!--        <q-toolbar-title style="white-space: normal; word-wrap: break-word;">-->
-<!--          <router-link class="text-link" :to="{ name: 'home' }">{{t('header.title')}}</router-link>-->
-<!--        </q-toolbar-title>-->
+        <!--        <q-toolbar-title style="white-space: normal; word-wrap: break-word;">-->
+        <!--          <router-link class="text-link" :to="{ name: 'home' }">{{t('header.title')}}</router-link>-->
+        <!--        </q-toolbar-title>-->
         <q-toolbar-title>
           <router-link class="text-link" :to="{ name: 'home' }">
             <!-- Для больших экранов - полный слоган -->
@@ -78,20 +77,65 @@ const handleLogout = async () => {
           </router-link>
         </q-toolbar-title>
 
-
-<!--        <div>-->
-<!--          <router-link class="text-link text-h5 q-px-sm" :to="{ name: 'download' }">{{t('routes.download')}}</router-link>-->
-<!--        </div>-->
+        <!--        <div>-->
+        <!--          <router-link class="text-link text-h5 q-px-sm" :to="{ name: 'download' }">{{t('routes.download')}}</router-link>-->
+        <!--        </div>-->
 
         <q-space />
+        <q-btn :to="{ name: 'download' }"  icon="download" flat rounded>
+          <q-tooltip
+            transition-show="rotate"
+            transition-hide="rotate"
+            class="glass text-body2 text-primary"
+            anchor="bottom left"
+            self="top middle">
+            {{ t('header.auth.download') }}
+          </q-tooltip>
+        </q-btn>
         <div v-if="isLoggedIn">
-          <q-btn @click="handleLogout" flat rounded>{{t('header.auth.logout')}}</q-btn>
+          <q-btn :to="{ name: 'profile' }" icon="account_circle" flat rounded>
+            <q-tooltip
+              transition-show="rotate"
+              transition-hide="rotate"
+              class="glass text-body2 text-primary"
+              anchor="bottom left"
+              self="top middle">
+              {{ t('header.auth.profile') }}
+            </q-tooltip>
+          </q-btn>
+          <q-btn @click="handleLogout" icon="logout" flat rounded>
+            <q-tooltip
+              transition-show="rotate"
+              transition-hide="rotate"
+              class="glass text-body2 text-primary"
+              anchor="bottom left"
+              self="top middle">
+              {{ t('header.auth.logout') }}
+            </q-tooltip>
+          </q-btn>
         </div>
         <div v-if="!isLoggedIn">
-          <q-btn :to="{name: 'login'}" flat rounded>{{t('header.auth.login')}}</q-btn>
-          <q-btn :to="{name: 'registration'}" flat rounded>{{t('header.auth.registration')}}</q-btn>
+          <q-btn :to="{ name: 'login' }"  icon="login" flat rounded>
+            <q-tooltip
+              transition-show="rotate"
+              transition-hide="rotate"
+              class="glass text-body2 text-primary"
+              anchor="bottom left"
+              self="top middle">
+              {{ t('header.auth.login') }}
+            </q-tooltip>
+          </q-btn>
+          <q-btn :to="{ name: 'registration' }" icon="person_add" flat rounded>
+            <q-tooltip
+              transition-show="rotate"
+              transition-hide="rotate"
+              class="glass text-body2 text-primary"
+              anchor="bottom left"
+              self="top middle">
+              {{  t('header.auth.registration') }}
+            </q-tooltip>
+          </q-btn>
         </div>
-
       </q-toolbar>
     </q-header>
 
@@ -100,5 +144,3 @@ const handleLogout = async () => {
     </q-page-container>
   </q-layout>
 </template>
-
-

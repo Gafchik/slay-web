@@ -28,7 +28,6 @@ const routes = [
         path: '/download',
         name: 'download',
         component: () => import('pages/download/DownloadPage.vue'),
-        meta: { requiresAuth: true } // only auth route
       },
       {
         path: '/contact-us',
@@ -44,6 +43,12 @@ const routes = [
         path: '/pricing',
         name: 'pricing',
         component: () => import('pages/pricing/PricingPage.vue')
+      },
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('pages/profile/ProfilePage.vue'),
+        meta: { requiresAuth: true } // only auth route
       },
     ],
   },
