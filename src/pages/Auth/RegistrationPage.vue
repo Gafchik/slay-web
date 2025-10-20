@@ -33,7 +33,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="row justify-center">
     <div>
       <div class="text-primary">
         <h4 class="text-primary text-center q-mb-lg q-pb-lg">{{ t('register.title') }}</h4>

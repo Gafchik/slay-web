@@ -26,7 +26,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <q-page class="flex flex-center text-primary">
+  <q-page class="row justify-center text-primary">
     <div>
       <div>
         <h4 class="text-primary text-center q-mb-lg q-pb-lg">{{ t('login.title') }}</h4>
