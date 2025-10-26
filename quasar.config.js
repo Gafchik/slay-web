@@ -15,7 +15,7 @@ export default defineConfig((ctx) => {
     boot: ['i18n', 'axios', 'router-auth'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
-    css: ['app.scss'],
+    css: ['app.scss', '~animate.css/animate.min.css'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [

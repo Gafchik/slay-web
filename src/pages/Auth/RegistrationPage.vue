@@ -36,7 +36,7 @@ const onSubmit = async () => {
   <q-page class="row justify-center">
     <div>
       <div class="text-primary">
-        <h4 class="text-primary text-center q-mb-lg q-pb-lg">{{ t('register.title') }}</h4>
+        <h4 class="text-primary gradient-text text-center q-mb-lg q-pb-lg">{{ t('register.title') }}</h4>
 
         <q-form @submit="onSubmit" class="q-gutter-md" ref="form">
           <!-- First Name -->
@@ -44,15 +44,15 @@ const onSubmit = async () => {
                    outlined
                    v-model="firstName"
                    :label="t('register.first_name')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    class="auto-field"
                    lazy-rules
                    :rules="[val => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
-              <q-icon name="person" color="black" />
+              <q-icon name="person" color="white" />
             </template>
           </q-input>
 
@@ -61,15 +61,15 @@ const onSubmit = async () => {
                    outlined
                    v-model="lastName"
                    :label="t('register.last_name')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    class="auto-field"
                    lazy-rules
                    :rules="[val => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
-              <q-icon name="person" color="black" />
+              <q-icon name="person" color="white" />
             </template>
           </q-input>
 
@@ -78,8 +78,8 @@ const onSubmit = async () => {
                    outlined
                    v-model="email"
                    :label="t('register.email')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    class="auto-field"
                    lazy-rules
@@ -90,7 +90,7 @@ const onSubmit = async () => {
                   ]"
           >
             <template v-slot:prepend>
-              <q-icon name="mail" color="black" />
+              <q-icon name="mail" color="white" />
             </template>
           </q-input>
 
@@ -99,8 +99,8 @@ const onSubmit = async () => {
                    outlined
                    v-model="password"
                    :label="t('register.password')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    class="auto-field"
                    lazy-rules
@@ -111,7 +111,7 @@ const onSubmit = async () => {
                   ]"
           >
             <template v-slot:prepend>
-              <q-icon name="lock" color="black" />
+              <q-icon name="lock" color="white" />
             </template>
           </q-input>
 
@@ -120,8 +120,8 @@ const onSubmit = async () => {
                    outlined
                    v-model="passwordConfirmation"
                    :label="t('register.password_confirmation')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    class="auto-field"
                    type="password"
@@ -131,7 +131,7 @@ const onSubmit = async () => {
                   ]"
           >
             <template v-slot:prepend>
-              <q-icon name="lock" color="black" />
+              <q-icon name="lock" color="white" />
             </template>
           </q-input>
 
@@ -142,7 +142,7 @@ const onSubmit = async () => {
               type="submit"
               text-color="black"
               icon-right="person_add"
-              class="glass"
+              class="glass button"
               size="md"
             />
           </div>
@@ -150,7 +150,7 @@ const onSubmit = async () => {
           <div class="row justify-center q-mt-lg text-primary">
             <span>
               {{ t('register.have_account_text') }}
-               <router-link class="text-primary text-bold no-underline"
+               <router-link class="text-primary gradient-text text-bold no-underline"
                             :to="{ name: 'login' }"
                >
                  {{t('register.have_account_link').toUpperCase()}}

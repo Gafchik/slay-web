@@ -46,25 +46,26 @@ const onSubmit = async () => {
   <q-page class="row justify-center">
     <div class="responsive-width">
       <div class="text-primary">
-        <h4 class="text-primary text-center q-mb-lg q-pb-lg">
+        <h4 class="text-primary gradient-text text-center q-mb-lg q-pb-lg">
           {{ t('profile.title') }}
         </h4>
 
         <q-form @submit="onSubmit" class="q-gutter-md" ref="form">
           <q-input
             dense
+            dark
             outlined
             :readonly="readonly"
             v-model="user.first_name"
             :label="t('profile.first_name')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
             :rules="[(val) => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
-              <q-icon name="person" color="black" />
+              <q-icon name="person" color="white" />
             </template>
           </q-input>
 
@@ -72,17 +73,18 @@ const onSubmit = async () => {
           <q-input
             dense
             outlined
+            dark
             :readonly="readonly"
             v-model="user.last_name"
             :label="t('profile.last_name')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
             :rules="[(val) => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
-              <q-icon name="person" color="black" />
+              <q-icon name="person" color="white" />
             </template>
           </q-input>
 
@@ -90,11 +92,12 @@ const onSubmit = async () => {
           <q-input
             dense
             outlined
+            dark
             v-model="user.email"
             :readonly="readonly"
             :label="t('profile.email')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
             type="email"
@@ -104,7 +107,7 @@ const onSubmit = async () => {
             ]"
           >
             <template v-slot:prepend>
-              <q-icon name="mail" color="black" />
+              <q-icon name="mail" color="white" />
             </template>
           </q-input>
 
@@ -112,11 +115,12 @@ const onSubmit = async () => {
             v-if="readonly"
             dense
             outlined
+            dark
             :model-value="created_at"
             :readonly="true"
             :label="t('profile.created_at')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
           ></q-input>
@@ -125,11 +129,12 @@ const onSubmit = async () => {
             dense
             v-if="readonly"
             outlined
+            dark
             :model-value="updated_at"
             :readonly="true"
             :label="t('profile.updated_at')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
           ></q-input>
@@ -138,10 +143,11 @@ const onSubmit = async () => {
             v-if="!readonly"
             dense
             outlined
+            dark
             v-model="password"
             :label="t('profile.password')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
             type="password"
@@ -149,7 +155,7 @@ const onSubmit = async () => {
             :rules="[(val) => !val || val.length >= 8 || t('validation.min_length', { min: 8 })]"
           >
             <template v-slot:prepend>
-              <q-icon name="lock" color="black" />
+              <q-icon name="lock" color="white" />
             </template>
           </q-input>
 
@@ -158,10 +164,11 @@ const onSubmit = async () => {
             v-if="!readonly && password"
             dense
             outlined
+            dark
             v-model="passwordConfirmation"
             :label="t('profile.password_confirmation')"
-            label-color="black"
-            color="black"
+            label-color="white"
+            color="white"
             bg-color="rgba(255, 255, 255, 0.1)"
             class="auto-field"
             type="password"
@@ -172,7 +179,7 @@ const onSubmit = async () => {
             ]"
           >
             <template v-slot:prepend>
-              <q-icon name="lock" color="black" />
+              <q-icon name="lock" color="white" />
             </template>
           </q-input>
 
@@ -183,7 +190,7 @@ const onSubmit = async () => {
               type="submit"
               text-color="black"
               icon-right="save"
-              class="glass q-mx-sm"
+              class="glass q-mx-sm button"
               size="md"
             />
 
@@ -192,7 +199,7 @@ const onSubmit = async () => {
               unelevated
               text-color="black"
               :icon-right="readonly ? 'edit' : 'close'"
-              class="glass q-mx-sm"
+              class="glass q-mx-sm button"
               size="md"
             />
           </div>

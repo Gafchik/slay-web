@@ -29,15 +29,16 @@ const onSubmit = async () => {
   <q-page class="row justify-center text-primary">
     <div>
       <div>
-        <h4 class="text-primary text-center q-mb-lg q-pb-lg">{{ t('login.title') }}</h4>
+        <h4 class="gradient-text text-center q-mb-lg q-pb-lg">{{ t('login.title') }}</h4>
         <q-form @submit="onSubmit" class="q-gutter-md" ref="form">
           <q-input dense
                    outlined
+                   dark
                    class="auto-field"
                    v-model="email"
                    :label="t('login.email')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    lazy-rules
                    type="email"
@@ -47,24 +48,24 @@ const onSubmit = async () => {
                   ]"
           >
             <template v-slot:prepend>
-              <q-icon name="mail" color="black" />
+              <q-icon name="mail" color="white" />
             </template>
           </q-input>
 
           <q-input dense
                    outlined
-                   class="auto-field"
+                   class="auto-field "
                    v-model="password"
                    :label="t('login.password')"
-                   label-color="black"
-                   color="black"
+                   label-color="white"
+                   color="white"
                    bg-color="rgba(255, 255, 255, 0.1)"
                    lazy-rules
                    type="password"
                    :rules="[val => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
-              <q-icon name="lock" color="black" />
+              <q-icon name="lock" color="white" />
             </template>
           </q-input>
 
@@ -75,14 +76,14 @@ const onSubmit = async () => {
               type="submit"
               text-color="black"
               icon-right="login"
-              class="glass"
+              class="glass button"
               size="md"
             />
           </div>
           <div class="row justify-center q-mt-lg text-primary">
             <span>
               {{t('login.reg_text')}}
-            <router-link class="text-primary text-bold no-underline"
+            <router-link class="gradient-text text-bold no-underline"
                          :to="{ name: 'registration' }"
             >
               {{t('login.reg').toUpperCase()}}
