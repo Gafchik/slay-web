@@ -1,6 +1,7 @@
 import { defineBoot } from '#q-app/wrappers'
 import axios from 'axios'
 import { Notify } from 'quasar'
+import Cookies from 'js-cookie'
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -53,6 +54,8 @@ export default defineBoot(({ app, router }) => {
 
         if (status === 401) {
           notifyError('Session expired. Please log in again.')
+          Cookies.remove('access_token')
+          delete api.defaults.headers.common['Authorization']
           router.push({ name: 'login' })
         } else {
           notifyError(data?.message || 'Unknown error')
