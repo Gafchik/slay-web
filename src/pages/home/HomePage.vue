@@ -1,19 +1,21 @@
 <template>
   <q-page class="home-page">
     <!-- Hero Section -->
-    <section class="hero-section q-mb-xl">
-      <div class="container text-center">
-        <h1 class="text-h2 text-bold q-mb-md">
-          Slay GUI: Ваш Универсальный Инструмент Продуктивности
-        </h1>
-        <p class="text-subtitle1 q-mb-lg text-grey-6">
-          Управляйте проектами, паролями, консольными алиасами и запускайте программы
-          в одном элегантном и безопасном приложении, созданном для разработчиков.
-        </p>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content text-center">
+          <h1 class="hero-title">
+            Slay GUI: Ваш Универсальный Инструмент Продуктивности
+          </h1>
+          <p class="hero-subtitle">
+            Управляйте проектами, паролями, консольными алиасами и запускайте программы
+            в одном элегантном и безопасном приложении, созданном для разработчиков.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Block 1: Project Manager (теперь с горизонтальным скроллом) -->
+    <!-- Block 1: Project Manager -->
     <section class="feature-section project-section">
       <div class="container">
         <div class="section-header">
@@ -39,11 +41,11 @@
           </div>
 
           <div class="scroll-visual">
-            <div class="gif-placeholder glass large">
+            <div class="gif-placeholder glass">
               <div class="placeholder-content">
                 <q-icon name="mdi-play-circle" size="xl" class="q-mb-md" />
-                <p class="text-h6">Демонстрация Менеджера Проектов</p>
-                <p class="text-grey-5">Легко организуйте, ищите и запускайте проекты</p>
+                <p class="placeholder-title">Демонстрация Менеджера Проектов</p>
+                <p class="placeholder-subtitle">Легко организуйте, ищите и запускайте проекты</p>
               </div>
             </div>
           </div>
@@ -51,7 +53,7 @@
       </div>
     </section>
 
-    <!-- Block 2: Quick Program Launch (теперь со слайдером) -->
+    <!-- Block 2: Quick Program Launch -->
     <section class="feature-section launch-section">
       <div class="container">
         <div class="section-header">
@@ -71,7 +73,7 @@
               navigation
               padding
               arrows
-              height="400px"
+              height="300px"
               class="benefits-carousel glass"
             >
               <q-carousel-slide
@@ -81,7 +83,7 @@
                 class="column no-wrap flex-center"
               >
                 <div class="benefit-content">
-                  <q-icon name="mdi-check-circle" color="positive" size="xl" class="q-mb-md" />
+                  <q-icon name="mdi-check-circle" color="positive" size="lg" class="q-mb-sm" />
                   <h3 class="benefit-title">{{ feature.title }}</h3>
                   <p class="benefit-description">{{ feature.description }}</p>
                 </div>
@@ -93,8 +95,8 @@
             <div class="gif-placeholder glass">
               <div class="placeholder-content">
                 <q-icon name="mdi-play-circle" size="xl" class="q-mb-md" />
-                <p class="text-h6">Демонстрация Быстрого Запуска</p>
-                <p class="text-grey-5">Запускайте IDE, терминалы и сервисы моментально</p>
+                <p class="placeholder-title">Демонстрация Быстрого Запуска</p>
+                <p class="placeholder-subtitle">Запускайте IDE, терминалы и сервисы моментально</p>
               </div>
             </div>
           </div>
@@ -119,7 +121,7 @@
             navigation
             padding
             arrows
-            height="350px"
+            height="400px"
             class="cards-carousel"
           >
             <q-carousel-slide
@@ -158,7 +160,7 @@
         <div class="aliases-content">
           <div class="aliases-text">
             <p class="aliases-description">
-              С Slay GUI вы забудете о рутинном вводе длинных команд. Создавайте мощные и короткие алиасы для любых консольных операций, будь то запуск Docker-контейнеров, старт PHP-сервера или сложные SSH-соединения. Ваши алиасы доступны из любой консоли на ПК через `slay-cli`, обеспечивая беспрецедентную скорость и комфорт.
+              С Slay GUI вы забудете о рутинном вводе длинных команд. Создавайте мощные и короткие алиасы для любых консольных операций.
             </p>
 
             <div class="aliases-features">
@@ -182,8 +184,8 @@
             <div class="gif-placeholder glass">
               <div class="placeholder-content">
                 <q-icon name="mdi-console-line" size="xl" class="q-mb-md" />
-                <p class="text-h6">Демонстрация Консольных Алиасов</p>
-                <p class="text-grey-5">Создавайте и используйте мощные алиасы</p>
+                <p class="placeholder-title">Демонстрация Алиасов</p>
+                <p class="placeholder-subtitle">Создавайте и используйте мощные алиасы</p>
               </div>
             </div>
           </div>
@@ -229,20 +231,12 @@
       <div class="container">
         <div class="cta-content glass">
           <h2>Готовы повысить свою продуктивность?</h2>
-          <p>Начните использовать Slay GUI сегодня и почувствуйте разницу</p>
+          <p>Начните использовать Slay GUI сегодня</p>
           <div class="cta-actions">
             <q-btn
+              :to="{ name: 'download' }"
               label="Скачать бесплатно"
-              size="lg"
               class="cta-button gradient-bg"
-              icon="mdi-download"
-            />
-            <q-btn
-              label="Документация"
-              size="lg"
-              outline
-              class="cta-button-outline"
-              icon="mdi-book-open"
             />
           </div>
         </div>
@@ -404,7 +398,6 @@ const testimonials = ref([
   }
 ]);
 
-// Фиксируем карусель паролей - разбиваем на группы по 3 элемента
 const passwordSlides = computed(() => {
   const slides = [];
   for (let i = 0; i < passwordFeatures.value.length; i += 3) {
@@ -424,22 +417,35 @@ const passwordSlides = computed(() => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 // Hero Section
 .hero-section {
-  position: relative;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  padding: 80px 0;
+  padding: 40px 0 20px;
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.hero-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
 }
 
 // Common Section Styles
 .feature-section {
-  padding: 100px 0;
-  position: relative;
+  padding: 60px 0;
 
   &.project-section {
     background: linear-gradient(180deg, transparent 0%, rgba(0, 225, 255, 0.05) 100%);
@@ -460,53 +466,40 @@ const passwordSlides = computed(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
   }
 }
 
-// Block 1: Project Manager (теперь с горизонтальным скроллом)
+// Block 1: Project Manager
 .scrollable-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .features-scroll-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-height: 500px;
-  overflow-y: auto;
-  padding-right: 20px;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 225, 255, 0.5);
-    border-radius: 3px;
-  }
+  gap: 16px;
+  max-height: none;
+  overflow-y: visible;
+  padding-right: 0;
 }
 
 .scroll-feature {
-  padding: 24px;
+  padding: 20px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -517,73 +510,73 @@ const passwordSlides = computed(() => {
     background: rgba(0, 225, 255, 0.1);
   }
 
-  &:hover {
-    transform: translateX(10px);
-  }
-
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     margin-bottom: 8px;
+    line-height: 1.3;
   }
 
   p {
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 }
 
 .scroll-feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(0, 225, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   .q-icon {
     color: #00e1ff;
+    font-size: 1.25rem;
   }
 }
 
-// Block 2: Quick Program Launch (теперь со слайдером)
+// Block 2: Quick Program Launch
 .feature-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .benefits-carousel {
-  height: 400px;
+  height: 280px;
 
   :deep(.q-carousel__slide) {
-    padding: 40px;
+    padding: 24px;
   }
 }
 
 .benefit-content {
   text-align: center;
-  max-width: 500px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .benefit-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  line-height: 1.3;
 }
 
 .benefit-description {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
-// Block 3: Password Manager - ФИКСИРУЕМ КАРУСЕЛЬ
+// Block 3: Password Manager
 .carousel-cards {
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -593,45 +586,36 @@ const passwordSlides = computed(() => {
   :deep(.q-carousel__slide) {
     padding: 0;
   }
-
-  :deep(.q-carousel__navigation) {
-    background: transparent;
-  }
-
-  :deep(.q-carousel__navigation-inner) {
-    background: transparent;
-  }
 }
 
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
 }
 
 .password-card {
   padding: 30px 20px;
   text-align: center;
-  border-radius: 16px;
+  border-radius: 12px;
   transition: transform 0.3s ease;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(30px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  &:hover {
-    transform: translateY(-5px);
-  }
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h4 {
     font-size: 1.125rem;
-    margin: 16px 0 8px;
+    margin: 12px 0 8px;
+    line-height: 1.3;
   }
 
   p {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
     margin: 0;
+    line-height: 1.4;
   }
 }
 
@@ -647,39 +631,38 @@ const passwordSlides = computed(() => {
 
   .q-icon {
     color: #00ffaa;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 }
 
 // Block 4: Console Aliases
 .aliases-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .aliases-description {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin-bottom: 40px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
 .aliases-features {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .alias-feature {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
 }
 
 .alias-icon {
-  margin-top: 4px;
+  margin-top: 2px;
   flex-shrink: 0;
 }
 
@@ -687,73 +670,85 @@ const passwordSlides = computed(() => {
   h4 {
     font-size: 1.125rem;
     margin-bottom: 4px;
+    line-height: 1.3;
   }
 
   p {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 }
 
 // GIF Placeholders
 .gif-placeholder {
   width: 100%;
-  height: 300px;
-  border-radius: 16px;
+  height: 200px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px dashed rgba(255, 255, 255, 0.3);
-
-  &.large {
-    height: 500px;
-  }
 }
 
 .placeholder-content {
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+  padding: 0 16px;
 
   .q-icon {
     color: rgba(255, 255, 255, 0.5);
+    font-size: 2rem !important;
   }
+}
+
+.placeholder-title {
+  font-size: 1rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.placeholder-subtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
 }
 
 // Testimonials
 .testimonials-section {
-  padding: 100px 0;
+  padding: 60px 0;
 }
 
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .testimonial-card {
-  padding: 40px 30px;
-  border-radius: 20px;
+  padding: 28px 20px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
 }
 
 .testimonial-content {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   .quote-icon {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    font-size: 3rem;
+    top: -8px;
+    left: -8px;
+    font-size: 2rem;
     color: rgba(0, 225, 255, 0.3);
   }
 
   p {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
     z-index: 2;
@@ -763,12 +758,12 @@ const passwordSlides = computed(() => {
 .testimonial-author {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .author-avatar {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(0, 225, 255, 0.2);
   display: flex;
@@ -776,7 +771,7 @@ const passwordSlides = computed(() => {
   justify-content: center;
 
   .q-icon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -785,80 +780,72 @@ const passwordSlides = computed(() => {
   flex-direction: column;
 
   strong {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   span {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
 .feature-tag {
   background: rgba(0, 225, 255, 0.2);
   color: #00e1ff;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  margin-top: 2px;
   display: inline-block;
 }
 
 // CTA Section
 .cta-section {
-  padding: 100px 0;
+  padding: 60px 0;
 }
 
 .cta-content {
-  padding: 80px 60px;
-  border-radius: 30px;
+  padding: 40px 24px;
+  border-radius: 20px;
   text-align: center;
 
   h2 {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+    line-height: 1.4;
   }
 }
 
 .cta-actions {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
 .cta-button {
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: 600;
   text-transform: none;
-  padding: 12px 32px;
-}
-
-.cta-button-outline {
-  border-radius: 12px;
-  font-weight: 600;
-  text-transform: none;
-  padding: 12px 32px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+  padding: 12px 24px;
+  width: 100%;
+  max-width: 280px;
 }
 
 .glass {
   background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 255, 200, 0.05), inset 0 1px 10px rgba(255, 255, 255, 0.05);
-  transition: all 0.4s ease;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 255, 200, 0.05), inset 0 1px 8px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
 
 .gradient-bg {
@@ -867,51 +854,187 @@ const passwordSlides = computed(() => {
   font-weight: 600;
 }
 
-// Responsive Design
+// Убираем все скроллы на мобилках
 @media (max-width: 768px) {
-  .hero-section {
-    min-height: 40vh;
-    padding: 40px 0;
+  .features-scroll-container {
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-right: 0 !important;
   }
 
-  .feature-content,
-  .scrollable-features,
-  .aliases-content {
-    grid-template-columns: 1fr;
+  .benefits-carousel,
+  .cards-carousel {
+    overflow: visible !important;
+  }
+
+  /* Делаем карусели более удобными для мобилок */
+  .benefits-carousel {
+    height: auto !important;
+    min-height: 300px;
+  }
+
+  .cards-carousel {
+    height: auto !important;
+    min-height: 350px;
+  }
+
+  .password-card {
+    padding: 30px 20px !important;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-icon {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .card-icon .q-icon {
+    font-size: 1.75rem !important;
+  }
+
+  .testimonials-grid {
+    gap: 24px !important;
+  }
+
+  .testimonial-card {
+    padding: 28px 20px !important;
+  }
+}
+
+// Tablet styles (768px+)
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .hero-section {
+    padding: 80px 0 40px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .feature-section {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+
+    h2 {
+      font-size: 2.25rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  .scrollable-features {
+    flex-direction: row;
     gap: 40px;
   }
 
   .features-scroll-container {
-    max-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 16px;
+  }
+
+  .feature-content {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .benefits-carousel {
+    height: 350px;
   }
 
   .cards-container {
-    grid-template-columns: 1fr;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0;
   }
 
-  .cta-content {
-    padding: 60px 30px;
+  .aliases-content {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   .cta-actions {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
   }
 
-  .section-header h2 {
-    font-size: 2rem;
+  .cta-button {
+    width: auto;
+  }
+
+  .gif-placeholder {
+    height: 280px;
   }
 }
 
-@media (max-width: 480px) {
+// Desktop styles (1024px+)
+@media (min-width: 1024px) {
   .container {
-    padding: 0 16px;
+    padding: 0 32px;
   }
 
-  .testimonial-card,
-  .password-card {
-    padding: 20px 15px;
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cta-content {
+    padding: 60px 48px;
+  }
+
+  .gif-placeholder {
+    height: 320px;
+  }
+}
+
+// Small mobile fixes (under 360px)
+@media (max-width: 360px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .scroll-feature,
+  .password-card,
+  .testimonial-card {
+    padding: 16px;
+  }
+
+  .cta-content {
+    padding: 32px 20px;
   }
 }
 </style>
