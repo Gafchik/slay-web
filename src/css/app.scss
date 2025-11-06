@@ -153,3 +153,18 @@ h1, h2, h3 {
   color: #e8f7ff;
   text-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
 }
+
+/* Global container utility for page sections */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 24px; }
+}
+
+@media (min-width: 1024px) {
+  .container { padding: 0 32px; }
+}
