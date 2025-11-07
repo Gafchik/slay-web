@@ -3,7 +3,7 @@
     <div class="container">
       <div class="cta-content glass">
         <h2>Готовы повысить свою продуктивность?</h2>
-        <p>Начните использовать Slay GUI сегодня</p>
+        <p>Начните использовать Slay сегодня</p>
         <div class="cta-actions">
           <q-btn
             :to="{ name: 'download' }"
