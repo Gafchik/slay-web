@@ -57,5 +57,13 @@ export default {
     password_confirmation: 'Confirm password',
     created_at: 'Created at',
     updated_at: 'Last update',
+  },
+  text: {
+    title: 'Smart Launcher for All Your devtools',
+    subtitle: 'Your unified command center',
+    description: 'Make your work more efficient and comfortable.',
+  },
+  buttons: {
+    join: 'Join'
   }
 }

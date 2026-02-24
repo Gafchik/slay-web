@@ -21,8 +21,8 @@ const launchFeatures = ref([
 <template>
   <section class="feature-section launch-section">
     <div class="container">
-      <div class="section-header">
-        <h2>Быстрый запуск рабочего пространства</h2>
+      <div class="section-header q-pt-xl">
+        <h2 class="q-pt-xl q-mt-none">Быстрый запуск рабочего пространства</h2>
         <p>
           Мгновенно запускайте все необходимые инструменты и приложения для вашей комфортной работы.
         </p>
@@ -73,10 +73,6 @@ const launchFeatures = ref([
 </template>
 
 <style scoped lang="scss">
-.feature-section {
-  padding: 60px 0;
-}
-
 .launch-section {
   background: linear-gradient(180deg, rgba(0, 225, 255, 0.05) 0%, rgba(0, 255, 170, 0.05) 100%);
 }
@@ -113,9 +109,6 @@ const launchFeatures = ref([
 }
 
 @media (min-width: 768px) {
-  .feature-section {
-    padding: 80px 0;
-  }
   .feature-content {
     flex-direction: row;
     gap: 40px;
