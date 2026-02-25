@@ -53,48 +53,65 @@
     const section = sectionEl.value
     if (!section) return
 
-    const vh = () => window.innerHeight
-
     const tailVh = 0.6
 
-    ctx = gsap.context(() => {
-      const slides = gsap.utils.toArray(section.querySelectorAll('.list-text p'))
+    const itemsLength = aboutData.value.length;
+    const stepPx = 900                          // "длина" одного шага в px, подбери
+    const tailPx = 300
 
-      gsap.set(slides, { opacity: 0 })
-      gsap.set(slides[0], { opacity: 1 })
+    ctx = gsap.context(() => {
+      const textItems = gsap.utils.toArray(section.querySelectorAll('.list-text p'))
+      gsap.set(textItems, { autoAlpha: 0 })
+      gsap.set(textItems[0], { autoAlpha: 0.5, height: 'auto' })
+
+      const titleItems = gsap.utils.toArray(section.querySelectorAll('.list-text h4'))
+      gsap.set(titleItems, { autoAlpha: 0.7 })
+      gsap.set(titleItems[0], { autoAlpha: 1, height: 'auto', marginBottom: '16px' })
 
       const videoItems = gsap.utils.toArray(section.querySelectorAll('.list-video video'))
-
-      gsap.set(videoItems, { opacity: 0 })
-      gsap.set(videoItems[0], { opacity: 1 })
-
-      videoItems[0].play()
+      gsap.set(videoItems, { autoAlpha: 0 })
+      gsap.set(videoItems[0], { autoAlpha: 1 })
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: () => `+=${aboutData.value.length * vh() + tailVh * vh()}`,
+          end: () => `+=${(itemsLength - 1) * stepPx + tailPx}`,
           pin: true,
-          scrub: 0.5
+          scrub: 0.6,
+          snap: 1 / (itemsLength - 1),
+          onEnter: () => {
+            tl.to(textItems[0], { autoAlpha: 1 }, 0)
+            videoItems[0].play()
+          },
         }
       })
 
-      slides.forEach((el, i) => {
+      titleItems.forEach((el, i) => {
         if (i === 0) return
-        tl.to(slides[i - 1], { opacity: 0, duration: 0.3, height: '0px' }, i)
-        tl.to(el, { opacity: 1, duration: 0.3, height: 'auto' }, i)
+        tl.to(titleItems[i - 1], { autoAlpha: 0.7, duration: 0.3, marginBottom: 0 }, i)
+        tl.to(el, { autoAlpha: 1, duration: 0.3, marginBottom: '16px' }, i)
+      })
+
+      textItems.forEach((el, i) => {
+        if (i === 0) return
+        tl.to(textItems[i - 1], { autoAlpha: 0, duration: 0.3, height: 0 }, i)
+        tl.to(el, { autoAlpha: 1, duration: 0.3, height: 'auto' }, i)
       })
 
       videoItems.forEach((el, i) => {
         if (i === 0) return
 
-        tl.to(slides[i - 1], {
+        tl.to(videoItems[i - 1], {
           autoAlpha: 0,
           duration: 0.3,
           onStart: () => {
-            slides[i - 1].pause()
-            slides[i - 1].currentTime = 0
+            videoItems[i - 1].pause()
+            videoItems[i - 1].currentTime = 0
+          },
+          onReverseComplete: () => {
+            videoItems[i - 1].currentTime = 0
+            videoItems[i - 1].play()
           }
         }, i)
 
@@ -102,6 +119,7 @@
           autoAlpha: 1,
           duration: 0.3,
           onStart: () => {
+            el.currentTime = 0
             el.play()
           }
         }, i)
@@ -110,15 +128,8 @@
       tl.to({}, { duration: tailVh })
     }, section)
 
-    const v = listVideoEl.value
     const refresh = () => ScrollTrigger.refresh()
 
-    if (v) {
-      v.addEventListener('loadedmetadata', refresh, { once: true })
-      v.addEventListener('loadeddata', refresh, { once: true })
-    }
-
-    // на всякий случай после первого layout
     requestAnimationFrame(refresh)
     setTimeout(refresh, 0)
 
@@ -149,10 +160,10 @@
                 </q-item>
               </q-list>
             </div>
-            <div class="col-3">
-              <q-list class="list-text text-white" ref="listDataEl">
+            <div class="flex col-3">
+              <q-list class="list-text q-pl-lg text-white" ref="listDataEl">
                 <q-item v-for="(item, index) in aboutData"
-                        :key="index" class="list__item">
+                        :key="index" class="list__item q-py-md q-px-none">
                   <q-item-section>
                     <h4>{{ item.title }}</h4>
                     <p>{{ item.description }}</p>
@@ -168,6 +179,17 @@
 </template>
 
 <style scoped lang="scss">
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+    height: 0;
+  }
+
   .section {
     min-height: 100vh;
 
@@ -196,6 +218,17 @@
 
       video {
         border-radius: 20px;
+      }
+    }
+
+    &.list-text {
+      margin-top: auto;
+      height: auto;
+
+      .q-item {
+        &:not(:last-child) {
+          border-bottom: 1px solid #03d5ff;
+        }
       }
     }
   }
