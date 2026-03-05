@@ -1,69 +1,27 @@
 <script setup>
-import { ref } from 'vue'
-
-const launchSlide = ref(1)
-const launchFeatures = ref([
-  {
-    title: 'Всегда под рукой!',
-    description: 'Весь список необходимых приложений доступен в одном месте и готов к запуску.',
-  },
-  {
-    title: 'Запуск всего стека одним кликом',
-    description: 'Открывайте браузеры, месседжеры и все рабочие инструменты моментально.',
-  },
-  {
-    title: 'Интеллектуальный поиск',
-    description: 'Мгновенно находите нужные инструменты по частичному совпадению в названии.',
-  },
-])
+  import Video1 from 'assets/video/Video-1.mp4'
+  import Video2 from 'assets/video/Video-1.webm'
 </script>
 
 <template>
-  <section class="feature-section launch-section">
+  <section class="section q-my-xl">
     <div class="container">
-      <div class="section-header q-pt-xl">
-        <h2 class="q-pt-xl q-mt-none">Быстрый запуск рабочего пространства</h2>
-        <p>
-          Мгновенно запускайте все необходимые инструменты и приложения для вашей комфортной работы.
-        </p>
-      </div>
-
-      <div class="feature-content">
-        <div class="feature-slider">
-          <q-carousel
-            v-model="launchSlide"
-            transition-prev="slide-right"
-            transition-next="slide-left"
-            swipeable
-            animated
-            control-color="primary"
-            navigation
-            padding
-            arrows
-            height="300px"
-            class="benefits-carousel glass"
-          >
-            <q-carousel-slide
-              v-for="(feature, index) in launchFeatures"
-              :name="index + 1"
-              :key="index"
-              class="column no-wrap flex-center"
-            >
-              <div class="benefit-content">
-                <q-icon name="mdi-check-circle" color="positive" size="lg" class="q-mb-sm" />
-                <h3 class="benefit-title">{{ feature.title }}</h3>
-                <p class="benefit-description">{{ feature.description }}</p>
+      <div class="section__body flex q-my-auto">
+        <div class="section__main full-width">
+          <div class="row">
+            <div class="col-5">
+              <div class="flex column justify-center full-height">
+                <h2 class="q-mb-xl q-ma-auto">Быстрый запуск рабочего пространства</h2>
+                <p class="description-big">Открывайте все рабочие инструменты моментально.</p>
               </div>
-            </q-carousel-slide>
-          </q-carousel>
-        </div>
-
-        <div class="feature-visual">
-          <div class="gif-placeholder glass">
-            <div class="placeholder-content">
-              <q-icon name="mdi-play-circle" size="xl" class="q-mb-md" />
-              <p class="placeholder-title">Демонстрация Быстрого Запуска</p>
-              <p class="placeholder-subtitle">Запускайте IDE, терминалы и сервисы моментально</p>
+            </div>
+            <div class="col-7">
+              <div class="video">
+                <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
+                  <source :src="Video1" type="video/webm">
+                  <source :src="Video2" type="video/mp4">
+                </video>
+              </div>
             </div>
           </div>
         </div>
@@ -73,48 +31,14 @@ const launchFeatures = ref([
 </template>
 
 <style scoped lang="scss">
-.launch-section {
-  background: linear-gradient(180deg, rgba(0, 225, 255, 0.05) 0%, rgba(0, 255, 170, 0.05) 100%);
-}
+  .video {
+    border-radius: 20px;
+    overflow: hidden;
+    mask-image:
+      linear-gradient(to bottom, black 80%, transparent),
+      linear-gradient(to right, transparent, black 80%);
 
-.feature-content {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.benefits-carousel {
-  height: 280px;
-
-  :deep(.q-carousel__slide) {
-    padding: 24px;
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
   }
-}
-
-.benefit-content {
-  text-align: center;
-  max-width: 100%;
-  margin: 0 auto;
-}
-.benefit-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-.benefit-description {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.4;
-}
-
-@media (min-width: 768px) {
-  .feature-content {
-    flex-direction: row;
-    gap: 40px;
-  }
-  .benefits-carousel {
-    height: 350px;
-  }
-}
 </style>

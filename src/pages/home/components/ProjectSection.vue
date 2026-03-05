@@ -7,7 +7,7 @@
   const projectFeatures = ref([
     {
       title: 'Умная централизованная организация',
-      description: 'Все ваши проект в едином пространстве с интуитивной навигацией и мгновенным поиском.'
+      description: 'Все ваши проекты в едином пространстве с интуитивной навигацией и мгновенным поиском.'
     },
     {
       title: 'Мгновенный запуск',
@@ -21,7 +21,7 @@
 </script>
 
 <template>
-  <section class="section q-py-md">
+  <section class="section q-pt-md q-pb-xl">
     <div class="container">
       <div class="section__body flex q-my-auto">
         <div class="section__main  full-width">
@@ -45,7 +45,7 @@
             <li
               v-for="(feature, index) in projectFeatures"
               :key="index"
-              class="col-4 q-pa-lg scroll-feature"
+              class="col-4 q-pa-xl scroll-feature"
               :class="{ active: projectSlide === index + 1 }"
               @click="projectSlide = index + 1"
             >
