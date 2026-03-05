@@ -33,7 +33,7 @@
             <h1 class="title">{{t('text.title')}}</h1>
             <p class="subtitle">{{t('text.subtitle')}}</p>
             <p class="subtitle q-mb-lg">{{t('text.description')}}</p>
-            <q-btn unelevated rounded size="lg" class="btn-glass--primary">
+            <q-btn :to="{ name: 'download' }" unelevated rounded size="lg" class="btn-glass--primary">
               {{t('buttons.join')}}
             </q-btn>
           </div>
@@ -113,4 +113,3 @@
     min-width: 200px;
   }
 </style>
-
