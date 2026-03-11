@@ -1,5 +1,5 @@
 body {
-  background-color: #006C4B;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   &.body--dark {
     --q-autofill-bg: #0b0f14;
@@ -7,6 +7,36 @@ body {
 
   &.body--light {
     --q-autofill-bg: transparent;
+  }
+}
+
+.q-page-container {
+  position: relative;
+  background: black !important;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to right,
+            rgba(0, 255, 200, 0.25),
+            rgba(0, 180, 255, 0.25),
+            rgba(0, 255, 255, 0.25));
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -78,24 +108,6 @@ body {
   color: inherit;
 }
 
-.responsive-width {
-  width: 80%; /* Мобилки по умолчанию */
-}
-
-/* Планшеты (600px - 1023px) */
-@media (min-width: 600px) and (max-width: 1023px) {
-  .responsive-width {
-    width: 50%;
-  }
-}
-
-/* Десктоп (1024px+) */
-@media (min-width: 1024px) {
-  .responsive-width {
-    width: 25%;
-  }
-}
-
 /* Chrome autofill fix — применяется только к .autofill-fix */
 .auto-field.q-field--outlined .q-field__control input:-webkit-autofill {
   -webkit-text-fill-color: #ffffff !important;
@@ -107,18 +119,16 @@ body {
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
-
-.bg {
+/*.bg {
   position: relative;
   margin: 0;
   padding: 0;
   overflow: hidden;
   min-height: 100vh;
   background: radial-gradient(circle at 20% 30%, #101218, #0f1115 60%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
-/* Анимированные волны — слой света */
 .bg::before,
 .bg::after {
   content: "";
@@ -158,7 +168,7 @@ body {
 .bg::before,
 .bg::after {
   pointer-events: none;
-}
+}*/
 /* Улучшенное стекло */
 .glass {
   background: rgba(255, 255, 255, 0.07);

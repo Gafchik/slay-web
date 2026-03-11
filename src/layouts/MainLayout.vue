@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lFf" class="bg">
+  <q-layout view="lHh Lpr lFf">
     <PageHeader />
     <q-page-container>
       <router-view />

@@ -11,7 +11,7 @@
 
 <template>
   <q-page class="fit">
-    <HeroSection />
+    <HeroSection/>
     <AboutSection />
     <ProjectSection />
     <LaunchSection />
@@ -22,8 +22,4 @@
   </q-page>
 </template>
 
-<style scoped lang="scss">
-  .q-page {
-    background: radial-gradient(circle at 20% 30%, #101218, #0f1115 60%);
-  }
-</style>
+<style scoped lang="scss"></style>

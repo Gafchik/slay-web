@@ -28,7 +28,7 @@
             <div class="col-5">
               <div class="q-px-xl">
                 <h2 class="q-mb-xl q-pt-lg">Консольные Алиасы</h2>
-                <p class="description-big">Создавайте мощные и короткие алиасы для любых консольных операций.</p>
+                <p class="description-big">Создавайте короткие и запоминающиеся алиасы для любых сложных консольных команд.</p>
               </div>
             </div>
             <div class="col-7">
