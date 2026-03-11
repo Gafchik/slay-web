@@ -4,10 +4,10 @@
 </script>
 
 <template>
-  <section class="section q-my-xl">
+  <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body flex q-my-auto">
-        <div class="section__main full-width">
+      <div class="section__body flex">
+        <div class="section__main">
           <div class="row">
             <div class="col-5">
               <div class="flex column justify-center full-height">

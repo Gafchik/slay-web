@@ -1,71 +1,89 @@
+<script setup>
+  import { ref } from 'vue';
+  import Video1 from 'assets/video/Video-1.mp4'
+  import Video2 from 'assets/video/Video-1.webm'
+
+  const aliasFeatures = ref([
+    {
+      title: 'Мгновенный доступ к командам',
+      description: 'Создавайте короткие и запоминающиеся алиасы для любых сложных консольных команд.'
+    },
+    {
+      title: 'Упрощение рутинных задач',
+      description: 'Легко входите в Docker конейнер, одной командой запускайте локальные сервера, именуйте версии язиков програмирования'
+    },
+    {
+      title: 'Повышение эффективности терминала',
+      description: 'Сократите время на ввод команд в разы и повысьте свою продуктивность в терминале.'
+    }
+  ])
+</script>
+
 <template>
-  <section class="feature-section aliases-section">
+  <section class="section flex">
     <div class="container">
-      <div class="section-header">
-        <h2>Консольные Алиасы</h2>
-        <p>Упростите работу в терминале с мощными алиасами</p>
-      </div>
-
-      <div class="aliases-content">
-        <div class="aliases-text">
-          <p class="aliases-description">
-            С Slay вы забудете о рутинном вводе длинных команд. Создавайте мощные и короткие алиасы для любых консольных операций.
-          </p>
-
-          <div class="aliases-features">
-            <div v-for="(feature, index) in aliasFeatures" :key="index" class="alias-feature">
-              <div class="alias-icon">
-                <q-icon name="mdi-check-circle" color="positive" />
+      <div class="section__body flex full-height q-py-xl">
+        <div class="section__main q-my-auto">
+          <div class="row">
+            <div class="col-5">
+              <div class="q-px-xl">
+                <h2 class="q-mb-xl q-pt-lg">Консольные Алиасы</h2>
+                <p class="description-big">Создавайте мощные и короткие алиасы для любых консольных операций.</p>
               </div>
-              <div class="alias-content">
-                <h4>{{ feature.title }}</h4>
-                <p>{{ feature.description }}</p>
+            </div>
+            <div class="col-7">
+              <div class="video">
+                <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
+                  <source :src="Video1" type="video/webm">
+                  <source :src="Video2" type="video/mp4">
+                </video>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="aliases-visual">
-          <div class="gif-placeholder glass">
-            <div class="placeholder-content">
-              <q-icon name="mdi-console-line" size="xl" class="q-mb-md" />
-              <p class="placeholder-title">Демонстрация Алиасов</p>
-              <p class="placeholder-subtitle">Создавайте и используйте мощные алиасы</p>
-            </div>
-          </div>
+          <ul class="row list liquid-glass">
+            <li
+              v-for="(feature, index) in aliasFeatures"
+              :key="index"
+              class="col-4 q-pa-xl scroll-feature"
+              :class="{ active: aliasFeatures === index + 1 }"
+              @click="aliasFeatures = index + 1"
+            >
+              <h4 class="q-mb-md">{{ feature.title }}</h4>
+              <p class="description">{{ feature.description }}</p>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const aliasFeatures = ref([
-  { title: 'Мгновенный доступ к командам', description: 'Создавайте короткие и запоминающиеся алиасы для любых сложных консольных команд.' },
-  { title: 'Глобальный запуск', description: 'Используйте ваши алиасы из любой консоли на ПК.' },
-  { title: 'Упрощение рутинных задач', description: 'Легко входите в Docker конейнер, одной командой запускайте локальные сервера, именуйте версии язиков програмирования' },
-  { title: 'Повышение эффективности терминала', description: 'Сократите время на ввод команд в разы и повысьте свою продуктивность в терминале.' },
-  { title: 'Централизованное управление', description: 'Управляйте всеми вашими консольными алиасами из одного удобного места для всех проектов.' },
-  { title: 'Персонализация и гибкость', description: 'Настраивайте алиасы под свои нужды и рабочие процессы для максимального комфорта.' }
-]);
-</script>
-
 <style scoped lang="scss">
-.feature-section { padding: 60px 0; }
-.aliases-section { background: linear-gradient(180deg, rgba(170, 0, 255, 0.05) 0%, transparent 100%); }
+  .section {
+    min-height: 100vh;
 
-.aliases-content { display: flex; flex-direction: column; gap: 30px; }
-.aliases-description { font-size: 1rem; color: rgba(255, 255, 255, 0.8); line-height: 1.5; margin-bottom: 24px; }
-.aliases-features { display: flex; flex-direction: column; gap: 20px; }
-.alias-feature { display: flex; gap: 12px; align-items: flex-start; }
-.alias-icon { margin-top: 2px; flex-shrink: 0; }
-.alias-content h4 { font-size: 1.125rem; margin-bottom: 4px; line-height: 1.3; }
-.alias-content p { color: rgba(255, 255, 255, 0.7); margin: 0; font-size: 0.9rem; line-height: 1.4; }
+    &__body {
+      height: inherit;
+    }
+  }
 
-@media (min-width: 768px) {
-  .aliases-content { flex-direction: row; gap: 40px; }
-}
+  .video {
+    border-radius: 20px 20px 0 0;
+    border: 1px solid white;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%);
+  }
+
+  .list {
+    border-radius: 0 0 20px 20px;
+    mask-image: linear-gradient(to top, black 0%, black 80%, transparent 100%);
+
+    li {
+      &:nth-child(2) {
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+      }
+    }
+  }
 </style>
 

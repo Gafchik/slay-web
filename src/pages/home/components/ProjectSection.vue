@@ -21,7 +21,7 @@
 </script>
 
 <template>
-  <section class="section q-pt-md q-pb-xl">
+  <section class="section q-py-xl">
     <div class="container">
       <div class="section__body flex q-my-auto">
         <div class="section__main  full-width">
@@ -78,16 +78,5 @@
       }
     }
   }
-
-  .scroll-feature {
-    /*padding: 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 225, 255, 0.5);
-    background: rgba(0, 225, 255, 0.1);*/
-  }
-
-
 </style>
 

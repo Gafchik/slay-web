@@ -1,3 +1,15 @@
+body {
+  background-color: #006C4B;
+
+  &.body--dark {
+    --q-autofill-bg: #0b0f14;
+  }
+
+  &.body--light {
+    --q-autofill-bg: transparent;
+  }
+}
+
 .liquid-glass {
   background-color: color-mix(in srgb, #fff 5%, transparent);
   backdrop-filter: blur(8px) saturate(150%);
@@ -191,6 +203,60 @@
 .button:hover {
   box-shadow: 0 0 40px rgba(0, 255, 200, 0.6);
   transform: translateY(-2px);
+}
+
+.q-field {
+  &.btn-glass {
+    .q-field {
+      &__control {
+        padding: 0 16px;
+        background: transparent;
+
+        &:before{
+          @extend .liquid-glass;
+        }
+
+        &:after {
+          display: none;
+          opacity: 0;
+        }
+      }
+
+      &--focused {
+        .q-icon{
+          color: #03d5ff;
+        }
+      }
+    }
+  }
+
+  &.btn-path {
+    .q-field {
+      &__control {
+        height: 56px;
+        padding: 8px 8px 8px 16px;
+
+        &-container {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.q-field__native:-webkit-autofill,
+.q-field__native:-webkit-autofill:hover,
+.q-field__native:-webkit-autofill:focus,
+.q-field__native:-webkit-autofill:active {
+  -webkit-text-fill-color: inherit !important;
+  caret-color: inherit !important;
+
+  /* перекрываем "заливку" Chrome autofill */
+  -webkit-box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
+  box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
+
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 /* Подсветка текста */
