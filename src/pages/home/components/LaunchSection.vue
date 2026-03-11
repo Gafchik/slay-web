@@ -20,7 +20,7 @@
             <div class="col-5">
               <div class="flex column justify-center full-height q-pl-xl">
                 <h2 class="q-mb-xl q-ma-auto">Мгновенный запуск</h2>
-                <p class="description-big">Мгновенно запускайте все необходимые инструменты и приложения для вашей комфортной работы.</p>
+                <p class="description-big">Мгновенно запускайте все необходимые инструменты и приложения для вашей комфортной работы в едином месте</p>
               </div>
             </div>
           </div>

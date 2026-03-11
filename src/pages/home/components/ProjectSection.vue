@@ -12,7 +12,7 @@
             <div class="col-5">
               <div class="flex column justify-center full-height q-pr-xl">
                 <h2 class="q-mb-xl q-ma-auto">Менеджер Проектов</h2>
-                <p class="description-big">Централизованное хранение всех проектов в едином пространстве для быстрого поиска и мгновенного начала работы.</p>
+                <p class="description-big">Централизованное хранение всех проектов в едином пространстве для быстрого поиска и мгновенного начала работы в предпочитаемой среде</p>
               </div>
             </div>
             <div class="col-7">
