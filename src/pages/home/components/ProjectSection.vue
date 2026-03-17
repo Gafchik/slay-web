@@ -1,6 +1,6 @@
 <script setup>
-  import Video1 from 'src/assets/video/Video-1.mp4';
-  import Video2 from'src/assets/video/Video-1.webm';
+  import Video1 from 'src/assets/video/projects/Projects-full.mp4';
+  import Video2 from'src/assets/video/projects/Projects-full.webm';
 </script>
 
 <template>
@@ -31,15 +31,12 @@
 </template>
 
 <style scoped lang="scss">
-.video {
-  border-radius: 20px;
-  overflow: hidden;
-  mask-image:
-    linear-gradient(to bottom, black 80%, transparent),
-    linear-gradient(to right, transparent, black 80%);
-
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in;
-}
+  .video {
+    border-radius: 20px;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 75%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
 </style>
 

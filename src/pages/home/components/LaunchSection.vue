@@ -1,6 +1,6 @@
 <script setup>
-  import Video1 from 'assets/video/Video-1.mp4'
-  import Video2 from 'assets/video/Video-1.webm'
+  import Video1 from 'assets/video/laucher/Launcher-full.mp4'
+  import Video2 from 'assets/video/laucher/Launcher-full.webm'
 </script>
 
 <template>
@@ -34,10 +34,7 @@
   .video {
     border-radius: 20px;
     overflow: hidden;
-    mask-image:
-      linear-gradient(to bottom, black 80%, transparent),
-      linear-gradient(to left, transparent, black 80%);
-
+    mask-image: linear-gradient(to bottom, black 75%, transparent);
     mask-composite: intersect;
     -webkit-mask-composite: source-in;
   }

@@ -7,26 +7,33 @@
   import Video1 from 'src/assets/video/Video-1.mp4';
   import Video2 from'src/assets/video/Video-1.webm';
 
+  import Project1 from 'src/assets/video/projects/Projects-short.mp4';
+  import Project2 from'src/assets/video/projects/Projects-short.webm';
+  import Launcher1 from 'src/assets/video/laucher/Launcher-short-1.mp4';
+  import Launcher2 from'src/assets/video/laucher/Launcher-short-1.webm';
+  import Alias1 from 'src/assets/video/alias/Alias-short.mp4';
+  import Alias2 from'src/assets/video/alias/Alias-short.webm';
+
   gsap.registerPlugin(ScrollTrigger, Observer);
 
   const aboutData = ref([
     {
       title: 'Менеджер Проектов',
       description: 'Открывайте все рабочие инструменты моментально',
-      videoMP4: Video1,
-      videoWEBM: Video2
+      videoMP4: Project1,
+      videoWEBM: Project2
     },
     {
       title: 'Мгновенный запуск',
       description: 'Запуск всего рабочего пространства одним кликом',
-      videoMP4: Video1,
-      videoWEBM: Video2
+      videoMP4: Launcher1,
+      videoWEBM: Launcher2
     },
     {
       title: 'Консольные Алиасы',
       description: 'Создавайте короткие алиасы для любых консольных операций',
-      videoMP4: Video1,
-      videoWEBM: Video2
+      videoMP4: Alias1,
+      videoWEBM: Alias2
     },
     {
       title: 'Менеджер паролей',
@@ -286,7 +293,9 @@
     width: 100%;
 
     &.list-video {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 288 / 181;
+      border-radius: 20px;
+      overflow: hidden;
 
       .q-item {
         position: absolute;
@@ -295,11 +304,17 @@
         left: 0;
         right: 0;
         padding: 0;
-        aspect-ratio: 16 / 9;
       }
 
       video {
         border-radius: 20px;
+        overflow: hidden;
+        mask-image:
+          linear-gradient(to bottom, black 75%, transparent),
+          linear-gradient(to right, transparent, black 50%);
+
+        mask-composite: intersect;
+        -webkit-mask-composite: source-in;
       }
     }
 

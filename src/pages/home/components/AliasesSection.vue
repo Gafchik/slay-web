@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue';
-  import Video1 from 'assets/video/Video-1.mp4'
-  import Video2 from 'assets/video/Video-1.webm'
+  import Video1 from 'assets/video/alias/Alias-full.mp4'
+  import Video2 from 'assets/video/alias/Alias-full.webm'
 
   const aliasFeatures = ref([
     {
