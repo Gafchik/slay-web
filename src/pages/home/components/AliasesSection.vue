@@ -25,13 +25,13 @@
       <div class="section__body flex full-height q-py-xl">
         <div class="section__main q-my-auto">
           <div class="row">
-            <div class="col-5">
+            <div class="col-4">
               <div class="q-px-xl">
                 <h2 class="q-mb-xl q-pt-lg">Консольные Алиасы</h2>
                 <p class="description-big">Создавайте короткие и запоминающиеся алиасы для любых сложных консольных команд.</p>
               </div>
             </div>
-            <div class="col-7">
+            <div class="col-8">
               <div class="video">
                 <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
                   <source :src="Video1" type="video/webm">

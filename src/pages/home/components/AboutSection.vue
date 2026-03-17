@@ -4,15 +4,16 @@
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { Observer } from 'gsap/Observer';
 
-  import Video1 from 'src/assets/video/Video-1.mp4';
-  import Video2 from'src/assets/video/Video-1.webm';
-
   import Project1 from 'src/assets/video/projects/Projects-short.mp4';
   import Project2 from'src/assets/video/projects/Projects-short.webm';
   import Launcher1 from 'src/assets/video/laucher/Launcher-short-1.mp4';
   import Launcher2 from'src/assets/video/laucher/Launcher-short-1.webm';
   import Alias1 from 'src/assets/video/alias/Alias-short.mp4';
   import Alias2 from'src/assets/video/alias/Alias-short.webm';
+  import Password1 from 'src/assets/video/password/Password-full.mp4';
+  import Password2 from'src/assets/video/password/Password-full.webm';
+  import Sftp1 from 'src/assets/video/sftp/Sftp-short.mp4';
+  import Sftp2 from'src/assets/video/sftp/Sftp-short.webm';
 
   gsap.registerPlugin(ScrollTrigger, Observer);
 
@@ -38,14 +39,14 @@
     {
       title: 'Менеджер паролей',
       description: 'Безопасное хранение и удобная организация паролей',
-      videoMP4: Video1,
-      videoWEBM: Video2
+      videoMP4: Password1,
+      videoWEBM: Password2
     },
     {
-      title: 'Интеллектуальный поиск',
-      description: 'Мгновенно находите проекты по частичному совпадению в названии.',
-      videoMP4: Video1,
-      videoWEBM: Video2
+      title: 'Файловый менеджер',
+      description: 'Лёгкое подключение к серверу и полный контроль над файлами',
+      videoMP4: Sftp1,
+      videoWEBM: Sftp2
     },
   ]);
 
