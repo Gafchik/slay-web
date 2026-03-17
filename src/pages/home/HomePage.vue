@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <q-page class="fit">
+  <q-page class="fit q-pb-xl">
     <HeroSection/>
     <AboutSection />
     <ProjectSection />

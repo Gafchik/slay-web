@@ -1,10 +1,13 @@
+<script setup>
+</script>
+
 <template>
-  <section class="cta-section">
+  <section class="section q-py-xl">
     <div class="container">
-      <div class="cta-content glass">
-        <h2>Готовы повысить свою продуктивность?</h2>
-        <p>Начните использовать Slay сегодня</p>
-        <div class="cta-actions">
+      <div class="section__body text-white cta-content glass">
+        <h4 class="q-mb-md">Готовы повысить свою продуктивность?</h4>
+        <p class="q-mb-xl">Начните использовать Slay сегодня</p>
+        <div class="flex justify-center">
           <q-btn
             :to="{ name: 'download' }"
             label="Скачать бесплатно"
@@ -16,46 +19,29 @@
   </section>
 </template>
 
-<script setup></script>
-
 <style scoped lang="scss">
-.cta-section {
-  padding: 60px 0;
-}
-.cta-content {
-  padding: 40px 24px;
-  border-radius: 20px;
-  text-align: center;
-}
-.cta-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-.cta-content p {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 24px;
-  line-height: 1.4;
-}
-.cta-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-.cta-button {
-  border-radius: 10px;
-  font-weight: 600;
-  text-transform: none;
-  padding: 12px 24px;
-  width: 100%;
-  max-width: 280px;
-}
-
-@media (min-width: 1024px) {
-  .cta-content {
-    padding: 60px 48px;
+  .section__body {
+    padding: 40px 24px;
+    border-radius: 20px;
+    text-align: center;
   }
-}
+
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .cta-button {
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: none;
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 280px;
+  }
 </style>
