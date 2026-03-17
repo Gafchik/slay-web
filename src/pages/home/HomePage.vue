@@ -2,11 +2,12 @@
   import HeroSection from './components/TitleSection.vue'
   import ProjectSection from './components/ProjectSection.vue'
   import LaunchSection from './components/LaunchSection.vue'
-  import PasswordSection from './components/PasswordSection.vue'
   import AliasesSection from './components/AliasesSection.vue'
+  import PasswordSection from './components/PasswordSection.vue'
+  import AboutSection from './components/AboutSection.vue'
+  import SftpSection from './components/SftpSection.vue'
   import TestimonialsSection from './components/TestimonialsSection.vue'
   import CtaSection from './components/CtaSection.vue'
-  import AboutSection from 'pages/home/components/AboutSection.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@
     <LaunchSection />
     <AliasesSection />
     <PasswordSection />
+    <SftpSection />
     <TestimonialsSection />
     <CtaSection />
   </q-page>
