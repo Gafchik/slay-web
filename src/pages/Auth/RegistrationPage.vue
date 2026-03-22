@@ -5,7 +5,7 @@ import { useAuthStore } from 'stores/auth-store.js'
 const { t } = useI18n()
 
 const authStore = useAuthStore()
-const {registerRequest} = authStore
+const {registerRequest, loginGoggleRequest} = authStore
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
@@ -141,6 +141,15 @@ const onSubmit = async () => {
             type="submit"
             text-color="black"
             icon-right="person_add"
+            class="glass button"
+            size="md"
+          />
+          <q-btn
+            :label="t('login.sign_in_goggle')"
+            unelevated
+            @click="loginGoggleRequest"
+            text-color="black"
+            icon-right="login"
             class="glass button"
             size="md"
           />

@@ -50,6 +50,11 @@ const routes = [
         component: () => import('pages/profile/ProfilePage.vue'),
         meta: { requiresAuth: true } // only auth route
       },
+      {
+        path: '/auth/callback',
+        name: 'auth_callback',
+        component: () => import('components/AuthCallbackGoogle.vue')
+      },
     ],
   },
 
