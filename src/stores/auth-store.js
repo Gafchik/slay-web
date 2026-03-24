@@ -74,6 +74,20 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     }
   }
 
+  const loginGoggleRequest = async () => {
+    showLoading()
+    try {
+      const { data } = await api.post('/auth/google/init?access_type=web')
+      window.location.href = data.auth_url
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || 'Ошибка входа'
+      notifyError(errorMessage)
+      return { success: false, error: errorMessage }
+    } finally {
+      hideLoading()
+    }
+  }
+
   /** Логаут */
   const logoutRequest = async () => {
     // Очищаем токен и данные пользователя
@@ -122,5 +136,7 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     initAuth,
     checkAuth,
     updateUserDataRequest,
+    loginGoggleRequest,
+    setAccessToken,
   }
 })
