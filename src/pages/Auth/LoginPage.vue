@@ -2,6 +2,9 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from 'stores/auth-store.js'
+
+import googleLogo from 'src/assets/google_logo.png'
+
 const { t } = useI18n()
 
 const authStore = useAuthStore()
@@ -15,10 +18,10 @@ const onSubmit = async () => {
   if (!form.value) return
 
   const success = await form.value.validate()
+
   if (success) {
     const result = await loginRequest(email.value, password.value)
     if (result?.success) {
-      // Редирект на главную страницу после успешного логина
       window.location.href = '/profile'
     }
   }
@@ -29,7 +32,7 @@ const onSubmit = async () => {
   <q-page class="row justify-center text-primary">
     <div class="flex column justify-center q-ma-auto">
       <h4 class="gradient-text text-center q-mb-xl">{{ t('login.title') }}</h4>
-      <q-form @submit="onSubmit" class="q-gutter-md" ref="form">
+      <q-form @submit="onSubmit" ref="form">
         <q-input
           dark
           rounded
@@ -69,25 +72,33 @@ const onSubmit = async () => {
           </template>
         </q-input>
 
-        <div class="row justify-center q-mt-lg">
+        <div class="row justify-between q-mt-lg">
           <q-btn
+            outline
+            rounded
+            class="btn-glass"
+            color="white"
+            icon-right="login"
+            type="submit"
+            size="md"
             :label="t('login.sign_in')"
             unelevated
-            type="submit"
-            text-color="black"
-            icon-right="login"
-            class="glass button"
-            size="md"
           />
           <q-btn
-            :label="t('login.sign_in_goggle')"
-            unelevated
             @click="loginGoggleRequest"
-            text-color="black"
-            icon-right="login"
-            class="glass button"
+            outline
+            rounded
+            class="btn-glass"
+            color="white"
             size="md"
-          />
+          >
+            <q-avatar class="google-logo" left>
+              <img
+                :src="googleLogo"
+                alt="Google"
+              />
+            </q-avatar>
+          </q-btn>
         </div>
         <div class="row justify-center q-mt-lg text-primary">
             <span>
@@ -106,5 +117,8 @@ const onSubmit = async () => {
 </template>
 
 <style scoped>
-
+  .google-logo {
+    width: 24px;
+    height: 24px;
+  }
 </style>

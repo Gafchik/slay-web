@@ -21,7 +21,14 @@ export default {
       descriptionPassword: 'Безопасное хранение и удобная организация паролей',
       titleServer: 'Работа с сервером',
       descriptionServer: 'Лёгкое подключение к серверу и полный контроль над файлами',
-    }
+    },
+    project: {},
+    launcher: {},
+    alias: {},
+    password: {},
+    sftp: {},
+    reviews: {},
+    cta: {}
   },
   routes: {
     download: 'Download',

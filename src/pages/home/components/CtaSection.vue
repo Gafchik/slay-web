@@ -9,9 +9,11 @@
         <p class="q-mb-xl">Начните использовать Slay сегодня</p>
         <div class="flex justify-center">
           <q-btn
+            rounded
+            size="xl"
             :to="{ name: 'download' }"
             label="Скачать бесплатно"
-            class="cta-button gradient-bg"
+            class="btn-glass btn-download"
           />
         </div>
       </div>
