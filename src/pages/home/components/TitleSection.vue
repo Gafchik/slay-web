@@ -30,10 +30,14 @@
       <div class="section__body flex column">
         <div class="section__main q-my-auto">
           <div class="text-center">
-            <h1 class="title">{{t('text.title')}}</h1>
-            <p class="subtitle">{{t('text.subtitle')}}</p>
-            <p class="subtitle q-mb-lg">{{t('text.description')}}</p>
-            <q-btn :to="{ name: 'download' }" unelevated rounded size="lg" class="btn-glass--primary">
+            <h1 class="title">{{t('sections.home.title')}}</h1>
+            <p class="subtitle">{{t('sections.home.subtitle')}}</p>
+            <p class="subtitle q-mb-lg">{{t('sections.home.description')}}</p>
+            <q-btn :to="{ name: 'download' }"
+                   unelevated
+                   rounded
+                   size="lg"
+                   class="btn-download btn-glass--primary">
               {{t('buttons.join')}}
             </q-btn>
           </div>

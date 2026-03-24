@@ -108,7 +108,6 @@ body {
   color: inherit;
 }
 
-/* Chrome autofill fix — применяется только к .autofill-fix */
 .auto-field.q-field--outlined .q-field__control input:-webkit-autofill {
   -webkit-text-fill-color: #ffffff !important;
   caret-color: #ffffff !important;
@@ -119,57 +118,6 @@ body {
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
-/*.bg {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  min-height: 100vh;
-  background: radial-gradient(circle at 20% 30%, #101218, #0f1115 60%);
-
-}
-
-.bg::before,
-.bg::after {
-  content: "";
-  position: absolute;
-  inset: -100px;
-  background: conic-gradient(
-                  from 180deg,
-                  rgba(0, 255, 200, 0.25),
-                  rgba(0, 180, 255, 0.1),
-                  rgba(0, 255, 180, 0.2),
-                  rgba(0, 255, 255, 0.25)
-  );
-  mix-blend-mode: screen;
-  filter: blur(150px);
-  animation: waveSpin 25s linear infinite;
-  transform-origin: center;
-  border-radius: 50%;
-}
-
-.bg::after {
-  animation-direction: reverse;
-  opacity: 0.6;
-  filter: blur(200px);
-}
-
-@keyframes waveSpin {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.05);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-.bg::before,
-.bg::after {
-  pointer-events: none;
-}*/
-/* Улучшенное стекло */
 .glass {
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(30px) saturate(180%);

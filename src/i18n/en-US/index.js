@@ -4,16 +4,24 @@
 export default {
   failed: 'Action failed',
   success: 'Action was successful',
-  header: {
-    title: 'Smart Launcher for All Your devtools',
-    short_title: 'Slay',
-    auth: {
-      login: 'Login',
-      registration: 'Registration',
-      logout: 'Logout',
-      profile: 'Profile',
-      download: 'Download',
+  sections: {
+    home: {
+      title: 'Smart Launcher for All Your devtools',
+      subtitle: 'Your unified command center',
+      description: 'Make your work more efficient and comfortable.',
     },
+    about: {
+      titleProject: 'Менеджер Проектов',
+      descriptionProject: 'Открывайте все рабочие инструменты моментально',
+      titleLauncher: 'Мгновенный запуск',
+      descriptionLauncher: 'Запуск всего рабочего пространства одним кликом',
+      titleAlias: 'Консольные Алиасы',
+      descriptionAlias: 'Создавайте короткие алиасы для любых консольных операций',
+      titlePassword: 'Менеджер паролей',
+      descriptionPassword: 'Безопасное хранение и удобная организация паролей',
+      titleServer: 'Работа с сервером',
+      descriptionServer: 'Лёгкое подключение к серверу и полный контроль над файлами',
+    }
   },
   routes: {
     download: 'Download',
@@ -41,13 +49,6 @@ export default {
     have_account_text: 'If you already have an account, you can',
     have_account_link: 'login',
   },
-  validation: {
-    required: 'This field is required',
-    not_valid: 'This field is not valid',
-    only_one_file_allowed: 'Only one file is allowed',
-    password_mismatch: 'Passwords do not match',
-    min_length: 'The minimum length is {min} characters',
-  },
   profile: {
     title: 'Profile',
     first_name: 'First name',
@@ -58,12 +59,23 @@ export default {
     created_at: 'Created at',
     updated_at: 'Last update',
   },
-  text: {
-    title: 'Smart Launcher for All Your devtools',
-    subtitle: 'Your unified command center',
-    description: 'Make your work more efficient and comfortable.',
-  },
   buttons: {
-    join: 'Join'
-  }
+    join: 'Join',
+    download: 'Download',
+    login: 'Log In',
+    logout: 'Log Out',
+    registration: 'Registration',
+    profile: 'profile'
+  },
+  status: {
+    failed: 'Action failed',
+    success: 'Action was successful',
+  },
+  validation: {
+    required: 'This field is required',
+    not_valid: 'This field is not valid',
+    only_one_file_allowed: 'Only one file is allowed',
+    password_mismatch: 'Passwords do not match',
+    min_length: 'The minimum length is {min} characters',
+  },
 }

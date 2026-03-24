@@ -3,6 +3,7 @@
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { Observer } from 'gsap/Observer';
+  import { useI18n } from 'vue-i18n'
 
   import Project1 from 'src/assets/video/projects/Projects-short.mp4';
   import Project2 from'src/assets/video/projects/Projects-short.webm';
@@ -15,36 +16,38 @@
   import Sftp1 from 'src/assets/video/sftp/Sftp-short.mp4';
   import Sftp2 from'src/assets/video/sftp/Sftp-short.webm';
 
+  const { t } = useI18n()
+
   gsap.registerPlugin(ScrollTrigger, Observer);
 
   const aboutData = ref([
     {
-      title: 'Менеджер Проектов',
-      description: 'Открывайте все рабочие инструменты моментально',
+      title: t('sections.about.titleProject'),
+      description: t('sections.about.descriptionProject'),
       videoMP4: Project1,
       videoWEBM: Project2
     },
     {
-      title: 'Мгновенный запуск',
-      description: 'Запуск всего рабочего пространства одним кликом',
+      title: t('sections.about.titleLauncher'),
+      description: t('sections.about.descriptionLauncher'),
       videoMP4: Launcher1,
       videoWEBM: Launcher2
     },
     {
-      title: 'Консольные Алиасы',
-      description: 'Создавайте короткие алиасы для любых консольных операций',
+      title: t('sections.about.titleAlias'),
+      description: t('sections.about.descriptionAlias'),
       videoMP4: Alias1,
       videoWEBM: Alias2
     },
     {
-      title: 'Менеджер паролей',
-      description: 'Безопасное хранение и удобная организация паролей',
+      title: t('sections.about.titlePassword'),
+      description: t('sections.about.descriptionPassword'),
       videoMP4: Password1,
       videoWEBM: Password2
     },
     {
-      title: 'Файловый менеджер',
-      description: 'Лёгкое подключение к серверу и полный контроль над файлами',
+      title: t('sections.about.titleServer'),
+      description: t('sections.about.descriptionServer'),
       videoMP4: Sftp1,
       videoWEBM: Sftp2
     },
