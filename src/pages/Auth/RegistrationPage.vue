@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from 'stores/auth-store.js'
+import googleLogo from 'assets/google_logo.png'
 const { t } = useI18n()
 
 const authStore = useAuthStore()
@@ -33,22 +34,23 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <q-page class="row justify-center">
+  <q-page class="row justify-center q-pb-xl">
     <div class="flex column justify-center q-ma-auto">
       <h4 class="text-primary gradient-text text-center q-mb-xl">{{ t('register.title') }}</h4>
 
-      <q-form @submit="onSubmit" class="q-gutter-md" ref="form">
+      <q-form @submit="onSubmit" ref="form">
         <!-- First Name -->
-        <q-input dense
-                 outlined
-                 v-model="firstName"
-                 :label="t('register.first_name')"
-                 label-color="white"
-                 color="white"
-                 bg-color="rgba(255, 255, 255, 0.1)"
-                 class="auto-field"
-                 lazy-rules
-                 :rules="[val => !!val || t('validation.required')]"
+        <q-input
+          dark
+          rounded
+          outlined
+          lazy-rules
+          color="white"
+          label-color="white"
+          class="btn-glass auto-field q-mb-sm"
+          v-model="firstName"
+          :label="t('register.first_name')"
+          :rules="[val => !!val || t('validation.required')]"
         >
           <template v-slot:prepend>
             <q-icon name="person" color="white" />
@@ -56,16 +58,17 @@ const onSubmit = async () => {
         </q-input>
 
         <!-- Last Name -->
-        <q-input dense
-                 outlined
-                 v-model="lastName"
-                 :label="t('register.last_name')"
-                 label-color="white"
-                 color="white"
-                 bg-color="rgba(255, 255, 255, 0.1)"
-                 class="auto-field"
-                 lazy-rules
-                 :rules="[val => !!val || t('validation.required')]"
+        <q-input
+          dark
+          rounded
+          outlined
+          lazy-rules
+          color="white"
+          label-color="white"
+          class="btn-glass auto-field q-mb-sm"
+          v-model="lastName"
+          :label="t('register.last_name')"
+          :rules="[val => !!val || t('validation.required')]"
         >
           <template v-slot:prepend>
             <q-icon name="person" color="white" />
@@ -73,20 +76,21 @@ const onSubmit = async () => {
         </q-input>
 
         <!-- Email -->
-        <q-input dense
-                 outlined
-                 v-model="email"
-                 :label="t('register.email')"
-                 label-color="white"
-                 color="white"
-                 bg-color="rgba(255, 255, 255, 0.1)"
-                 class="auto-field"
-                 lazy-rules
-                 type="email"
-                 :rules="[
-                    val => !!val || t('validation.required'),
-                    val => /.+@.+\..+/.test(val) || t('validation.not_valid'),
-                  ]"
+        <q-input
+          dark
+          rounded
+          outlined
+          lazy-rules
+          color="white"
+          label-color="white"
+          class="btn-glass auto-field q-mb-sm"
+          v-model="email"
+          :label="t('register.email')"
+          type="email"
+          :rules="[
+            val => !!val || t('validation.required'),
+            val => /.+@.+\..+/.test(val) || t('validation.not_valid'),
+          ]"
         >
           <template v-slot:prepend>
             <q-icon name="mail" color="white" />
@@ -94,20 +98,21 @@ const onSubmit = async () => {
         </q-input>
 
         <!-- Password -->
-        <q-input dense
-                 outlined
-                 v-model="password"
-                 :label="t('register.password')"
-                 label-color="white"
-                 color="white"
-                 bg-color="rgba(255, 255, 255, 0.1)"
-                 class="auto-field"
-                 lazy-rules
-                 type="password"
-                 :rules="[
-                    val => !!val || t('validation.required'),
-                    val => val.length >= 8 || t('validation.min_length', { min: 8 })
-                  ]"
+        <q-input
+          dark
+          rounded
+          outlined
+          lazy-rules
+          color="white"
+          label-color="white"
+          class="btn-glass auto-field q-mb-sm"
+          v-model="password"
+          :label="t('register.password')"
+          type="password"
+          :rules="[
+            val => !!val || t('validation.required'),
+            val => val.length >= 8 || t('validation.min_length', { min: 8 })
+          ]"
         >
           <template v-slot:prepend>
             <q-icon name="lock" color="white" />
@@ -115,44 +120,54 @@ const onSubmit = async () => {
         </q-input>
 
         <!-- Password Confirmation -->
-        <q-input dense
-                 outlined
-                 v-model="passwordConfirmation"
-                 :label="t('register.password_confirmation')"
-                 label-color="white"
-                 color="white"
-                 bg-color="rgba(255, 255, 255, 0.1)"
-                 class="auto-field"
-                 type="password"
-                 :rules="[
-                    val => !!val || t('validation.required'),
-                    val => val === password || t('validation.password_mismatch')
-                  ]"
+        <q-input
+          dark
+          rounded
+          outlined
+          lazy-rules
+          color="white"
+          label-color="white"
+          class="btn-glass auto-field q-mb-sm"
+          v-model="passwordConfirmation"
+          :label="t('register.password_confirmation')"
+          type="password"
+          :rules="[
+            val => !!val || t('validation.required'),
+            val => val === password || t('validation.password_mismatch')
+          ]"
         >
           <template v-slot:prepend>
             <q-icon name="lock" color="white" />
           </template>
         </q-input>
 
-        <div class="row justify-center q-mt-lg">
+        <div class="row justify-between q-mt-lg">
           <q-btn
+            outline
+            rounded
+            class="btn-glass"
+            color="white"
+            icon-right="login"
+            type="submit"
+            size="md"
             :label="t('register.sign_up')"
             unelevated
-            type="submit"
-            text-color="black"
-            icon-right="person_add"
-            class="glass button"
-            size="md"
           />
           <q-btn
-            :label="t('login.sign_in_goggle')"
-            unelevated
             @click="loginGoggleRequest"
-            text-color="black"
-            icon-right="login"
-            class="glass button"
+            outline
+            rounded
+            class="btn-glass"
+            color="white"
             size="md"
-          />
+          >
+            <q-avatar class="google-logo" left>
+              <img
+                :src="googleLogo"
+                alt="Google"
+              />
+            </q-avatar>
+          </q-btn>
         </div>
 
         <div class="row justify-center q-mt-lg text-primary">
@@ -170,4 +185,9 @@ const onSubmit = async () => {
   </q-page>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .google-logo {
+    width: 24px;
+    height: 24px;
+  }
+</style>

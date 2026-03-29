@@ -96,6 +96,7 @@
         </div>
         <div v-else>
           <q-btn :to="{ name: 'profile' }"
+                 v-if="route.name !== 'login'"
                  flat
                  dense
                  rounded
@@ -103,6 +104,7 @@
             {{t('buttons.login')}}
           </q-btn>
           <q-btn :to="{ name: 'registration' }"
+                 v-if="route.name !== 'registration'"
                  flat
                  dense
                  rounded
