@@ -244,7 +244,7 @@
               <q-list class="list list-video" ref="listVideoEl">
                 <q-item v-for="(item, index) in aboutData"
                         :key="index">
-                  <q-item-section>
+                  <q-item-section class="justify-end">
                     <video preload="auto" muted loop playsinline width="100%" height="100%">
                       <source :src="item.videoMP4" type="video/webm">
                       <source :src="item.videoWEBM" type="video/mp4">
@@ -297,7 +297,7 @@
     width: 100%;
 
     &.list-video {
-      aspect-ratio: 288 / 181;
+      aspect-ratio: 584 / 339;
       border-radius: 20px;
       overflow: hidden;
 
@@ -314,8 +314,8 @@
         border-radius: 20px;
         overflow: hidden;
         mask-image:
-          linear-gradient(to bottom, black 75%, transparent),
-          linear-gradient(to right, transparent, black 50%);
+          linear-gradient(to bottom, black 85%, transparent),
+          linear-gradient(to right, transparent, black 15%);
 
         mask-composite: intersect;
         -webkit-mask-composite: source-in;
