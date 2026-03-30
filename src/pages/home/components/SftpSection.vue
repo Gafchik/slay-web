@@ -14,7 +14,7 @@
         <div class="section__main">
           <div class="row flex-center">
             <div class="col-10 q-mx-auto">
-              <div class="q-mb- text-center text-white">
+              <div class="q-mb-xl text-center text-white">
                 <h2 class="q-mb-lg">{{t('sections.sftp.title')}}</h2>
                 <p class="description-big">{{t('sections.sftp.description')}}</p>
               </div>

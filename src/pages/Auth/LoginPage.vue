@@ -32,7 +32,7 @@
 <template>
   <q-page class="row justify-center text-primary">
     <div class="flex column justify-center q-ma-auto">
-      <h4 class="gradient-text text-center q-mb-xl">{{ t('login.title') }}</h4>
+      <h4 class="gradient-text text-center q-mb-xl">{{ t('account.login.title') }}</h4>
       <q-form @submit="onSubmit" ref="form">
         <q-input
           dark
