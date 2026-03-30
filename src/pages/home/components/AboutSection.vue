@@ -7,8 +7,8 @@
 
   import Project1 from 'src/assets/video/projects/Projects-short.mp4';
   import Project2 from'src/assets/video/projects/Projects-short.webm';
-  import Launcher1 from 'src/assets/video/laucher/Launcher-short-1.mp4';
-  import Launcher2 from'src/assets/video/laucher/Launcher-short-1.webm';
+  import Launcher1 from 'src/assets/video/laucher/Launcher-short.mp4';
+  import Launcher2 from'src/assets/video/laucher/Launcher-short.webm';
   import Alias1 from 'src/assets/video/alias/Alias-short.mp4';
   import Alias2 from'src/assets/video/alias/Alias-short.webm';
   import Password1 from 'src/assets/video/password/Password-full.mp4';

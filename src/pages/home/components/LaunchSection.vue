@@ -38,4 +38,5 @@
     mask-composite: intersect;
     -webkit-mask-composite: source-in;
   }
+
 </style>
