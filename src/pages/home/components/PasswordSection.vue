@@ -1,60 +1,65 @@
 <script setup>
   import { ref } from 'vue'
+  import { useI18n } from 'vue-i18n'
 
   import aesIcon from 'src/assets/AES.png'
-  import Folder from 'src/assets/Folder.png'
-  import PasswordIcon from 'src/assets/Password.png'
+  import FrameIcon from 'src/assets/Folder.png'
+  import DefenseIcon from 'src/assets/Password.png'
   import SafetyIcon from 'src/assets/Safety.png'
+
+  const { t } = useI18n()
 
   const passwordFeatures = ref([
     {
-      title: 'Надежное AES-256-GCM шифрование',
-      description: 'Максимальная защита ваших учетных данных с использованием передового стандарта шифрования.',
+      title: t('sections.password.list.titleCoding'),
+      description: t('sections.password.list.descriptionCoding'),
       icon: aesIcon
     },
     {
-      title: 'Иерархическая структура папок',
-      description: 'Организуйте пароли и конфиденциальные данные в удобные папки и подпапки.',
-      icon: Folder
+      title: t('sections.password.list.titleFrame'),
+      description: t('sections.password.list.descriptionFrame'),
+      icon: FrameIcon
     },
     {
-      title: 'Защита мастер-паролем',
-      description: 'Ваши данные шифруются уникальным мастер-паролем, который знаете только вы.',
-      icon: PasswordIcon
+      title: t('sections.password.list.titleDefense'),
+      description: t('sections.password.list.descriptionDefense'),
+      icon: DefenseIcon
     },
     {
-      title: 'Безопасное хранение любой информации',
-      description: 'Храните не только пароли, но и заметки, ключи API и другие конфиденциальные данные.',
+      title: t('sections.password.list.titleSafety'),
+      description: t('sections.password.list.descriptionSafety'),
       icon: SafetyIcon
     }
   ])
 </script>
 
 <template>
-  <section class="section q-py-lg">
+  <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body flex">
-        <div class="section__main q-my-auto full-width">
-          <div class="q-mb-xl text-center text-white">
-            <h2 class="q-mb-lg">Менеджер паролей</h2>
-            <p class="description-big">Безопасное хранение и удобная организация паролей</p>
-          </div>
+      <div class="section__body q-mb-xl">
+        <div class="section__main">
           <div class="row flex-center">
-            <div class="col-10">
-              <q-list class="row text-white" ref="listDataEl">
-                <q-item v-for="(item, index) in passwordFeatures"
-                        :key="index" class="col-6 q-pb-md q-px-md">
-                  <q-item-section avatar class="flex flex-center q-pa-md text-center">
-                    <q-img
-                      :src="item.icon"
-                      width="128px"
-                      height="128px"
-                    />
-                    <span class="q-mb-md">{{ item.title }}</span>
-                    <p>{{ item.description }}</p>
-                  </q-item-section>
-                </q-item>
-              </q-list>
+            <div class="col-10 q-mx-auto">
+              <div class="q-mb-xl text-center text-white">
+                <h2 class="q-mb-lg">{{t('sections.password.title')}}</h2>
+                <p class="description-big">{{t('sections.password.description')}}</p>
+              </div>
+              <div class="col-10">
+                <q-list class="row text-white" ref="listDataEl">
+                  <q-item v-for="(item, index) in passwordFeatures"
+                          :key="index" class="col-6 q-pb-md q-px-md">
+                    <q-item-section avatar class="flex flex-center q-pa-md text-center">
+                      <q-img
+                        :src="item.icon"
+                        width="128px"
+                        height="128px"
+                      />
+                      <span class="q-mb-md">{{ item.title }}</span>
+                      <p>{{ item.description }}</p>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </div>
             </div>
           </div>
         </div>

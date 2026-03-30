@@ -1,20 +1,26 @@
 <script setup>
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
 </script>
 
 <template>
   <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body text-white cta-content glass">
-        <h4 class="q-mb-md">Готовы повысить свою продуктивность?</h4>
-        <p class="q-mb-xl">Начните использовать Slay сегодня</p>
-        <div class="flex justify-center">
-          <q-btn
-            rounded
-            size="xl"
-            :to="{ name: 'download' }"
-            label="Скачать бесплатно"
-            class="btn-glass btn-download"
-          />
+      <div class="section__body q-mb-xl">
+        <div class="section__main glass text-white ">
+          <h4 class="q-mb-md">{{t('sections.cta.title')}}</h4>
+          <p class="q-mb-xl">{{t('sections.cta.subtitle')}}</p>
+          <div class="flex justify-center">
+            <q-btn
+              rounded
+              size="xl"
+              :to="{ name: 'download' }"
+              class="btn-glass btn-download q-px-xl"
+            >
+              {{t('buttons.join')}}
+            </q-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -22,7 +28,7 @@
 </template>
 
 <style scoped lang="scss">
-  .section__body {
+  .section__main {
     padding: 40px 24px;
     border-radius: 20px;
     text-align: center;

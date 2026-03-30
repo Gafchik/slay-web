@@ -37,7 +37,7 @@
                    unelevated
                    rounded
                    size="lg"
-                   class="btn-download btn-glass--primary">
+                   class="btn-download btn-glass--primary q-px-xl">
               {{t('buttons.join')}}
             </q-btn>
           </div>

@@ -36,7 +36,7 @@ const onSubmit = async () => {
 <template>
   <q-page class="row justify-center q-pb-xl">
     <div class="flex column justify-center q-ma-auto">
-      <h4 class="text-primary gradient-text text-center q-mb-xl">{{ t('register.title') }}</h4>
+      <h4 class="text-primary gradient-text text-center q-mb-xl">{{ t('account.register.title') }}</h4>
 
       <q-form @submit="onSubmit" ref="form">
         <!-- First Name -->
@@ -49,7 +49,7 @@ const onSubmit = async () => {
           label-color="white"
           class="btn-glass auto-field q-mb-sm"
           v-model="firstName"
-          :label="t('register.first_name')"
+          :label="t('inputData.first_name')"
           :rules="[val => !!val || t('validation.required')]"
         >
           <template v-slot:prepend>
@@ -67,7 +67,7 @@ const onSubmit = async () => {
           label-color="white"
           class="btn-glass auto-field q-mb-sm"
           v-model="lastName"
-          :label="t('register.last_name')"
+          :label="t('inputData.last_name')"
           :rules="[val => !!val || t('validation.required')]"
         >
           <template v-slot:prepend>
@@ -85,7 +85,7 @@ const onSubmit = async () => {
           label-color="white"
           class="btn-glass auto-field q-mb-sm"
           v-model="email"
-          :label="t('register.email')"
+          :label="t('inputData.email')"
           type="email"
           :rules="[
             val => !!val || t('validation.required'),
@@ -107,7 +107,7 @@ const onSubmit = async () => {
           label-color="white"
           class="btn-glass auto-field q-mb-sm"
           v-model="password"
-          :label="t('register.password')"
+          :label="t('inputData.password')"
           type="password"
           :rules="[
             val => !!val || t('validation.required'),
@@ -129,7 +129,7 @@ const onSubmit = async () => {
           label-color="white"
           class="btn-glass auto-field q-mb-sm"
           v-model="passwordConfirmation"
-          :label="t('register.password_confirmation')"
+          :label="t('inputData.password_confirmation')"
           type="password"
           :rules="[
             val => !!val || t('validation.required'),
@@ -150,7 +150,7 @@ const onSubmit = async () => {
             icon-right="login"
             type="submit"
             size="md"
-            :label="t('register.sign_up')"
+            :label="t('buttons.signUp')"
             unelevated
           />
           <q-btn
@@ -172,11 +172,11 @@ const onSubmit = async () => {
 
         <div class="row justify-center q-mt-lg text-primary">
             <span>
-              {{ t('register.have_account_text') }}
+              {{ t('account.register.have_account_text') }}
                <router-link class="text-primary gradient-text text-bold no-underline"
                             :to="{ name: 'login' }"
                >
-                 {{t('register.have_account_link').toUpperCase()}}
+                 {{t('buttons.login').toUpperCase()}}
                </router-link>
             </span>
         </div>

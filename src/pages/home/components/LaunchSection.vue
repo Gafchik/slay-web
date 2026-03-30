@@ -1,12 +1,16 @@
 <script setup>
+  import { useI18n } from 'vue-i18n'
+
   import Video1 from 'assets/video/laucher/Launcher-full.mp4'
   import Video2 from 'assets/video/laucher/Launcher-full.webm'
+
+  const { t } = useI18n()
 </script>
 
 <template>
   <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body flex">
+      <div class="section__body q-mb-xl">
         <div class="section__main">
           <div class="row">
             <div class="col-8">
@@ -19,8 +23,8 @@
             </div>
             <div class="col-4">
               <div class="flex column justify-center full-height q-pl-xl">
-                <h2 class="q-mb-xl q-ma-auto">Мгновенный запуск</h2>
-                <p class="description-big">Мгновенно запускайте все необходимые инструменты и приложения для вашей комфортной работы в едином месте</p>
+                <h2 class="q-mb-xl q-ma-auto">{{t('sections.launcher.title')}}</h2>
+                <p class="description-big">{{t('sections.launcher.description')}}</p>
               </div>
             </div>
           </div>

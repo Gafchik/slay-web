@@ -1,31 +1,32 @@
 <script setup>
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useAuthStore } from 'stores/auth-store.js'
+  import { ref } from 'vue'
+  import { useI18n } from 'vue-i18n'
 
-import googleLogo from 'src/assets/google_logo.png'
+  import { useAuthStore } from 'stores/auth-store.js'
 
-const { t } = useI18n()
+  import googleLogo from 'src/assets/google_logo.png'
 
-const authStore = useAuthStore()
-const {loginRequest, loginGoggleRequest} = authStore
+  const { t } = useI18n()
 
-const email = ref('')
-const password = ref('')
-const form = ref(null)
+  const authStore = useAuthStore()
+  const {loginRequest, loginGoggleRequest} = authStore
 
-const onSubmit = async () => {
-  if (!form.value) return
+  const email = ref('')
+  const password = ref('')
+  const form = ref(null)
 
-  const success = await form.value.validate()
+  const onSubmit = async () => {
+    if (!form.value) return
 
-  if (success) {
-    const result = await loginRequest(email.value, password.value)
-    if (result?.success) {
-      window.location.href = '/profile'
+    const success = await form.value.validate()
+
+    if (success) {
+      const result = await loginRequest(email.value, password.value)
+      if (result?.success) {
+        window.location.href = '/profile'
+      }
     }
   }
-}
 </script>
 
 <template>
@@ -43,7 +44,7 @@ const onSubmit = async () => {
           label-color="white"
           color="white"
           class="btn-glass auto-field q-ma-none q-mb-md"
-          :label="t('login.email')"
+          :label="t('inputData.email')"
           :rules="[
                     val => !!val || t('validation.required'),
                     val => /.+@.+\..+/.test(val) || t('validation.not_valid'),
@@ -64,7 +65,7 @@ const onSubmit = async () => {
           label-color="white"
           color="white"
           class="btn-glass auto-field q-ma-none q-mb-md"
-          :label="t('login.password')"
+          :label="t('inputData.password')"
           :rules="[val => !!val || t('validation.required')]"
         >
           <template v-slot:prepend>
@@ -76,13 +77,13 @@ const onSubmit = async () => {
           <q-btn
             outline
             rounded
+            unelevated
             class="btn-glass"
             color="white"
             icon-right="login"
             type="submit"
             size="md"
-            :label="t('login.sign_in')"
-            unelevated
+            :label="t('buttons.signIn')"
           />
           <q-btn
             @click="loginGoggleRequest"
@@ -102,11 +103,11 @@ const onSubmit = async () => {
         </div>
         <div class="row justify-center q-mt-lg text-primary">
             <span>
-              {{t('login.reg_text')}}
+              {{t('account.login.reg_text')}}
             <router-link class="gradient-text text-bold no-underline"
                          :to="{ name: 'registration' }"
             >
-              {{t('login.reg').toUpperCase()}}
+              {{t('buttons.signUp').toUpperCase()}}
             </router-link>
             </span>
 

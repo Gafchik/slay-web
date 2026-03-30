@@ -1,34 +1,38 @@
 <script setup>
   import { ref } from 'vue';
+  import { useI18n } from 'vue-i18n'
+
   import Video1 from 'assets/video/alias/Alias-full.mp4'
   import Video2 from 'assets/video/alias/Alias-full.webm'
 
+  const { t } = useI18n()
+
   const aliasFeatures = ref([
     {
-      title: 'Персонализация и гибкость',
-      description: 'Настраивайте алиасы под свои нужды и рабочие процессы для максимального комфорта.'
+      title: t('sections.alias.list.titlePersonally'),
+      description: t('sections.alias.list.descriptionPersonally'),
     },
     {
-      title: 'Упрощение рутинных задач',
-      description: 'Легко входите в Docker конейнер, одной командой запускайте локальные сервера, именуйте версии язиков програмирования'
+      title: t('sections.alias.list.titleSimple'),
+      description: t('sections.alias.list.descriptionSimple'),
     },
     {
-      title: 'Повышение эффективности',
-      description: 'Сократите время на ввод команд в разы и повысьте свою продуктивность в терминале.'
+      title: t('sections.alias.list.titleIncrease'),
+      description: t('sections.alias.list.descriptionIncrease'),
     }
   ])
 </script>
 
 <template>
-  <section class="section flex">
+  <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body flex full-height q-py-xl">
-        <div class="section__main q-my-auto">
+      <div class="section__body q-mb-xl">
+        <div class="section__main">
           <div class="row">
             <div class="col-4">
               <div class="q-px-xl">
-                <h2 class="q-mb-xl q-pt-lg">Консольные Алиасы</h2>
-                <p class="description-big">Создавайте короткие и запоминающиеся алиасы для любых сложных консольных команд.</p>
+                <h2 class="q-mb-xl q-pt-lg">{{t('sections.alias.title')}}</h2>
+                <p class="description-big">{{t('sections.alias.description')}}</p>
               </div>
             </div>
             <div class="col-8">
@@ -59,14 +63,6 @@
 </template>
 
 <style scoped lang="scss">
-  .section {
-    min-height: 100vh;
-
-    &__body {
-      height: inherit;
-    }
-  }
-
   .video {
     border-radius: 20px 20px 0 0;
     border: 1px solid white;

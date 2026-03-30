@@ -1,18 +1,22 @@
 <script setup>
+  import { useI18n } from 'vue-i18n'
+
   import Video1 from 'src/assets/video/projects/Projects-full.mp4';
   import Video2 from'src/assets/video/projects/Projects-full.webm';
+
+  const { t } = useI18n()
 </script>
 
 <template>
   <section class="section q-py-xl">
     <div class="container">
-      <div class="section__body flex">
+      <div class="section__body q-mb-xl">
         <div class="section__main">
           <div class="row">
             <div class="col-4">
               <div class="flex column justify-center full-height q-pr-xl">
-                <h2 class="q-mb-xl q-ma-auto">Менеджер Проектов</h2>
-                <p class="description-big">Централизованное хранение всех проектов в едином пространстве для быстрого поиска и мгновенного начала работы в предпочитаемой среде</p>
+                <h2 class="q-mb-xl q-ma-auto">{{t('sections.project.title')}}</h2>
+                <p class="description-big">{{t('sections.project.description')}}</p>
               </div>
             </div>
             <div class="col-8">
