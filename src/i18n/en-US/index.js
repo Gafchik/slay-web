@@ -1,9 +1,4 @@
-// This is just an example,
-// so you can safely delete all default props below
-
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
   routes: {
     download: 'Download',
     pricing: 'Prising',
@@ -109,7 +104,9 @@ export default {
       title: 'Работа с сервером',
       description: 'Передавайте файлы, управляйте содержимым и выполняйте операции без риска для данных благодаря защищённому соединению',
     },
-    reviews: {},
+    reviews: {
+      title: 'Что говорят наши пользователи',
+    },
     cta: {
       title: 'Готовы повысить свою продуктивность?',
       subtitle: 'Начните использовать Slay сегодня'
