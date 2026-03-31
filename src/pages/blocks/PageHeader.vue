@@ -14,7 +14,7 @@
   const { isLoggedIn } = storeToRefs(authStore)
   const { logoutRequest } = authStore
 
-  const showButton = ref(true)
+  const showButton = ref(false)
   const route = useRoute()
 
   const handleLogout = async () => {
@@ -52,7 +52,7 @@
   })
 
   watch(() => route.fullPath, async () => {
-    showButton.value = true
+    showButton.value = false
 
     await nextTick()
     updateVisibility()
@@ -69,48 +69,49 @@
       </q-toolbar-title>
       <div class="flex items-center">
         <transition name="fade-btn" v-if="route.name === 'home'">
-          <q-btn :to="{ name: 'download' }"
+          <q-btn
                  v-show="showButton"
                  flat
                  dense
-                 class="q-mx-sm btn-link">
-            {{t('buttons.download')}}
-          </q-btn>
+                 class="q-mx-sm btn-link"
+                 :label="t('buttons.download')"
+                 :to="{ name: 'download' }"
+          />
         </transition>
         <div v-if="isLoggedIn">
-          <q-btn :to="{ name: 'profile' }"
+          <q-btn
                  v-if="route.name !== 'profile'"
                  flat
                  dense
-                 rounded
-                 class="q-mx-sm btn-link">
-            {{t('buttons.profile')}}
-          </q-btn>
-          <q-btn @click="handleLogout"
+                 class="q-mx-sm btn-link"
+                 :label="t('buttons.profile')"
+                 :to="{ name: 'profile' }"
+          />
+          <q-btn
                  flat
                  dense
-                 rounded
-                 class="q-mx-sm btn-link">
-            {{t('buttons.logout')}}
-          </q-btn>
+                 class="q-mx-sm btn-link"
+                 :label="t('buttons.logout')"
+                 @click="handleLogout"
+          />
         </div>
         <div v-else>
-          <q-btn :to="{ name: 'profile' }"
+          <q-btn
                  v-if="route.name !== 'login'"
                  flat
                  dense
-                 rounded
-                 class="q-mx-sm btn-link">
-            {{t('buttons.login')}}
-          </q-btn>
-          <q-btn :to="{ name: 'registration' }"
+                 class="q-mx-sm btn-link"
+                 :label="t('buttons.login')"
+                 :to="{ name: 'profile' }"
+          />
+          <q-btn
                  v-if="route.name !== 'registration'"
                  flat
                  dense
-                 rounded
-                 class="q-mx-sm btn-link">
-            {{t('buttons.registration')}}
-          </q-btn>
+                 class="q-mx-sm btn-link"
+                 :label="t('buttons.registration')"
+                 :to="{ name: 'registration' }"
+          />
         </div>
       </div>
     </q-toolbar>

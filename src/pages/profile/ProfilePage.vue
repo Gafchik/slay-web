@@ -182,6 +182,18 @@
 
         <div class="row justify-center q-mt-lg" :class="readonly ? 'justify-center' : 'justify-between'">
           <q-btn
+            outline
+            rounded
+            unelevated
+            @click="toggleReadonly"
+            class="btn-glass"
+            color="white"
+            :icon-right="readonly ? 'edit' : 'close'"
+            size="md"
+            :label="readonly ? t('buttons.edit') : t('buttons.cancel')"
+          />
+
+          <q-btn
             v-if="!readonly"
             outline
             rounded
@@ -192,18 +204,6 @@
             type="submit"
             size="md"
             :label="t('buttons.save')"
-          />
-
-          <q-btn
-            outline
-            rounded
-            unelevated
-            @click="toggleReadonly"
-            class="btn-glass"
-            color="white"
-            :icon-right="readonly ? 'edit' : 'close'"
-            size="md"
-            :label="readonly ? t('buttons.edit') : t('buttons.cancel')"
           />
         </div>
       </q-form>
