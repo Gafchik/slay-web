@@ -25,7 +25,8 @@ export default {
     signUp: 'Зарегистрироваться',
     profile: 'Профиль',
     edit: 'Редактировать',
-    save: 'Сохранить'
+    save: 'Сохранить',
+    cancel: 'Отменить'
   },
   inputData: {
     first_name: 'Имя',

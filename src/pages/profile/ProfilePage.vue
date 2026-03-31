@@ -68,7 +68,6 @@
           </template>
         </q-input>
 
-        <!-- Last Name -->
         <q-input
           dense
           outlined
@@ -87,7 +86,6 @@
           </template>
         </q-input>
 
-        <!-- Email -->
         <q-input
           dense
           outlined
@@ -182,7 +180,7 @@
           </template>
         </q-input>
 
-        <div class="row justify-center q-mt-lg">
+        <div class="row justify-center q-mt-lg" :class="readonly ? 'justify-center' : 'justify-between'">
           <q-btn
             v-if="!readonly"
             outline
@@ -197,16 +195,15 @@
           />
 
           <q-btn
-            v-else
             outline
             rounded
             unelevated
             @click="toggleReadonly"
             class="btn-glass"
             color="white"
-            icon-right="edit"
+            :icon-right="readonly ? 'edit' : 'close'"
             size="md"
-            :label="t('buttons.edit')"
+            :label="readonly ? t('buttons.edit') : t('buttons.cancel')"
           />
         </div>
       </q-form>
@@ -216,6 +213,6 @@
 
 <style scoped>
   .q-form {
-    min-width: 320px;
+    min-width: 375px;
   }
 </style>
