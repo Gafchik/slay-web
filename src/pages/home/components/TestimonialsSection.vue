@@ -1,59 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { computed  } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, locale, messages } = useI18n()
 
-const testimonials = ref([
-  {
-    author: 'Алексей К.',
-    role: 'Frontend разработчик (Windows)',
-    text: 'Раньше запуск моего рабочего окружения занимал вечность. Теперь с Slay я начинаю работу в один клик, экономя по 10 минут каждое утро! Это просто спасение для продуктивности.',
-    feature: 'Быстрый запуск рабочего пространства',
-    avatar: 'mdi-laptop-windows'
-  },
-  {
-    author: 'Иван Т.',
-    role: 'PHP/Laravel разработчик',
-    text: 'Консольные алиасы в Slay  изменили мою работу с PHP версиями и Docker. Быстрый заход в контейнеры, переключение между версиями PHP на Windows — все стало в разы проще. Больше никаких длинных команд!',
-    feature: 'Консольные Алиасы',
-    avatar: 'mdi-php'
-  },
-  {
-    author: 'Мария С.',
-    role: 'Фрилансер-разработчик',
-    text: 'Как фрилансер с десятками проектов, я постоянно сталкивалась с хаосом. Менеджер проектов и паролей Slay привел все в порядок. Все проекты организованы, а пароли надежно хранятся. Моя продуктивность взлетела!',
-    feature: 'Менеджер Проектов & Паролей',
-    avatar: 'mdi-account-tie'
-  },
-  {
-    author: 'Ольга П.',
-    role: 'Тестировщик',
-    text: 'Для тестирования мне нужны десятки аккаунтов (админ, юзер, менеджер). Менеджер паролей Slay позволяет мне хранить их все в порядке, быстро переключаться и всегда иметь доступ к нужным учетным данным. Незаменимо!',
-    feature: 'Менеджер Паролей',
-    avatar: 'mdi-bug'
-  },
-  {
-    author: 'Дмитрий В.',
-    role: 'Backend разработчик',
-    text: 'Хранить пароли от Stripe, Mailgun, Mailtrap и множества серверов — это боль. Slay не только надежно хранит их, но и консольные алиасы ускорили мой доступ к серверам и выполнение сложных команд. Это маст-хэв для бэкенда.',
-    feature: 'Консольные Алиасы & Менеджер Паролей',
-    avatar: 'mdi-server'
-  }
-])
+const testimonials = computed(() => {
+  return messages.value[locale.value]?.sections?.reviews?.list ?? []
+})
 </script>
 
 <template>
-  <section class="section q-py-xl testimonials-section">
+  <section class="section">
     <div class="container">
-      <div class="section__body q-mb-xl">
+      <div class="section__body">
         <div class="section__main">
-          <div class="q-mb-xl text-center text-white">
+          <div class="section__title text-center">
             <h2>{{t('sections.reviews.title')}}</h2>
           </div>
 
           <div class="testimonials-grid">
             <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card glass">
+
               <div class="testimonial-content">
                 <q-icon name="mdi-format-quote-open" class="quote-icon" />
                 <p>"{{ testimonial.text }}"</p>
@@ -77,7 +44,14 @@ const testimonials = ref([
 </template>
 
 <style scoped lang="scss">
-  .testimonials-section { padding: 60px 0; }
+  .section {
+    &__title {
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+
   .testimonials-grid { display: flex; flex-direction: column; gap: 24px; }
   .testimonial-card { padding: 28px 20px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
   .testimonial-content { position: relative; margin-bottom: 20px; }

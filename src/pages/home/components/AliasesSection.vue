@@ -1,26 +1,15 @@
 <script setup>
-  import { ref } from 'vue';
+  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   import Video1 from 'assets/video/alias/Alias-full.mp4'
   import Video2 from 'assets/video/alias/Alias-full.webm'
 
-  const { t } = useI18n()
+  const { t, locale, messages } = useI18n()
 
-  const aliasFeatures = ref([
-    {
-      title: t('sections.alias.list.titlePersonally'),
-      description: t('sections.alias.list.descriptionPersonally'),
-    },
-    {
-      title: t('sections.alias.list.titleSimple'),
-      description: t('sections.alias.list.descriptionSimple'),
-    },
-    {
-      title: t('sections.alias.list.titleIncrease'),
-      description: t('sections.alias.list.descriptionIncrease'),
-    }
-  ])
+  const aliasFeatures = computed(() => {
+    return messages.value[locale.value]?.sections?.alias?.list ?? []
+  })
 </script>
 
 <template>
