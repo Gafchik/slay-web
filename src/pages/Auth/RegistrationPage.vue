@@ -34,11 +34,11 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <q-page class="row justify-center q-pb-xl">
+  <q-page class="row justify-center q-py-xl">
     <div class="flex column justify-center q-ma-auto">
       <h4 class="text-primary gradient-text text-center q-mb-xl">{{ t('account.register.title') }}</h4>
 
-      <q-form @submit="onSubmit" ref="form">
+      <q-form @submit="onSubmit" ref="form" class="q-pb-xl">
         <!-- First Name -->
         <q-input
           dark
@@ -186,6 +186,14 @@ const onSubmit = async () => {
 </template>
 
 <style scoped>
+  .q-form {
+    max-width: 300px;
+
+    @media (min-width: 48em) {
+      max-width: none;
+    }
+  }
+
   .google-logo {
     width: 24px;
     height: 24px;

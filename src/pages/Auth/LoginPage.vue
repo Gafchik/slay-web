@@ -118,6 +118,14 @@
 </template>
 
 <style scoped>
+  .q-form {
+    max-width: 300px;
+
+    @media (min-width: 48em) {
+      max-width: none;
+    }
+  }
+
   .google-logo {
     width: 24px;
     height: 24px;

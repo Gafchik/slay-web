@@ -43,13 +43,13 @@
 </script>
 
 <template>
-  <q-page class="row justify-center text-primary">
+  <q-page class="row justify-center text-primary q-py-xl">
     <div class="flex column justify-center q-ma-auto">
       <h4 class="text-primary gradient-text text-center q-mb-lg q-pb-lg">
         {{ t('account.profile.title') }}
       </h4>
 
-      <q-form @submit="onSubmit" ref="form">
+      <q-form @submit="onSubmit" ref="form" class="q-pb-xl">
         <q-input
           dense
           dark
@@ -213,6 +213,10 @@
 
 <style scoped>
   .q-form {
-    min-width: 375px;
+    min-width: 300px;
+
+    @media (min-width: 48em) {
+      min-width: 414px;
+    }
   }
 </style>
