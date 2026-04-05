@@ -1,4 +1,7 @@
 <script setup>
+  import { computed } from 'vue'
+  import { useQuasar } from 'quasar'
+
   import HeroSection from './components/TitleSection.vue'
   import ProjectSection from './components/ProjectSection.vue'
   import LaunchSection from './components/LaunchSection.vue'
@@ -8,12 +11,15 @@
   import SftpSection from './components/SftpSection.vue'
   import TestimonialsSection from './components/TestimonialsSection.vue'
   import CtaSection from './components/CtaSection.vue'
+
+  const $q = useQuasar()
+  const showAboutSection = computed(() => $q.screen.width >= 1240)
 </script>
 
 <template>
   <q-page class="fit q-pb-xl">
     <HeroSection/>
-    <AboutSection />
+    <AboutSection v-if="showAboutSection" />
     <ProjectSection />
     <LaunchSection />
     <AliasesSection />

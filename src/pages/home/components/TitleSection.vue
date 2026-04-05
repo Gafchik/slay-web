@@ -30,33 +30,26 @@
       <div class="section__body flex column">
         <div class="section__main q-my-auto">
           <div class="text-center">
-            <h1 class="title">{{t('sections.home.title')}}</h1>
+            <h1 class="title q-mb-lg">{{t('sections.home.title')}}</h1>
             <p class="subtitle">{{t('sections.home.subtitle')}}</p>
-            <p class="subtitle q-mb-lg">{{t('sections.home.description')}}</p>
+            <p class="subtitle q-mb-xl">{{t('sections.home.description')}}</p>
             <q-btn :to="{ name: 'download' }"
                    unelevated
                    rounded
-                   size="lg"
                    class="btn-download btn-glass--primary q-px-xl">
               {{t('buttons.join')}}
             </q-btn>
           </div>
         </div>
-        <div class="section__footer q-pb-md">
-          <q-list  class="flex justify-center">
-            <q-item class="flex q-mx-md"
+        <div class="section__footer">
+          <q-list  class="flex justify-center q-mx-auto">
+            <q-item class="flex items-center"
               v-for="(item, index) in list"
               :key="index">
-              <q-item-section avatar class="flex q-pa-none q-mr-md">
-                <q-img
-                  :src="item.icon"
-                  width="26px"
-                  height="26px"
-                />
+              <q-item-section avatar class="flex">
+                <q-img :src="item.icon" />
               </q-item-section>
-              <q-item-section>
-                {{ item.text }}
-              </q-item-section>
+              <q-item-section>{{ item.text }}</q-item-section>
             </q-item>
           </q-list>
         </div>
@@ -72,20 +65,43 @@
     &__body {
       min-height: inherit;
     }
+
+    &__footer {
+      padding-bottom: 24px;
+
+      @media (min-width: 118.75em) {
+        padding-bottom: 40px;
+      }
+
+      @media (min-width: 158.75em) {
+        padding-bottom: 50px;
+      }
+    }
   }
 
   .title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 16px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 48em) {
+      font-size: 2.25rem;
+    }
+
+    @media (min-width: 64em) {
       font-size: 2.5rem;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 77.5em) {
       font-size: 3rem;
+    }
+
+    @media (min-width: 118.75em) {
+      font-size: 4rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 5rem;
     }
   }
 
@@ -94,26 +110,122 @@
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
 
-    @media (min-width: 768px) {
+    @media (min-width: 48em) {
       font-size: 1.25rem;
+    }
+
+    @media (min-width: 64em) {
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 77.5em) {
+      font-size: 1.75rem;
+    }
+
+    @media (min-width: 118.75em) {
+      font-size: 2.25rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 2.5rem;
     }
   }
 
-  .q-item {
-    border: 1px solid #03d5ff;
-    border-radius: 20px;
-    color: #03d5ff;
-    backdrop-filter: blur(8px) saturate(150%);
-    box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff;
-    font-size: 18px;
-    line-height: 22px;
-  }
+  .q-list {
+    max-width: 410px;
 
-  .q-item__section--avatar {
-    min-width: auto;
-  }
+    @media (min-width: 48em) {
+      max-width: none;
+    }
 
-  .q-btn {
-    min-width: 200px;
+    .q-item {
+      min-height: auto;
+      margin: 0 8px;
+      border: 1px solid #03d5ff;
+      border-radius: 33px;
+      color: #03d5ff;
+      backdrop-filter: blur(8px) saturate(150%);
+      box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff;
+      font-size: 1rem;
+      line-height: 110%;
+
+      @media (min-width: 48em) {
+        font-size: 1.25rem;
+      }
+
+      @media (min-width: 64em) {
+        padding: 12px 16px;
+        margin: 0 12px;
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 77.5em) {
+        padding: 12px 20px;
+        margin: 0 16px;
+        font-size: 1.75rem;
+      }
+
+      @media (min-width: 118.75em) {
+        padding: 16px 20px;
+        margin: 0 20px;
+        border-radius: 38px;
+        font-size: 2.25rem;
+      }
+
+      @media (min-width: 158.75em) {
+        padding: 16px 24px;
+        margin: 0 24px;
+        border-radius: 42px;
+        font-size: 2.5rem;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+
+        @media (min-width: 48em) {
+          margin-bottom: 0;
+        }
+      }
+
+      &__section--avatar {
+        min-width: auto;
+        padding: 0;
+      }
+    }
+
+    .q-img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+
+      @media (min-width: 48em) {
+        width: 24px;
+        height: 24px;
+      }
+
+      @media (min-width: 64em) {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+      }
+
+      @media (min-width: 77.5em) {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+      }
+
+      @media (min-width: 118.75em) {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+      }
+
+      @media (min-width: 158.75em) {
+        width: 50px;
+        height: 50px;
+        margin-right: 24px;
+      }
+    }
   }
 </style>

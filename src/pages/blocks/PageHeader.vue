@@ -1,14 +1,17 @@
 <script setup>
-  import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
+  import { ref, nextTick, onMounted, onBeforeUnmount, watch, computed } from 'vue'
   import { useRoute } from 'vue-router'
   import { useI18n } from 'vue-i18n'
   import { storeToRefs } from 'pinia'
+  import { useQuasar } from 'quasar'
 
   import { useAuthStore } from 'stores/auth-store.js'
 
   import Logotype from 'assets/Logotype.png'
 
   const { t } = useI18n()
+
+  const $q = useQuasar()
 
   const authStore = useAuthStore()
   const { isLoggedIn } = storeToRefs(authStore)
@@ -39,6 +42,8 @@
     showButton.value = !anyVisible
   }
 
+  const isDesktop = computed(() => $q.screen.width >= 1240)
+
   onMounted(async () => {
     await nextTick()
 
@@ -60,8 +65,8 @@
 </script>
 
 <template>
-  <q-header class="glass q-py-sm text-primary">
-    <q-toolbar class="q-py-none q-px-md">
+  <q-header class="glass">
+    <q-toolbar class="q-py-none">
       <q-toolbar-title>
         <router-link class="flex" :to="{ name: 'home' }">
           <img :src="Logotype" alt="" title="" height="125" width="451"/>
@@ -73,42 +78,55 @@
                  v-show="showButton"
                  flat
                  dense
-                 class="q-mx-sm btn-link"
-                 :label="t('buttons.download')"
+                 :color="isDesktop ? 'primary' : 'white'"
+                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
                  :to="{ name: 'download' }"
-          />
+          >
+            <span v-if="isDesktop">{{t('buttons.download')}}</span>
+            <q-icon name="download" v-else/>
+          </q-btn>
         </transition>
         <div v-if="isLoggedIn">
           <q-btn
                  v-if="route.name !== 'profile'"
                  flat
                  dense
-                 class="q-mx-sm btn-link"
-                 :label="t('buttons.profile')"
+                 :color="isDesktop ? 'primary' : 'white'"
+                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
                  :to="{ name: 'profile' }"
-          />
+          >
+            <span v-if="isDesktop">{{t('buttons.profile')}}</span>
+            <q-icon name="account_circle" v-else/>
+          </q-btn>
           <q-btn
                  flat
                  dense
-                 class="q-mx-sm btn-link"
-                 :label="t('buttons.logout')"
+                 :color="isDesktop ? 'primary' : 'white'"
+                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
                  @click="handleLogout"
-          />
+          >
+            <span v-if="isDesktop">{{t('buttons.logout')}}</span>
+            <q-icon name="logout" v-else/>
+          </q-btn>
         </div>
         <div v-else>
           <q-btn
                  v-if="route.name !== 'login'"
                  flat
                  dense
-                 class="q-mx-sm btn-link"
-                 :label="t('buttons.login')"
+                 :color="isDesktop ? 'primary' : 'white'"
+                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
                  :to="{ name: 'profile' }"
-          />
+          >
+            <span v-if="isDesktop">{{t('buttons.login')}}</span>
+            <q-icon name="login" v-else/>
+          </q-btn>
           <q-btn
-                 v-if="route.name !== 'registration'"
+                 v-if="route.name !== 'registration' && isDesktop"
                  flat
                  dense
-                 class="q-mx-sm btn-link"
+                 color="primary"
+                 class="btn-link"
                  :label="t('buttons.registration')"
                  :to="{ name: 'registration' }"
           />
@@ -121,7 +139,67 @@
 <style scoped lang="scss">
   img {
     width: auto;
-    height: 36px;
+    height: 30px;
+
+    @media (min-width: 77.5em) {
+      height: 40px;
+    }
+
+    @media (min-width: 118.75em) {
+      height: 48px;
+    }
+
+    @media (min-width: 158.75em) {
+      height: 55px;
+    }
+  }
+
+  .q-header {
+    padding: 8px 0;
+
+    @media (min-width: 118.75em) {
+      padding: 16px 0;
+    }
+
+    @media (min-width: 158.75em) {
+      padding: 20px 0;
+    }
+
+    .q-toolbar {
+      min-height: 40px;
+      padding: 0 16px;
+
+      @media screen and (min-width: 77.5em) {
+        min-height: 50px;
+        padding: 0 20px;
+      }
+
+      @media (min-width: 118.75em) {
+        min-height: 55px;
+        padding: 0 30px;
+      }
+
+      @media (min-width: 158.75em) {
+        min-height: 60px;
+        padding: 0 40px;
+      }
+    }
+  }
+
+  .btn-link {
+    margin-left: 8px;
+
+    @media screen and (min-width: 77.5em) {
+      margin-left: 12px;
+    }
+
+    @media (min-width: 118.75em) {
+      margin-left: 20px;
+    }
+
+    @media (min-width: 158.75em) {
+      margin-left: 24px;
+    }
   }
 
   .q-header,
@@ -132,11 +210,6 @@
 
   .q-header .q-layout__shadow {
     border-radius: 18px;
-  }
-
-  .btn-link {
-    text-transform: capitalize;
-    font-size: 20px;
   }
 
   .fade-btn-enter-active,
