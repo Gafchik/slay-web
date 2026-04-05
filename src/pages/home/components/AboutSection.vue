@@ -235,7 +235,7 @@
 </script>
 
 <template>
-  <section class="section q-py-lg" ref="sectionEl">
+  <section class="section" ref="sectionEl">
     <div class="container">
       <div class="section__body flex">
         <div class="section__main q-my-auto full-width">
@@ -273,18 +273,38 @@
 
 <style scoped lang="scss">
   h4 {
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 1.25rem;
+    line-height: 110%;
+    margin-bottom: 12px;
+
+    @media (min-width: 77.5em) {
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 158.75em) {
+      margin-bottom: 24px;
+      font-size: 1.75rem;
+    }
   }
 
   p {
-    font-size: 16px;
-    line-height: 20px;
     height: 0;
+    font-size: 1rem;
+    line-height: 110%;
+
+    @media (min-width: 77.5em) {
+      font-size: 1.25rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.5rem;
+    }
   }
 
   .section {
     min-height: 100vh;
+    padding: 0;
 
     &__body {
       height: inherit;

@@ -5,18 +5,20 @@
 </script>
 
 <template>
-  <section class="section q-py-xl">
+  <section class="section">
     <div class="container">
-      <div class="section__body q-mb-xl">
-        <div class="section__main glass text-white ">
-          <h4 class="q-mb-md">{{t('sections.cta.title')}}</h4>
-          <p class="q-mb-xl">{{t('sections.cta.subtitle')}}</p>
+      <div class="section__body">
+        <div class="section__main glass ">
+          <div class="section__title">
+            <h2>{{t('sections.cta.title')}}</h2>
+            <p>{{t('sections.cta.subtitle')}}</p>
+          </div>
           <div class="flex justify-center">
             <q-btn
+              unelevated
               rounded
-              size="xl"
               :to="{ name: 'download' }"
-              class="btn-glass btn-download q-px-xl"
+              class="btn-download btn-glass q-px-xl"
             >
               {{t('buttons.join')}}
             </q-btn>
@@ -32,24 +34,5 @@
     padding: 40px 24px;
     border-radius: 20px;
     text-align: center;
-  }
-
-  h4 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  p {
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  .cta-button {
-    border-radius: 10px;
-    font-weight: 600;
-    text-transform: none;
-    padding: 12px 24px;
-    width: 100%;
-    max-width: 280px;
   }
 </style>
