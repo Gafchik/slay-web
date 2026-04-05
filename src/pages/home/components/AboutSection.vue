@@ -246,8 +246,8 @@
                         :key="index">
                   <q-item-section class="justify-end">
                     <video preload="auto" muted loop playsinline width="100%" height="100%">
-                      <source :src="item.videoMP4" type="video/webm">
-                      <source :src="item.videoWEBM" type="video/mp4">
+                      <source :src="item.videoMP4" type="video/mp4">
+                      <source :src="item.videoWEBM" type="video/webm">
                     </video>
                   </q-item-section>
                 </q-item>

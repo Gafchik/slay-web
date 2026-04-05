@@ -20,8 +20,8 @@
               </div>
               <div class="section__video">
                 <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
-                  <source :src="Video1" type="video/webm">
-                  <source :src="Video2" type="video/mp4">
+                  <source :src="Video1" type="video/mp4">
+                  <source :src="Video2" type="video/webm">
                 </video>
               </div>
             </div>
