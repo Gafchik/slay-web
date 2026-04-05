@@ -8,17 +8,17 @@
 </script>
 
 <template>
-  <section class="section q-py-xl">
+  <section class="section">
     <div class="container">
-      <div class="section__body q-mb-xl">
+      <div class="section__body">
         <div class="section__main">
-          <div class="row flex-center">
-            <div class="col-10 q-mx-auto">
-              <div class="q-mb-xl text-center text-white">
-                <h2 class="q-mb-lg">{{t('sections.sftp.title')}}</h2>
-                <p class="description-big">{{t('sections.sftp.description')}}</p>
+          <div class="row">
+            <div class="col-md-10 col-xs-12 q-mx-auto">
+              <div class="section__title text-center">
+                <h2>{{t('sections.sftp.title')}}</h2>
+                <p>{{t('sections.sftp.description')}}</p>
               </div>
-              <div class="video">
+              <div class="section__video">
                 <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
                   <source :src="Video1" type="video/webm">
                   <source :src="Video2" type="video/mp4">
@@ -33,8 +33,9 @@
 </template>
 
 <style scoped lang="scss">
-  .video {
-    border-radius: 14px;
-    overflow: hidden;
+  .section {
+    &__title {
+      height: inherit;
+    }
   }
 </style>

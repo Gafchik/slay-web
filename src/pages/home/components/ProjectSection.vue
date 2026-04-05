@@ -8,19 +8,19 @@
 </script>
 
 <template>
-  <section class="section q-py-xl">
+  <section class="section">
     <div class="container">
-      <div class="section__body q-mb-xl">
+      <div class="section__body">
         <div class="section__main">
           <div class="row">
-            <div class="col-4">
-              <div class="flex column justify-center full-height q-pr-xl">
-                <h2 class="q-mb-xl q-ma-auto">{{t('sections.project.title')}}</h2>
+            <div class="col-md-4 col-xs-12">
+              <div class="section__title flex column justify-center">
+                <h2>{{t('sections.project.title')}}</h2>
                 <p class="description-big">{{t('sections.project.description')}}</p>
               </div>
             </div>
-            <div class="col-8">
-              <div class="video">
+            <div class="col-md-8 col-xs-12">
+              <div class="section__video">
                 <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
                   <source :src="Video1" type="video/webm">
                   <source :src="Video2" type="video/mp4">
@@ -35,12 +35,23 @@
 </template>
 
 <style scoped lang="scss">
-  .video {
-    border-radius: 20px;
-    overflow: hidden;
-    mask-image: linear-gradient(to bottom, black 75%, transparent);
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
+  .section {
+    &__title {
+      text-align: center;
+
+      @media (min-width: 64em) {
+        padding-right: 48px;
+        text-align: left;
+      }
+    }
+
+    &__video {
+      @media (min-width: 64em) {
+        mask-image: linear-gradient(to bottom, black 75%, transparent);
+        mask-composite: intersect;
+        -webkit-mask-composite: source-in;
+      }
+    }
   }
 </style>
 

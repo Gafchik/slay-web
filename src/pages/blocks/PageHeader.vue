@@ -145,24 +145,16 @@
       height: 40px;
     }
 
-    @media (min-width: 118.75em) {
-      height: 48px;
-    }
-
     @media (min-width: 158.75em) {
-      height: 55px;
+      height: 48px;
     }
   }
 
   .q-header {
     padding: 8px 0;
 
-    @media (min-width: 118.75em) {
-      padding: 16px 0;
-    }
-
     @media (min-width: 158.75em) {
-      padding: 20px 0;
+      padding: 16px 0;
     }
 
     .q-toolbar {
@@ -174,14 +166,9 @@
         padding: 0 20px;
       }
 
-      @media (min-width: 118.75em) {
+      @media (min-width: 158.75em) {
         min-height: 55px;
         padding: 0 30px;
-      }
-
-      @media (min-width: 158.75em) {
-        min-height: 60px;
-        padding: 0 40px;
       }
     }
   }

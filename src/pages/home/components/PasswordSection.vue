@@ -34,32 +34,26 @@
 </script>
 
 <template>
-  <section class="section q-py-xl">
+  <section class="section">
     <div class="container">
-      <div class="section__body q-mb-xl">
+      <div class="section__body">
         <div class="section__main">
           <div class="row flex-center">
-            <div class="col-10 q-mx-auto">
-              <div class="q-mb-xl text-center text-white">
-                <h2 class="q-mb-lg">{{t('sections.password.title')}}</h2>
+            <div class="col-md-10 col-xs-12 q-mx-auto">
+              <div class="section__title text-center">
+                <h2>{{t('sections.password.title')}}</h2>
                 <p class="description-big">{{t('sections.password.description')}}</p>
               </div>
-              <div class="col-10">
-                <q-list class="row text-white" ref="listDataEl">
-                  <q-item v-for="(item, index) in passwordFeatures"
-                          :key="index" class="col-6 q-pb-md q-px-md">
-                    <q-item-section avatar class="flex flex-center q-pa-md text-center">
-                      <q-img
-                        :src="item.icon"
-                        width="128px"
-                        height="128px"
-                      />
-                      <span class="q-mb-md">{{ item.title }}</span>
-                      <p>{{ item.description }}</p>
-                    </q-item-section>
-                  </q-item>
-                </q-list>
-              </div>
+              <q-list class="row text-center" ref="listDataEl" >
+                <q-item v-for="(item, index) in passwordFeatures"
+                        :key="index" class="col-md-6 col-xs-12">
+                  <q-item-section avatar class="flex items-center full-width">
+                    <q-img :src="item.icon" />
+                    <h4>{{ item.title }}</h4>
+                    <p>{{ item.description }}</p>
+                  </q-item-section>
+                </q-item>
+              </q-list>
             </div>
           </div>
         </div>
@@ -69,21 +63,89 @@
 </template>
 
 <style scoped lang="scss">
+  .section {
+    &__title {
+      height: inherit;
+    }
+  }
+
   .q-list {
     .q-item__section {
       border: 1px solid white;
-      border-radius: 20px;
+      border-radius: 12px;
+
+      @media (min-width: 64em) {
+        border-radius: 16px;
+      }
+
+      @media (min-width: 77.5em) {
+        border-radius: 20px;
+      }
     }
 
-    span {
-      font-size: 20px;
-      line-height: 24px;
+    .q-item {
+      padding: 0 0 16px;
+
+      @media (min-width: 64em) {
+        padding: 0 16px 32px;
+      }
+
+      &__section {
+        padding: 16px;
+
+        @media (min-width: 77.5em) {
+          padding: 20px;
+        }
+
+        @media (min-width: 158.75em) {
+          padding: 30px;
+        }
+      }
+    }
+
+    .q-img {
+      height: auto;
+      width: 60px;
+      margin-bottom: 8px;
+
+      @media (min-width: 64em) {
+        width: 100px;
+        margin-bottom: 12px;
+      }
+
+      @media (min-width: 77.5em) {
+        width: 128px;
+      }
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      line-height: 110%;
+      margin-bottom: 12px;
+
+      @media (min-width: 77.5em) {
+        margin-bottom: 18px;
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 158.75em) {
+        margin-bottom: 24px;
+        font-size: 1.75rem;
+      }
     }
 
     p {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 1rem;
+      line-height: 110%;
       opacity: 0.7;
+
+      @media (min-width: 77.5em) {
+        font-size: 1.25rem;
+      }
+
+      @media (min-width: 158.75em) {
+        font-size: 1.5rem;
+      }
     }
   }
 </style>

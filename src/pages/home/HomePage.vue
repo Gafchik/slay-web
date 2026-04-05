@@ -2,7 +2,7 @@
   import { computed } from 'vue'
   import { useQuasar } from 'quasar'
 
-  import HeroSection from './components/TitleSection.vue'
+  import TitleSection from './components/TitleSection.vue'
   import ProjectSection from './components/ProjectSection.vue'
   import LaunchSection from './components/LaunchSection.vue'
   import AliasesSection from './components/AliasesSection.vue'
@@ -18,7 +18,7 @@
 
 <template>
   <q-page class="fit q-pb-xl">
-    <HeroSection/>
+    <TitleSection />
     <AboutSection v-if="showAboutSection" />
     <ProjectSection />
     <LaunchSection />

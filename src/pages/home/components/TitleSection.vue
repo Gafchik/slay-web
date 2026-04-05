@@ -25,11 +25,11 @@
 </script>
 
 <template>
-  <section class="section">
+  <section class="section text-center">
     <div class="container">
       <div class="section__body flex column">
         <div class="section__main q-my-auto">
-          <div class="text-center">
+          <div class="section__title">
             <h1 class="title q-mb-lg">{{t('sections.home.title')}}</h1>
             <p class="subtitle">{{t('sections.home.subtitle')}}</p>
             <p class="subtitle q-mb-xl">{{t('sections.home.description')}}</p>
@@ -60,7 +60,12 @@
 
 <style scoped lang="scss">
   .section {
+    padding: 0;
     min-height: inherit;
+
+    &__title {
+      height: initial;
+    }
 
     &__body {
       min-height: inherit;
@@ -96,12 +101,8 @@
       font-size: 3rem;
     }
 
-    @media (min-width: 118.75em) {
-      font-size: 4rem;
-    }
-
     @media (min-width: 158.75em) {
-      font-size: 5rem;
+      font-size: 4rem;
     }
   }
 
@@ -122,12 +123,8 @@
       font-size: 1.75rem;
     }
 
-    @media (min-width: 118.75em) {
-      font-size: 2.25rem;
-    }
-
     @media (min-width: 158.75em) {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
     }
   }
 
@@ -165,18 +162,11 @@
         font-size: 1.75rem;
       }
 
-      @media (min-width: 118.75em) {
+      @media (min-width: 158.75em) {
         padding: 16px 20px;
         margin: 0 20px;
         border-radius: 38px;
         font-size: 2.25rem;
-      }
-
-      @media (min-width: 158.75em) {
-        padding: 16px 24px;
-        margin: 0 24px;
-        border-radius: 42px;
-        font-size: 2.5rem;
       }
 
       &:not(:last-child) {
@@ -215,16 +205,10 @@
         margin-right: 16px;
       }
 
-      @media (min-width: 118.75em) {
+      @media (min-width: 158.75em) {
         width: 40px;
         height: 40px;
         margin-right: 20px;
-      }
-
-      @media (min-width: 158.75em) {
-        width: 50px;
-        height: 50px;
-        margin-right: 24px;
       }
     }
   }
