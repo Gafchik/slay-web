@@ -151,7 +151,6 @@ const testimonials = computed(() => {
   .description {
     font-size: 1rem;
     line-height: 110%;
-    opacity: 0.7;
 
     @media (min-width: 77.5em) {
       font-size: 1.25rem;

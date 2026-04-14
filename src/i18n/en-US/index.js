@@ -9,6 +9,7 @@ export default {
   buttons: {
     join: 'Присоединиться',
     download: 'Скачать',
+    downloadFor: 'Скачать для',
     login: 'Войти',
     logout: 'Выйти',
     registration: 'Регистрация',
@@ -159,4 +160,20 @@ export default {
       have_account_text: 'Если у вас уже есть аккаунт, вы можете',
     },
   },
+  download: {
+    title: 'Скачать SLAY',
+    subtitle: 'Выберите платформу и начните разработку быстрее',
+    instruction: 'Инструкция',
+    list: [
+      {
+        title: 'Скачайте и установите Slay',
+      },
+      {
+        title: 'Выполните <code>slay --help</code> для проверки интерфейса командной строки',
+      },
+      {
+        title: 'Наслаждайтесь быстрым доступом к инструментам разработчика',
+      },
+    ]
+  }
 }
