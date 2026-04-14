@@ -224,7 +224,6 @@ h1, h2, h3 {
   text-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
 }
 
-/* Global container utility for page sections */
 .container {
   height: inherit;
   min-height: inherit;
@@ -238,29 +237,29 @@ h1, h2, h3 {
     padding: 0 24px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     max-width: 1024px;
     padding: 0 32px;
   }
 
-  @media (min-width: 1240px) {
+  @media (min-width: 77.5em) {
     max-width: 1240px;
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 90em) {
     max-width: 1240px;
     padding: 0 40px;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 100em) {
     max-width: 1440px;
   }
 
-  @media (min-width: 1920px) {
+  @media (min-width: 120em) {
     max-width: 1600px;
   }
 
-  @media (min-width: 2560px) {
+  @media (min-width: 160em) {
     max-width: 1920px;
   }
 }

@@ -1,8 +1,10 @@
 <script setup>
-import { computed  } from 'vue'
+import { computed, ref  } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale, messages } = useI18n()
+
+const slide = ref(1);
 
 const testimonials = computed(() => {
   return messages.value[locale.value]?.sections?.reviews?.list ?? []
@@ -18,25 +20,40 @@ const testimonials = computed(() => {
             <h2>{{t('sections.reviews.title')}}</h2>
           </div>
 
-          <div class="testimonials-grid">
-            <div v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card glass">
-
-              <div class="testimonial-content">
-                <q-icon name="mdi-format-quote-open" class="quote-icon" />
-                <p>"{{ testimonial.text }}"</p>
+          <q-carousel
+            v-model="slide"
+            transition-prev="slide-right"
+            transition-next="slide-left"
+            swipeable
+            navigation
+            animated
+            infinite
+            class="transparent q-px-lg"
+          >
+            <q-carousel-slide v-for="(testimonial, index) in testimonials"
+                              :name="index" :key="index">
+              <div class="liquid-glass q-pa-lg">
+                <span class="author q-mb-sm">{{ testimonial.author }}</span>
+                <span class="role q-mb-lg">{{ testimonial.role }}</span>
+                <span class="feature q-pa-sm q-mb-lg">{{ testimonial.feature }}</span>
+                <p class="description">"{{ testimonial.text }}"</p>
               </div>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <q-icon :name="testimonial.avatar" />
-                </div>
-                <div class="author-info">
-                  <strong>{{ testimonial.author }}</strong>
-                  <span>{{ testimonial.role }}</span>
-                  <div class="feature-tag">{{ testimonial.feature }}</div>
-                </div>
+            </q-carousel-slide>
+            <q-carousel-slide :name="1" class="column no-wrap">
+              <div
+                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+              >
+                <q-img
+                  class="rounded-borders col-6 full-height"
+                  src="https://cdn.quasar.dev/img/mountains.jpg"
+                />
+                <q-img
+                  class="rounded-borders col-6 full-height"
+                  src="https://cdn.quasar.dev/img/parallax1.jpg"
+                />
               </div>
-            </div>
-          </div>
+            </q-carousel-slide>
+          </q-carousel>
         </div>
       </div>
     </div>
@@ -52,25 +69,97 @@ const testimonials = computed(() => {
     }
   }
 
-  .testimonials-grid { display: flex; flex-direction: column; gap: 24px; }
-  .testimonial-card { padding: 28px 20px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
-  .testimonial-content { position: relative; margin-bottom: 20px; }
-  .quote-icon { position: absolute; top: -8px; left: -8px; font-size: 2rem; color: rgba(0, 225, 255, 0.3); }
-  .testimonial-content p { font-size: 1rem; line-height: 1.5; color: rgba(255, 255, 255, 0.9); position: relative; z-index: 2; }
-  .testimonial-author { display: flex; align-items: center; gap: 12px; }
-  .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 225, 255, 0.2); display: flex; align-items: center; justify-content: center; }
-  .author-avatar .q-icon { font-size: 1.25rem; }
-  .author-info { display: flex; flex-direction: column; }
-  .author-info strong { font-size: 1rem; }
-  .author-info span { color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; }
-  .feature-tag { background: rgba(0, 225, 255, 0.2); color: #00e1ff; padding: 2px 6px; border-radius: 8px; font-size: 0.7rem; margin-top: 2px; display: inline-block; }
+  .q-carousel {
+    height: 400px;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
 
-  @media (min-width: 768px) {
-    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    @media (min-width: 48em) {
+      height: 325px;
+    }
+
+    @media (min-width: 77.5em) {
+      height: 350px;
+    }
+
+    :deep(.q-carousel__slide) {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
   }
 
-  @media (min-width: 1024px) {
-    .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+  .liquid-glass {
+    border-radius: 20px;
+    height: calc(100% - 56px);
+    user-select: none;
+  }
+
+  .author {
+    display: block;
+    font-size: 1rem;
+    line-height: 110%;
+
+    @media (min-width: 77.5em) {
+      font-size: 1.25rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .role {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 100%;
+    opacity: 0.7;
+
+    @media (min-width: 77.5em) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .feature {
+    display: inline-block;
+    background: rgba(0, 225, 255, 0.2);
+    color: #00e1ff;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    line-height: 100%;
+
+    @media (min-width: 77.5em) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 110%;
+    opacity: 0.7;
+
+    @media (min-width: 77.5em) {
+      font-size: 1.25rem;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.5rem;
+    }
   }
 </style>
 
