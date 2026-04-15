@@ -22,7 +22,7 @@ const routes = [
       {
         path: '/faq',
         name: 'faq',
-        component: () => import('pages/faq/FaqPage.vue')
+        component: () => import('pages/info/FaqPage.vue')
       },
       {
         path: '/download',
@@ -35,9 +35,14 @@ const routes = [
         component: () => import('pages/contact-us/ContactUsPage.vue')
       },
       {
-        path: '/terms-privacy',
-        name: 'terms_privacy',
-        component: () => import('pages/terms-privacy/TermsPrivacyPage.vue')
+        path: '/terms-of-services',
+        name: 'terms_of_services',
+        component: () => import('pages/info/TermsOfService.vue')
+      },
+      {
+        path: '/privacy-policy',
+        name: 'privacy_policy',
+        component: () => import('pages/info/PrivacyPolicy.vue')
       },
       {
         path: '/pricing',

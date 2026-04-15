@@ -4,7 +4,8 @@ export default {
     pricing: 'Prising',
     faq: 'Faq',
     contact_us: 'Contact Us',
-    terms_privacy: 'Terms Privacy',
+    terms: 'Terms of Services',
+    privacyPolicy: 'Privacy Policy'
   },
   buttons: {
     join: 'Присоединиться',

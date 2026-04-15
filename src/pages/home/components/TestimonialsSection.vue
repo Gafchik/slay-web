@@ -32,7 +32,7 @@ const testimonials = computed(() => {
           >
             <q-carousel-slide v-for="(testimonial, index) in testimonials"
                               :name="index" :key="index">
-              <div class="liquid-glass q-pa-lg">
+              <div class="liquid-glass">
                 <span class="author q-mb-sm">{{ testimonial.author }}</span>
                 <span class="role q-mb-lg">{{ testimonial.role }}</span>
                 <span class="feature q-pa-sm q-mb-lg">{{ testimonial.feature }}</span>
@@ -70,7 +70,7 @@ const testimonials = computed(() => {
   }
 
   .q-carousel {
-    height: 400px;
+    height: 480px;
     mask-image: linear-gradient(
         to right,
         transparent 0%,
@@ -79,11 +79,11 @@ const testimonials = computed(() => {
         transparent 100%
     );
 
-    @media (min-width: 48em) {
+    @media (min-width: 37.5em) {
       height: 325px;
     }
 
-    @media (min-width: 77.5em) {
+    @media (min-width: 158.75em) {
       height: 350px;
     }
 
@@ -100,6 +100,11 @@ const testimonials = computed(() => {
     border-radius: 20px;
     height: calc(100% - 56px);
     user-select: none;
+    padding: 16px;
+
+    @media (min-width: 158.75em) {
+      padding: 24px;
+    }
   }
 
   .author {
@@ -150,7 +155,7 @@ const testimonials = computed(() => {
 
   .description {
     font-size: 1rem;
-    line-height: 110%;
+    line-height: 120%;
 
     @media (min-width: 77.5em) {
       font-size: 1.25rem;

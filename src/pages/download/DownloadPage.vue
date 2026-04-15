@@ -11,7 +11,12 @@ import { computed, ref } from 'vue'
   const list = ref([
     {
       icon: macIcon,
-      text: 'MacOS',
+      text: 'Apple silicon',
+      link: 'https://slay.dev/download/macos',
+    },
+    {
+      icon: macIcon,
+      text: 'Intel chip',
       link: 'https://slay.dev/download/macos',
     },
     {
@@ -32,9 +37,9 @@ const instructions = computed(() => {
 </script>
 
 <template>
-  <q-page class="row justify-center text-white">
-    <div class="flex column justify-center q-ma-auto">
-      <section class="section">
+  <q-page class="column justify-center q-pb-xl">
+    <section class="section">
+      <div class="container">
         <div class="section__head">
           <div class="section__title text-center q-mb-xl">
             <h2 class="gradient-text">{{ t('download.title') }}</h2>
@@ -44,7 +49,7 @@ const instructions = computed(() => {
 
         <div class="section__main q-mb-xl">
           <q-list class="row justify-center">
-            <q-item v-for="(item, index) in list" :key="index" class="col-md-4 col-sm-6 col-xs-12">
+            <q-item v-for="(item, index) in list" :key="index" class="col-md-3 col-sm-6 col-xs-12">
               <q-item-section class="column items-center liquid-glass q-pa-md">
                 <q-img :src="item.icon" class="q-mb-sm" />
                 <span class="q-mb-lg">{{ item.text }}</span>
@@ -59,7 +64,7 @@ const instructions = computed(() => {
           </q-list>
         </div>
 
-        <div class="section__foot">
+        <div class="section__foot q-pb-xl">
           <h3 class="q-mb-md">{{ t('download.instruction') }}</h3>
           <q-list class="liquid-glass--primary text-white">
             <q-item v-for="(item, index) in instructions" :key="index" class="q-pa-md">
@@ -69,8 +74,8 @@ const instructions = computed(() => {
             </q-item>
           </q-list>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </q-page>
 </template>
 
@@ -78,6 +83,13 @@ const instructions = computed(() => {
   .section {
     &__main {
       .q-item {
+        padding: 0 8px 16px;
+        font-size: 1rem;
+
+        @media (min-width: 77.5em) {
+          padding: 0 16px 16px;
+        }
+
         &__section {
           border-radius: 16px;
         }
@@ -90,14 +102,27 @@ const instructions = computed(() => {
       }
 
       .q-item {
+        font-size: 1rem;
+        line-height: 140%;
+
         &:not(:last-child) {
           border-bottom: 1px solid #03d5ff;
         }
       }
     }
+
+    .q-btn {
+      white-space: nowrap;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+    }
   }
 
-
+  .container {
+    @media (min-width: 77.5em) {
+      max-width: 1240px;
+    }
+  }
 
   .q-img {
     width: 48px;

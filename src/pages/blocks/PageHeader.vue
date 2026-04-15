@@ -163,12 +163,12 @@
 
       @media screen and (min-width: 77.5em) {
         min-height: 50px;
-        padding: 0 20px;
+        padding: 0 24px;
       }
 
       @media (min-width: 158.75em) {
         min-height: 55px;
-        padding: 0 30px;
+        padding: 0 48px;
       }
     }
   }
