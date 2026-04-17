@@ -2,7 +2,7 @@ export default {
   routes: {
     download: 'Download',
     pricing: 'Prising',
-    faq: 'Faq',
+    faq: 'FAQ',
     contactUs: 'Contact Us',
     terms: 'Terms of Services',
     privacyPolicy: 'Privacy Policy'

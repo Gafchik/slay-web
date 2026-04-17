@@ -1,11 +1,11 @@
 export default {
   routes: {
     download: 'Скачать',
-    pricing: 'Prising',
-    faq: 'Faq',
-    contactUs: 'Contact Us',
-    terms: 'Terms of Services',
-    privacyPolicy: 'Privacy Policy'
+    pricing: 'Цены',
+    faq: 'FAQ',
+    contactUs: 'Контакты',
+    terms: 'Условия обслуживания',
+    privacyPolicy: 'Политика конфиденциальности'
   },
   buttons: {
     join: 'Присоединиться',
@@ -22,22 +22,22 @@ export default {
     cancel: 'Отменить'
   },
   inputData: {
-    first_name: 'Имя',
-    last_name: 'Фамилия',
+    firstName: 'Имя',
+    lastName: 'Фамилия',
     email: 'Почта',
     password: 'Пароль',
-    password_confirmation: 'Подтвердите пароль',
+    passwordConfirmation: 'Подтвердите пароль',
   },
   validation: {
-    required: 'This field is required',
-    not_valid: 'This field is not valid',
-    onlyOneFileAllowed: 'Only one file is allowed',
-    passwordMismatch: 'Passwords do not match',
-    minLength: 'The minimum length is {min} characters',
+    required: 'Это поле обязательно к заполнению',
+    notValid: 'Это поле недействительно',
+    onlyOneFileAllowed: 'Разрешается только один файл',
+    passwordMismatch: 'Пароли не совпадают',
+    minLength: 'Минимальная длина составляет {min} символов',
   },
   status: {
-    failed: 'Action failed',
-    success: 'Action was successful',
+    failed: 'Не удалось',
+    success: 'Успешно',
   },
   sections: {
     home: {
@@ -109,35 +109,30 @@ export default {
           role: 'Frontend разработчик (Windows)',
           text: 'Раньше запуск моего рабочего окружения занимал вечность. Теперь с Slay я начинаю работу в один клик, экономя по 10 минут каждое утро! Это просто спасение для продуктивности.',
           feature: 'Быстрый запуск рабочего пространства',
-          avatar: 'mdi-laptop-windows'
         },
         {
           author: 'Иван Т.',
           role: 'PHP/Laravel разработчик',
           text: 'Консольные алиасы в Slay  изменили мою работу с PHP версиями и Docker. Быстрый заход в контейнеры, переключение между версиями PHP на Windows — все стало в разы проще. Больше никаких длинных команд!',
           feature: 'Консольные Алиасы',
-          avatar: 'mdi-php'
         },
         {
           author: 'Мария С.',
           role: 'Фрилансер-разработчик',
           text: 'Как фрилансер с десятками проектов, я постоянно сталкивалась с хаосом. Менеджер проектов и паролей Slay привел все в порядок. Все проекты организованы, а пароли надежно хранятся. Моя продуктивность взлетела!',
           feature: 'Менеджер Проектов & Паролей',
-          avatar: 'mdi-account-tie'
         },
         {
           author: 'Ольга П.',
           role: 'Тестировщик',
           text: 'Для тестирования мне нужны десятки аккаунтов (админ, юзер, менеджер). Менеджер паролей Slay позволяет мне хранить их все в порядке, быстро переключаться и всегда иметь доступ к нужным учетным данным. Незаменимо!',
           feature: 'Менеджер Паролей',
-          avatar: 'mdi-bug'
         },
         {
           author: 'Дмитрий В.',
           role: 'Backend разработчик',
           text: 'Хранить пароли от Stripe, Mailgun, Mailtrap и множества серверов — это боль. Slay не только надежно хранит их, но и консольные алиасы ускорили мой доступ к серверам и выполнение сложных команд. Это маст-хэв для бэкенда.',
           feature: 'Консольные Алиасы & Менеджер Паролей',
-          avatar: 'mdi-server'
         }
       ]
     },

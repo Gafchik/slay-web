@@ -17,7 +17,7 @@ const localeEntries = computed(() => Object.entries(locales))
     class="btn-link"
     :label="locales[currentLanguage]?.url || 'En'"
   >
-    <q-menu>
+    <q-menu class="menu-primary no-shadow">
       <q-list style="min-width: 160px">
         <q-item
           v-for="[key, locale] in localeEntries"
@@ -54,5 +54,13 @@ const localeEntries = computed(() => Object.entries(locales))
     @media (min-width: 158.75em) {
       margin-left: 24px;
     }
+  }
+
+  .q-item {
+    min-height: 24px;
+  }
+
+  .q-icon {
+    color: #03d5ff;
   }
 </style>

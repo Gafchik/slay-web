@@ -448,3 +448,15 @@ h1, h2, h3 {
     }
   }
 }
+
+.menu {
+  &-primary {
+    box-sizing: content-box;
+    border: 1px solid #03d5ff;
+    border-radius: 16px;
+    color: #03d5ff;
+    backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff !important;
+    background: transparent;
+  }
+}
