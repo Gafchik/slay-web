@@ -1,12 +1,14 @@
 <script setup>
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
   import { useAuthStore } from 'stores/auth-store.js'
 
   import googleLogo from 'src/assets/google_logo.png'
 
   const { t } = useI18n()
+  const { localeTo } = useLocaleRoute()
 
   const authStore = useAuthStore()
   const {loginRequest, loginGoggleRequest} = authStore
@@ -50,7 +52,7 @@
             :label="t('inputData.email')"
             :rules="[
                     val => !!val || t('validation.required'),
-                    val => /.+@.+\..+/.test(val) || t('validation.not_valid'),
+                    val => /.+@.+\..+/.test(val) || t('validation.notValid'),
                   ]"
           >
             <template v-slot:prepend>
@@ -108,7 +110,7 @@
             <span>
               {{t('account.login.reg_text')}}
             <router-link class="gradient-text text-bold no-underline"
-                         :to="{ name: 'registration' }"
+                         :to="localeTo('registration')"
             >
               {{t('buttons.signUp').toUpperCase()}}
             </router-link>

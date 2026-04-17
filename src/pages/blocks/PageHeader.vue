@@ -1,86 +1,95 @@
 <script setup>
-  import { ref, nextTick, onMounted, onBeforeUnmount, watch, computed } from 'vue'
-  import { useRoute } from 'vue-router'
-  import { useI18n } from 'vue-i18n'
-  import { storeToRefs } from 'pinia'
-  import { useQuasar } from 'quasar'
+import { ref, nextTick, onMounted, onBeforeUnmount, watch, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { storeToRefs } from 'pinia'
+import { useQuasar } from 'quasar'
+import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
-  import { useAuthStore } from 'stores/auth-store.js'
+import AppLanguageSwitcher from 'src/pages/blocks/AppLanguageSwitcher.vue'
 
-  import Logotype from 'assets/Logotype.png'
+import { useAuthStore } from 'stores/auth-store.js'
 
-  const { t } = useI18n()
+import Logotype from 'assets/Logotype.png'
 
-  const $q = useQuasar()
+const { t } = useI18n()
+const { localeTo, localeRouteName } = useLocaleRoute()
 
-  const authStore = useAuthStore()
-  const { isLoggedIn } = storeToRefs(authStore)
-  const { logoutRequest } = authStore
+const $q = useQuasar()
 
-  const showButton = ref(false)
-  const route = useRoute()
+const authStore = useAuthStore()
+const { isLoggedIn } = storeToRefs(authStore)
+const { logoutRequest } = authStore
 
-  const handleLogout = async () => {
-    const result = await logoutRequest()
-    if (result?.success) {
-      window.location.href = '/'
-    }
+const showButton = ref(false)
+const route = useRoute()
+
+const isHomeRoute = computed(() => route.name === localeRouteName('home'))
+const isProfileRoute = computed(() => route.name === localeRouteName('profile'))
+const isLoginRoute = computed(() => route.name === localeRouteName('login'))
+const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
+
+const handleLogout = async () => {
+  const result = await logoutRequest()
+  if (result?.success) {
+    window.location.href = '/'
   }
+}
 
-  const updateVisibility = () => {
-    const elements = document.querySelectorAll('.btn-download')
+const updateVisibility = () => {
+  const elements = document.querySelectorAll('.btn-download')
 
-    const anyVisible = Array.from(elements).some(el => {
-      const rect = el.getBoundingClientRect()
+  const anyVisible = Array.from(elements).some(el => {
+    const rect = el.getBoundingClientRect()
 
-      return (
-        rect.bottom > 0 &&
-        rect.top < window.innerHeight
-      )
-    })
-
-    showButton.value = !anyVisible
-  }
-
-  const isDesktop = computed(() => $q.screen.width >= 1240)
-
-  onMounted(async () => {
-    await nextTick()
-
-    updateVisibility()
-
-    window.addEventListener('scroll', updateVisibility, { passive: true })
+    return (
+      rect.bottom > 0 &&
+      rect.top < window.innerHeight
+    )
   })
 
-  onBeforeUnmount(() => {
-    window.removeEventListener('scroll', updateVisibility)
-  })
+  showButton.value = !anyVisible
+}
 
-  watch(() => route.fullPath, async () => {
-    showButton.value = false
+const isDesktop = computed(() => $q.screen.width >= 1240)
 
-    await nextTick()
-    updateVisibility()
-  })
+onMounted(async () => {
+  await nextTick()
+
+  updateVisibility()
+
+  window.addEventListener('scroll', updateVisibility, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', updateVisibility)
+})
+
+watch(() => route.fullPath, async () => {
+  showButton.value = false
+
+  await nextTick()
+  updateVisibility()
+})
 </script>
 
 <template>
   <q-header class="glass">
     <q-toolbar class="q-py-none">
       <q-toolbar-title>
-        <router-link class="flex" :to="{ name: 'home' }">
+        <router-link class="flex" :to="localeTo('home')">
           <img :src="Logotype" alt="" title="" height="125" width="451"/>
         </router-link>
       </q-toolbar-title>
       <div class="flex items-center">
-        <transition name="fade-btn" v-if="route.name === 'home'">
+        <transition name="fade-btn" v-if="isHomeRoute">
           <q-btn
                  v-show="showButton"
                  flat
                  dense
                  :color="isDesktop ? 'primary' : 'white'"
                  :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="{ name: 'download' }"
+                 :to="localeTo('download')"
           >
             <span v-if="isDesktop">{{t('buttons.download')}}</span>
             <q-icon name="download" v-else/>
@@ -88,12 +97,12 @@
         </transition>
         <div v-if="isLoggedIn">
           <q-btn
-                 v-if="route.name !== 'profile'"
+                 v-if="!isProfileRoute"
                  flat
                  dense
                  :color="isDesktop ? 'primary' : 'white'"
                  :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="{ name: 'profile' }"
+                 :to="localeTo('profile')"
           >
             <span v-if="isDesktop">{{t('buttons.profile')}}</span>
             <q-icon name="account_circle" v-else/>
@@ -111,26 +120,27 @@
         </div>
         <div v-else>
           <q-btn
-                 v-if="route.name !== 'login'"
+                 v-if="!isLoginRoute"
                  flat
                  dense
                  :color="isDesktop ? 'primary' : 'white'"
                  :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="{ name: 'profile' }"
+                 :to="localeTo('profile')"
           >
             <span v-if="isDesktop">{{t('buttons.login')}}</span>
             <q-icon name="login" v-else/>
           </q-btn>
           <q-btn
-                 v-if="route.name !== 'registration' && isDesktop"
+                 v-if="!isRegistrationRoute && isDesktop"
                  flat
                  dense
                  color="primary"
                  class="btn-link"
                  :label="t('buttons.registration')"
-                 :to="{ name: 'registration' }"
+                 :to="localeTo('registration')"
           />
         </div>
+        <AppLanguageSwitcher />
       </div>
     </q-toolbar>
   </q-header>

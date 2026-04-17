@@ -1,18 +1,24 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useAuthStore } from 'stores/auth-store.js'
-import googleLogo from 'assets/google_logo.png'
-const { t } = useI18n()
+import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
+import { useAuthStore } from 'stores/auth-store.js'
 const authStore = useAuthStore()
 const {registerRequest, loginGoggleRequest} = authStore
+
+import googleLogo from 'assets/google_logo.png'
+
+const { t } = useI18n()
+const { localeTo } = useLocaleRoute()
+
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
 const password = ref('')
 const passwordConfirmation = ref('')
 const form = ref(null)
+
 const onSubmit = async () => {
   if (!form.value) return
 
@@ -50,7 +56,7 @@ const onSubmit = async () => {
             label-color="white"
             class="btn-glass auto-field q-mb-sm"
             v-model="firstName"
-            :label="t('inputData.first_name')"
+            :label="t('inputData.firstName')"
             :rules="[val => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
@@ -68,7 +74,7 @@ const onSubmit = async () => {
             label-color="white"
             class="btn-glass auto-field q-mb-sm"
             v-model="lastName"
-            :label="t('inputData.last_name')"
+            :label="t('inputData.lastName')"
             :rules="[val => !!val || t('validation.required')]"
           >
             <template v-slot:prepend>
@@ -90,7 +96,7 @@ const onSubmit = async () => {
             type="email"
             :rules="[
             val => !!val || t('validation.required'),
-            val => /.+@.+\..+/.test(val) || t('validation.not_valid'),
+            val => /.+@.+\..+/.test(val) || t('validation.notValid'),
           ]"
           >
             <template v-slot:prepend>
@@ -112,7 +118,7 @@ const onSubmit = async () => {
             type="password"
             :rules="[
             val => !!val || t('validation.required'),
-            val => val.length >= 8 || t('validation.min_length', { min: 8 })
+            val => val.length >= 8 || t('validation.minLength', { min: 8 })
           ]"
           >
             <template v-slot:prepend>
@@ -130,11 +136,11 @@ const onSubmit = async () => {
             label-color="white"
             class="btn-glass auto-field q-mb-sm"
             v-model="passwordConfirmation"
-            :label="t('inputData.password_confirmation')"
+            :label="t('inputData.passwordConfirmation')"
             type="password"
             :rules="[
             val => !!val || t('validation.required'),
-            val => val === password || t('validation.password_mismatch')
+            val => val === password || t('validation.passwordMismatch')
           ]"
           >
             <template v-slot:prepend>
@@ -175,7 +181,7 @@ const onSubmit = async () => {
             <span>
               {{ t('account.register.have_account_text') }}
                <router-link class="text-primary gradient-text text-bold no-underline"
-                            :to="{ name: 'login' }"
+                            :to="localeTo('login')"
                >
                  {{t('buttons.login').toUpperCase()}}
                </router-link>

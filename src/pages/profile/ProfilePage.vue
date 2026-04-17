@@ -56,7 +56,7 @@
           outlined
           :readonly="readonly"
           v-model="user.first_name"
-          :label="t('inputData.first_name')"
+          :label="t('inputData.firstName')"
           label-color="white"
           color="white"
           bg-color="rgba(255, 255, 255, 0.1)"
@@ -74,7 +74,7 @@
           dark
           :readonly="readonly"
           v-model="user.last_name"
-          :label="t('inputData.last_name')"
+          :label="t('inputData.lastName')"
           label-color="white"
           color="white"
           bg-color="rgba(255, 255, 255, 0.1)"
@@ -100,7 +100,7 @@
           type="email"
           :rules="[
               (val) => !!val || t('validation.required'),
-              (val) => /.+@.+\..+/.test(val) || t('validation.not_valid'),
+              (val) => /.+@.+\..+/.test(val) || t('validation.notValid'),
             ]"
         >
           <template v-slot:prepend>
@@ -149,7 +149,7 @@
           class="auto-field q-ma-none q-mb-md"
           type="password"
           autocomplete="new-password"
-          :rules="[(val) => !val || val.length >= 8 || t('validation.min_length', { min: 8 })]"
+          :rules="[(val) => !val || val.length >= 8 || t('validation.minLength', { min: 8 })]"
         >
           <template v-slot:prepend>
             <q-icon name="lock" color="white" />
@@ -163,7 +163,7 @@
           outlined
           dark
           v-model="passwordConfirmation"
-          :label="t('inputData.password_confirmation')"
+          :label="t('inputData.passwordConfirmation')"
           label-color="white"
           color="white"
           bg-color="rgba(255, 255, 255, 0.1)"
@@ -172,7 +172,7 @@
           autocomplete="new-password"
           :rules="[
               (val) => !password || !!val || t('validation.required'),
-              (val) => !password || val === password || t('validation.password_mismatch'),
+              (val) => !password || val === password || t('validation.passwordMismatch'),
             ]"
         >
           <template v-slot:prepend>

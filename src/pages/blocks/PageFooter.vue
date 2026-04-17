@@ -1,7 +1,9 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
+  import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
   const { t } = useI18n()
+  const { localeTo } = useLocaleRoute()
 </script>
 
 <template>
@@ -15,7 +17,7 @@
             color="white"
             class="btn-link"
             :label="t('routes.terms')"
-            :to="{ name: 'terms_of_services' }"
+            :to="localeTo('terms_of_services')"
           />
         </q-item>
         <q-item class="q-pa-none">
@@ -25,11 +27,11 @@
             color="white"
             class="btn-link"
             :label="t('routes.privacyPolicy')"
-            :to="{ name: 'privacy_policy' }"
+            :to="localeTo('privacy_policy')"
           />
         </q-item>
       </q-list>
-      <p class="text-primary text-center">© 2025 Slay. All rights reserved.</p>
+      <p class="text-primary text-center">© 2025 Slay. {{t('text.allRightsReserved')}}.</p>
     </q-toolbar>
   </q-footer>
 </template>

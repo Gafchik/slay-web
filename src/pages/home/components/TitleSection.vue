@@ -1,12 +1,14 @@
 <script setup>
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
   import macIcon from 'src/assets/macOS.svg'
   import winIcon from 'src/assets/Windows.svg'
   import ubuntuIcon from 'src/assets/Ubuntu.svg'
 
   const { t } = useI18n()
+  const { localeTo } = useLocaleRoute()
 
   const list = ref([
     {
@@ -33,7 +35,7 @@
             <h1 class="title q-mb-lg">{{t('sections.home.title')}}</h1>
             <p class="subtitle">{{t('sections.home.subtitle')}}</p>
             <p class="subtitle q-mb-xl">{{t('sections.home.description')}}</p>
-            <q-btn :to="{ name: 'download' }"
+            <q-btn :to="localeTo('download')"
                    unelevated
                    rounded
                    class="btn-download btn-glass--primary q-px-xl">

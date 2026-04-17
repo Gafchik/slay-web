@@ -1,5 +1,12 @@
 import { defineRouter } from '#q-app/wrappers'
 import {
+  DEFAULT_LOCALE,
+  getLocaleByUrl,
+  getRoutePrefixByPath,
+  detectBrowserLocale,
+  getUrlByI18nLocale
+} from 'src/i18n/locales'
+import {
   createRouter,
   createMemoryHistory,
   createWebHistory,
@@ -7,17 +14,11 @@ import {
 } from 'vue-router'
 import routes from './routes'
 import { useAuthStore } from 'src/stores/auth-store'
+import { i18n } from 'boot/i18n'
 
-/*
- * If not building with SSR mode, you can
- * directly export the Router instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Router instance.
- */
+const LOCALE_STORAGE_KEY = 'app-locale'
 
-export default defineRouter(function (/* { store, ssrContext } */) {
+export default defineRouter(function () {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : process.env.VUE_ROUTER_MODE === 'history'
@@ -27,33 +28,70 @@ export default defineRouter(function (/* { store, ssrContext } */) {
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
     routes,
-
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   })
 
-  // Guard для проверки авторизации
   Router.beforeEach(async (to, from, next) => {
+    const currentLocale = getLocaleByUrl(to.path)
+    const localePrefix = getRoutePrefixByPath(to.path)
+
+    i18n.global.locale.value = currentLocale
+
+    if (!process.env.SERVER) {
+      const cameFromExplicitEnglishUrl =
+        to.redirectedFrom?.path === '/en' ||
+        to.redirectedFrom?.path?.startsWith('/en/')
+
+      if (cameFromExplicitEnglishUrl) {
+        localStorage.setItem(LOCALE_STORAGE_KEY, DEFAULT_LOCALE)
+      } else {
+        localStorage.setItem(LOCALE_STORAGE_KEY, currentLocale)
+      }
+
+      if (to.path === '/') {
+        const savedLocale = localStorage.getItem(LOCALE_STORAGE_KEY)
+
+        if (savedLocale && savedLocale !== DEFAULT_LOCALE) {
+          const savedLocaleUrl = getUrlByI18nLocale(savedLocale)
+
+          if (savedLocaleUrl) {
+            next(`/${savedLocaleUrl}`)
+            return
+          }
+        }
+
+        if (!savedLocale) {
+          const browserLocale = detectBrowserLocale()
+
+          if (browserLocale !== DEFAULT_LOCALE) {
+            const localeUrl = getUrlByI18nLocale(browserLocale)
+
+            if (localeUrl) {
+              next(`/${localeUrl}`)
+              return
+            }
+          }
+        }
+      }
+    }
+
     const authStore = useAuthStore()
-    
-    // Сначала проверяем авторизацию для получения актуального статуса
     const isAuthenticated = await authStore.checkAuth()
-    
-    // Если пользователь авторизован и пытается зайти на страницы логина/регистрации
-    if ((to.name === 'login' || to.name === 'registration') && isAuthenticated) {
-      next({ name: 'home' })
+
+    if (
+      (to.name === `${localePrefix}login` ||
+        to.name === `${localePrefix}registration`) &&
+      isAuthenticated
+    ) {
+      next({ name: `${localePrefix}home` })
       return
     }
-    
-    // Проверяем, требует ли роут авторизации
+
     if (to.meta.requiresAuth && !isAuthenticated) {
-      // Если не авторизован, перенаправляем на страницу логина
-      next({ name: 'login' })
+      next({ name: `${localePrefix}login` })
       return
     }
-    
+
     next()
   })
 

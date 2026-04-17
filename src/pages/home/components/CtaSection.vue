@@ -1,7 +1,9 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
+  import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
   const { t } = useI18n()
+  const { localeTo } = useLocaleRoute()
 </script>
 
 <template>
@@ -17,7 +19,7 @@
             <q-btn
               unelevated
               rounded
-              :to="{ name: 'download' }"
+              :to="localeTo('download')"
               class="btn-download btn-glass q-px-xl"
             >
               {{t('buttons.join')}}
