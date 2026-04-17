@@ -20,40 +20,46 @@ const testimonials = computed(() => {
             <h2>{{t('sections.reviews.title')}}</h2>
           </div>
 
-          <q-carousel
-            v-model="slide"
-            transition-prev="slide-right"
-            transition-next="slide-left"
-            swipeable
-            navigation
-            animated
-            infinite
-            class="transparent q-px-lg"
-          >
-            <q-carousel-slide v-for="(testimonial, index) in testimonials"
-                              :name="index" :key="index">
-              <div class="liquid-glass">
-                <span class="author q-mb-sm">{{ testimonial.author }}</span>
-                <span class="role q-mb-lg">{{ testimonial.role }}</span>
-                <span class="feature q-pa-sm q-mb-lg">{{ testimonial.feature }}</span>
-                <p class="description">"{{ testimonial.text }}"</p>
-              </div>
-            </q-carousel-slide>
-            <q-carousel-slide :name="1" class="column no-wrap">
-              <div
-                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+          <div class="row">
+            <div class="col-md-6 col-sm-8 col-xs-12 q-mx-auto">
+              <q-carousel
+                v-model="slide"
+                transition-prev="slide-right"
+                transition-next="slide-left"
+                swipeable
+                navigation
+                arrows
+                animated
+                infinite
+                class="transparent"
               >
-                <q-img
-                  class="rounded-borders col-6 full-height"
-                  src="https://cdn.quasar.dev/img/mountains.jpg"
-                />
-                <q-img
-                  class="rounded-borders col-6 full-height"
-                  src="https://cdn.quasar.dev/img/parallax1.jpg"
-                />
-              </div>
-            </q-carousel-slide>
-          </q-carousel>
+                <q-carousel-slide v-for="(testimonial, index) in testimonials"
+                                  :name="index" :key="index">
+                  <div class="liquid-glass column items-start">
+                    <span class="author q-mb-sm">{{ testimonial.author }}</span>
+                    <span class="role q-mb-lg">{{ testimonial.role }}</span>
+                    <span class="feature q-pa-sm q-mb-lg">{{ testimonial.feature }}</span>
+                    <p class="description">"{{ testimonial.text }}"</p>
+                    <span class="date q-mt-auto">{{ testimonial.date }}</span>
+                  </div>
+                </q-carousel-slide>
+                <q-carousel-slide :name="1" class="column no-wrap">
+                  <div
+                    class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+                  >
+                    <q-img
+                      class="rounded-borders col-6 full-height"
+                      src="https://cdn.quasar.dev/img/mountains.jpg"
+                    />
+                    <q-img
+                      class="rounded-borders col-6 full-height"
+                      src="https://cdn.quasar.dev/img/parallax1.jpg"
+                    />
+                  </div>
+                </q-carousel-slide>
+              </q-carousel>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -70,28 +76,78 @@ const testimonials = computed(() => {
   }
 
   .q-carousel {
-    height: 480px;
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 5%,
-        black 95%,
-        transparent 100%
-    );
+    height: 500px;
 
     @media (min-width: 37.5em) {
-      height: 325px;
+      height: 450px;
     }
 
-    @media (min-width: 158.75em) {
-      height: 350px;
+    @media (min-width: 48em) {
+      height: 400px;
     }
 
-    :deep(.q-carousel__slide) {
-      cursor: grab;
+    @media (min-width: 77.5em) {
+      height: 450px;
+    }
 
-      &:active {
-        cursor: grabbing;
+    :deep {
+      .q-carousel {
+        &__slides {
+          &-container {
+            padding: 0 24px;
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 10%,
+                black 90%,
+                transparent 100%
+            );
+
+            @media (min-width: 90em) {
+              padding: 0 56px;
+            }
+
+            @media (min-width: 158.75em) {
+              padding: 0 70px;
+            }
+          }
+        }
+
+        &__slide {
+          cursor: grab;
+
+          &:active {
+            cursor: grabbing;
+          }
+        }
+
+        &__arrow {
+          .q-icon {
+            font-size: 3.5rem;
+          }
+
+          .q-focus-helper {
+            display: none;
+          }
+        }
+
+        &__prev-arrow--horizontal {
+          top: -30px;
+          left: -16px;
+
+          @media (min-width: 90em) {
+            left: 0;
+          }
+        }
+
+        &__next-arrow--horizontal {
+          top: -30px;
+          right: -16px;
+
+          @media (min-width: 90em) {
+            right: 0;
+          }
+        }
       }
     }
   }

@@ -2,13 +2,10 @@
 import { ref, nextTick, onMounted, onBeforeUnmount, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { storeToRefs } from 'pinia'
 import { useQuasar } from 'quasar'
 import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
 import AppLanguageSwitcher from 'src/pages/blocks/AppLanguageSwitcher.vue'
-
-import { useAuthStore } from 'stores/auth-store.js'
 
 import Logotype from 'assets/Logotype.png'
 
@@ -17,24 +14,12 @@ const { localeTo, localeRouteName } = useLocaleRoute()
 
 const $q = useQuasar()
 
-const authStore = useAuthStore()
-const { isLoggedIn } = storeToRefs(authStore)
-const { logoutRequest } = authStore
-
 const showButton = ref(false)
 const route = useRoute()
 
 const isHomeRoute = computed(() => route.name === localeRouteName('home'))
-const isProfileRoute = computed(() => route.name === localeRouteName('profile'))
 const isLoginRoute = computed(() => route.name === localeRouteName('login'))
 const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
-
-const handleLogout = async () => {
-  const result = await logoutRequest()
-  if (result?.success) {
-    window.location.href = '/'
-  }
-}
 
 const updateVisibility = () => {
   const elements = document.querySelectorAll('.btn-download')
@@ -75,71 +60,36 @@ watch(() => route.fullPath, async () => {
 
 <template>
   <q-header class="glass">
-    <q-toolbar class="q-py-none">
+    <q-toolbar class="flex justify-between q-py-none">
       <q-toolbar-title>
         <router-link class="flex" :to="localeTo('home')">
           <img :src="Logotype" alt="" title="" height="125" width="451"/>
         </router-link>
       </q-toolbar-title>
+      <transition name="fade-btn" v-if="isHomeRoute">
+        <q-btn
+          v-show="showButton"
+          unelevated
+          rounded
+          class="btn-glass--primary q-py-sm"
+          :to="localeTo('download')"
+        >
+          <span v-if="isDesktop">{{t('buttons.download')}} SLAY</span>
+          <q-icon name="download" v-else/>
+        </q-btn>
+      </transition>
       <div class="flex items-center">
-        <transition name="fade-btn" v-if="isHomeRoute">
-          <q-btn
-                 v-show="showButton"
-                 flat
-                 dense
-                 :color="isDesktop ? 'primary' : 'white'"
-                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="localeTo('download')"
-          >
-            <span v-if="isDesktop">{{t('buttons.download')}}</span>
-            <q-icon name="download" v-else/>
-          </q-btn>
-        </transition>
-        <div v-if="isLoggedIn">
-          <q-btn
-                 v-if="!isProfileRoute"
-                 flat
-                 dense
-                 :color="isDesktop ? 'primary' : 'white'"
-                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="localeTo('profile')"
-          >
-            <span v-if="isDesktop">{{t('buttons.profile')}}</span>
-            <q-icon name="account_circle" v-else/>
-          </q-btn>
-          <q-btn
-                 flat
-                 dense
-                 :color="isDesktop ? 'primary' : 'white'"
-                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 @click="handleLogout"
-          >
-            <span v-if="isDesktop">{{t('buttons.logout')}}</span>
-            <q-icon name="logout" v-else/>
-          </q-btn>
-        </div>
-        <div v-else>
-          <q-btn
-                 v-if="!isLoginRoute"
-                 flat
-                 dense
-                 :color="isDesktop ? 'primary' : 'white'"
-                 :class="isDesktop ? 'btn-link' : 'btn-icon'"
-                 :to="localeTo('profile')"
-          >
-            <span v-if="isDesktop">{{t('buttons.login')}}</span>
-            <q-icon name="login" v-else/>
-          </q-btn>
-          <q-btn
-                 v-if="!isRegistrationRoute && isDesktop"
-                 flat
-                 dense
-                 color="primary"
-                 class="btn-link"
-                 :label="t('buttons.registration')"
-                 :to="localeTo('registration')"
-          />
-        </div>
+        <q-btn
+          v-if="!isLoginRoute && !isRegistrationRoute"
+          unelevated
+          rounded
+          class="q-py-sm"
+          :class="isDesktop ? 'btn-link' : 'btn-icon'"
+          :to="localeTo('profile') "
+        >
+          <span v-if="isDesktop">{{t('buttons.profile')}}</span>
+          <q-icon name="account_circle" v-else/>
+        </q-btn>
         <AppLanguageSwitcher />
       </div>
     </q-toolbar>
@@ -196,6 +146,47 @@ watch(() => route.fullPath, async () => {
 
     @media (min-width: 158.75em) {
       margin-left: 24px;
+    }
+  }
+
+  .q-toolbar__title {
+    flex: 0 1 auto;
+  }
+
+  .btn-link,
+  .btn-glass--primary {
+    min-height: auto;
+    font-size: 1rem;
+    line-height: 110%;
+    text-transform: capitalize;
+
+    @media (min-width: 48em) {
+      font-size: 1.25rem;
+    }
+
+    @media (min-width: 77.5em) {
+      font-size: 1.5rem;
+      border-radius: 31px;
+    }
+
+    @media (min-width: 158.75em) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .btn-download {
+    &:before {
+      border: 1px solid #03d5ff;
+      border-radius: 33px;
+      color: #03d5ff;
+      backdrop-filter: blur(8px) saturate(150%);
+      box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff;
+    }
+
+    &:hover {
+      &:before {
+
+      }
     }
   }
 

@@ -8,7 +8,8 @@
   const { t } = useI18n()
 
   const authStore = useAuthStore()
-  const { getUserData, updateUserDataRequest } = authStore
+
+  const { getUserData, updateUserDataRequest, logoutRequest } = authStore
   const { user } = storeToRefs(authStore)
   const readonly = ref(true)
   const password = ref('')
@@ -19,6 +20,7 @@
 
   const created_at = computed(() => format(new Date(user.value.created_at), 'yyyy-MM-dd HH:mm'))
   const updated_at = computed(() => format(new Date(user.value.updated_at), 'yyyy-MM-dd HH:mm'))
+
   const toggleReadonly = () => {
     if (!readonly.value) {
       getUserData()
@@ -38,6 +40,13 @@
         password_confirmation: passwordConfirmation.value ?? null,
       })
         .then(() => toggleReadonly())
+    }
+  }
+
+  const handleLogout = async () => {
+    const result = await logoutRequest()
+    if (result?.success) {
+      window.location.href = '/'
     }
   }
 </script>
@@ -180,6 +189,7 @@
           </template>
         </q-input>
 
+
         <div class="row justify-center q-mt-lg" :class="readonly ? 'justify-center' : 'justify-between'">
           <q-btn
             outline
@@ -205,6 +215,18 @@
             size="md"
             :label="t('buttons.save')"
           />
+        </div>
+        <div class="flex justify-center q-mt-xl">
+          <q-btn
+            flat
+            dense
+            size="xl"
+            color="red"
+            class="btn-link"
+            @click="handleLogout"
+          >
+            <span>{{t('buttons.logout')}}</span>
+          </q-btn>
         </div>
       </q-form>
     </div>

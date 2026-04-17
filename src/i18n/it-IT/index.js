@@ -5,12 +5,12 @@ export default {
     faq: 'FAQ',
     contactUs: 'Contattaci',
     terms: 'Termini e Privacy',
-    privacyPolicy: 'Privacy Policy'
+    privacyPolicy: 'Informativa privacy'
   },
   buttons: {
     join: 'Unisciti',
     download: 'Scarica',
-    downloadFor: 'Download for',
+    downloadFor: 'Scarica per',
     login: 'Accedi',
     logout: 'Esci',
     registration: 'Registrazione',
@@ -109,30 +109,35 @@ export default {
           role: 'Sviluppatore Frontend (Windows)',
           text: 'Prima avviare il mio ambiente di lavoro richiedeva un’eternità. Ora con Slay inizio a lavorare con un clic, risparmiando 10 minuti ogni mattina! È una vera salvezza per la produttività.',
           feature: 'Avvio immediato',
+          date: '07.01.2026'
         },
         {
           author: 'Ivan T.',
           role: 'Sviluppatore PHP/Laravel',
           text: 'Gli alias della console in Slay hanno cambiato il mio lavoro con le versioni PHP e Docker. Accesso rapido ai container, passaggio tra versioni PHP su Windows — tutto è diventato molto più semplice. Niente più comandi lunghi!',
           feature: 'Alias della console',
+          date: '28.05.2026'
         },
         {
           author: 'Maria S.',
           role: 'Sviluppatore freelance',
           text: 'Come freelance con decine di progetti, mi trovavo costantemente nel caos. Il gestore di progetti e password di Slay ha messo tutto in ordine. Tutti i progetti sono organizzati e le password sono conservate in modo sicuro. La mia produttività è aumentata notevolmente!',
           feature: 'Gestore di progetti & password',
+          date: '19.02.2026'
         },
         {
           author: 'Olga P.',
           role: 'QA Engineer',
           text: 'Per i test ho bisogno di decine di account (admin, utente, manager). Il gestore di password di Slay mi permette di tenerli tutti in ordine, passare rapidamente da uno all’altro e avere sempre accesso alle credenziali necessarie. Indispensabile!',
           feature: 'Gestore di password',
+          date: '15.06.2026'
         },
         {
           author: 'Dmitry V.',
           role: 'Sviluppatore Backend',
           text: 'Conservare le password di Stripe, Mailgun, Mailtrap e di molti server è un problema. Slay non solo le conserva in modo sicuro, ma gli alias della console hanno anche accelerato il mio accesso ai server e l’esecuzione di comandi complessi. È un must-have per il backend.',
           feature: 'Alias della console & Gestore di password',
+          date: '03.03.2026'
         }
       ]
     },
@@ -157,22 +162,22 @@ export default {
     },
   },
   download: {
-    title: 'Download SLAY',
-    subtitle: 'Choose a platform and start developing faster',
-    instruction: 'Instructions',
+    title: 'Scarica SLAY',
+    subtitle: 'Scegli una piattaforma e inizia a sviluppare più velocemente',
+    instruction: 'Istruzioni',
     list: [
       {
-        title: 'Download and install SLAY',
+        title: 'Scarica e installa SLAY',
       },
       {
-        title: 'Run <code>slay --help</code> to check the command line interface',
+        title: 'Esegui <code>slay --help</code> per verificare l’interfaccia a riga di comando',
       },
       {
-        title: 'Enjoy quick access to developer tools',
+        title: 'Goditi un accesso rapido agli strumenti per sviluppatori',
       },
     ]
   },
   text: {
-    allRightsReserved: 'All rights reserved'
+    allRightsReserved: 'Tutti i diritti riservati'
   }
 }

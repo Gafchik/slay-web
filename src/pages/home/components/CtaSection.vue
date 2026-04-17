@@ -22,7 +22,7 @@
               :to="localeTo('download')"
               class="btn-download btn-glass q-px-xl"
             >
-              {{t('buttons.join')}}
+              {{t('buttons.download')}}
             </q-btn>
           </div>
         </div>

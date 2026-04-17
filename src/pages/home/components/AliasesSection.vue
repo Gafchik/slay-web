@@ -5,6 +5,8 @@
   import Video1 from 'assets/video/alias/Alias-full.mp4'
   import Video2 from 'assets/video/alias/Alias-full.webm'
 
+  import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
+
   const { t, locale, messages } = useI18n()
 
   const aliasFeatures = computed(() => {
@@ -26,10 +28,10 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="section__video">
-                <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
-                  <source :src="Video1" type="video/mp4">
-                  <source :src="Video2" type="video/webm">
-                </video>
+                <AppVideoPreview
+                  :mp4="Video1"
+                  :webm="Video2"
+                />
               </div>
             </div>
           </div>

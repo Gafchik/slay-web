@@ -11,6 +11,7 @@
   import SftpSection from './components/SftpSection.vue'
   import TestimonialsSection from './components/TestimonialsSection.vue'
   import CtaSection from './components/CtaSection.vue'
+  import AppVideoDialog from './../blocks/AppVideoDialog.vue'
 
   const $q = useQuasar()
   const showAboutSection = computed(() => $q.screen.width >= 1240)
@@ -28,6 +29,8 @@
     <TestimonialsSection />
     <CtaSection />
   </q-page>
+
+  <AppVideoDialog />
 </template>
 
 <style scoped lang="scss"></style>

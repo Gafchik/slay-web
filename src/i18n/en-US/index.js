@@ -109,30 +109,35 @@ export default {
           role: 'Frontend Developer (Windows)',
           text: 'Launching my work environment used to take forever. Now with Slay, I start working with one click, saving 10 minutes every morning! It\'s a real productivity lifesaver.',
           feature: 'Instant launch',
+          date: '07.01.2026'
         },
         {
           author: 'Ivan T.',
           role: 'PHP/Laravel developer',
           text: 'Console aliases in Slay changed my work with PHP versions and Docker. Quick access to containers, switching between PHP versions on Windows — everything has become much easier. No more long commands!',
           feature: 'Console aliases',
+          date: '28.05.2026'
         },
         {
           author: 'Maria S.',
           role: 'Freelance developer',
           text: 'As a freelancer with dozens of projects, I constantly faced chaos. Slay’s project and password manager brought everything in order. All projects are organized, and passwords are securely stored. My productivity has skyrocketed!',
           feature: 'Project Manager & Password',
+          date: '19.02.2026'
         },
         {
           author: 'Olga P.',
           role: 'QA Engineer',
           text: 'For testing, I need dozens of accounts (admin, user, manager). Slay’s password manager allows me to keep them all organized, switch quickly, and always have access to the necessary credentials. Indispensable!',
           feature: 'Password manager',
+          date: '15.06.2026'
         },
         {
           author: 'Dmitry V.',
           role: 'Backend developer',
           text: 'Storing passwords for Stripe, Mailgun, Mailtrap, and many servers is a pain. Slay not only stores them securely, but console aliases have also sped up my access to servers and execution of complex commands. It’s a must-have for backend.',
           feature: 'Console aliases & Password manager',
+          date: '03.03.2026'
         }
       ]
     },

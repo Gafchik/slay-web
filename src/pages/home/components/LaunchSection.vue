@@ -4,6 +4,8 @@
   import Video1 from 'assets/video/laucher/Launcher-full.mp4'
   import Video2 from 'assets/video/laucher/Launcher-full.webm'
 
+  import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
+
   const { t } = useI18n()
 </script>
 
@@ -15,10 +17,10 @@
           <div class="row">
             <div class="col-md-8 col-xs-12">
               <div class="section__video">
-                <video preload="auto" autoplay muted loop playsinline width="100%" height="100%">
-                  <source :src="Video1" type="video/mp4">
-                  <source :src="Video2" type="video/webm">
-                </video>
+                <AppVideoPreview
+                  :mp4="Video1"
+                  :webm="Video2"
+                />
               </div>
             </div>
             <div class="col-md-4 col-xs-12">

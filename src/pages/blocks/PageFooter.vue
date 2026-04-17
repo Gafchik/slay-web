@@ -14,7 +14,7 @@
           <q-btn
             flat
             dense
-            color="white"
+            color="primary"
             class="btn-link"
             :label="t('routes.terms')"
             :to="localeTo('terms_of_services')"
@@ -24,7 +24,7 @@
           <q-btn
             flat
             dense
-            color="white"
+            color="primary"
             class="btn-link"
             :label="t('routes.privacyPolicy')"
             :to="localeTo('privacy_policy')"
@@ -37,7 +37,8 @@
 </template>
 
 <style scoped lang="scss">
-  .q-footer {
+  .footer {
+    position: absolute;
     font-size: 1rem;
     line-height: 120%;
     padding: 16px 0;
@@ -63,6 +64,7 @@
 
   .q-btn {
     &.btn-link {
+
       min-height: 1.5rem;
       font-size: inherit;
       line-height: inherit;
