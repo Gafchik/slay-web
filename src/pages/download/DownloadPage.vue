@@ -124,6 +124,24 @@ const instructions = computed(() => {
     }
   }
 
+  .btn-glass--primary {
+    &:before {
+      box-shadow: 0 0 3px #03d5ff, inset 0 0 9px #03d5ff;
+    }
+
+    &:hover {
+      &:before {
+        box-shadow: 0 0 6px #03d5ff, inset 0 0 6px #03d5ff;
+      }
+    }
+
+    &:active {
+      &:before {
+        box-shadow: 0 0 9px #03d5ff, inset 0 0 3px #03d5ff;
+      }
+    }
+  }
+
   .q-img {
     width: 48px;
     height: 48px;

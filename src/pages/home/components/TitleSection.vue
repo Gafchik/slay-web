@@ -140,11 +140,25 @@
     .q-item {
       min-height: auto;
       margin: 0 8px;
-      border: 1px solid #03d5ff;
-      border-radius: 33px;
+      border-radius: 12px;
       color: #03d5ff;
+      background-color: color-mix(in srgb, #03d5ff 5%, transparent);
       backdrop-filter: blur(8px) saturate(150%);
-      box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, #03d5ff calc(1* 10%), transparent),
+      inset 1.8px 3px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 90%), transparent),
+      inset -2px -2px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 80%), transparent),
+      inset -3px -8px 1px -6px color-mix(in srgb, #03d5ff calc(1 * 60%), transparent),
+      inset -0.3px -1px 4px 0px color-mix(in srgb, #03d5ff calc(1 * 12%), transparent),
+      inset -1.5px 2.5px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
+      inset 0px 3px 4px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
+      inset 2px -6.5px 1px -4px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
+      0px 1px 5px 0px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
+      0px 6px 16px 0px color-mix(in srgb, #03d5ff calc(1 * 8%), transparent);
+      transition: background-color 400ms
+      cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+      cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+      color: #03d5ff;
+      box-sizing: border-box;
       font-size: 1rem;
       line-height: 110%;
 
@@ -167,7 +181,6 @@
       @media (min-width: 158.75em) {
         padding: 16px 20px;
         margin: 0 20px;
-        border-radius: 38px;
         font-size: 2.25rem;
       }
 

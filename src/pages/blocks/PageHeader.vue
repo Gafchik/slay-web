@@ -174,18 +174,20 @@ watch(() => route.fullPath, async () => {
     }
   }
 
-  .btn-download {
+  .btn-glass--primary {
     &:before {
-      border: 1px solid #03d5ff;
-      border-radius: 33px;
-      color: #03d5ff;
-      backdrop-filter: blur(8px) saturate(150%);
-      box-shadow: 0 0 5px #03d5ff, inset 0 0 10px #03d5ff;
+      box-shadow: 0 0 4px #03d5ff, inset 0 0 12px #03d5ff;
     }
 
     &:hover {
       &:before {
+        box-shadow: 0 0 6px #03d5ff, inset 0 0 6px #03d5ff;
+      }
+    }
 
+    &:active {
+      &:before {
+        box-shadow: 0 0 12px #03d5ff, inset 0 0 4px #03d5ff;
       }
     }
   }
