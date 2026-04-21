@@ -7,7 +7,7 @@ import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
 import AppLanguageSwitcher from 'src/pages/blocks/AppLanguageSwitcher.vue'
 
-import Logotype from 'assets/Logotype.png'
+import Logotype from 'assets/Logotype.svg'
 
 const { t } = useI18n()
 const { localeTo, localeRouteName } = useLocaleRoute()
