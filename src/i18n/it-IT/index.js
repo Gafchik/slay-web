@@ -3,7 +3,7 @@ export default {
     download: 'Scarica',
     pricing: 'Prezzi',
     faq: 'FAQ',
-    contactUs: 'Contattaci',
+    contacts: 'Contattaci',
     terms: 'Termini e Privacy',
     privacyPolicy: 'Informativa privacy'
   },

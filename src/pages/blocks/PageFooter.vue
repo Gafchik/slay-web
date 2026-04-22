@@ -31,6 +31,20 @@
           />
         </q-item>
       </q-list>
+
+      <q-list class="flex">
+        <q-item class="q-pa-none">
+          <q-btn
+            flat
+            dense
+            color="primary"
+            class="btn-link"
+            :label="t('routes.contacts')"
+            :to="localeTo('contacts')"
+          />
+        </q-item>
+      </q-list>
+
       <p class="text-primary text-center">© 2025 Slay. {{t('text.allRightsReserved')}}.</p>
     </q-toolbar>
   </q-footer>

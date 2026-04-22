@@ -3,7 +3,7 @@ export default {
     download: 'Завантажити',
     pricing: 'Ціна',
     faq: 'FAQ',
-    contactUs: 'Контакти',
+    contacts: 'Контакти',
     terms: 'Умови надання послуг',
     privacyPolicy: 'Політика конфіденційності'
   },

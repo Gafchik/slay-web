@@ -3,7 +3,7 @@ export default {
     download: 'Download',
     pricing: 'Prising',
     faq: 'FAQ',
-    contactUs: 'Contact Us',
+    contacts: 'Contact Us',
     terms: 'Terms of Services',
     privacyPolicy: 'Privacy Policy'
   },

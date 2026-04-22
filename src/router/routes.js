@@ -27,9 +27,9 @@ const makeChildren = (prefix = '') => [
     component: () => import('pages/download/DownloadPage.vue'),
   },
   {
-    path: 'contact-us',
-    name: `${prefix}contact_us`,
-    component: () => import('pages/contact-us/ContactUsPage.vue')
+    path: 'contacts',
+    name: `${prefix}contacts`,
+    component: () => import('pages/info/ContactsPage.vue')
   },
   {
     path: 'terms-of-services',
