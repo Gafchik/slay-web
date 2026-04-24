@@ -481,3 +481,17 @@ h1, h2, h3 {
     background: transparent;
   }
 }
+
+
+
+@font-face {
+  font-family: 'NunitoSans'; // 👈 Даём имя вашему шрифту
+  src: url('./src/assets/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+  font-weight: normal;         // Укажите вес, если файл только один
+  font-style: normal;
+  font-display: swap;          // Для красивой подгрузки
+}
+
+body {
+  font-family: $typography-font-family;
+}
