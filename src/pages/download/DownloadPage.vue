@@ -8,26 +8,29 @@ import { computed, ref } from 'vue'
   import winIcon from 'src/assets/Windows.svg'
   import ubuntuIcon from 'src/assets/Ubuntu.svg'
 
+  const downloadUrl =
+    import.meta.env.VITE_DOWNLOAD_BASE_URL ?? 'https://downloads.slay-app.dev';
+
   const list = ref([
     {
       icon: macIcon,
       text: 'Apple silicon',
-      link: 'https://slay.dev/download/macos',
+      link: downloadUrl + '/slay-mac-arm64.pkg'
     },
     {
       icon: macIcon,
       text: 'Intel chip',
-      link: 'https://slay.dev/download/macos',
+      link: downloadUrl + '/slay-mac-intel.pkg'
     },
     {
       icon: winIcon,
       text: 'Windows',
-      link: 'https://slay.dev/download/windows',
+      link: downloadUrl + '/slay-windows.exe'
     },
     {
       icon: ubuntuIcon,
       text: 'Linux',
-      link: 'https://slay.dev/download/linux',
+      link: downloadUrl + '/slay-linux.deb'
     },
   ]);
 
