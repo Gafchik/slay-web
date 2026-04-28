@@ -1,14 +1,14 @@
 <script setup>
-import { computed, ref  } from 'vue'
-import { useI18n } from 'vue-i18n'
+  import { computed, ref  } from 'vue'
+  import { useI18n } from 'vue-i18n'
 
-const { t, locale, messages } = useI18n()
+  const { t, tm } = useI18n()
 
-const slide = ref(1);
+  const slide = ref(1);
 
-const testimonials = computed(() => {
-  return messages.value[locale.value]?.sections?.reviews?.list ?? []
-})
+  const testimonials = computed(() => {
+    return tm('sections.reviews.list') || []
+  })
 </script>
 
 <template>
@@ -41,20 +41,6 @@ const testimonials = computed(() => {
                     <span class="feature q-pa-sm q-mb-lg">{{ testimonial.feature }}</span>
                     <p class="description">"{{ testimonial.text }}"</p>
                     <span class="date q-mt-auto">{{ testimonial.date }}</span>
-                  </div>
-                </q-carousel-slide>
-                <q-carousel-slide :name="1" class="column no-wrap">
-                  <div
-                    class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
-                  >
-                    <q-img
-                      class="rounded-borders col-6 full-height"
-                      src="https://cdn.quasar.dev/img/mountains.jpg"
-                    />
-                    <q-img
-                      class="rounded-borders col-6 full-height"
-                      src="https://cdn.quasar.dev/img/parallax1.jpg"
-                    />
                   </div>
                 </q-carousel-slide>
               </q-carousel>

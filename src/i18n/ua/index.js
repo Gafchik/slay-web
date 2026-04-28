@@ -19,7 +19,8 @@ export default {
     profile: 'Профіль',
     edit: 'Редагувати',
     save: 'Зберегти',
-    cancel: 'Скасувати'
+    cancel: 'Скасувати',
+    send: 'Відправити'
   },
   inputData: {
     firstName: 'Ім\'я',
@@ -27,6 +28,8 @@ export default {
     email: 'Пошта',
     password: 'Пароль',
     passwordConfirmation: 'Підтвердіть пароль',
+    name: 'Ім\'я',
+    message: 'Повідомлення',
   },
   validation: {
     required: 'Це поле обов\'язкове для заповнення',
@@ -170,5 +173,9 @@ export default {
       { title: 'Виконайте <code>slay --help</code> для перевірки CLI' },
       { title: 'Насолоджуйтесь швидким доступом до інструментів' },
     ]
+  },
+  text: {
+    allRightsReserved: 'Всі права захищено',
+    haveQuestion: "Є питання чи потрібна допомога? Ми завжди готові допомогти.",
   }
 }

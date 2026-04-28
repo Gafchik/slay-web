@@ -1,8 +1,8 @@
 <script setup>
-import { computed, ref } from 'vue'
+  import { computed, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
 
-  const { t, locale, messages } = useI18n()
+  const { t, tm } = useI18n()
 
   import macIcon from 'src/assets/macOS.svg'
   import winIcon from 'src/assets/Windows.svg'
@@ -35,7 +35,7 @@ import { computed, ref } from 'vue'
   ]);
 
 const instructions = computed(() => {
-  return messages.value[locale.value]?.download?.list ?? []
+  return tm('download.list') || []
 })
 </script>
 

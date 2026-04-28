@@ -7,10 +7,10 @@
 
   import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
 
-  const { t, locale, messages } = useI18n()
+  const { t, tm } = useI18n()
 
   const aliasFeatures = computed(() => {
-    return messages.value[locale.value]?.sections?.alias?.list ?? []
+    return tm('sections.alias.list') || []
   })
 </script>
 

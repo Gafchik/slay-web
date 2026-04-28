@@ -1,5 +1,5 @@
 <script setup>
-  import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref, computed } from 'vue'
   import { gsap } from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import { Observer } from 'gsap/Observer'
@@ -20,7 +20,7 @@
 
   gsap.registerPlugin(ScrollTrigger, Observer)
 
-  const aboutData = ref([
+  const aboutData = computed(() => [
     {
       title: t('sections.about.titleProject'),
       description: t('sections.about.descriptionProject'),

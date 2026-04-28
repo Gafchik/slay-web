@@ -2,25 +2,25 @@ export const DEFAULT_LOCALE = 'en-US'
 
 export const LOCALES = {
   en: {
-    i18n: 'en-US',
+    i18n: 'en',
     url: '',
     routePrefix: 'en_',
     label: 'English',
   },
   ru: {
-    i18n: 'ru-RU',
+    i18n: 'ru',
     url: 'ru',
     routePrefix: 'ru_',
     label: 'Русский',
   },
   uk: {
-    i18n: 'uk-UA',
+    i18n: 'ua',
     url: 'ua', // если хочешь URL именно /ua
     routePrefix: 'uk_',
     label: 'Українська',
   },
   it: {
-    i18n: 'it-IT',
+    i18n: 'it',
     url: 'it',
     routePrefix: 'it_',
     label: 'Italiano',
@@ -50,9 +50,9 @@ export const getRoutePrefixByPath = (path) => {
 export const detectBrowserLocale = () => {
   const browserLocale = navigator.language?.toLowerCase() || ''
 
-  if (browserLocale.startsWith('ru')) return 'ru-RU'
-  if (browserLocale.startsWith('uk')) return 'uk-UA'
-  if (browserLocale.startsWith('it')) return 'it-IT'
+  if (browserLocale.startsWith('ru')) return 'ru'
+  if (browserLocale.startsWith('uk')) return 'ua'
+  if (browserLocale.startsWith('it')) return 'it'
 
   return DEFAULT_LOCALE
 }

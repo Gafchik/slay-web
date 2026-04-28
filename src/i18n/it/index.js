@@ -19,7 +19,8 @@ export default {
     profile: 'Profilo',
     edit: 'Modifica',
     save: 'Salva',
-    cancel: 'Annulla'
+    cancel: 'Annulla',
+    send: 'Inviare'
   },
   inputData: {
     firstName: 'Nome',
@@ -27,6 +28,8 @@ export default {
     email: 'Email',
     password: 'Password',
     passwordConfirmation: 'Conferma la password',
+    name: 'Nome',
+    message: 'Messaggio',
   },
   validation: {
     required: 'Questo campo è obbligatorio',
@@ -178,6 +181,7 @@ export default {
     ]
   },
   text: {
-    allRightsReserved: 'Tutti i diritti riservati'
+    allRightsReserved: 'Tutti i diritti riservati',
+    haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
   }
 }

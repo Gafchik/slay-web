@@ -19,7 +19,8 @@ export default {
     profile: 'Профиль',
     edit: 'Редактировать',
     save: 'Сохранить',
-    cancel: 'Отменить'
+    cancel: 'Отменить',
+    send: 'Отправить'
   },
   inputData: {
     firstName: 'Имя',
@@ -27,6 +28,8 @@ export default {
     email: 'Почта',
     password: 'Пароль',
     passwordConfirmation: 'Подтвердите пароль',
+    name: 'Имя',
+    message: 'Сообщение',
   },
   validation: {
     required: 'Это поле обязательно к заполнению',
@@ -176,5 +179,9 @@ export default {
         title: 'Наслаждайтесь быстрым доступом к инструментам разработчика',
       },
     ]
+  },
+  text: {
+    allRightsReserved: 'Все права защищены',
+    haveQuestion: "Есть вопрос или нужна помощь? Мы всегда готовы помочь.",
   }
 }

@@ -19,14 +19,17 @@ export default {
     profile: 'Profile',
     edit: 'Edit',
     save: 'Save',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    send: 'Send'
   },
   inputData: {
     firstName: 'First name',
     lastName: 'Last name',
-    email: 'email',
-    password: 'password',
+    email: 'Email',
+    password: 'Password',
     passwordConfirmation: 'Confirm password',
+    name: 'Name',
+    message: 'Message',
   },
   validation: {
     required: 'This field is required',
@@ -178,6 +181,7 @@ export default {
     ]
   },
   text: {
-    allRightsReserved: 'All rights reserved'
+    allRightsReserved: 'All rights reserved',
+    haveQuestion: "Have a question or need help? We're here for you",
   }
 }

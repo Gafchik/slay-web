@@ -1,11 +1,11 @@
-import enUS from './en-US'
-import ruRU from './ru-RU'
-import ukUA from './uk-UA'
-import itIT from './it-IT'
+import enUS from './en'
+import ruRU from './ru'
+import ukUA from './ua'
+import itIT from './it'
 
 export default {
-  'en-US': enUS,
-  'ru-RU': ruRU,
-  'uk-UA': ukUA,
-  'it-IT': itIT,
+  'en': enUS,
+  'ru': ruRU,
+  'ua': ukUA,
+  'it': itIT,
 }
