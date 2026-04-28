@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+/*import { ref } from 'vue';*/
 import { useI18n } from 'vue-i18n'
 
-const form = ref(null);
+/*const form = ref(null);
 const userName = ref('');
 const userEmail = ref('');
-const userMessage = ref('');
+const userMessage = ref('');*/
 
 const { t } = useI18n()
 

@@ -44,7 +44,7 @@ export default {
   },
   sections: {
     home: {
-      title: 'Centro intelligente di gestione degli strumenti per',
+      title: 'Smart Launcher per tutti i tuoi strumenti di sviluppo',
       subtitle: 'Il tuo centro di comando tutto-in-uno',
       description: 'Rendi il tuo lavoro più efficiente e confortevole',
     },

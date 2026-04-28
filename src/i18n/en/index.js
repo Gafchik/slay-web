@@ -44,7 +44,7 @@ export default {
   },
   sections: {
     home: {
-      title: 'Smart developer tools control center',
+      title: 'Smart Launcher for All Your devtools',
       subtitle: 'Your all-in-one command center',
       description: 'Make your work more efficient and comfortable',
     },
