@@ -45,7 +45,7 @@
         </q-item>
       </q-list>
 
-      <p class="text-primary text-center">© 2025 Slay. {{t('text.allRightsReserved')}}.</p>
+      <p class="text-primary text-center">© 2026 Slay. {{t('text.allRightsReserved')}}.</p>
     </q-toolbar>
   </q-footer>
 </template>
