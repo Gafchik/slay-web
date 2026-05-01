@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
   import aesIcon from 'src/assets/AES.png'
@@ -7,30 +7,21 @@
   import DefenseIcon from 'src/assets/Password.png'
   import SafetyIcon from 'src/assets/Safety.png'
 
-  const { t } = useI18n()
+  const { t, tm  } = useI18n();
 
-  const passwordFeatures = ref([
-    {
-      title: t('sections.password.list.titleCoding'),
-      description: t('sections.password.list.descriptionCoding'),
-      icon: aesIcon
-    },
-    {
-      title: t('sections.password.list.titleFrame'),
-      description: t('sections.password.list.descriptionFrame'),
-      icon: FrameIcon
-    },
-    {
-      title: t('sections.password.list.titleDefense'),
-      description: t('sections.password.list.descriptionDefense'),
-      icon: DefenseIcon
-    },
-    {
-      title: t('sections.password.list.titleSafety'),
-      description: t('sections.password.list.descriptionSafety'),
-      icon: SafetyIcon
-    }
-  ])
+  const iconMap = {
+    coding: aesIcon,
+    frame: FrameIcon,
+    defense: DefenseIcon,
+    safety: SafetyIcon
+  }
+
+  const passwordFeatures = computed(() => {
+    return (tm('sections.password.list') || []).map(item => ({
+      ...item,
+      icon: iconMap[item.key]
+    }))
+  })
 </script>
 
 <template>

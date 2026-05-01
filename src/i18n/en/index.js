@@ -20,7 +20,8 @@ export default {
     edit: 'Edit',
     save: 'Save',
     cancel: 'Cancel',
-    send: 'Send'
+    send: 'Send',
+    delete: 'Delete'
   },
   inputData: {
     firstName: 'First name',
@@ -30,6 +31,7 @@ export default {
     passwordConfirmation: 'Confirm password',
     name: 'Name',
     message: 'Message',
+    agreeTos: 'I have read and agree to the'
   },
   validation: {
     required: 'This field is required',
@@ -89,16 +91,28 @@ export default {
     password: {
       title: 'Password manager',
       description: 'Secure storage and easy password organization',
-      list: {
-        titleCoding: 'Reliable AES-256-GCM encryption',
-        descriptionCoding: 'Maximum protection of your credentials using advanced encryption standards.',
-        titleFrame: 'Hierarchical folder structure',
-        descriptionFrame: 'Organize passwords and sensitive data into convenient folders and subfolders.',
-        titleDefense: 'Master password protection',
-        descriptionDefense: 'Your data is encrypted with a unique master password known only to you.',
-        titleSafety: 'Secure storage of any information',
-        descriptionSafety: 'Store not only passwords, but also notes, API keys, and other sensitive data.',
-      }
+      list: [
+        {
+          key: 'coding',
+          title: 'Reliable AES-256-GCM encryption',
+          description: 'Maximum protection of your credentials using advanced encryption standards.'
+        },
+        {
+          key: 'frame',
+          title: 'Hierarchical folder structure',
+          description: 'Organize passwords and sensitive data into convenient folders and subfolders.'
+        },
+        {
+          key: 'defense',
+          title: 'Master password protection',
+          description: 'Your data is encrypted with a unique master password known only to you.'
+        },
+        {
+          key: 'safety',
+          title: 'Secure storage of any information',
+          description: 'Store not only passwords, but also notes, API keys, and other sensitive data.'
+        }
+      ]
     },
     sftp: {
       title: 'Server management',
@@ -154,6 +168,14 @@ export default {
       title: 'Profile',
       created_at: 'Created',
       updated_at: 'Updated',
+      profileInfo: 'Profile information',
+      profileDescription: 'View and manage your personal information.',
+      profileAction: 'Account Actions',
+      profileActionDescription: 'Manage your account settings.',
+      profileRemove: 'Danger Zone',
+      profileRemoveDescription: 'Irreversible and destructive actions',
+      deleteAccount: 'Delete Account',
+      deleteAccountDescription: 'Permanently delete your account and all of your data',
     },
     login: {
       title: 'Login',
@@ -183,5 +205,6 @@ export default {
   text: {
     allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
+    and: 'and',
   }
 }

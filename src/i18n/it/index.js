@@ -20,7 +20,9 @@ export default {
     edit: 'Modifica',
     save: 'Salva',
     cancel: 'Annulla',
-    send: 'Inviare'
+    send: 'Inviare',
+    delete: 'Eliminare',
+    agreeTos: 'Ho letto e accetto i'
   },
   inputData: {
     firstName: 'Nome',
@@ -89,16 +91,28 @@ export default {
     password: {
       title: 'Gestore di password',
       description: 'Archiviazione sicura e organizzazione semplice delle password',
-      list: {
-        titleCoding: 'Crittografia AES-256-GCM affidabile',
-        descriptionCoding: 'Massima protezione delle tue credenziali grazie a standard di crittografia avanzati.',
-        titleFrame: 'Struttura gerarchica delle cartelle',
-        descriptionFrame: 'Organizza password e dati sensibili in comode cartelle e sottocartelle.',
-        titleDefense: 'Protezione con password principale',
-        descriptionDefense: 'I tuoi dati sono crittografati con una password principale unica conosciuta solo da te.',
-        titleSafety: 'Archiviazione sicura di qualsiasi informazione',
-        descriptionSafety: 'Archivia non solo password, ma anche note, chiavi API e altri dati sensibili.',
-      }
+      list: [
+        {
+          key: 'coding',
+          title: 'Crittografia AES-256-GCM affidabile',
+          description: 'Massima protezione delle tue credenziali grazie a standard di crittografia avanzati.'
+        },
+        {
+          key: 'frame',
+          title: 'Struttura gerarchica delle cartelle',
+          description: 'Organizza password e dati sensibili in comode cartelle e sottocartelle.'
+        },
+        {
+          key: 'defense',
+          title: 'Protezione con password principale',
+          description: 'I tuoi dati sono crittografati con una password principale unica conosciuta solo da te.'
+        },
+        {
+          key: 'safety',
+          title: 'Archiviazione sicura di qualsiasi informazione',
+          description: 'Archivia non solo password, ma anche note, chiavi API e altri dati sensibili.'
+        }
+      ]
     },
     sftp: {
       title: 'Gestione del server',
@@ -154,6 +168,14 @@ export default {
       title: 'Profilo',
       created_at: 'Creato',
       updated_at: 'Aggiornato',
+      profileInfo: 'Informazioni del profilo',
+      profileDescription: 'Visualizza e gestisci le tue informazioni personali.',
+      profileAction: 'Azioni sull\'account',
+      profileActionDescription: 'Gestisci le impostazioni del tuo account.',
+      profileRemove: 'Zona di pericolo',
+      profileRemoveDescription: 'Azioni irreversibili e distruttive',
+      deleteAccount: 'Elimina account',
+      deleteAccountDescription: 'Elimina definitivamente il tuo account e tutti i tuoi dati',
     },
     login: {
       title: 'Login',
@@ -183,5 +205,6 @@ export default {
   text: {
     allRightsReserved: 'Tutti i diritti riservati',
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
+    and: 'e'
   }
 }

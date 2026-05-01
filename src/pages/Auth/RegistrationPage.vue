@@ -18,6 +18,7 @@ const email = ref('')
 const password = ref('')
 const passwordConfirmation = ref('')
 const form = ref(null)
+const agreeTos = ref(false)
 
 const onSubmit = async () => {
   if (!form.value) return
@@ -147,6 +148,26 @@ const onSubmit = async () => {
               <q-icon name="lock" color="white" />
             </template>
           </q-input>
+
+          <q-checkbox v-model="agreeTos"
+                      dark
+                      color="primary">
+            <template #default>
+              <span>
+                {{ t('inputData.agreeTos') }}
+
+                <RouterLink :to="localeTo('terms_of_services')" class="text-primary">
+                  {{ t('routes.terms') }}
+                </RouterLink>
+
+                {{ t('text.and') }}
+
+                <RouterLink :to="localeTo('privacy_policy')" class="text-primary">
+                  {{ t('routes.privacyPolicy') }}
+                </RouterLink>
+              </span>
+            </template>
+          </q-checkbox>
 
           <div class="row justify-between q-mt-lg">
             <q-btn

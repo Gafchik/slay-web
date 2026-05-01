@@ -9,8 +9,8 @@
 <template>
   <q-footer class="footer glass">
     <q-toolbar class="justify-between">
-      <q-list class="flex">
-        <q-item class="q-pa-none q-mr-md">
+      <q-list class="flex justify-center">
+        <q-item class="q-pa-none">
           <q-btn
             flat
             dense
@@ -59,8 +59,14 @@
     border-radius: 20px 20px 0 0;
 
     .q-toolbar {
+      flex-direction: column;
+      align-items: center;
       min-height: auto;
       padding: 0 16px;
+
+      @media screen and (min-width: 64em) {
+        flex-direction: row;
+      }
 
       @media screen and (min-width: 77.5em) {
         padding: 0 24px;
@@ -72,8 +78,22 @@
     }
   }
 
-  .q-item {
-    min-height: auto;
+  .q-list {
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 64em) {
+      margin: 0;
+    }
+
+    .q-item {
+      min-height: auto;
+
+      &:first-child:not(:last-child) {
+        @media screen and (min-width: 64em) {
+          margin-right: 16px;
+        }
+      }
+    }
   }
 
   .q-btn {
