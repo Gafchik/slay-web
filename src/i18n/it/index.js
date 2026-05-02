@@ -1,4 +1,8 @@
 export default {
+  confirmDialog: {
+    cancel: 'Annulla',
+    confirm: 'Conferma',
+  },
   routes: {
     download: 'Scarica',
     pricing: 'Prezzi',
@@ -176,6 +180,10 @@ export default {
       profileRemoveDescription: 'Azioni irreversibili e distruttive',
       deleteAccount: 'Elimina account',
       deleteAccountDescription: 'Elimina definitivamente il tuo account e tutti i tuoi dati',
+      deleteConfirm: {
+        title: 'Eliminazione dell\'account',
+        text: 'Sei sicuro di voler eliminare definitivamente il tuo account?',
+      }
     },
     login: {
       title: 'Login',

@@ -125,6 +125,12 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     return isLoggedIn.value
   }
 
+  const deleteAccountRequest = () => {
+    showLoading()
+    api.delete('/user/delete')
+      .finally(() => hideLoading())
+  }
+
   return {
     accessToken,
     user,
@@ -138,5 +144,6 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     updateUserDataRequest,
     loginGoggleRequest,
     setAccessToken,
+    deleteAccountRequest,
   }
 })

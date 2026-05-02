@@ -1,4 +1,8 @@
 export default {
+  confirmDialog: {
+    cancel: 'Отмена',
+    confirm: 'Подтвердить',
+  },
   routes: {
     download: 'Скачать',
     pricing: 'Цены',
@@ -176,6 +180,10 @@ export default {
       profileRemoveDescription: 'Необратимые и разрушительные действия',
       deleteAccount: 'Удалить аккаунт',
       deleteAccountDescription: 'Удалите свою учетную запись и все свои данные навсегда.',
+      deleteConfirm: {
+        title: 'Удаление аккаунта',
+        text: 'Вы уверены, что хотите навсегда удалить свой аккаунт?',
+      }
     },
     login: {
       title: 'Логин',

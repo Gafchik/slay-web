@@ -5,11 +5,15 @@
   import { useAuthStore } from 'stores/auth-store.js'
   import { storeToRefs } from 'pinia'
   import { ref } from 'vue'
+  import { useConfirmDialogStore } from 'stores/confirm-dialog-store.js'
+  import ConfirmDialog from '../../components/dialog/ConfirmDialog.vue'
   const { t } = useI18n()
 
   const authStore = useAuthStore()
+  const confirmDialogStore = useConfirmDialogStore()
+  const { openConfirmDialog } = confirmDialogStore
 
-  const { getUserData, updateUserDataRequest, logoutRequest } = authStore
+  const { getUserData, updateUserDataRequest, logoutRequest, deleteAccountRequest } = authStore
   const { user } = storeToRefs(authStore)
   const readonly = ref(true)
   const password = ref('')
@@ -51,7 +55,17 @@
   }
 
   const deleteAccount = async () => {
-
+    openConfirmDialog(
+      t('account.profile.deleteConfirm.title'),
+      t('account.profile.deleteConfirm.text'),
+      deleteAccountRequest,
+      async () => {
+        const result = await logoutRequest()
+        if (result?.success) {
+          window.location.href = '/'
+        }
+      },
+    )
   }
 </script>
 
@@ -283,6 +297,7 @@
           </div>
         </q-form>
       </section>
+      <confirm-dialog/>
     </div>
   </q-page>
 </template>
