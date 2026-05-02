@@ -125,10 +125,14 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     return isLoggedIn.value
   }
 
-  const deleteAccountRequest = () => {
+  const deleteAccountRequest = async () => {
     showLoading()
-    api.delete('/user/delete')
-      .finally(() => hideLoading())
+    try {
+      await api.delete('/user/delete')
+      return { success: true }
+    } finally {
+      hideLoading()
+    }
   }
 
   return {

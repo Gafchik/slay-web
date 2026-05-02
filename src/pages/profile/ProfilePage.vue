@@ -59,12 +59,7 @@
       t('account.profile.deleteConfirm.title'),
       t('account.profile.deleteConfirm.text'),
       deleteAccountRequest,
-      async () => {
-        const result = await logoutRequest()
-        if (result?.success) {
-          window.location.href = '/'
-        }
-      },
+      handleLogout
     )
   }
 </script>
