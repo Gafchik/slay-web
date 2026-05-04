@@ -213,7 +213,7 @@ export default {
   },
   pricing: {
     freeTrial: 'Free Trial',
-    subTitle: 'Get full access to all SLAY features',
+    subTitle: 'Choose your plan and get full access to all SLAY features',
     info: {
       free: 'after 1 month free',
       list: [

@@ -213,7 +213,7 @@ export default {
   },
   pricing: {
     freeTrial: 'Prova gratuita',
-    subTitle: 'Ottieni accesso completo a tutte le funzionalità di SLAY',
+    subTitle: 'Scegli il tuo piano tariffario e ottieni l\'accesso completo a tutte le funzionalità di SLAY',
     info: {
       free: 'dopo 1 mese gratis',
       list: [
