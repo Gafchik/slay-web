@@ -5,7 +5,7 @@ export default {
   },
   routes: {
     download: 'Scarica',
-    pricing: 'Prezzi',
+    pricing: 'Planes',
     faq: 'FAQ',
     contacts: 'Contattaci',
     terms: 'Termini e Privacy',

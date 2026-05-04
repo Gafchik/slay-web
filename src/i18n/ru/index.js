@@ -5,7 +5,7 @@ export default {
   },
   routes: {
     download: 'Скачать',
-    pricing: 'Цены',
+    pricing: 'Тарифы',
     faq: 'FAQ',
     contacts: 'Контакты',
     terms: 'Условия обслуживания',

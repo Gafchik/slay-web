@@ -5,7 +5,7 @@ export default {
   },
   routes: {
     download: 'Завантажити',
-    pricing: 'Ціни',
+    pricing: 'Тарифи',
     faq: 'FAQ',
     contacts: 'Контакти',
     terms: 'Умови надання послуг',
