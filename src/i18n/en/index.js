@@ -271,12 +271,12 @@ export default {
       {
         icon: 'calendar_month',
         title: 'Start with a 1-month free trial.',
-        description: 'A valid payment method is required.',
+        description: 'The trial version starts from the moment of registration.',
       },
       {
         icon: 'cached',
-        title: 'After the trial, your subscription will automatically begin unless canceled.',
-        description: 'Subscriptions automatically renew.',
+        title: 'After the trial period ends, access to the service will require payment.',
+        description: 'After payment, access will be restored without data loss.',
       },
       {
         icon: 'free_cancellation',
@@ -293,11 +293,39 @@ export default {
         title: 'We use end-to-end encryption.',
         description: 'To keep your data safe and private.',
       },
-    ]
+    ],
+    cards: {
+      monthly: {
+        title: "Monthly",
+        subtitle: "Billed monthly",
+        price: "$7.99",
+        discount: "",
+        badge: ""
+      },
+      sixMonths: {
+        title: "6 Months",
+        subtitle: "Billed every 6 months",
+        price: "$6.99",
+        discount: "12%",
+        discountPrice: "$6",
+        badge: ""
+      },
+      yearly: {
+        title: "Yearly",
+        subtitle: "Billed annually",
+        price: "$5.99",
+        discount: "25%",
+        discountPrice: "$24",
+        badge: "Best Value"
+      }
+    }
   },
   text: {
     allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
     and: 'and',
-  }
+  },
+  common: {
+    month: "month",
+  },
 }

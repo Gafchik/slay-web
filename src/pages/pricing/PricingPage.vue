@@ -9,30 +9,31 @@
 
   const defaultPrice = ref('$9.99');
 
-  const cards = ref([
+  const cards = computed(() =>[
     {
-      title: 'Monthly',
-      subtitle: 'Billed monthly',
-      price: '$7.99',
-      discount: '',
-      badget: '',
+      title: t('pricing.cards.monthly.title'),
+      subtitle: t('pricing.cards.monthly.subtitle'),
+      price: t('pricing.cards.monthly.price'),
+      discount: t('pricing.cards.monthly.discount'),
+      badge: t('pricing.cards.monthly.badge'),
+      discountPrice: null
     },
     {
-      title: '6 Months',
-      subtitle: 'Billed every 6 months',
-      price: '$6.99',
-      discount: '12%',
-      discountPrice: '$6',
-      badget: ''
+      title: t('pricing.cards.sixMonths.title'),
+      subtitle: t('pricing.cards.sixMonths.subtitle'),
+      price: t('pricing.cards.sixMonths.price'),
+      discount: t('pricing.cards.sixMonths.discount'),
+      discountPrice: t('pricing.cards.sixMonths.discountPrice'),
+      badge: t('pricing.cards.sixMonths.badge')
     },
     {
-      title: 'Yearly',
-      subtitle: 'Billed annually',
-      price: '$5.99',
-      discount: '25%',
-      discountPrice: '$24',
-      badget: 'Best Value'
-    },
+      title: t('pricing.cards.yearly.title'),
+      subtitle: t('pricing.cards.yearly.subtitle'),
+      price: t('pricing.cards.yearly.price'),
+      discount: t('pricing.cards.yearly.discount'),
+      discountPrice: t('pricing.cards.yearly.discountPrice'),
+      badge: t('pricing.cards.yearly.badge')
+    }
   ]);
 
   const getCardInfo = (card) => {
@@ -88,9 +89,9 @@
                   <h2 class="card-title q-mb-xs">{{item.title}}</h2>
                   <p class="card-subtitle q-mb-md">{{item.subtitle}}</p>
                   <span class="card-price--default q-mb-md">{{defaultPrice}}</span>
-                  <p class="card-price q-mb-xs"><span class="card-price--promo">{{item.price}}</span> / month</p>
+                  <p class="card-price q-mb-xs"><span class="card-price--promo">{{item.price}}</span> / {{t('common.month')}}</p>
                   <p class="card-free">{{t('pricing.info.free')}}</p>
-                  <span class="card-badget" v-if="item.badget">{{item.badget}}</span>
+                  <span class="card-badget" v-if="item.badge">{{item.badge}}</span>
                 </div>
                 <div class="card__main column q-pb-md q-mb-md">
                   <q-list class="column text-white q-mb-md">

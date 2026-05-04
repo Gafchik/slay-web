@@ -26,7 +26,8 @@ export default {
     cancel: 'Annulla',
     send: 'Inviare',
     delete: 'Eliminare',
-    agreeTos: 'Ho letto e accetto i'
+    agreeTos: 'Ho letto e accetto i',
+    start: 'Comenzar {data}'
   },
   inputData: {
     firstName: 'Nome',
@@ -210,9 +211,121 @@ export default {
       },
     ]
   },
+  pricing: {
+    freeTrial: 'Prova gratuita',
+    subTitle: 'Ottieni accesso completo a tutte le funzionalità di SLAY',
+    info: {
+      free: 'dopo 1 mese gratis',
+      list: [
+        {
+          key: 'full',
+          title: 'Accesso completo a tutte le funzionalità'
+        },
+        {
+          key: 'cancel',
+          title: 'Annulla in qualsiasi momento'
+        },
+        {
+          key: 'period',
+          title: 'Accesso fino alla fine del periodo di fatturazione'
+        },
+        {
+          key: 'renewal',
+          title: 'Rinnovo automatico'
+        },
+        {
+          key: 'discount',
+          title: 'Risparmia {discount} rispetto al pagamento mensile'
+        },
+      ],
+      taxes: 'Le tasse possono essere applicate al momento del pagamento in base alla tua posizione.',
+      autoPay: '{price} verrà addebitato {period} dopo la fine del periodo di prova',
+    },
+    features: {
+      title: 'Tutto incluso',
+      description: 'Accesso completo a tutte le funzionalità di SLAY in ogni piano',
+      list: [
+        {
+          icon: 'folder',
+          title: 'Gestore di progetti'
+        },
+        {
+          icon: 'rocket_launch',
+          title: 'Avvio rapido'
+        },
+        {
+          icon: 'terminal',
+          title: 'Alias della console'
+        },
+        {
+          icon: 'lock',
+          title: 'Gestore di password'
+        },
+        {
+          icon: 'cloud',
+          title: 'Gestione dei server'
+        },
+      ],
+    },
+    details: [
+      {
+        icon: 'calendar_month',
+        title: 'Inizia con una prova gratuita di 1 mese.',
+        description: 'La versione di prova inizia dal momento della registrazione.',
+      },
+      {
+        icon: 'cached',
+        title: 'Dopo la fine del periodo di prova, l’accesso al servizio richiederà il pagamento',
+        description: 'Dopo il pagamento, l’accesso verrà ripristinato senza perdita di dati.',
+      },
+      {
+        icon: 'free_cancellation',
+        title: 'Puoi annullare in qualsiasi momento.',
+        description: 'L’accesso rimane attivo fino alla fine del periodo di fatturazione.',
+      },
+      {
+        icon: 'safety_check',
+        title: 'Pagamenti sicuri elaborati da Paddle.',
+        description: 'Le tue informazioni di pagamento sono al sicuro e non vengono mai memorizzate da noi.',
+      },
+      {
+        icon: 'lock',
+        title: 'Utilizziamo la crittografia end-to-end.',
+        description: 'Per proteggere i tuoi dati e mantenerli privati.',
+      },
+    ],
+    cards: {
+      monthly: {
+        title: "Mensile",
+        subtitle: "Fatturato mensilmente",
+        price: "$7.99",
+        discount: "",
+        badge: ""
+      },
+      sixMonths: {
+        title: "6 mesi",
+        subtitle: "Fatturato ogni 6 mesi",
+        price: "$6.99",
+        discount: "12%",
+        discountPrice: "$6",
+        badge: ""
+      },
+      yearly: {
+        title: "Annuale",
+        subtitle: "Fatturato annualmente",
+        price: "$5.99",
+        discount: "25%",
+        discountPrice: "$24",
+        badge: "Miglior valore"
+      }
+    }
+  },
   text: {
     allRightsReserved: 'Tutti i diritti riservati',
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
     and: 'e'
+  },
+  common: {
+    month: "mese",
   }
 }
