@@ -72,7 +72,7 @@ watch(() => route.fullPath, async () => {
           unelevated
           rounded
           class="btn-glass--primary q-py-sm"
-          :to="localeTo('download')"
+          :to="localeTo('pricing')"
         >
           <span v-if="isDesktop">{{t('buttons.download')}} SLAY</span>
           <q-icon name="download" v-else/>

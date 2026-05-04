@@ -202,6 +202,7 @@ body {
   -webkit-text-fill-color: transparent; /* делаем текст прозрачным, чтобы был виден фон */
   background-clip: text; /* для Firefox */
   color: transparent;
+  font-weight: 700;
 }
 
 .gradient-bg {

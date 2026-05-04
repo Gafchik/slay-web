@@ -1,7 +1,7 @@
 export default {
   routes: {
     download: 'Download',
-    pricing: 'Prising',
+    pricing: 'Pricing',
     faq: 'FAQ',
     contacts: 'Contact Us',
     terms: 'Terms of Services',
@@ -21,7 +21,8 @@ export default {
     save: 'Save',
     cancel: 'Cancel',
     send: 'Send',
-    delete: 'Delete'
+    delete: 'Delete',
+    start: 'Start {data}'
   },
   inputData: {
     firstName: 'First name',
@@ -199,6 +200,90 @@ export default {
       },
       {
         title: 'Enjoy quick access to developer tools',
+      },
+    ]
+  },
+  pricing: {
+    freeTrial: 'Free Trial',
+    subTitle: 'Get full access to all SLAY features',
+    info: {
+      free: 'after 1 month free',
+      list: [
+        {
+          key: 'full',
+          title: 'Full access to all features'
+        },
+        {
+          key: 'cancel',
+          title: 'Cancel anytime'
+        },
+        {
+          key: 'period',
+          title: 'Access until the end of the billing period'
+        },
+        {
+          key: 'renewal',
+          title: 'Automatic renewal'
+        },
+        {
+          key: 'discount',
+          title: 'Save {discount} compared to monthly'
+        },
+      ],
+      taxes: 'Taxes may be applied at checkout based on your location.',
+      autoPay: '{price} will be charged {period} after the trial',
+    },
+    features: {
+      title: 'Everything included',
+      description: 'Full access to all SLAY features in every plan',
+      list: [
+        {
+          icon: 'folder',
+          title: 'Project Manager'
+        },
+        {
+          icon: 'rocket_launch',
+          title: 'Launcher workspace'
+        },
+        {
+          icon: 'terminal',
+          title: 'Console aliases'
+        },
+        {
+          icon: 'lock',
+          title: 'Password Manager'
+        },
+        {
+          icon: 'cloud',
+          title: 'Servers'
+        },
+      ],
+    },
+    details: [
+      {
+        icon: 'calendar_month',
+        title: 'Start with a 1-month free trial.',
+        description: 'A valid payment method is required.',
+      },
+      {
+        icon: 'cached',
+        title: 'After the trial, your subscription will automatically begin unless canceled.',
+        description: 'Subscriptions automatically renew.',
+      },
+      {
+        icon: 'free_cancellation',
+        title: 'You can cancel anytime.',
+        description: 'Access remains active until the end of the billing period.',
+      },
+      {
+        icon: 'safety_check',
+        title: 'Secure payments processed by Paddle.',
+        description: 'Your payment information is safe and never stored by us.',
+      },
+      {
+        icon: 'lock',
+        title: 'We use end-to-end encryption.',
+        description: 'To keep your data safe and private.',
       },
     ]
   },

@@ -35,7 +35,7 @@
             <h1 class="title q-mb-lg">{{t('sections.home.title')}}</h1>
             <p class="subtitle">{{t('sections.home.subtitle')}}</p>
             <p class="subtitle q-mb-xl">{{t('sections.home.description')}}</p>
-            <q-btn :to="localeTo('download')"
+            <q-btn :to="localeTo('pricing')"
                    unelevated
                    rounded
                    class="btn-download btn-glass--primary q-px-xl">
