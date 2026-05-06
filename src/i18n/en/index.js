@@ -9,7 +9,8 @@ export default {
     faq: 'FAQ',
     contacts: 'Contact Us',
     terms: 'Terms of Services',
-    privacyPolicy: 'Privacy Policy'
+    privacyPolicy: 'Privacy Policy',
+    refundPolicy: 'Refund Policy',
   },
   buttons: {
     join: 'Join',
@@ -235,11 +236,10 @@ export default {
         },
         {
           key: 'discount',
-          title: 'Save {discount} compared to monthly'
+          title: 'Save {discount} - only {discountPrice}'
         },
       ],
       taxes: 'Taxes may be applied at checkout based on your location.',
-      autoPay: '{price} will be charged {period} after the trial',
     },
     features: {
       title: 'Everything included',
@@ -300,23 +300,27 @@ export default {
         subtitle: "Billed monthly",
         price: "$7.99",
         discount: "",
-        badge: ""
+        discountPrice: "",
+        badge: "",
+        period: 'month'
       },
       sixMonths: {
         title: "6 Months",
-        subtitle: "Billed every 6 months",
-        price: "$6.99",
+        subtitle: "Billed semiannually",
+        price: "$41.94",
         discount: "12%",
-        discountPrice: "$6",
-        badge: ""
+        discountPrice: "$6.99/month",
+        badge: "",
+        period: 'every 6 month',
       },
       yearly: {
         title: "Yearly",
         subtitle: "Billed annually",
-        price: "$5.99",
+        price: "$71.88",
         discount: "25%",
-        discountPrice: "$24",
-        badge: "Best Value"
+        discountPrice: "$5.99/month",
+        badge: "Best Value",
+        period: 'per year'
       }
     }
   },
@@ -324,8 +328,5 @@ export default {
     allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
     and: 'and',
-  },
-  common: {
-    month: "month",
   },
 }

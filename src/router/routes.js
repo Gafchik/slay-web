@@ -42,6 +42,11 @@ const makeChildren = (prefix = '') => [
     component: () => import('pages/info/PrivacyPolicy.vue')
   },
   {
+    path: 'refund-policy',
+    name: `${prefix}refund_policy`,
+    component: () => import('pages/info/RefundPolicy.vue')
+  },
+  {
     path: 'pricing',
     name: `${prefix}pricing`,
     component: () => import('pages/pricing/PricingPage.vue')

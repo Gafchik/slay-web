@@ -1,5 +1,7 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 </script>
 
 <template>
@@ -8,11 +10,11 @@
       <div class="container">
         <div class="section__body">
           <div class="section__title text-center q-mb-xl">
-            <h2 class="gradient-text ">Privacy Policy</h2>
+            <h2 class="gradient-text ">{{t('routes.privacyPolicy')}}</h2>
           </div>
 
           <div class="section__main">
-            <small>Last updated: April 28, 2026</small>
+            <small>Last updated: May 1, 2026</small>
 
             <h3>1. Introduction</h3>
             <p>This Privacy Policy explains how SLAY (“we”, “our”, or “us”) collects, uses, and protects your personal data when you use our website and desktop applications (Windows, macOS, Linux) (the “Service”).</p>
@@ -51,7 +53,7 @@
             <ul>
               <li>provide, operate, and maintain the Service;</li>
               <li>authenticate users;</li>
-              <li>manage subscriptions and payments;</li>
+              <li>manage free trial access, subscriptions, and payments;</li>
               <li>improve performance and usability;</li>
               <li>ensure security and prevent abuse.</li>
             </ul>
@@ -59,7 +61,7 @@
             <h3>4. Sensitive Data and Security</h3>
             <p>Sensitive data stored in the Service is protected using industry-standard encryption.</p>
             <ul>
-              <li>data is encrypted before storage;</li>
+              <li>Sensitive data is encrypted before storage;</li>
               <li>encryption is based on user-controlled credentials (e.g., a master password);</li>
               <li>we do not have access to your decrypted sensitive data.</li>
             </ul>
@@ -84,7 +86,7 @@
             </ul>
             <p>We may introduce analytics services in the future to improve the Service.</p>
             <p>If we do so, this Privacy Policy will be updated accordingly.</p>
-            <p>We only share data to the extent necessary to provide the Service.</p>
+            <p>We only share data to the extent necessary to provide the Service and fulfill our contractual obligations.</p>
 
             <h3>7. Legal Basis for Processing</h3>
             <p>Where applicable, we process personal data under the following legal bases:</p>
@@ -135,7 +137,7 @@
             <p>We may update this Privacy Policy from time to time.</p>
             <p>Continued use of the Service constitutes acceptance of the updated Policy.</p>
 
-            <h3>13. Contact</h3>
+            <h3>14. Contact</h3>
             <p>If you have any questions regarding this Privacy Policy, please contact us at: <a href="mailto:info@slay-app.dev">info@slay-app.dev</a></p>
           </div>
         </div>

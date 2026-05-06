@@ -5,11 +5,12 @@ export default {
   },
   routes: {
     download: 'Scarica',
-    pricing: 'Planes',
+    pricing: 'Prezzi',
     faq: 'FAQ',
     contacts: 'Contattaci',
     terms: 'Termini e Privacy',
-    privacyPolicy: 'Informativa privacy'
+    privacyPolicy: 'Informativa privacy',
+    refundPolicy: 'Politica di rimborso',
   },
   buttons: {
     join: 'Unisciti',
@@ -27,7 +28,7 @@ export default {
     send: 'Inviare',
     delete: 'Eliminare',
     agreeTos: 'Ho letto e accetto i',
-    start: 'Comenzar {data}'
+    start: 'Inizia {data}'
   },
   inputData: {
     firstName: 'Nome',
@@ -212,10 +213,10 @@ export default {
     ]
   },
   pricing: {
-    freeTrial: 'Prova gratuita',
+    freeTrial: 'gratis',
     subTitle: 'Scegli il tuo piano tariffario e ottieni l\'accesso completo a tutte le funzionalità di SLAY',
     info: {
-      free: 'dopo 1 mese gratis',
+      free: 'dopo 1 mese gratuito',
       list: [
         {
           key: 'full',
@@ -235,11 +236,10 @@ export default {
         },
         {
           key: 'discount',
-          title: 'Risparmia {discount} rispetto al pagamento mensile'
+          title: 'Risparmia {discount} - solo {discountPrice}'
         },
       ],
       taxes: 'Le tasse possono essere applicate al momento del pagamento in base alla tua posizione.',
-      autoPay: '{price} verrà addebitato {period} dopo la fine del periodo di prova',
     },
     features: {
       title: 'Tutto incluso',
@@ -275,23 +275,23 @@ export default {
       },
       {
         icon: 'cached',
-        title: 'Dopo la fine del periodo di prova, l’accesso al servizio richiederà il pagamento',
-        description: 'Dopo il pagamento, l’accesso verrà ripristinato senza perdita di dati.',
+        title: 'Dopo la fine del periodo di prova, sarà richiesto il pagamento per continuare a utilizzare il servizio.',
+        description: 'Dopo il pagamento, l\'accesso verrà ripristinato senza perdita di dati.',
       },
       {
         icon: 'free_cancellation',
         title: 'Puoi annullare in qualsiasi momento.',
-        description: 'L’accesso rimane attivo fino alla fine del periodo di fatturazione.',
+        description: 'L\'accesso rimane attivo fino alla fine del periodo di fatturazione.',
       },
       {
         icon: 'safety_check',
         title: 'Pagamenti sicuri elaborati da Paddle.',
-        description: 'Le tue informazioni di pagamento sono al sicuro e non vengono mai memorizzate da noi.',
+        description: 'Le tue informazioni di pagamento sono protette e non vengono mai memorizzate da noi.',
       },
       {
         icon: 'lock',
         title: 'Utilizziamo la crittografia end-to-end.',
-        description: 'Per proteggere i tuoi dati e mantenerli privati.',
+        description: 'Per mantenere i tuoi dati al sicuro e protetti.',
       },
     ],
     cards: {
@@ -300,23 +300,27 @@ export default {
         subtitle: "Fatturato mensilmente",
         price: "$7.99",
         discount: "",
-        badge: ""
+        discountPrice: "",
+        badge: "",
+        period: 'mese'
       },
       sixMonths: {
         title: "6 mesi",
-        subtitle: "Fatturato ogni 6 mesi",
-        price: "$6.99",
+        subtitle: "Fatturato semestralmente",
+        price: "$41.94",
         discount: "12%",
-        discountPrice: "$6",
-        badge: ""
+        discountPrice: "$6.99/mese",
+        badge: "",
+        period: 'ogni 6 mesi'
       },
       yearly: {
         title: "Annuale",
         subtitle: "Fatturato annualmente",
-        price: "$5.99",
+        price: "$71.88",
         discount: "25%",
-        discountPrice: "$24",
-        badge: "Miglior valore"
+        discountPrice: "$5.99/mese",
+        badge: "Miglior valore",
+        period: 'all’anno'
       }
     }
   },
@@ -325,7 +329,4 @@ export default {
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
     and: 'e'
   },
-  common: {
-    month: "mese",
-  }
 }

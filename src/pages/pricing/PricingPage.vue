@@ -1,13 +1,11 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
 
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
   const { t, tm } = useI18n()
   const { localeTo } = useLocaleRoute()
-
-  const defaultPrice = ref('$9.99');
 
   const cards = computed(() =>[
     {
@@ -16,7 +14,8 @@
       price: t('pricing.cards.monthly.price'),
       discount: t('pricing.cards.monthly.discount'),
       badge: t('pricing.cards.monthly.badge'),
-      discountPrice: null
+      discountPrice: null,
+      period: t('pricing.cards.monthly.period'),
     },
     {
       title: t('pricing.cards.sixMonths.title'),
@@ -24,7 +23,8 @@
       price: t('pricing.cards.sixMonths.price'),
       discount: t('pricing.cards.sixMonths.discount'),
       discountPrice: t('pricing.cards.sixMonths.discountPrice'),
-      badge: t('pricing.cards.sixMonths.badge')
+      badge: t('pricing.cards.sixMonths.badge'),
+      period: t('pricing.cards.sixMonths.period'),
     },
     {
       title: t('pricing.cards.yearly.title'),
@@ -32,7 +32,8 @@
       price: t('pricing.cards.yearly.price'),
       discount: t('pricing.cards.yearly.discount'),
       discountPrice: t('pricing.cards.yearly.discountPrice'),
-      badge: t('pricing.cards.yearly.badge')
+      badge: t('pricing.cards.yearly.badge'),
+      period: t('pricing.cards.yearly.period'),
     }
   ]);
 
@@ -46,14 +47,17 @@
           return item
         }
 
-        const [before, after] = item.title.split('{discount}')
+        const [beforeDiscount, afterDiscount] = item.title.split('{discount}')
+        const [middle, afterPrice] = afterDiscount.split('{discountPrice}')
 
         return {
           ...item,
           isDiscount: true,
-          before,
-          after,
-          discount: card.discount
+          beforeDiscount,
+          middle,
+          afterPrice,
+          discount: card.discount,
+          discountPrice: card.discountPrice
         }
       })
   }
@@ -79,17 +83,16 @@
         </div>
 
         <div class="section__main q-mb-xl">
-          <q-list class="cards row justify-center q-mb-xl">
+          <q-list class="cards row justify-center q-mb-md">
             <q-item v-for="(item, index) in cards" :key="index"
-                    class="card q-py-none q-mb-md col-md-4 col-sm-6 col-xs-12"
+                    class="card q-py-none q-mb-xl col-md-4 col-sm-6 col-xs-12"
                     :class="[ index === 0 ? 'card-monthly' : '',
                               index === 2 ? 'card-yearly' : '']">
               <q-item-section class="card__body q-pa-md">
                 <div class="card__head column items-center q-pb-md q-mb-md">
                   <h2 class="card-title q-mb-xs">{{item.title}}</h2>
                   <p class="card-subtitle q-mb-md">{{item.subtitle}}</p>
-                  <span class="card-price--default q-mb-md">{{defaultPrice}}</span>
-                  <p class="card-price q-mb-xs"><span class="card-price--promo">{{item.price}}</span> / {{t('common.month')}}</p>
+                  <p class="card-price q-mb-xs"><span class="card-price--promo">{{item.price}}</span> {{item.period}}</p>
                   <p class="card-free">{{t('pricing.info.free')}}</p>
                   <span class="card-badget" v-if="item.badge">{{item.badge}}</span>
                 </div>
@@ -104,9 +107,11 @@
                       <q-item-section>
                         <template v-if="itemInfo.isDiscount">
                           <p>
-                            {{ itemInfo.before }}
-                            <span class="discount-value">{{ itemInfo.discount }}</span>
-                            (~{{item.discountPrice}}) {{ itemInfo.after }}
+                            {{ itemInfo.beforeDiscount }}
+                            <span>{{ itemInfo.discount }}</span>
+                            {{ itemInfo.middle }}
+                            <span>{{ itemInfo.discountPrice }}</span>
+                            {{ itemInfo.afterPrice }}
                           </p>
                         </template>
 
@@ -298,10 +303,12 @@
   }
 
   &:hover {
-    transform: translateY(-10px);
+    @media (min-width: 77.5em) {
+      transform: translateY(-10px);
 
-    .card__body {
-      box-shadow: 0 0 18px #fff, inset 0 0 6px #fff;
+      .card__body {
+        box-shadow: 0 0 18px #fff, inset 0 0 6px #fff;
+      }
     }
   }
 
@@ -351,8 +358,10 @@
     }
 
     &:hover {
-      .card__body {
-        box-shadow: 0 0 18px #03d5ff, inset 0 0 6px #03d5ff;
+      @media (min-width: 77.5em) {
+        .card__body {
+          box-shadow: 0 0 18px #03d5ff, inset 0 0 6px #03d5ff;
+        }
       }
     }
   }

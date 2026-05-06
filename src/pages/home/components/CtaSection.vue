@@ -19,7 +19,7 @@
             <q-btn
               unelevated
               rounded
-              :to="localeTo('download')"
+              :to="localeTo('pricing')"
               class="btn-download btn-glass--primary q-px-xl"
             >
               {{t('buttons.download')}}

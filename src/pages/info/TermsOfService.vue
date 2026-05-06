@@ -1,5 +1,7 @@
 <script setup>
-//
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -8,7 +10,7 @@
       <div class="container">
         <div class="section__body">
           <div class="section__title text-center q-mb-xl">
-            <h2 class="gradient-text ">Terms of Services</h2>
+            <h2 class="gradient-text ">{{t('routes.terms')}}</h2>
           </div>
 
           <div class="section__main">
@@ -39,13 +41,14 @@
 
             <h3>4. Subscription, Cancellation and Refund Policy</h3>
             <p>Subscriptions</p>
-            <p>Certain features of the Service require a paid subscription. Subscriptions are billed on a recurring basis and automatically renew unless cancelled.</p>
-            <p>A free trial period may be offered. Unless cancelled before the end of the trial, your subscription will automatically convert into a paid subscription.</p>
+            <p>Certain features of the Service require a paid subscription. Paid subscriptions are billed on a recurring basis and automatically renew unless cancelled.</p>
+            <p>SLAY may offer a free trial period for new users. The free trial begins upon account registration and provides temporary access to the Service without payment.</p>
+            <p>After the free trial period ends, continued access to the Service requires an active paid subscription.</p>
             <p>Subscription Lifecycle</p>
             <p>By purchasing a subscription, you agree that:</p>
             <ul>
-              <li>your subscription begins after payment or at the end of the free trial;</li>
-              <li>subscriptions automatically renew at the end of each billing period;</li>
+              <li>your paid subscription begins after successful payment;</li>
+              <li>subscriptions automatically renew at the end of each billing period unless cancelled;</li>
               <li>you must cancel your subscription before renewal to avoid additional charges.</li>
             </ul>
             <p>Cancellation</p>
@@ -167,7 +170,7 @@
             <p>We may update these Terms at any time.</p>
             <p>Continued use of the Service constitutes acceptance of the updated Terms.</p>
 
-            <h3>13. Contact</h3>
+            <h3>15. Contact</h3>
             <p>For any questions, contact: <a href="mailto:info@slay-app.dev">info@slay-app.dev</a></p>
           </div>
         </div>
