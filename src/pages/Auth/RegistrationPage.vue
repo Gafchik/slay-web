@@ -46,6 +46,7 @@ const onSubmit = async () => {
         <div class="section__title text-center q-mb-xl">
           <h2 class="gradient-text ">{{ t('account.register.title') }}</h2>
         </div>
+
         <q-form @submit="onSubmit" ref="form" class="q-pb-xl">
           <!-- First Name -->
           <q-input
@@ -228,6 +229,10 @@ const onSubmit = async () => {
 
     @media (min-width: 48em) {
       max-width: none;
+    }
+
+    span {
+      line-height: 140%;
     }
   }
 

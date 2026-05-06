@@ -32,12 +32,13 @@
 </script>
 
 <template>
-  <q-page class="row justify-center text-primary">
+  <q-page class="row justify-center text-primary  q-py-xl">
     <div class="flex column justify-center q-ma-auto">
       <section class="section">
         <div class="section__title text-center q-mb-xl">
           <h2 class="gradient-text ">{{ t('account.login.title') }}</h2>
         </div>
+
         <q-form @submit="onSubmit" ref="form">
           <q-input
             dark
@@ -137,6 +138,10 @@
 
     @media (min-width: 48em) {
       max-width: none;
+    }
+
+    span {
+      line-height: 140%;
     }
   }
 
