@@ -136,13 +136,6 @@
     .q-item {
       min-height: auto;
       padding: 0 16px;
-
-      @media screen and (min-width: 64em) {
-      }
-
-      @media screen and (min-width: 90em) {
-
-      }
     }
   }
 
