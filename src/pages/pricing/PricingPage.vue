@@ -3,39 +3,65 @@
   import { computed } from 'vue'
 
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
+  import { useBillingStore } from 'stores/billing-store.js'
+  import { storeToRefs } from 'pinia'
+  import { useAuthStore } from 'stores/auth-store.js'
 
   const { t, tm } = useI18n()
   const { localeTo } = useLocaleRoute()
 
-  const cards = computed(() =>[
-    {
-      title: t('pricing.cards.monthly.title'),
-      subtitle: t('pricing.cards.monthly.subtitle'),
-      price: t('pricing.cards.monthly.price'),
-      discount: t('pricing.cards.monthly.discount'),
-      badge: t('pricing.cards.monthly.badge'),
-      discountPrice: null,
-      period: t('pricing.cards.monthly.period'),
-    },
-    {
-      title: t('pricing.cards.sixMonths.title'),
-      subtitle: t('pricing.cards.sixMonths.subtitle'),
-      price: t('pricing.cards.sixMonths.price'),
-      discount: t('pricing.cards.sixMonths.discount'),
-      discountPrice: t('pricing.cards.sixMonths.discountPrice'),
-      badge: t('pricing.cards.sixMonths.badge'),
-      period: t('pricing.cards.sixMonths.period'),
-    },
-    {
-      title: t('pricing.cards.yearly.title'),
-      subtitle: t('pricing.cards.yearly.subtitle'),
-      price: t('pricing.cards.yearly.price'),
-      discount: t('pricing.cards.yearly.discount'),
-      discountPrice: t('pricing.cards.yearly.discountPrice'),
-      badge: t('pricing.cards.yearly.badge'),
-      period: t('pricing.cards.yearly.period'),
-    }
-  ]);
+  const billingStore = useBillingStore()
+  const authStore = useAuthStore()
+
+  const {getPrices, toPayment} = billingStore
+  const {priceCards} = storeToRefs(billingStore)
+  const {isLoggedIn} = storeToRefs(authStore)
+
+  getPrices()
+
+  const cards = computed(() => {
+    const staticCards = [
+      {
+        title: t('pricing.cards.monthly.title'),
+        subtitle: t('pricing.cards.monthly.subtitle'),
+        price: null,
+        discount: t('pricing.cards.monthly.discount'),
+        badge: t('pricing.cards.monthly.badge'),
+        discountPrice: null,
+        period: t('pricing.cards.monthly.period'),
+      },
+      {
+        title: t('pricing.cards.sixMonths.title'),
+        subtitle: t('pricing.cards.sixMonths.subtitle'),
+        price: null,
+        discount: t('pricing.cards.sixMonths.discount'),
+        discountPrice: t('pricing.cards.sixMonths.discountPrice'),
+        badge: t('pricing.cards.sixMonths.badge'),
+        period: t('pricing.cards.sixMonths.period'),
+      },
+      {
+        title: t('pricing.cards.yearly.title'),
+        subtitle: t('pricing.cards.yearly.subtitle'),
+        price: null,
+        discount: t('pricing.cards.yearly.discount'),
+        discountPrice: t('pricing.cards.yearly.discountPrice'),
+        badge: t('pricing.cards.yearly.badge'),
+        period: t('pricing.cards.yearly.period'),
+      }
+    ]
+
+    if (!priceCards.value?.length) return staticCards
+    return staticCards.map((card, index) => {
+      const apiData = priceCards.value[index]
+
+      return {
+        ...card,
+        price: (apiData?.amount / 100).toFixed(2),
+        link_key: apiData?.link_key,
+        position: apiData?.position,
+      }
+    })
+  });
 
   const getCardInfo = (card) => {
     const list = tm('pricing.info.list') || []
@@ -69,6 +95,15 @@
   const pricingDetails = computed(() => {
     return tm('pricing.details') || []
   })
+
+  const clickStartBtn = (linkKey) => {
+    if (!isLoggedIn) {
+      localeTo('login')
+    } else {
+      toPayment(linkKey)
+    }
+  }
+
 </script>
 
 <template>
@@ -92,7 +127,7 @@
                 <div class="card__head column items-center q-pb-md q-mb-md">
                   <h2 class="card-title q-mb-xs">{{item.title}}</h2>
                   <p class="card-subtitle q-mb-md">{{item.subtitle}}</p>
-                  <p class="card-price q-mb-xs"><span class="card-price--promo">{{item.price}}</span> {{item.period}}</p>
+                  <p class="card-price q-mb-xs"><span class="card-price--promo">${{item.price}}</span> {{item.period}}</p>
                   <p class="card-free">{{t('pricing.info.free')}}</p>
                   <span class="card-badget" v-if="item.badge">{{item.badge}}</span>
                 </div>
@@ -122,7 +157,7 @@
                     </q-item>
                   </q-list>
 
-                  <q-btn :to="localeTo('login')"
+                  <q-btn @click="clickStartBtn(item.link_key)"
                          unelevated
                          rounded
                          class="btn-glass--primary q-px-xl q-py-sm q-mt-auto">
