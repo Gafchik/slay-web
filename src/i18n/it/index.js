@@ -174,6 +174,7 @@ export default {
       title: 'Profilo',
       created_at: 'Creato',
       updated_at: 'Aggiornato',
+      trial_ends_at: 'Fine del periodo di prova',
       profileInfo: 'Informazioni del profilo',
       profileDescription: 'Visualizza e gestisci le tue informazioni personali.',
       profileAction: 'Azioni sull\'account',

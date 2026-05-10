@@ -7,11 +7,18 @@
   import { ref } from 'vue'
   import { useConfirmDialogStore } from 'stores/confirm-dialog-store.js'
   import ConfirmDialog from '../../components/dialog/ConfirmDialog.vue'
+  import { useBillingStore } from 'stores/billing-store.js'
   const { t } = useI18n()
 
   const authStore = useAuthStore()
+  const billingStore = useBillingStore()
   const confirmDialogStore = useConfirmDialogStore()
   const { openConfirmDialog } = confirmDialogStore
+  const {getTransactions, getSubscriptions, cancelSubscription} = billingStore
+  const {transactions, subscriptions} = storeToRefs(billingStore)
+
+  getTransactions()
+  getSubscriptions()
 
   const { getUserData, updateUserDataRequest, logoutRequest, deleteAccountRequest } = authStore
   const { user } = storeToRefs(authStore)
@@ -24,6 +31,7 @@
 
   const created_at = computed(() => format(new Date(user.value.created_at), 'yyyy-MM-dd HH:mm'))
   const updated_at = computed(() => format(new Date(user.value.updated_at), 'yyyy-MM-dd HH:mm'))
+  const trial_ends_at = computed(() => format(new Date(user.value.trial_ends_at), 'yyyy-MM-dd HH:mm'))
 
   const toggleReadonly = () => {
     if (!readonly.value) {
@@ -164,6 +172,20 @@
             ></q-input>
 
             <q-input
+              dense
+              v-if="readonly"
+              outlined
+              dark
+              :model-value="trial_ends_at"
+              :readonly="true"
+              :label="t('account.profile.trial_ends_at')"
+              label-color="white"
+              color="white"
+              bg-color="rgba(255, 255, 255, 0.1)"
+              class="auto-field q-ma-none q-mb-md"
+            ></q-input>
+
+            <q-input
               v-if="!readonly"
               dense
               outlined
@@ -205,6 +227,9 @@
                 <q-icon name="lock" color="white" />
               </template>
             </q-input>
+
+            <q-checkbox :model-value="user.has_active_trial">has_active_trial</q-checkbox>
+            <q-checkbox :model-value="user.has_active_subscription">has_active_subscription</q-checkbox>
           </div>
 
           <div class="glass q-pa-md q-mb-md">
@@ -291,6 +316,25 @@
             </q-btn>
           </div>
         </q-form>
+      </section>
+      <section class="section">
+        <div v-for="(trans, index) in transactions" :key="index">
+          {{trans}}
+          <br>
+          <br>
+        </div>
+      </section>
+      <br>
+      <section class="section">
+        <div v-for="(sub, index) in subscriptions" :key="index">
+          {{sub}}
+          <br>
+          <br>
+          <q-btn  v-if="!sub.ends_at && sub.status === 'active' "
+                  @click="cancelSubscription(sub.paddle_id)">
+            cancel
+          </q-btn>
+        </div>
       </section>
       <confirm-dialog/>
     </div>

@@ -174,6 +174,7 @@ export default {
       title: 'Профіль',
       created_at: 'Створено',
       updated_at: 'Оновлено',
+      trial_ends_at: 'Кінець пробного періоду',
       profileInfo: 'Інформація про профіль',
       profileDescription: 'Переглядайте та керуйте своєю особистою інформацією.',
       profileAction: 'Дії з обліковим записом',
