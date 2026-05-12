@@ -15,6 +15,7 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
+    "@paddle/paddle-js": "^1.6.4",
     "@quasar/extras": "^1.16.4",
     "animate.css": "^4.1.1",
     "axios": "^1.2.1",

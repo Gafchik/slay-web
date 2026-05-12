@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { api } from 'src/boot/axios'
 import { useAppStore } from 'src/stores/app-store'
+import { usePaddle } from 'src/composables/usePaddle.js'
 
 export const useBillingStore = defineStore('useBillingStore', () => {
   const appStore = useAppStore()
@@ -9,7 +10,6 @@ export const useBillingStore = defineStore('useBillingStore', () => {
   const priceCards = ref([])
   const transactions = ref([])
   const subscriptions = ref([])
-
 
   const getPrices = async () => {
     showLoading()
@@ -56,9 +56,18 @@ export const useBillingStore = defineStore('useBillingStore', () => {
     }
   }
 
-  const toPayment = async (linkKey) => {
-    const { data } = await api.get(`billing/get-payment-url/${linkKey}`)
-    window.location.href = data.payLink
+  const checkout = async (priceId) => {
+    const { data } = await api.get(`billing/checkout/${priceId}`)
+    const paddle = await usePaddle()
+
+    await paddle.Checkout.open({
+      items: data.checkout.items,
+      customer: data.checkout.customer,
+      settings: {
+        ...data.checkout.settings,
+        displayMode: 'overlay'
+      }
+    })
   }
 
   const cancelSubscription = async (paddle_id) => {
@@ -78,7 +87,7 @@ export const useBillingStore = defineStore('useBillingStore', () => {
   return {
     getPrices,
     priceCards,
-    toPayment,
+    checkout,
     getTransactions,
     transactions,
     subscriptions,

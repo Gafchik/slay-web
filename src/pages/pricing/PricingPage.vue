@@ -13,7 +13,7 @@
   const billingStore = useBillingStore()
   const authStore = useAuthStore()
 
-  const {getPrices, toPayment} = billingStore
+  const {getPrices, checkout} = billingStore
   const {priceCards} = storeToRefs(billingStore)
   const {isLoggedIn} = storeToRefs(authStore)
 
@@ -58,6 +58,7 @@
         ...card,
         price: (apiData?.amount / 100).toFixed(2),
         link_key: apiData?.link_key,
+        price_id: apiData?.price_id,
         position: apiData?.position,
       }
     })
@@ -96,11 +97,11 @@
     return tm('pricing.details') || []
   })
 
-  const clickStartBtn = (linkKey) => {
+  const clickStartBtn = (priceId) => {
     if (!isLoggedIn) {
       localeTo('login')
     } else {
-      toPayment(linkKey)
+      checkout(priceId)
     }
   }
 
@@ -156,8 +157,7 @@
                       </q-item-section>
                     </q-item>
                   </q-list>
-
-                  <q-btn @click="clickStartBtn(item.link_key)"
+                  <q-btn @click="clickStartBtn(item.price_id)"
                          unelevated
                          rounded
                          class="btn-glass--primary q-px-xl q-py-sm q-mt-auto">
@@ -199,6 +199,7 @@
           </q-list>
         </div>
       </div>
+      <div id="paddle-checkout"></div>
     </section>
   </q-page>
 </template>
