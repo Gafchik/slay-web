@@ -3,24 +3,28 @@ export const DEFAULT_LOCALE = 'en-US'
 export const LOCALES = {
   en: {
     i18n: 'en',
+    intl: 'en-US',
     url: '',
     routePrefix: 'en_',
     label: 'English',
   },
   ru: {
     i18n: 'ru',
+    intl: 'ru-RU',
     url: 'ru',
     routePrefix: 'ru_',
     label: 'Русский',
   },
   uk: {
     i18n: 'ua',
+    intl: 'uk-UA',
     url: 'ua', // если хочешь URL именно /ua
     routePrefix: 'uk_',
     label: 'Українська',
   },
   it: {
     i18n: 'it',
+    intl: 'it-IT',
     url: 'it',
     routePrefix: 'it_',
     label: 'Italiano',
@@ -88,4 +92,12 @@ export const getRouteKeyFromName = (routeName = '') => {
   if (!matchedPrefix) return routeName
 
   return routeName.replace(matchedPrefix.routePrefix, '')
+}
+
+export const getIntlLocaleByI18n = (locale) => {
+  const matched = Object.values(LOCALES).find(
+    item => item.i18n === locale
+  )
+
+  return matched?.intl || LOCALES.en.intl
 }

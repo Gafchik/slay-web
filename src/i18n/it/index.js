@@ -1,8 +1,4 @@
 export default {
-  confirmDialog: {
-    cancel: 'Annulla',
-    confirm: 'Conferma',
-  },
   routes: {
     download: 'Scarica',
     pricing: 'Prezzi',
@@ -28,7 +24,11 @@ export default {
     send: 'Inviare',
     delete: 'Eliminare',
     agreeTos: 'Ho letto e accetto i',
-    start: 'Inizia {data}'
+    start: 'Inizia {data}',
+    upgrade: 'Passa a {data}',
+    choose: 'Scegli {data}',
+    renew: 'Rinnova {data}',
+    confirm: 'Conferma',
   },
   inputData: {
     firstName: 'Nome',
@@ -325,9 +325,69 @@ export default {
       }
     }
   },
+  subscription: {
+    title: 'Abbonamento',
+    subtitle: 'Gestisci il tuo abbonamento e la fatturazione',
+    trial: {
+      title: 'Accesso di prova',
+      subtitle: 'Attualmente stai utilizzando il periodo di prova gratuito.',
+      description: 'Goditi l’accesso completo a tutte le funzionalità e agli aggiornamenti di SLAY.',
+      endDate: 'Termina il',
+    },
+    active: {
+      title: 'Abbonamento',
+      description: 'Hai accesso completo a tutte le funzionalità e agli aggiornamenti di SLAY.',
+      startDate: 'Data di inizio',
+      renewDate: 'Prossimo rinnovo',
+    },
+    canceled: {
+      title: 'Nessun piano attivo',
+      subtitle: 'Al momento non hai un abbonamento attivo.',
+      description: 'Scegli un piano per ripristinare l’accesso completo alle funzionalità e agli aggiornamenti di SLAY.',
+      endDate: 'Accesso terminato il',
+      status: 'Stato dell’accesso',
+      isStatus: 'Limitato',
+      statusDescription: 'Le funzionalità premium sono bloccate',
+      trial: {
+        subtitle: 'Il tuo periodo di prova gratuito è terminato.',
+        description: 'Scegli un piano per continuare a utilizzare SLAY.',
+      },
+      isBilling: {
+        subtitle: 'Il tuo abbonamento non è più attivo.',
+        description: 'Rinnova il tuo piano per ripristinare l’accesso completo.',
+      },
+    },
+    history: {
+      title: 'Cronologia pagamenti',
+      subTitle: 'Visualizza le transazioni e le fatture precedenti.',
+      table: {
+        date: 'Data',
+        invoice: 'Fattura',
+        amount: 'Importo',
+        tax: 'Tasse',
+        status: 'Stato',
+      }
+    },
+    cancel: {
+      title: 'Annullare l’abbonamento?',
+      description: 'Il tuo abbonamento rimarrà attivo fino alla fine del periodo di fatturazione corrente. Successivamente, l’accesso verrà disattivato a meno che tu non rinnovi.'
+    }
+  },
+  badges: {
+    trial: 'Prova gratuita',
+    active: 'Attivo',
+    noActive: 'Nessun piano attivo',
+    best: 'Miglior offerta'
+  },
   text: {
     allRightsReserved: 'Tutti i diritti riservati',
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
-    and: 'e'
+    and: 'e',
+    plan: 'Plan',
+    billed: 'Periodo di fatturazione: {data}',
+    charged: 'Addebito {data}',
+    monthly: 'mensile',
+    semiannually: 'ogni 6 mesi',
+    annually: 'annuale',
   },
 }

@@ -1,8 +1,4 @@
 export default {
-  confirmDialog: {
-    cancel: 'Cancel',
-    confirm: 'Confirm',
-  },
   routes: {
     download: 'Download',
     pricing: 'Pricing',
@@ -24,10 +20,14 @@ export default {
     profile: 'Profile',
     edit: 'Edit',
     save: 'Save',
-    cancel: 'Cancel',
+    cancel: 'Cancel {data}',
     send: 'Send',
     delete: 'Delete',
-    start: 'Start {data}'
+    start: 'Start {data}',
+    upgrade: 'Upgrade {data}',
+    choose: 'Choose {data}',
+    renew: 'Renew {data}',
+    confirm: 'Confirm',
   },
   inputData: {
     firstName: 'First name',
@@ -323,11 +323,71 @@ export default {
         badge: "Best Value",
         period: 'per year'
       }
+    },
+  },
+  subscription: {
+    title: 'Subscription',
+    subtitle: 'Manage your subscription and billing',
+    trial: {
+      title: 'Trial Access',
+      subtitle: 'You’re currently on a free trial.',
+      description: 'Enjoy full access to all SLAY features and updates.',
+      endDate: 'Ends on',
+    },
+    active: {
+      title: 'Subscription',
+      description: 'You have full access to all SLAY features and updates.',
+      startDate: 'Started on',
+      renewDate: 'Next renewal',
+    },
+    canceled: {
+      title: 'No Active Plan',
+      subtitle: 'You currently don’t have an active subscription.',
+      description: 'Choose a plan to restore full access to SLAY features and updates.',
+      endDate: 'Access ended on',
+      status: 'Access status',
+      isStatus: 'Limited',
+      statusDescription: 'Premium features are locked',
+      trial: {
+        subtitle: 'Your free trial has ended.',
+        description: 'Choose a plan to continue using SLAY.',
+      },
+      isBilling: {
+        subtitle: 'Your subscription is no longer active.',
+        description: 'Renew your plan to restore full access.',
+      },
+    },
+    history: {
+      title: 'Billing History',
+      subTitle: 'View your past transactions and invoices.',
+      table: {
+        date: 'Date',
+        invoice: 'Invoice',
+        amount: 'Amount',
+        tax: 'Tax',
+        status: 'Status',
+      }
+    },
+    cancel: {
+      title: 'Cancel subscription?',
+      description: 'Your subscription will remain active until the end of the current billing period. After that, access will be revoked unless you renew.'
     }
+  },
+  badges: {
+    trial: 'Free Trial',
+    active: 'Active',
+    noActive: 'No Active Plan',
+    best: 'Best Value'
   },
   text: {
     allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
     and: 'and',
+    plan: 'Plan',
+    billed: 'Billed {data}',
+    charged: 'Charged {data}',
+    monthly: 'monthly',
+    semiannually: 'semiannually',
+    annually: 'annually',
   },
 }
