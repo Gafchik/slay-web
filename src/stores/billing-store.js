@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { api } from 'src/boot/axios'
 import { useAppStore } from 'src/stores/app-store'
 import { usePaddle } from 'src/composables/usePaddle.js'
+import { useRouter } from 'vue-router'
 
 export const useBillingStore = defineStore('useBillingStore', () => {
   const appStore = useAppStore()
@@ -10,6 +11,7 @@ export const useBillingStore = defineStore('useBillingStore', () => {
   const priceCards = ref([])
   const transactions = ref([])
   const subscriptions = ref([])
+  const router = useRouter()
 
   const getPrices = async () => {
     showLoading()
@@ -58,7 +60,16 @@ export const useBillingStore = defineStore('useBillingStore', () => {
 
   const checkout = async (priceId) => {
     const { data } = await api.get(`billing/checkout/${priceId}`)
-    const paddle = await usePaddle()
+    const paddle = await usePaddle({
+      onSuccess: (eventData) => {
+        router.push({
+          path: '/thank-you',
+          state: {
+            transactionData: eventData.data
+          }
+        });
+      }
+    })
 
     await paddle.Checkout.open({
       items: data.checkout.items,

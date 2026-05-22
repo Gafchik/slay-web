@@ -58,6 +58,12 @@ const makeChildren = (prefix = '') => [
     meta: { requiresAuth: true }
   },
   {
+    path: 'thank-you',
+    name: `${prefix}thank_you`,
+    component: () => import('pages/pricing/ThankYouPage.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: 'auth/callback',
     name: `${prefix}auth_callback`,
     component: () => import('components/AuthCallbackGoogle.vue')
