@@ -10,7 +10,7 @@ export default {
   },
   buttons: {
     join: 'Join',
-    download: 'Download',
+    download: 'Download {data}',
     downloadFor: 'Download for',
     login: 'Log in',
     logout: 'Log out',
@@ -28,6 +28,7 @@ export default {
     choose: 'Choose {data}',
     renew: 'Renew {data}',
     confirm: 'Confirm',
+    open: 'Open {data}'
   },
   inputData: {
     firstName: 'First name',
@@ -371,6 +372,32 @@ export default {
     cancel: {
       title: 'Cancel subscription?',
       description: 'Your subscription will remain active until the end of the current billing period. After that, access will be revoked unless you renew.'
+    },
+    thanks: {
+      title: 'Thanks for your purchase',
+      subtitle: 'Your subscription has been activated.',
+      welcome: 'Welcome to SLAY!',
+      description: 'You now have full access to all SLAY features.',
+      info: {
+        title: 'Subscription details',
+        list: [
+          {
+            title: 'Plan',
+          },
+          {
+            title: 'Next renewal',
+          },
+          {
+            title: 'Amount paid',
+          },
+          {
+            title: 'Payment method',
+          },
+        ]
+      },
+      receipt: 'Receipt sent to {data}',
+      transaction: 'Transaction ID: {data}',
+      tax: 'Incl. {data} tax'
     }
   },
   badges: {

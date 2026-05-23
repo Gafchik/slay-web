@@ -371,6 +371,32 @@ export default {
     cancel: {
       title: 'Annullare l’abbonamento?',
       description: 'Il tuo abbonamento rimarrà attivo fino alla fine del periodo di fatturazione corrente. Successivamente, l’accesso verrà disattivato a meno che tu non rinnovi.'
+    },
+    thanks: {
+      title: 'Grazie per il tuo acquisto',
+      subtitle: 'Il tuo abbonamento è stato attivato.',
+      welcome: 'Benvenuto in SLAY!',
+      description: 'Ora hai accesso completo a tutte le funzionalità di SLAY.',
+      info: {
+        title: 'Dettagli dell’abbonamento',
+        list: [
+          {
+            title: 'Piano',
+          },
+          {
+            title: 'Prossimo rinnovo',
+          },
+          {
+            title: 'Importo pagato',
+          },
+          {
+            title: 'Metodo di pagamento',
+          },
+        ]
+      },
+      receipt: 'Ricevuta inviata a {data}',
+      transaction: 'ID transazione: {data}',
+      tax: 'Incl. imposte {data}'
     }
   },
   badges: {
