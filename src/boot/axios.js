@@ -9,12 +9,37 @@ import Cookies from 'js-cookie'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
+
+const getCurrentLocale = () => {
+  const savedLocale = localStorage.getItem('app-locale')
+  if (savedLocale) return savedLocale
+
+  // 2. Или из URL (если нужно)
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname
+    const firstSegment = path.split('/').filter(Boolean)[0]
+    const localeMap = {
+      'ua': 'ua',
+      'ru': 'ru',
+      'it': 'it'
+    }
+    if (localeMap[firstSegment]) return localeMap[firstSegment]
+  }
+
+  return 'en'
+}
+
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api',
 })
 
 api.defaults.headers.common['Content-Type'] = 'application/json'
 api.defaults.headers.common['Accept'] = 'application/json'
+
+api.interceptors.request.use((config) => {
+  config.headers['X-Locale'] = getCurrentLocale()
+  return config
+})
 
 export default defineBoot(({ app, router }) => {
   const notifySuccess = (message) => {
