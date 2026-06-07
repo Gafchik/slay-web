@@ -32,8 +32,9 @@
           <div class="row flex-center">
             <div class="col-md-10 col-xs-12 q-mx-auto">
               <div class="section__title text-center">
-                <h2>{{t('sections.password.title')}}</h2>
-                <p class="description-big">{{t('sections.password.description')}}</p>
+                <h2 class="q-mb-sm">{{t('sections.password.title')}}</h2>
+                <p class="q-mb-md">{{t('sections.password.subtitle')}}</p>
+                <p>{{t('sections.password.description')}}</p>
               </div>
               <q-list class="row text-center" ref="listDataEl" >
                 <q-item v-for="(item, index) in passwordFeatures"

@@ -25,8 +25,9 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <div class="section__title flex column justify-center">
-                <h2>{{t('sections.launcher.title')}}</h2>
-                <p class="description-big">{{t('sections.launcher.description')}}</p>
+                <h2 class="q-mb-sm">{{t('sections.launcher.title')}}</h2>
+                <p class="q-mb-md">{{t('sections.launcher.subtitle')}}</p>
+                <p>{{t('sections.launcher.description')}}</p>
               </div>
             </div>
           </div>

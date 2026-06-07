@@ -13,8 +13,9 @@ const localeEntries = computed(() => Object.entries(locales))
   <q-btn
     flat
     dense
+    rounded
     color="primary"
-    class="btn-link"
+    class="btn-icon btn-link"
     :label="locales[currentLanguage]?.url || 'En'"
   >
     <q-menu class="menu-primary no-shadow">

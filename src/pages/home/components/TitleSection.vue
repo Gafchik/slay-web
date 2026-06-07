@@ -32,14 +32,16 @@
       <div class="section__body flex column">
         <div class="section__main q-my-auto">
           <div class="section__title">
-            <h1 class="title q-mb-lg">{{t('sections.home.title')}}</h1>
-            <p class="subtitle">{{t('sections.home.subtitle')}}</p>
-            <p class="subtitle q-mb-xl">{{t('sections.home.description')}}</p>
+            <h1 class="title q-mb-lg">Smart Launcher for All Your Dev Tools</h1>
+            <p class="subtitle q-mb-sm">
+              <span class="q-px-sm">{{t('sections.home.subtitle')}}</span>
+            </p>
+            <p class="subtitle q-mb-xl" v-html="t('sections.home.description')"></p>
             <q-btn :to="localeTo('pricing')"
                    unelevated
                    rounded
                    class="btn-download btn-glass--primary q-px-xl">
-              {{t('buttons.download')}}
+              {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
             </q-btn>
           </div>
         </div>
@@ -128,6 +130,14 @@
     @media (min-width: 158.75em) {
       font-size: 2.25rem;
     }
+
+    &:first-of-type {
+      opacity: 0.9;
+    }
+
+    span {
+      border-bottom: 2px solid #00ffaa;
+    }
   }
 
   .q-list {
@@ -187,7 +197,7 @@
       &:not(:last-child) {
         margin-bottom: 8px;
 
-        @media (min-width: 48em) {
+        @media (min-width: 37.5em) {
           margin-bottom: 0;
         }
       }

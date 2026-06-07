@@ -22,8 +22,9 @@
           <div class="section__head row">
             <div class="col-md-4 col-xs-12">
               <div class="section__title flex column justify-center">
-                <h2>{{t('sections.alias.title')}}</h2>
-                <p class="description-big">{{t('sections.alias.description')}}</p>
+                <h2 class="q-mb-sm">{{t('sections.alias.title')}}</h2>
+                <p class="q-mb-md">{{t('sections.alias.subtitle')}}</p>
+                <p>{{t('sections.alias.description')}}</p>
               </div>
             </div>
             <div class="col-md-8 col-xs-12">

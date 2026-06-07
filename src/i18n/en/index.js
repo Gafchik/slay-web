@@ -54,8 +54,8 @@ export default {
   sections: {
     home: {
       title: 'Smart Launcher for All Your devtools',
-      subtitle: 'Your all-in-one command center',
-      description: 'Make your work more efficient and comfortable',
+      subtitle: 'Stop rebuilding your dev workspace every morning',
+      description: 'Keep projects, apps, commands, passwords, and server access in one place. <br> Start working without hunting for tools and credentials',
     },
     about: {
       titleProject: 'Project Manager',
@@ -71,15 +71,18 @@ export default {
     },
     project: {
       title: 'Project Manager',
-      description: 'Centralized storage of all projects in one place for quick access and instant start in your preferred environment',
+      subtitle: 'When there are many projects, context is lost',
+      description: 'One project needs VS Code, another Docker, a third a test server. Access credentials live somewhere else. Slay keeps the project context together, so you can return to work without rebuilding it from memory.',
     },
     launcher: {
       title: 'Instant launch',
-      description: 'Instantly launch all the tools and applications you need for a comfortable workflow in one place',
+      subtitle: 'A working day shouldn\'t start with ten clicks',
+      description: 'Opening an IDE, terminal, browser, local server, Docker, documentation—it\'s a small task, but it happens every day. Slay launches the required set of tools for a project in a single step.',
     },
     alias: {
       title: 'Console aliases',
-      description: 'Create short and memorable aliases for any complex console commands',
+      subtitle: 'Long commands shouldn\'t live in your head',
+      description: 'If you frequently copy-paste commands from notes, terminal history, or README, it\'s likely the routine is taking up too much of your attention. In Slay, you can save commands as short aliases and run them whenever you need them.',
       list: [
         {
           title: 'Customization and flexibility',
@@ -97,7 +100,8 @@ export default {
     },
     password: {
       title: 'Password manager',
-      description: 'Secure storage and easy password organization',
+      subtitle: 'Project access is too often scattered across chats, notes, and the browser',
+      description: 'Passwords, API keys, test accounts, and access to admin panels and services quickly become a mess. Slay helps keep sensitive data close to your project and protects it with a master password and encryption.',
       list: [
         {
           key: 'coding',
@@ -123,7 +127,8 @@ export default {
     },
     sftp: {
       title: 'Server management',
-      description: 'Transfer files, manage content, and perform operations without risking your data thanks to a secure connection',
+      subtitle: 'Working with the server often requires too many switches',
+      description: 'Finding access, opening the client, connecting, navigating to the desired folder, and transferring a file is a repeatable routine. Slay simplifies connecting to the server and working with project files from a single workspace.',
     },
     reviews: {
       title: 'What our users say',
@@ -166,7 +171,7 @@ export default {
       ]
     },
     cta: {
-      title: 'Ready to increase your productivity?',
+      title: 'Ready to stop losing time before the work even starts?',
       subtitle: 'Start using Slay today'
     }
   },

@@ -331,17 +331,6 @@
                 {{t('buttons.download', {data: 'SLAY'})}}
               </q-btn>
             </div>
-            <div class="col-auto q-pa-sm">
-              <q-btn :to="localeTo('profile')"
-                     outline
-                     rounded
-                     unelevated
-                     icon="person"
-                     size="lg"
-                     class="btn-glass q-px-xl">
-                {{t('buttons.open', {data: t('account.profile.title')})}}
-              </q-btn>
-            </div>
           </div>
 
           <div class="receipt-info glass q-px-xl q-py-md q-mb-lg" v-if="customerEmail || transactionId">

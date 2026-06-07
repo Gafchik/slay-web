@@ -74,7 +74,7 @@ watch(() => route.fullPath, async () => {
           class="btn-glass--primary q-py-sm"
           :to="localeTo('pricing')"
         >
-          <span v-if="isDesktop">{{t('buttons.download')}} SLAY</span>
+          <span v-if="isDesktop">{{ t('buttons.start', { data: t('pricing.freeTrial') })}}</span>
           <q-icon name="download" v-else/>
         </q-btn>
       </transition>

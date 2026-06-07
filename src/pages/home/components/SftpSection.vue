@@ -17,7 +17,8 @@
           <div class="row">
             <div class="col-md-10 col-xs-12 q-mx-auto">
               <div class="section__title text-center">
-                <h2>{{t('sections.sftp.title')}}</h2>
+                <h2 class="q-mb-sm">{{t('sections.sftp.title')}}</h2>
+                <p class="q-mb-md">{{t('sections.sftp.subtitle')}}</p>
                 <p>{{t('sections.sftp.description')}}</p>
               </div>
               <div class="section__video">

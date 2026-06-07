@@ -17,8 +17,9 @@
           <div class="row">
             <div class="col-md-4 col-xs-12">
               <div class="section__title flex column justify-center">
-                <h2>{{t('sections.project.title')}}</h2>
-                <p class="description-big">{{t('sections.project.description')}}</p>
+                <h2 class="q-mb-sm">{{t('sections.project.title')}}</h2>
+                <p class="q-mb-md">{{t('sections.project.subtitle')}}</p>
+                <p>{{t('sections.project.description')}}</p>
               </div>
             </div>
             <div class="col-md-8 col-xs-12">
@@ -27,6 +28,8 @@
                   :mp4="Video1"
                   :webm="Video2"
                 />
+
+
               </div>
             </div>
           </div>

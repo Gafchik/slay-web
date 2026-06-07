@@ -13,6 +13,14 @@
     <source v-if="mp4" :src="mp4" type="video/mp4" />
     <source v-if="webm" :src="webm" type="video/webm" />
   </video>
+
+  <q-btn
+    unelevated
+    rounded
+    class="btn-icon"
+    icon="open_in_full"
+    @click="handleClick"
+  />
 </template>
 
 <script setup>

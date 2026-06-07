@@ -12,7 +12,7 @@
       <div class="section__body">
         <div class="section__main glass ">
           <div class="section__title">
-            <h2>{{t('sections.cta.title')}}</h2>
+            <h2 class="q-mb-md">{{t('sections.cta.title')}}</h2>
             <p>{{t('sections.cta.subtitle')}}</p>
           </div>
           <div class="flex justify-center">
@@ -22,7 +22,7 @@
               :to="localeTo('pricing')"
               class="btn-download btn-glass--primary q-px-xl"
             >
-              {{t('buttons.download')}}
+              {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
             </q-btn>
           </div>
         </div>

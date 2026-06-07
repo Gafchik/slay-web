@@ -53,8 +53,8 @@ export default {
   sections: {
     home: {
       title: 'Smart Launcher per tutti i tuoi strumenti di sviluppo',
-      subtitle: 'Il tuo centro di comando tutto-in-uno',
-      description: 'Rendi il tuo lavoro più efficiente e confortevole',
+      subtitle: 'Smetti di ricostruire il tuo ambiente di sviluppo ogni mattina',
+      description: 'Tieni progetti, app, comandi, password e accessi ai server in un unico posto. <br> Inizia a lavorare senza cercare strumenti e credenziali',
     },
     about: {
       titleProject: 'Gestore di progetti',
@@ -70,15 +70,16 @@ export default {
     },
     project: {
       title: 'Gestore di progetti',
-      description: 'Archiviazione centralizzata di tutti i progetti in un unico spazio per un accesso rapido e un avvio immediato nell’ambiente preferito',
-    },
+      subtitle: 'Quando i progetti sono tanti, il contesto si perde',
+      description: 'Un progetto richiede VS Code, un altro Docker, un terzo un server di test. Gli accessi sono separati. Slay raccoglie il contesto attorno al progetto, così puoi tornare rapidamente al lavoro senza cercare e ricordare tutto.',    },
     launcher: {
       title: 'Avvio immediato',
-      description: 'Avvia istantaneamente tutti gli strumenti e le applicazioni necessarie per lavorare comodamente in un unico posto',
-    },
+      subtitle: 'La giornata di lavoro non dovrebbe iniziare con dieci clic',
+      description: 'Aprire IDE, terminale, browser, server locale, Docker, documentazione — è una piccola cosa, ma si ripete ogni giorno. Slay avvia il set di strumenti necessario per il progetto con una sola azione.',    },
     alias: {
       title: 'Alias della console',
-      description: 'Crea alias brevi e facili da ricordare per qualsiasi comando complesso della console',
+      subtitle: 'I comandi lunghi non dovrebbero vivere nella tua testa',
+      description: 'Se copi spesso comandi da note, cronologia del terminale o README, significa che la routine sta già consumando la tua attenzione. In Slay puoi salvare i comandi come alias brevi ed eseguirli quando ti servono.',
       list: [
         {
           title: 'Personalizzazione e flessibilità',
@@ -96,8 +97,8 @@ export default {
     },
     password: {
       title: 'Gestore di password',
-      description: 'Archiviazione sicura e organizzazione semplice delle password',
-      list: [
+      subtitle: 'Gli accessi dei progetti sono troppo spesso sparsi tra chat, note e browser',
+      description: 'Password, chiavi API, account di test e accessi ad admin panel e servizi diventano rapidamente caos. Slay ti aiuta a tenere i dati sensibili vicino al progetto e li protegge con master password e crittografia.',      list: [
         {
           key: 'coding',
           title: 'Crittografia AES-256-GCM affidabile',
@@ -122,8 +123,8 @@ export default {
     },
     sftp: {
       title: 'Gestione del server',
-      description: 'Trasferisci file, gestisci i contenuti ed esegui operazioni senza rischi per i dati grazie a una connessione sicura',
-    },
+      subtitle: 'Lavorare con il server richiede spesso troppi passaggi',
+      description: 'Trovare l’accesso, aprire il client, connettersi, andare nella cartella giusta, trasferire un file — è una routine ripetitiva. Slay semplifica la connessione al server e la gestione dei file del progetto da un unico contesto di lavoro.',    },
     reviews: {
       title: 'Cosa dicono i nostri utenti',
       list: [
@@ -165,7 +166,7 @@ export default {
       ]
     },
     cta: {
-      title: 'Pronto ad aumentare la tua produttività?',
+      title: 'Pronto a smettere di perdere tempo ancora prima di iniziare a lavorare?',
       subtitle: 'Inizia a usare Slay oggi'
     }
   },
@@ -177,9 +178,9 @@ export default {
       trial_ends_at: 'Fine del periodo di prova',
       profileInfo: 'Informazioni del profilo',
       profileDescription: 'Visualizza e gestisci le tue informazioni personali.',
-      profileAction: 'Azioni sull\'account',
+      profileAction: 'Azioni dell’account',
       profileActionDescription: 'Gestisci le impostazioni del tuo account.',
-      profileRemove: 'Zona di pericolo',
+      profileRemove: 'Zona pericolosa',
       profileRemoveDescription: 'Azioni irreversibili e distruttive',
       deleteAccount: 'Elimina account',
       deleteAccountDescription: 'Elimina definitivamente il tuo account e tutti i tuoi dati',
