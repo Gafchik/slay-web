@@ -208,7 +208,7 @@ export default {
     instruction: 'Інструкція',
     list: [
       { title: 'Завантажте та встановіть Slay' },
-      { title: 'Виконайте <code>slay --help</code> для перевірки CLI' },
+      { title: 'Виконайте <code>slay help</code> для перевірки CLI' },
       { title: 'Насолоджуйтесь швидким доступом до інструментів' },
     ]
   },

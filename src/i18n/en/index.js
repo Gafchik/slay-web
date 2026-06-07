@@ -212,7 +212,7 @@ export default {
         title: 'Download and install SLAY',
       },
       {
-        title: 'Run <code>slay --help</code> to check the command line interface',
+        title: 'Run <code>slay help</code> to check the command line interface',
       },
       {
         title: 'Enjoy quick access to developer tools',

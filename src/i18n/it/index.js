@@ -207,7 +207,7 @@ export default {
         title: 'Scarica e installa SLAY',
       },
       {
-        title: 'Esegui <code>slay --help</code> per verificare l’interfaccia a riga di comando',
+        title: 'Esegui <code>slay help</code> per verificare l’interfaccia a riga di comando',
       },
       {
         title: 'Goditi un accesso rapido agli strumenti per sviluppatori',
