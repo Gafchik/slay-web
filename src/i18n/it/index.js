@@ -70,8 +70,9 @@ export default {
     },
     project: {
       title: 'Gestore di progetti',
-      subtitle: 'Quando i progetti sono tanti, il contesto si perde',
-      description: 'Un progetto richiede VS Code, un altro Docker, un terzo un server di test. Gli accessi sono separati. Slay raccoglie il contesto attorno al progetto, così puoi tornare rapidamente al lavoro senza cercare e ricordare tutto.',    },
+      subtitle: 'Cercare un progetto non dovrebbe far parte dello sviluppo',
+      description: 'Non devi ricordare dove si trova ogni progetto né cercarlo tra quelli recenti nell’IDE. Slay mantiene tutto il tuo lavoro sempre a portata di mano.',
+    },
     launcher: {
       title: 'Avvio immediato',
       subtitle: 'La giornata di lavoro non dovrebbe iniziare con dieci clic',

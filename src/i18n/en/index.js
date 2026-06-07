@@ -71,8 +71,8 @@ export default {
     },
     project: {
       title: 'Project Manager',
-      subtitle: 'When there are many projects, context is lost',
-      description: 'One project needs VS Code, another Docker, a third a test server. Access credentials live somewhere else. Slay keeps the project context together, so you can return to work without rebuilding it from memory.',
+      subtitle: 'Finding a project shouldn\'t be part of development',
+      description: 'You shouldn\'t have to remember where every project is stored or search through your IDE\'s recent projects. Slay keeps all your work within easy reach.',
     },
     launcher: {
       title: 'Instant launch',

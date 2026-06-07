@@ -32,10 +32,8 @@
       <div class="section__body flex column">
         <div class="section__main q-my-auto">
           <div class="section__title">
-            <h1 class="title q-mb-lg">Smart Launcher for All Your Dev Tools</h1>
-            <p class="subtitle q-mb-sm">
-              <span class="q-px-sm">{{t('sections.home.subtitle')}}</span>
-            </p>
+            <p class="brand-title q-mb-md">Smart Launcher for All Your Dev Tools</p>
+            <h1 class="title q-mb-lg">{{ t('sections.home.subtitle') }}</h1>
             <p class="subtitle q-mb-xl" v-html="t('sections.home.description')"></p>
             <q-btn :to="localeTo('pricing')"
                    unelevated
@@ -88,6 +86,23 @@
     }
   }
 
+  .brand-title {
+    color: #03d5ff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-transform: uppercase;
+
+    @media (min-width: 48em) {
+      font-size: 1rem;
+    }
+
+    @media (min-width: 77.5em) {
+      font-size: 1.125rem;
+    }
+  }
+
   .title {
     font-size: 2rem;
     font-weight: 700;
@@ -131,13 +146,6 @@
       font-size: 2.25rem;
     }
 
-    &:first-of-type {
-      opacity: 0.9;
-    }
-
-    span {
-      border-bottom: 2px solid #00ffaa;
-    }
   }
 
   .q-list {
