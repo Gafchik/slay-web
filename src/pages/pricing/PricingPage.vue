@@ -1,11 +1,14 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
   import { computed } from 'vue'
+  import { useRouter } from 'vue-router'
 
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
   import { useBillingStore } from 'stores/billing-store.js'
   import { storeToRefs } from 'pinia'
   import { useAuthStore } from 'stores/auth-store.js'
+
+  const router = useRouter()
 
   const { t, tm } = useI18n()
   const { localeTo } = useLocaleRoute()
@@ -15,7 +18,11 @@
 
   const {getPrices, checkout} = billingStore
   const {priceCards} = storeToRefs(billingStore)
-  const {isLoggedIn} = storeToRefs(authStore)
+  const {isLoggedIn, user } = storeToRefs(authStore)
+
+  const hasActiveAccess = computed(() => {
+    return user.value?.has_active_trial || user.value?.has_active_subscription
+  })
 
   getPrices()
 
@@ -98,11 +105,17 @@
   })
 
   const clickStartBtn = (priceId) => {
-    if (!isLoggedIn) {
-      localeTo('login')
-    } else {
-      checkout(priceId)
+    if (!isLoggedIn.value) {
+      router.push(localeTo('login'))
+      return
     }
+
+    if (hasActiveAccess.value) {
+      router.push(localeTo('download'))
+      return
+    }
+
+    checkout(priceId)
   }
 
 </script>
