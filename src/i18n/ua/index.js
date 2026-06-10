@@ -196,10 +196,23 @@ export default {
     login: {
       title: 'Вхід',
       reg_text: 'Якщо у вас немає облікового запису, ви можете',
+      forgotPassword: 'Забули пароль?',
     },
     register: {
       title: 'Реєстрація',
       have_account_text: 'Якщо у вас вже є акаунт, ви можете',
+    },
+    forgotPassword: {
+      title: 'Відновлення пароля',
+      description: 'Введіть email, і ми надішлемо посилання для скидання пароля.',
+      submit: 'Надіслати посилання',
+    },
+    resetPassword: {
+      title: 'Створіть новий пароль',
+      description: 'Встановіть новий пароль для вашого акаунта Slay.',
+      submit: 'Зберегти пароль',
+      invalidLink: 'Посилання неповне або недійсне. Запросіть нове посилання.',
+      backToLogin: 'Повернутися до входу',
     },
   },
   download: {

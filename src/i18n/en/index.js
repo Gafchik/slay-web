@@ -197,10 +197,23 @@ export default {
     login: {
       title: 'Login',
       reg_text: "If you don’t have an account, you can",
+      forgotPassword: 'Forgot password?',
     },
     register: {
       title: 'Registration',
       have_account_text: 'If you already have an account, you can',
+    },
+    forgotPassword: {
+      title: 'Reset your password',
+      description: 'Enter your email and we will send you a password reset link.',
+      submit: 'Send reset link',
+    },
+    resetPassword: {
+      title: 'Create a new password',
+      description: 'Choose a new password for your Slay account.',
+      submit: 'Save new password',
+      invalidLink: 'This reset link is incomplete or invalid. Request a new one.',
+      backToLogin: 'Back to login',
     },
   },
   download: {

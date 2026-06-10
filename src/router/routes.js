@@ -17,6 +17,11 @@ const makeChildren = (prefix = '') => [
     component: () => import('pages/auth/RegistrationPage.vue'),
   },
   {
+    path: 'reset-password',
+    name: `${prefix}reset_password`,
+    component: () => import('pages/auth/ResetPasswordPage.vue'),
+  },
+  {
     path: 'faq',
     name: `${prefix}faq`,
     component: () => import('pages/info/FaqPage.vue')

@@ -74,6 +74,30 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     }
   }
 
+  const forgotPasswordRequest = async (email) => {
+    showLoading()
+    try {
+      await api.post('/password/forgot', { email })
+      return { success: true }
+    } catch (error) {
+      return { success: false, error: error.response?.data?.message }
+    } finally {
+      hideLoading()
+    }
+  }
+
+  const resetPasswordRequest = async (data) => {
+    showLoading()
+    try {
+      await api.post('/password/reset', data)
+      return { success: true }
+    } catch (error) {
+      return { success: false, error: error.response?.data?.message }
+    } finally {
+      hideLoading()
+    }
+  }
+
   const loginGoggleRequest = async () => {
     showLoading()
     try {
@@ -142,6 +166,8 @@ export const useAuthStore = defineStore('useAuthStore', () => {
     getUserData,
     registerRequest,
     loginRequest,
+    forgotPasswordRequest,
+    resetPasswordRequest,
     logoutRequest,
     initAuth,
     checkAuth,

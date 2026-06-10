@@ -197,10 +197,23 @@ export default {
     login: {
       title: 'Логин',
       reg_text: "Если у вас нет учетной записи, вы можете",
+      forgotPassword: 'Забыли пароль?',
     },
     register: {
       title: 'Регистрация',
       have_account_text: 'Если у вас уже есть аккаунт, вы можете',
+    },
+    forgotPassword: {
+      title: 'Восстановление пароля',
+      description: 'Введите email, и мы отправим ссылку для сброса пароля.',
+      submit: 'Отправить ссылку',
+    },
+    resetPassword: {
+      title: 'Создайте новый пароль',
+      description: 'Установите новый пароль для вашего аккаунта Slay.',
+      submit: 'Сохранить пароль',
+      invalidLink: 'Ссылка неполная или недействительная. Запросите новую ссылку.',
+      backToLogin: 'Вернуться ко входу',
     },
   },
   download: {
