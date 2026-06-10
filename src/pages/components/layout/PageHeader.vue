@@ -3,9 +3,9 @@ import { ref, nextTick, onMounted, onBeforeUnmount, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useQuasar } from 'quasar'
-import { useLocaleRoute } from 'src/composables/useLocaleRoute'
+import { useLocaleRoute } from 'src/composables/useLocaleRoute.js'
 
-import AppLanguageSwitcher from 'src/pages/blocks/AppLanguageSwitcher.vue'
+import AppLanguageSwitcher from 'pages/components/layout/AppLanguageSwitcher.vue'
 
 import Logotype from 'assets/Logotype.svg'
 

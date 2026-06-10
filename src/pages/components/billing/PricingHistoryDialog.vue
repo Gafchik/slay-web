@@ -3,7 +3,7 @@
   import { storeToRefs } from 'pinia'
   import { useI18n } from 'vue-i18n'
 
-  import { getIntlLocaleByI18n } from 'src/i18n/locales'
+  import { getIntlLocaleByI18n } from 'src/i18n/locales.js'
 
   import { useBillingStore } from 'stores/billing-store.js'
 

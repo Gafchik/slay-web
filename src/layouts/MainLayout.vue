@@ -1,6 +1,6 @@
 <script setup>
-  import PageHeader from 'pages/blocks/PageHeader.vue'
-  import PageFooter from 'pages/blocks/PageFooter.vue'
+  import PageHeader from 'pages/components/layout/PageHeader.vue'
+  import PageFooter from 'pages/components/layout/PageFooter.vue'
 </script>
 
 <template>

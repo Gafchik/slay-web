@@ -4,7 +4,7 @@
   import Video1 from 'assets/video/laucher/Launcher-full.mp4'
   import Video2 from 'assets/video/laucher/Launcher-full.webm'
 
-  import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
+  import AppVideoPreview from 'pages/components/video/AppVideoPreview.vue'
 
   const { t } = useI18n()
 </script>

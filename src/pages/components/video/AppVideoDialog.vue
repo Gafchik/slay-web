@@ -1,6 +1,6 @@
 <script setup>
   import { nextTick, ref, watch } from 'vue'
-  import { useVideoDialog } from 'src/composables/useVideoDialog'
+  import { useVideoDialog } from 'src/composables/useVideoDialog.js'
 
   const { isOpen, sources, close } = useVideoDialog()
   const videoRef = ref(null)

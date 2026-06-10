@@ -4,7 +4,7 @@
   import Video1 from 'src/assets/video/projects/Projects-full.mp4';
   import Video2 from'src/assets/video/projects/Projects-full.webm';
 
-  import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
+  import AppVideoPreview from 'pages/components/video/AppVideoPreview.vue'
 
   const { t } = useI18n()
 </script>

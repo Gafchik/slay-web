@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { useVideoDialog } from 'src/composables/useVideoDialog'
+import { useVideoDialog } from 'src/composables/useVideoDialog.js'
 
 const props = defineProps({
   mp4: {

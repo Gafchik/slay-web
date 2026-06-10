@@ -1,6 +1,6 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
-  import { useLocaleRoute } from 'src/composables/useLocaleRoute'
+  import { useLocaleRoute } from 'src/composables/useLocaleRoute.js'
 
   const { t } = useI18n()
   const { localeTo } = useLocaleRoute()

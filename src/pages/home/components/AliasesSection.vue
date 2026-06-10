@@ -5,7 +5,7 @@
   import Video1 from 'assets/video/alias/Alias-full.mp4'
   import Video2 from 'assets/video/alias/Alias-full.webm'
 
-  import AppVideoPreview from 'pages/blocks/AppVideoPreview.vue'
+  import AppVideoPreview from 'pages/components/video/AppVideoPreview.vue'
 
   const { t, tm } = useI18n()
 

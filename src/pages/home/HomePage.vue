@@ -11,7 +11,7 @@
   import SftpSection from './components/SftpSection.vue'
   /*import TestimonialsSection from './components/TestimonialsSection.vue'*/
   import CtaSection from './components/CtaSection.vue'
-  import AppVideoDialog from './../blocks/AppVideoDialog.vue'
+  import AppVideoDialog from '../components/video/AppVideoDialog.vue'
 
   /*const $q = useQuasar()
   const showAboutSection = computed(() => $q.screen.width >= 1240)*/

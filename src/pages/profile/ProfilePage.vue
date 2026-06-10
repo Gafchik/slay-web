@@ -11,8 +11,8 @@
   import { useConfirmDialogStore } from 'stores/confirm-dialog-store.js'
   import { useBillingStore } from 'stores/billing-store.js'
 
-  import ConfirmDialog from '../../components/dialog/ConfirmDialog.vue'
-  import PricingHistoryDialog from 'pages/pricing/PricingHistoryDialog.vue'
+  import ConfirmDialog from '../components/dialog/ConfirmDialog.vue'
+  import PricingHistoryDialog from 'pages/components/billing/PricingHistoryDialog.vue'
 
   const { t, locale } = useI18n()
   const { localeTo } = useLocaleRoute()

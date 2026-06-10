@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { useLanguageSwitcher } from 'src/composables/useLanguageSwitcher'
+import { useLanguageSwitcher } from 'src/composables/useLanguageSwitcher.js'
 
 const { switchLanguage, currentLocaleKey, locales } = useLanguageSwitcher()
 

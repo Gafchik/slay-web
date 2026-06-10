@@ -9,12 +9,12 @@ const makeChildren = (prefix = '') => [
   {
     path: 'login',
     name: `${prefix}login`,
-    component: () => import('pages/Auth/LoginPage.vue'),
+    component: () => import('pages/auth/LoginPage.vue'),
   },
   {
     path: 'registration',
     name: `${prefix}registration`,
-    component: () => import('pages/Auth/RegistrationPage.vue'),
+    component: () => import('pages/auth/RegistrationPage.vue'),
   },
   {
     path: 'faq',
