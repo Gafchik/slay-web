@@ -3,6 +3,8 @@
   import { useI18n } from 'vue-i18n'
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
+  import RestorePasswordDialog from 'pages/components/dialog/RestorePasswordDialog.vue'
+
   import { useAuthStore } from 'stores/auth-store.js'
 
   import googleLogo from 'src/assets/google_logo.png'
@@ -11,14 +13,12 @@
   const { localeTo } = useLocaleRoute()
 
   const authStore = useAuthStore()
-  const { forgotPasswordRequest, loginRequest, loginGoggleRequest } = authStore
+  const { loginRequest, loginGoggleRequest } = authStore
 
   const email = ref('')
   const password = ref('')
   const form = ref(null)
   const forgotPasswordDialog = ref(false)
-  const forgotPasswordEmail = ref('')
-  const forgotPasswordForm = ref(null)
 
   const onSubmit = async () => {
     if (!form.value) return
@@ -34,27 +34,12 @@
   }
 
   const openForgotPasswordDialog = () => {
-    forgotPasswordEmail.value = email.value
     forgotPasswordDialog.value = true
-  }
-
-  const onForgotPasswordSubmit = async () => {
-    if (!forgotPasswordForm.value) return
-
-    const success = await forgotPasswordForm.value.validate()
-
-    if (!success) return
-
-    const result = await forgotPasswordRequest(forgotPasswordEmail.value)
-
-    if (result?.success) {
-      forgotPasswordDialog.value = false
-    }
   }
 </script>
 
 <template>
-  <q-page class="row justify-center text-primary  q-py-xl">
+  <q-page class="row justify-center text-primary q-py-xl">
     <div class="flex column justify-center q-ma-auto">
       <section class="section">
         <div class="section__title text-center q-mb-xl">
@@ -101,12 +86,14 @@
             </template>
           </q-input>
 
-          <div class="row justify-end q-mt-sm">
+          <div class="row justify-end">
             <q-btn
               flat
               dense
+              rounded
               no-caps
-              class="forgot-password-link"
+              size="md"
+              class="btn-link q-px-sm"
               :label="t('account.login.forgotPassword')"
               @click="openForgotPasswordDialog"
             />
@@ -140,6 +127,7 @@
               </q-avatar>
             </q-btn>
           </div>
+
           <div class="row justify-center q-mt-lg text-primary">
             <span>
               {{t('account.login.reg_text')}}
@@ -155,69 +143,8 @@
       </section>
     </div>
 
-    <q-dialog v-model="forgotPasswordDialog" backdrop-filter="blur(8px) brightness(35%)">
-      <q-card class="forgot-password-dialog glass text-white">
-        <q-card-section class="forgot-password-dialog__header q-pb-sm">
-          <div>
-            <div class="text-h5 text-weight-bold gradient-text">
-              {{ t('account.forgotPassword.title') }}
-            </div>
-            <div class="text-grey-5 q-mt-sm">
-              {{ t('account.forgotPassword.description') }}
-            </div>
-          </div>
-
-          <q-btn
-            v-close-popup
-            flat
-            round
-            dense
-            icon="close"
-            color="white"
-            class="forgot-password-dialog__close"
-          />
-        </q-card-section>
-
-        <q-card-section>
-          <q-form ref="forgotPasswordForm" @submit="onForgotPasswordSubmit">
-            <q-input
-              v-model="forgotPasswordEmail"
-              dark
-              rounded
-              outlined
-              lazy-rules
-              autofocus
-              type="email"
-              autocomplete="email"
-              label-color="white"
-              color="white"
-              class="btn-glass auto-field"
-              :label="t('inputData.email')"
-              :rules="[
-                val => !!val || t('validation.required'),
-                val => /.+@.+\..+/.test(val) || t('validation.notValid'),
-              ]"
-            >
-              <template #prepend>
-                <q-icon name="mail" color="white" />
-              </template>
-            </q-input>
-
-            <div class="row justify-end q-mt-lg">
-              <q-btn
-                rounded
-                unelevated
-                no-caps
-                type="submit"
-                class="gradient-bg q-px-lg"
-                icon-right="send"
-                :label="t('account.forgotPassword.submit')"
-              />
-            </div>
-          </q-form>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
+    <RestorePasswordDialog  v-model="forgotPasswordDialog"
+                            :initial-email="email"/>
   </q-page>
 </template>
 
@@ -245,28 +172,5 @@
   .google-logo {
     width: 24px;
     height: 24px;
-  }
-
-  .forgot-password-link {
-    color: #63efff;
-    font-weight: 700;
-  }
-
-  .forgot-password-dialog {
-    width: min(92vw, 460px);
-    padding: 12px;
-    border-radius: 24px;
-    background-color: rgba(4, 12, 16, 0.92);
-
-    &__header {
-      position: relative;
-      padding-right: 52px;
-    }
-
-    &__close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
   }
 </style>
