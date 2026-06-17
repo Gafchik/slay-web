@@ -12,6 +12,7 @@
   /*import TestimonialsSection from './components/TestimonialsSection.vue'*/
   import CtaSection from './components/CtaSection.vue'
   import AppVideoDialog from '../components/video/AppVideoDialog.vue'
+  import DemoSection from './components/DemoSection.vue'
 
   /*const $q = useQuasar()
   const showAboutSection = computed(() => $q.screen.width >= 1240)*/
@@ -20,6 +21,7 @@
 <template>
   <q-page class="fit q-pb-xl">
     <TitleSection />
+    <DemoSection />
 <!--    <AboutSection v-if="showAboutSection" />-->
     <ProjectSection />
     <LaunchSection />

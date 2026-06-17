@@ -641,3 +641,79 @@ h1, h2, h3 {
   background-color: rgba(#03d5ff, 0.5);
   color: #FFFFFF;
 }
+
+.q-select {
+  &.btn-glass {
+    width: 200px;
+
+    .q-field {
+      &__control,
+      &__marginal {
+        min-height: 48px;
+      }
+    }
+
+    &.q-field--focused {
+      .q-field__control,
+      .q-field__control:before {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.q-menu {
+  @extend .liquid-glass;
+  width: 100%;
+  max-width: 200px;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+
+  &.menu-context {
+    border-radius: 8px;
+  }
+}
+
+.q-menu .q-item {
+  background: rgba(26, 59, 62, 0.5);
+}
+
+.q-menu .q-item.q-item--active {
+  background: rgba(26, 59, 62, 0.8);
+}
+
+.q-menu .q-item.q-item--active .q-focus-helper:after {
+  display: none;
+}
+
+.q-menu .q-focus-helper {
+  background: transparent !important;
+}
+
+.q-menu .q-focus-helper:before {
+  display: none;
+}
+
+.tab-card--header {
+  flex: 0 0 auto;
+}
+
+.tab-card--main {
+  flex: 0 1 auto;
+  min-height: 0;
+  scrollbar-color: white transparent;
+}
+
+.tab-card--foot {
+  flex: 1 1 auto;
+}
