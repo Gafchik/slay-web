@@ -10,6 +10,7 @@
   import { useAuthStore } from 'stores/auth-store.js'
   import { useConfirmDialogStore } from 'stores/confirm-dialog-store.js'
   import { useBillingStore } from 'stores/billing-store.js'
+  import { useWebLoginStore } from 'stores/web-login-store.js'
 
   import ConfirmDialog from '../components/dialog/ConfirmDialog.vue'
   import PricingHistoryDialog from 'pages/components/billing/PricingHistoryDialog.vue'
@@ -24,6 +25,9 @@
   const billingStore = useBillingStore()
   const {getTransactions, getSubscriptions, cancelSubscription} = billingStore
   const {subscriptions, transactions} = storeToRefs(billingStore)
+
+  const webLoginStore = useWebLoginStore()
+  const { openDesktopApp } = webLoginStore
 
   const confirmDialogStore = useConfirmDialogStore()
   const { openConfirmDialog } = confirmDialogStore
@@ -645,6 +649,19 @@
                 :icon="readonly ? 'edit' : 'close'"
                 size="md"
                 :label="readonly ? t('buttons.edit') : t('buttons.cancel')"
+              />
+
+              <q-btn
+                v-if="readonly"
+                outline
+                rounded
+                unelevated
+                class="btn-glass--primary"
+                color="white"
+                icon="open_in_new"
+                size="md"
+                label="Open Slay app"
+                @click="openDesktopApp"
               />
 
               <q-btn
