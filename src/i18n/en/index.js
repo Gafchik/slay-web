@@ -7,6 +7,8 @@ export default {
     terms: 'Terms of Services',
     privacyPolicy: 'Privacy Policy',
     refundPolicy: 'Refund Policy',
+    password: 'Password',
+    feature: 'Feature',
   },
   buttons: {
     join: 'Join',
@@ -28,7 +30,8 @@ export default {
     choose: 'Choose {data}',
     renew: 'Renew {data}',
     confirm: 'Confirm',
-    open: 'Open {data}'
+    open: 'Open {data}',
+    continue: 'Continue',
   },
   inputData: {
     firstName: 'First name',
@@ -195,8 +198,8 @@ export default {
       }
     },
     login: {
-      title: 'Login',
-      reg_text: "If you don’t have an account, you can",
+      title: 'Welcome to SLAY',
+      reg_text: "Don’t you have an account?",
       forgotPassword: 'Forgot password?',
     },
     register: {

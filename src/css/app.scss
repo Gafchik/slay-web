@@ -29,6 +29,7 @@
 }
 
 body {
+  background: #011C37;
   font-family: 'Nunito', Arial, sans-serif;
 
   &.body--dark {
@@ -42,7 +43,7 @@ body {
 
 .q-page-container {
   position: relative;
-  background: black !important;
+/*  background: black !important;
 
   &:before {
     content: '';
@@ -55,7 +56,7 @@ body {
             rgba(0, 255, 255, 0.25));
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-  }
+  }*/
 }
 
 @keyframes gradient {
@@ -301,6 +302,8 @@ body {
       }
     }
   }
+
+
 }
 
 .q-field__native:-webkit-autofill,
@@ -316,13 +319,6 @@ body {
 
   background-color: transparent !important;
   background-image: none !important;
-}
-
-/* Подсветка текста */
-h1, h2, h3 {
-  color: #fff;
-  line-height: 110%;
-  text-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
 }
 
 .container {
@@ -348,8 +344,8 @@ h1, h2, h3 {
   }
 
   @media (min-width: 90em) {
-    max-width: 1240px;
-    padding: 0 40px;
+    max-width: 1440px;
+    padding: 0 80px;
   }
 
   @media (min-width: 100em) {
@@ -362,6 +358,33 @@ h1, h2, h3 {
 
   @media (min-width: 160em) {
     max-width: 1920px;
+  }
+}
+
+.btn {
+  color: rgba(255, 255, 255, 0.64);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &.btn-link--blue {
+    color: rgba(10, 253, 255, 0.64);
+
+    &:hover {
+      color: rgba(10, 253, 255, 0.84);
+    }
+
+    &:active {
+      color: rgba(10, 253, 255, 1);
+    }
   }
 }
 
@@ -393,7 +416,38 @@ h1, h2, h3 {
     @media (min-width: 158.75em) {
       font-size: 1.75rem;
     }
+
+    &--blue {
+      color: rgba(10, 253, 255, 0.64);
+    }
   }
+
+  &.btn-gold {
+    min-height: auto;
+    padding: 12px 62px;
+    color: #00333C;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 120%;
+
+    &:before {
+      background: #E4CD71;
+      border: none;
+      transition: 0.25s;
+    }
+
+    .q-focus-helper {
+      display: none !important;
+    }
+
+    &:hover {
+      &:before {
+        box-shadow: 0 0 10px #E4CD71;
+      }
+    }
+  }
+
+
 
   &.btn-glass {
     &:before {
@@ -524,11 +578,8 @@ h1, h2, h3 {
 }
 
 .section {
-  padding: 20px 0;
-  color: white;
-
   @media (min-width: 77.5em) {
-    padding: 48px 0;
+
   }
 
   &__body {
@@ -640,4 +691,52 @@ h1, h2, h3 {
 ::selection {
   background-color: rgba(#03d5ff, 0.5);
   color: #FFFFFF;
+}
+
+
+.note {
+  position: relative;
+  display: inline-block;
+  color: #E4CD71;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 16px);
+    height: 1px;
+    width: 120px;
+    margin: auto;
+    background: #E4CD71;
+  }
+}
+
+h1,h2 {
+  /*font-family: "Plus Jakarta Sans";*/
+  line-height: normal;
+  font-style: normal;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+p {
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }

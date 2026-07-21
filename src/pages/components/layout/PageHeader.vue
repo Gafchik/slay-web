@@ -7,7 +7,7 @@ import { useLocaleRoute } from 'src/composables/useLocaleRoute.js'
 
 import AppLanguageSwitcher from 'pages/components/layout/AppLanguageSwitcher.vue'
 
-import Logotype from 'assets/Logotype.svg'
+import Logotype from 'assets/images/Logotype.svg'
 
 const { t } = useI18n()
 const { localeTo, localeRouteName } = useLocaleRoute()
@@ -17,7 +17,6 @@ const $q = useQuasar()
 const showButton = ref(false)
 const route = useRoute()
 
-const isHomeRoute = computed(() => route.name === localeRouteName('home'))
 const isLoginRoute = computed(() => route.name === localeRouteName('login'))
 const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
 
@@ -59,26 +58,46 @@ watch(() => route.fullPath, async () => {
 </script>
 
 <template>
-  <q-header class="glass">
+  <q-header>
     <q-toolbar class="flex justify-between q-py-none">
       <q-toolbar-title>
-        <router-link class="flex" :to="localeTo('home')">
-          <img :src="Logotype" alt="" title="" height="125" width="451"/>
+        <router-link class="flex items-center btn-logo" :to="localeTo('home')">
+          <img :src="Logotype" alt="" title="" height="125" width="451" class="q-mr-md"/>
+          <span>SLAY SYNERGY</span>
         </router-link>
       </q-toolbar-title>
-      <transition name="fade-btn" v-if="isHomeRoute">
-        <q-btn
-          v-show="showButton"
-          unelevated
-          rounded
-          class="btn-glass--primary q-py-sm"
-          :to="localeTo('pricing')"
-        >
-          <span v-if="isDesktop">{{ t('buttons.start', { data: t('pricing.freeTrial') })}}</span>
-          <q-icon name="download" v-else/>
-        </q-btn>
-      </transition>
-      <div class="flex items-center">
+      <div class="flex">
+        <div class="col q-mx-xs">
+          <q-btn
+            unelevated
+            rounded
+            class="btn-link"
+          >
+            <span>{{ t('routes.feature')}}</span>
+          </q-btn>
+        </div>
+        <div class="col q-mx-xs">
+          <q-btn
+            unelevated
+            rounded
+            class="btn-link"
+            :to="localeTo('pricing')"
+          >
+            <span>{{ t('routes.pricing')}}</span>
+          </q-btn>
+        </div>
+        <div class="col q-mx-xs">
+          <q-btn
+            unelevated
+            rounded
+            class="btn-link"
+            :to="localeTo('pricing')"
+          >
+            <span>{{ t('routes.password')}}</span>
+          </q-btn>
+        </div>
+      </div>
+      <div class="flex justify-end" style="width: 250px">
         <q-btn
           v-if="!isLoginRoute && !isRegistrationRoute"
           unelevated
@@ -110,8 +129,21 @@ watch(() => route.fullPath, async () => {
     }
   }
 
+  .router-link-active {
+    text-decoration: none;
+    color: #E4CD71;
+  }
+
   .q-header {
     padding: 8px 0;
+    background: transparent;
+    border-radius: 0 0 12px 12px;
+    transition: 0.25s;
+
+    @media (min-width: 77.5em) {
+      padding: 12px 0;
+    }
+
 
     @media (min-width: 158.75em) {
       padding: 16px 0;
@@ -123,34 +155,24 @@ watch(() => route.fullPath, async () => {
 
       @media screen and (min-width: 77.5em) {
         min-height: 50px;
-        padding: 0 24px;
+        padding: 0 20px;
       }
 
       @media (min-width: 158.75em) {
         min-height: 55px;
-        padding: 0 48px;
+        padding: 0 40px;
       }
     }
-  }
 
-  .btn-link {
-    margin-left: 8px;
-
-    @media screen and (min-width: 77.5em) {
-      margin-left: 12px;
-    }
-
-    @media (min-width: 118.75em) {
-      margin-left: 20px;
-    }
-
-    @media (min-width: 158.75em) {
-      margin-left: 24px;
+    &:hover {
+      background: #051627;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.32);
     }
   }
 
   .q-toolbar__title {
-    flex: 0 1 auto;
+    width: 250px;
+    flex: initial;
   }
 
   .btn-link,
@@ -200,22 +222,5 @@ watch(() => route.fullPath, async () => {
 
   .q-header .q-layout__shadow {
     border-radius: 18px;
-  }
-
-  .fade-btn-enter-active,
-  .fade-btn-leave-active {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .fade-btn-enter-from,
-  .fade-btn-leave-to {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  .fade-btn-enter-to,
-  .fade-btn-leave-from {
-    opacity: 1;
-    transform: translateY(0);
   }
 </style>
