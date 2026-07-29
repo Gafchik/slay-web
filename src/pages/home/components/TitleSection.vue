@@ -68,7 +68,7 @@
 </script>
 
 <template>
-  <section class="section text-white">
+  <section class="section text-white q-pb-xl q-mb-xl">
     <div class="home text-center">
       <div class="container column justify-center">
         <div class="heating column items-center">
@@ -103,16 +103,18 @@
         <span class="note q-mb-lg">Workspace Control</span>
         <h1 class="q-mb-md">Open your full dev workspace in seconds</h1>
         <p class="q-mb-xl">Keep projects, apps, comments, passwords, and answers accessible in one place. Start working without hunting for tools, links, and credentials.</p>
-        <q-list class="flex">
-          <q-item v-for="(item, index) in listAbout" :key="index" class="q-mb-md">
-            <div class="q-item__body">
-              <q-item-section avatar class="q-mb-sm q-pa-none">
-                <q-item-label>{{ item.title }}</q-item-label>
-                <q-item-label caption>{{ item.description }}</q-item-label>
-              </q-item-section>
-            </div>
-          </q-item>
-        </q-list>
+        <div class="q-mb-xl">
+          <q-list class="flex">
+            <q-item v-for="(item, index) in listAbout" :key="index" class="q-mb-md">
+              <div class="q-item__body">
+                <q-item-section avatar class="q-mb-sm q-pa-none">
+                  <q-item-label>{{ item.title }}</q-item-label>
+                  <q-item-label caption>{{ item.description }}</q-item-label>
+                </q-item-section>
+              </div>
+            </q-item>
+          </q-list>
+        </div>
         <q-img :src="example"/>
       </div>
     </div>
@@ -131,37 +133,6 @@
                   <q-item-label caption>{{ item.description }}</q-item-label>
                 </q-item-section>
               </div>
-            </q-item>
-          </q-list>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container">
-      <div class="section__body flex column">
-        <div class="section__main q-my-auto">
-          <div class="section__title">
-            <p class="brand-title q-mb-md">Smart Launcher for All Your Dev Tools</p>
-            <h1 class="title q-mb-lg">{{ t('sections.home.subtitle') }}</h1>
-            <p class="subtitle q-mb-xl" v-html="t('sections.home.description')"></p>
-            <q-btn :to="localeTo('pricing')"
-                   unelevated
-                   rounded
-                   class="btn-download btn-glass--primary q-px-xl">
-              {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
-            </q-btn>
-          </div>
-        </div>
-        <div class="section__footer">
-          <q-list  class="flex justify-center q-mx-auto">
-            <q-item class="flex items-center"
-              v-for="(item, index) in list"
-              :key="index">
-              <q-item-section avatar class="flex">
-                <q-img :src="item.icon" />
-              </q-item-section>
-              <q-item-section>{{ item.text }}</q-item-section>
             </q-item>
           </q-list>
         </div>
@@ -203,7 +174,7 @@
     }
 
     @media (min-width: 77.5em) {
-      min-height: 100vh;
+      min-height: 810px;
     }
 
     @media (min-width: 158.75em) {
@@ -293,7 +264,6 @@
 
     @media (min-width: 77.5em) {
       padding: 40px 0;
-      min-height: 100vh;
     }
 
     @media (min-width: 158.75em) {

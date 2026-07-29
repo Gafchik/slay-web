@@ -136,7 +136,7 @@ watch(() => route.fullPath, async () => {
 
   .q-header {
     padding: 8px 0;
-    background: transparent;
+    background: linear-gradient(to top, rgba(0, 62, 64, 0.00) 0%, #081426 100%);
     border-radius: 0 0 12px 12px;
     transition: 0.25s;
 

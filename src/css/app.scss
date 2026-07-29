@@ -43,20 +43,7 @@ body {
 
 .q-page-container {
   position: relative;
-/*  background: black !important;
-
-  &:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(to right,
-            rgba(0, 255, 200, 0.25),
-            rgba(0, 180, 255, 0.25),
-            rgba(0, 255, 255, 0.25));
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }*/
+  padding-top: 0 !important;
 }
 
 @keyframes gradient {
@@ -577,101 +564,57 @@ body {
   }
 }
 
-.section {
-  @media (min-width: 77.5em) {
 
-  }
 
-  &__body {
-    padding-top: 20px;
-    margin-bottom: 20px;
+.q-input {
+  &.q-field {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
 
-    @media (min-width: 77.5em) {
-      padding-top: 48px;
-      margin-bottom: 48px;
-    }
-  }
+    .q-field {
+      &__control {
+        padding: 0 24px;
+        border-radius: 12px;
 
-  &__title {
-    margin-bottom: 36px;
-
-    @media (min-width: 64em) {
-      height: 100%;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-
-      @media (min-width: 64em) {
-        font-size: 2rem;
-      }
-
-      @media (min-width: 158.75em) {
-        font-size: 2.5rem;
-      }
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 110%;
-      opacity: 0.8;
-
-      @media (min-width: 64em) {
-        font-size: 1.25rem;
-        line-height: 120%;
-      }
-
-      @media (min-width: 158.75em) {
-        font-size: 1.75rem;
-      }
-
-      &:first-of-type {
-        opacity: 0.9;
-      }
-    }
-  }
-
-  &__video {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-
-    @media (min-width: 64em) {
-      border-radius: 16px;
-    }
-
-    @media (min-width: 77.5em) {
-      border-radius: 20px;
-    }
-
-    .q-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      box-shadow: 0 0 10px rgba(#03d5ff, 0.75);
-      transition: 0.25s;
-
-      .q-focus-helper {
-        opacity: 0.15;
-        background: rgba(#03d5ff, 0.5);
-      }
-
-      .q-focus-helper:before,
-      .q-focus-helper:after {
-        display: none;
-      }
-
-      &:hover {
-        box-shadow: 0 0 10px rgba(#03d5ff, 0.75), inset 0 0 20px rgba(#03d5ff, 0.75);;
-
-        .q-icon {
-          color: #FFFFFF;
+        &:before {
+          border-color: rgba(255, 255, 255, 0);
+          background: #02172B;
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), 2px 4px 4px 0 #050E1D inset;
+          transition: 0.25s;
         }
+      }
+
+      &__marginal {
+        padding-right: 16px;
       }
     }
 
     .q-icon {
-      color: #03d5ff;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      .q-field {
+        &__control {
+          &:before {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.3);
+            box-shadow: none;
+          }
+        }
+      }
+    }
+
+    &--focused {
+      .q-field {
+        &__control {
+          &:after {
+            border-color: rgba(10, 253, 255, 1);
+          }
+        }
+      }
     }
   }
 }

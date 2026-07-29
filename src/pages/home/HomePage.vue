@@ -3,13 +3,16 @@
   import { useQuasar } from 'quasar'*/
 
   import TitleSection from './components/TitleSection.vue'
-  import ProjectSection from './components/ProjectSection.vue'
+  import DistinctionSection from './components/DistinctionSection.vue'
+  import SubsequenceSection from './components/SubsequenceSection.vue'
+
+  /*import ProjectSection from './components/ProjectSection.vue'
   import LaunchSection from './components/LaunchSection.vue'
   import AliasesSection from './components/AliasesSection.vue'
   import PasswordSection from './components/PasswordSection.vue'
-  /*import AboutSection from './components/AboutSection.vue'*/
+  import AboutSection from './components/AboutSection.vue'
   import SftpSection from './components/SftpSection.vue'
-  /*import TestimonialsSection from './components/TestimonialsSection.vue'*/
+  import TestimonialsSection from './components/TestimonialsSection.vue'*/
   import CtaSection from './components/CtaSection.vue'
   import AppVideoDialog from '../components/video/AppVideoDialog.vue'
 
@@ -20,13 +23,15 @@
 <template>
   <q-page class="fit q-pb-xl">
     <TitleSection />
-<!--    <AboutSection v-if="showAboutSection" />-->
+    <DistinctionSection />
+    <SubsequenceSection />
+<!--    <AboutSection v-if="showAboutSection" />
+
     <ProjectSection />
     <LaunchSection />
     <AliasesSection />
     <PasswordSection />
-    <SftpSection />
-<!--    <TestimonialsSection />-->
+    <SftpSection />TestimonialsSection />-->
     <CtaSection />
   </q-page>
 

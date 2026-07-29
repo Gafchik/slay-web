@@ -57,14 +57,13 @@
               <q-form @submit="onSubmit" ref="form">
                 <q-input
                   dark
-                  rounded
                   outlined
                   lazy-rules
                   v-model="email"
                   type="email"
                   label-color="white"
                   color="white"
-                  class="btn-glass auto-field q-ma-none q-mb-md"
+                  class="auto-field q-ma-none"
                   :label="t('inputData.email')"
                   :rules="[
                     val => !!val || t('validation.required'),
