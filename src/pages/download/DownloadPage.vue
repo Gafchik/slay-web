@@ -43,39 +43,41 @@ const instructions = computed(() => {
   <q-page class="column justify-center q-pb-xl">
     <section class="section">
       <div class="container">
-        <div class="section__head">
-          <div class="section__title text-center q-mb-xl">
-            <h2 class="gradient-text">{{ t('download.title') }}</h2>
-            <p>{{ t('download.subtitle') }}</p>
+        <div class="container-fluid">
+          <div class="section__head">
+            <div class="section__title text-center q-mb-xl">
+              <h2 class="gradient-text">{{ t('download.title') }}</h2>
+              <p>{{ t('download.subtitle') }}</p>
+            </div>
           </div>
-        </div>
 
-        <div class="section__main q-mb-xl">
-          <q-list class="row justify-center">
-            <q-item v-for="(item, index) in list" :key="index" class="col-md-3 col-sm-6 col-xs-12">
-              <q-item-section class="column items-center liquid-glass q-pa-md">
-                <q-img :src="item.icon" class="q-mb-sm" />
-                <span class="q-mb-lg">{{ item.text }}</span>
-                <q-btn :href="item.link"
-                       unelevated
-                       rounded
-                       class="btn-glass--primary q-px-md q-mt-auto">
-                  {{t('buttons.downloadFor') }} {{item.text}}
-                </q-btn>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </div>
+          <div class="section__main q-mb-xl">
+            <q-list class="row justify-center">
+              <q-item v-for="(item, index) in list" :key="index" class="col-md-3 col-sm-6 col-xs-12">
+                <q-item-section class="column items-center liquid-glass q-pa-md">
+                  <q-img :src="item.icon" class="q-mb-sm" />
+                  <span class="q-mb-lg">{{ item.text }}</span>
+                  <q-btn :href="item.link"
+                         unelevated
+                         rounded
+                         class="btn-glass--primary q-px-md q-mt-auto">
+                    {{t('buttons.downloadFor') }} {{item.text}}
+                  </q-btn>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
 
-        <div class="section__foot q-pb-xl">
-          <h3 class="q-mb-md">{{ t('download.instruction') }}</h3>
-          <q-list class="liquid-glass--primary text-white">
-            <q-item v-for="(item, index) in instructions" :key="index" class="q-pa-md">
-              <q-item-section class="block">
-                {{index + 1}}. <span v-html="item.title"></span>
-              </q-item-section>
-            </q-item>
-          </q-list>
+          <div class="section__foot q-pb-xl">
+            <h3 class="q-mb-md">{{ t('download.instruction') }}</h3>
+            <q-list class="liquid-glass--primary text-white">
+              <q-item v-for="(item, index) in instructions" :key="index" class="q-pa-md">
+                <q-item-section class="block">
+                  {{index + 1}}. <span v-html="item.title"></span>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
         </div>
       </div>
     </section>
@@ -83,6 +85,10 @@ const instructions = computed(() => {
 </template>
 
 <style scoped lang="scss">
+  .q-page {
+    padding: 100px 0;
+  }
+
   .section {
     &__main {
       .q-item {
@@ -122,8 +128,10 @@ const instructions = computed(() => {
   }
 
   .container {
-    @media (min-width: 77.5em) {
-      max-width: 1240px;
+    &-fluid {
+      @media (min-width: 77.5em) {
+        max-width: 1240px;
+      }
     }
   }
 

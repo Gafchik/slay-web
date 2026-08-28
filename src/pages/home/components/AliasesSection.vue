@@ -1,51 +1,56 @@
 <script setup>
-  import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
 
-  import Video1 from 'assets/video/alias/Alias-full.mp4'
-  import Video2 from 'assets/video/alias/Alias-full.webm'
+  import icon from 'src/assets/images/aliases/Icon.png'
 
-  import AppVideoPreview from 'pages/components/video/AppVideoPreview.vue'
-
-  const { t, tm } = useI18n()
-
-  const aliasFeatures = computed(() => {
-    return tm('sections.alias.list') || []
-  })
+  const { t } = useI18n()
 </script>
 
 <template>
-  <section class="section">
+  <section class="section text-white q-pb-xl q-mb-xl">
     <div class="container">
-      <div class="section__body">
-        <div class="section__main">
-          <div class="section__head row">
-            <div class="col-md-4 col-xs-12">
-              <div class="section__title flex column justify-center">
-                <h2 class="q-mb-sm">{{t('sections.alias.title')}}</h2>
-                <p class="q-mb-md">{{t('sections.alias.subtitle')}}</p>
-                <p>{{t('sections.alias.description')}}</p>
+      <div class="container-fluid">
+        <div class="section__body q-pb-xl">
+          <div class="section__head q-pb-xl">
+            <span class="note q-mb-lg">
+              {{ t('pages.home.aliases.note') }}
+            </span>
+            <h2 class="section__title q-mb-md">
+              {{ t('pages.home.aliases.title') }}
+            </h2>
+          </div>
+          <div class="section__main">
+            <div class="flex justify-between">
+              <div class="col-auto section__column--left">
+                <div>
+                  <p>
+                    {{ t('pages.home.aliases.before.description') }}
+                  </p>
+                  <span class="badge">
+                    {{ t('pages.home.aliases.before.badge') }}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="col-md-8 col-xs-12">
-              <div class="section__video">
-                <AppVideoPreview
-                  :mp4="Video1"
-                  :webm="Video2"
-                />
+              <div class="col-auto section__column--right">
+                <div>
+                  <q-img :src="icon"/>
+                  <p>
+                    {{ t('pages.home.aliases.after.description') }}
+                  </p>
+                  <span class="badge">
+                    {{ t('pages.home.aliases.after.badge') }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-          <q-list class="row liquid-glass">
-            <q-item
-              v-for="(feature, index) in aliasFeatures"
-              :key="index"
-              class="col-md-4 col-xs-12 column"
-            >
-              <h4>{{ feature.title }}</h4>
-              <p>{{ feature.description }}</p>
-            </q-item>
-          </q-list>
+          <div class="section__foot q-pb-xl">
+            <div class="flex justify-center">
+              <p>
+                {{ t('pages.home.aliases.description') }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,108 +59,146 @@
 
 <style scoped lang="scss">
   .section {
-    &__head {
-      margin-bottom: 16px;
+    position: relative;
 
-      @media (min-width: 48em) {
-        margin-bottom: 24px;
+    &__column {
+      &--left {
+        div {
+          position: relative;
+          width: 100%;
+          max-width: 410px;
+          padding: 18px 26px 60px;
+          border-radius: 16px;
+          background: linear-gradient(0deg, rgba(22, 91, 82, 0.24) 0%, rgba(22, 91, 82, 0.24) 100%), #012243;
+          box-shadow: -5px -5px 15px 0 #022548, 5px 5px 15px 0 #01182F;
+
+          &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            width: 410px;
+            height: 100px;
+            margin: auto;
+            background-image: url("../../../../src/assets/images/aliases/Decor.svg");
+            background-position: left center;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+
+            @media (min-width: 90em) {
+              width: 572px;
+              height: 100px;
+            }
+
+            @media (min-width: 118.75em) {
+              width: 970px;
+              height: 120px;
+            }
+          }
+        }
+
+        .badge {
+          right: 28px;
+          bottom: -21px;
+          background: #0AFDFF;
+        }
+
+        p {
+          color: rgba(255, 255, 255, 0.86);
+          font-size: 16px;
+          font-weight: 400;
+        }
       }
 
-      @media (min-width: 64em) {
-        margin-bottom: 0;
-      }
-    }
+      &--right {
+        position: relative;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
 
-    &__title {
-      text-align: center;
+        &:before {
+          content: '';
+          position: absolute;
+          z-index: -11;
+          bottom: 57px;
+          right: calc(100% - 54px);
+          width: 408px;
+          height: 352px;
+          background-image: url("../../../../src/assets/images/steps/Decor-1.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          pointer-events: none;
+        }
 
-      @media (min-width: 64em) {
-        padding-right: 48px;
-        text-align: left;
-      }
-    }
+        & > div {
+          position: relative;
+          width: 100%;
+          max-width: 300px;
+          padding: 148px 73px 64px;
+          border-radius: 32px;
+          border: 2px solid rgba(126, 113, 62, 0.00);
+          background: #235753;
+          box-shadow: -6px -6px 16px 0 #022548, 6px 6px 16px 0 #01182F;
+        }
 
-    &__video {
-      @media (min-width: 64em) {
-        border-radius: 20px 20px 0 0;
-        border: 1px solid white;
-        overflow: hidden;
-        mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%);
-      }
-    }
-  }
+        p {
+          color: #0AFDFF;
+        }
 
-  .q-list {
-    border-radius: 12px;
+        .badge {
+          bottom: -21px;
+          left: 0;
+          right: 0;
+          margin: auto;
 
-    @media (min-width: 64em) {
-      border-radius: 0 0 16px 16px;
-      mask-image: linear-gradient(to top, black 0%, black 80%, transparent 100%);
-    }
+          justify-self: center;
+          background: #0FD09A;
+        }
 
-    @media (min-width: 77.5em) {
-      border-radius: 0 0 20px 20px;
-    }
-
-    .q-item {
-      padding: 16px;
-      text-align: center;
-
-      @media (min-width: 64em) {
-        padding: 24px;
-        text-align: left;
-      }
-
-      @media (min-width: 77.5em) {
-        padding: 36px;
-      }
-
-      @media (min-width: 157.75em) {
-        padding: 50px;
-      }
-
-      &:nth-child(2) {
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-
-        @media (min-width: 64em) {
-          border-left: 1px solid #fff;
-          border-right: 1px solid #fff;
-          border-top: none;
-          border-bottom: none;
+        .q-img {
+          position: absolute;
+          z-index: 1;
+          top: -48px;
+          left: 10px;
+          right: 0;
+          width: 210px;
+          height: auto;
+          margin: auto;
         }
       }
     }
 
-    h4 {
-      margin-bottom: 12px;
-      font-size: 1.25rem;
-      line-height: 110%;
+    &__foot {
+      p {
+        width: 100%;
+        max-width: 440px;
+        margin-left: 100px;
+        color: #6FEFF0;
+        text-align: center;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 400;
 
-      @media (min-width: 77.5em) {
-        margin-bottom: 18px;
-        font-size: 1.5rem;
-      }
-
-      @media (min-width: 158.75em) {
-        margin-bottom: 24px;
-        font-size: 1.75rem;
-      }
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 110%;
-      opacity: 0.7;
-
-      @media (min-width: 77.5em) {
-        font-size: 1.25rem;
-      }
-
-      @media (min-width: 158.75em) {
-        font-size: 1.5rem;
+        @media (min-width: 90em) {
+          margin-top: -40px;
+        }
       }
     }
+  }
+
+  .badge {
+    position: absolute;
+    z-index: 1;
+    display: inline-flex;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: #011C37;
   }
 </style>
 

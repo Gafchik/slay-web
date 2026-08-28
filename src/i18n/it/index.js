@@ -1,21 +1,16 @@
 export default {
   routes: {
-    download: 'Scarica',
     pricing: 'Prezzi',
-    faq: 'FAQ',
     contacts: 'Contattaci',
     terms: 'Termini e Privacy',
     privacyPolicy: 'Informativa privacy',
     refundPolicy: 'Politica di rimborso',
   },
   buttons: {
-    join: 'Unisciti',
     download: 'Scarica',
     downloadFor: 'Scarica per',
     login: 'Accedi',
     logout: 'Esci',
-    registration: 'Registrazione',
-    signIn: 'Accedi',
     signUp: 'Registrati',
     profile: 'Profilo',
     edit: 'Modifica',
@@ -23,9 +18,7 @@ export default {
     cancel: 'Annulla',
     send: 'Inviare',
     delete: 'Eliminare',
-    agreeTos: 'Ho letto e accetto i',
     start: 'Inizia {data}',
-    upgrade: 'Passa a {data}',
     choose: 'Scegli {data}',
     renew: 'Rinnova {data}',
     confirm: 'Conferma',
@@ -42,141 +35,240 @@ export default {
   validation: {
     required: 'Questo campo è obbligatorio',
     notValid: 'Questo campo non è valido',
-    onlyOneFileAllowed: 'È consentito un solo file',
     passwordMismatch: 'Le password non corrispondono',
     minLength: 'La lunghezza minima è di {min} caratteri',
   },
-  status: {
-    failed: 'Azione non riuscita',
-    success: 'Azione completata con successo',
+  pages: {
+    home: {
+      title: {
+        note: 'Launcher intelligente',
+        title: 'Apri l’intero ambiente di sviluppo in pochi secondi',
+        description: 'Tieni progetti, app, commenti, password e risposte accessibili in un unico posto. Inizia a lavorare senza perdere tempo a cercare strumenti, link e credenziali.',
+        list: [
+          {
+            title: 'Gestione dei progetti',
+            description: 'Mantieni organizzati i progetti del team, i link e il contesto. Passa da un ambiente di lavoro all’altro senza perdere il filo.'
+          },
+          {
+            title: 'Accessi salvati',
+            description: 'Conserva in sicurezza password, credenziali e link importanti. Trova ciò che ti serve senza cercare nelle chat.'
+          },
+          {
+            title: 'Routine semplificata',
+            description: 'Riduci le configurazioni ripetitive e i continui passaggi da uno strumento all’altro. Dedica meno tempo alla preparazione e più al lavoro.'
+          },
+          {
+            title: 'Avvio immediato',
+            description: 'Apri insieme gli strumenti, le app e le schede giuste. Inizia la giornata senza dover ricreare ogni volta la configurazione.'
+          },
+        ],
+      },
+      workspace: {
+        note: 'Controllo dell’ambiente di lavoro',
+        title: 'Tutto ciò che serve al tuo progetto, sempre a portata di mano',
+        description: 'Smetti di cercare progetti, riaprire strumenti e copiare comandi da vecchie note. Slay mantiene organizzato il tuo ambiente di lavoro e lo rende pronto all’uso da un unico posto.',
+        society: {
+          title: 'Ideale per:',
+          list: [
+            {
+              title: 'Sviluppatori',
+              description: 'Avvia l’intero ambiente di sviluppo con un solo clic.'
+            },
+            {
+              title: 'Tester QA',
+              description: 'Passa più velocemente tra ambienti di test e progetti.'
+            },
+            {
+              title: 'Responsabili di progetto',
+              description: 'Mantieni organizzati risorse, link e documentazione dei progetti.'
+            },
+            {
+              title: 'Ingegneri DevOps',
+              description: 'Gestisci strumenti, credenziali e ambienti senza configurazioni ripetitive.'
+            },
+          ],
+        }
+      },
+      distinction: {
+        note: 'Costo del flusso di lavoro',
+        title: 'Quanto ti costa un flusso di lavoro frammentato?',
+        description: 'Invece di pagare separatamente launcher, gestori di password, client SSH e strumenti da riga di comando, scegli un unico ambiente di lavoro che li riunisca tutti.',
+        competitors: {
+          title: 'Il conto del tuo flusso di lavoro attuale',
+          subtitle: 'Totale: $155–$371/anno',
+          list: [
+            {
+              title: 'Client SSH/SFTP',
+              price: '$120/anno'
+            },
+            {
+              title: 'Archivio password',
+              price: '$36/anno'
+            },
+            {
+              title: 'Produttività nel terminale',
+              price: '$180/anno'
+            },
+            {
+              title: 'Launcher dell’ambiente di lavoro',
+              price: '$60/anno'
+            },
+            {
+              title: 'Configurazione manuale',
+              price: 'ogni settimana'
+            },
+            {
+              title: 'Cambio di contesto',
+              price: 'ogni giorno'
+            },
+          ],
+        },
+        features: {
+          title: 'Ambiente di lavoro Slay',
+          subtitle: 'al mese',
+          list: [
+            {
+              title: 'Progetti',
+            },
+            {
+              title: 'App',
+            },
+            {
+              title: 'Comandi',
+            },
+            {
+              title: 'Credenziali',
+            },
+            {
+              title: 'Server',
+            },
+            {
+              title: 'SSH/SFTP',
+            },
+          ],
+        }
+      },
+      subsequence: {
+        note: 'Flusso di lavoro con un clic',
+        title: 'Quanti passaggi servono prima di iniziare davvero a lavorare?',
+        description: 'Ogni progetto parte da cartelle, app, credenziali, server, comandi e contesto. Slay trasforma tutta questa configurazione in un unico avvio dell’ambiente di lavoro.',
+        before: {
+          note: 'Prima di Slay',
+          badge: 'Da ripetere ogni mattina',
+          list: [
+            {
+              title: 'Trovare la cartella del progetto',
+            },
+            {
+              title: 'Aprire l’IDE corretto',
+            },
+            {
+              title: 'Avviare le app necessarie',
+            },
+            {
+              title: 'Cercare le credenziali',
+            },
+            {
+              title: 'Connettersi tramite SSH/SFTP',
+            },
+            {
+              title: 'Eseguire i comandi salvati',
+            },
+            {
+              title: 'Riaprire note e contesto',
+            },
+          ],
+        },
+        after: {
+          note: 'Con Slay',
+          title: 'Avvia l’ambiente di lavoro',
+          subtitle: '1 avvio dell’ambiente di lavoro',
+          list: [
+            {
+              title: 'Progetti',
+            },
+            {
+              title: 'App',
+            },
+            {
+              title: 'Comandi',
+            },
+            {
+              title: 'Credenziali',
+            },
+            {
+              title: 'Server',
+            },
+            {
+              title: 'SSH/SFTP',
+            },
+            {
+              title: 'Contesto',
+            },
+          ],
+        }
+      },
+      aliases: {
+        note: 'Comandi intelligenti',
+        title: 'Alias dei comandi',
+        description: 'I comandi lunghi non dovrebbero essere tenuti a memoria. Se li copi spesso da note, cronologia del terminale o README, probabilmente la routine richiede già troppa attenzione. In Slay puoi salvarli come alias brevi ed eseguirli quando ti servono.',
+        before: {
+          badge: 'Da ripetere ogni giorno',
+          description: 'сd /Users /find /var/log -type f -name \'*.log\' -mtime +30 -exec gzip -9 {} \\; && tar -czvf /backup/logs_$(date +%Y%m%d).tar.gz /var/log/*.gz | tee -a /var/log/backup.log | mail -s "Backup done $(date +%Y-%m-%d)" admin@example.com && echo \'Done\' >> /var/log/cron.log'
+        },
+        after: {
+          badge: 'Più semplice ogni giorno',
+          description: 'Slay_build_linux',
+        },
+      },
+      passwords: {
+        note: 'Credenziali di progetto',
+        title: 'Gestore di password',
+        subtitle: 'Gli accessi al progetto sono troppo spesso sparsi tra chat, note e browser',
+        description: 'Password, chiavi API, account di test e accessi a pannelli di amministrazione e servizi diventano rapidamente difficili da gestire. Slay conserva i dati sensibili vicino al progetto e li protegge con una password principale e la crittografia.',
+        list: [
+          {
+            icon: 'shield',
+            title: 'Crittografia AES-256-GCM affidabile',
+            subtitle: 'Massima protezione delle credenziali grazie a standard di crittografia avanzati.'
+          },
+          {
+            icon: 'lock',
+            title: 'Protezione con password principale',
+            subtitle: 'I tuoi dati sono crittografati con una password principale unica, conosciuta solo da te.'
+          },
+          {
+            icon: 'folder',
+            title: 'Struttura gerarchica delle cartelle',
+            subtitle: 'Organizza password e dati sensibili in pratiche cartelle e sottocartelle.'
+          },
+          {
+            icon: 'verified_user',
+            title: 'Archiviazione sicura di qualsiasi informazione',
+            subtitle: 'Conserva non solo password, ma anche note, chiavi API e altri dati sensibili.'
+          },
+        ]
+      },
+      cta: {
+        title: 'Gestione dei server',
+        description: 'Gli accessi al progetto sono troppo spesso sparsi tra chat, note e browser. Cercare le credenziali, aprire il client, connettersi, raggiungere la cartella corretta e trasferire un file è una routine ripetitiva. Slay semplifica la connessione al server e la gestione dei file del progetto da un unico ambiente di lavoro.',
+        banner: {
+          title: 'Pronto a smettere di perdere tempo ancora prima di iniziare a lavorare?',
+          subtitle: 'Inizia a usare Slay oggi',
+        },
+      },
+    },
   },
   sections: {
     home: {
-      title: 'Smart Launcher per tutti i tuoi strumenti di sviluppo',
-      subtitle: 'Smetti di ricostruire il tuo ambiente di sviluppo ogni mattina',
-      description: 'Tieni progetti, app, comandi, password e accessi ai server in un unico posto. <br> Inizia a lavorare senza cercare strumenti e credenziali',
+      title: 'Launcher intelligente per tutti i tuoi strumenti di sviluppo',
     },
-    about: {
-      titleProject: 'Gestore di progetti',
-      descriptionProject: 'Apri tutti gli strumenti istantaneamente',
-      titleLauncher: 'Avvio immediato',
-      descriptionLauncher: 'Avvia l\'intero ambiente di lavoro con un clic',
-      titleAlias: 'Alias della console',
-      descriptionAlias: 'Crea alias brevi per qualsiasi operazione da console',
-      titlePassword: 'Gestore di password',
-      descriptionPassword: 'Archiviazione sicura e organizzazione semplice delle password',
-      titleServer: 'Gestione del server',
-      descriptionServer: 'Connessione facile al server e controllo completo dei file',
-    },
-    project: {
-      title: 'Gestore di progetti',
-      subtitle: 'Cercare un progetto non dovrebbe far parte dello sviluppo',
-      description: 'Non devi ricordare dove si trova ogni progetto né cercarlo tra quelli recenti nell’IDE. Slay mantiene tutto il tuo lavoro sempre a portata di mano.',
-    },
-    launcher: {
-      title: 'Avvio immediato',
-      subtitle: 'La giornata di lavoro non dovrebbe iniziare con dieci clic',
-      description: 'Aprire IDE, terminale, browser, server locale, Docker, documentazione — è una piccola cosa, ma si ripete ogni giorno. Slay avvia il set di strumenti necessario per il progetto con una sola azione.',    },
-    alias: {
-      title: 'Alias della console',
-      subtitle: 'I comandi lunghi non dovrebbero vivere nella tua testa',
-      description: 'Se copi spesso comandi da note, cronologia del terminale o README, significa che la routine sta già consumando la tua attenzione. In Slay puoi salvare i comandi come alias brevi ed eseguirli quando ti servono.',
-      list: [
-        {
-          title: 'Personalizzazione e flessibilità',
-          description: 'Personalizza gli alias in base alle tue esigenze e ai tuoi flussi di lavoro per il massimo comfort'
-        },
-        {
-          title: 'Semplificazione delle attività ripetitive',
-          description: 'Accedi facilmente ai container Docker, avvia server locali con un solo comando e gestisci le versioni dei linguaggi di programmazione',
-        },
-        {
-          title: 'Aumento dell’efficienza',
-          description: 'Riduci il tempo di digitazione dei comandi e aumenta la produttività nel terminale ',
-        },
-      ],
-    },
-    password: {
-      title: 'Gestore di password',
-      subtitle: 'Gli accessi dei progetti sono troppo spesso sparsi tra chat, note e browser',
-      description: 'Password, chiavi API, account di test e accessi ad admin panel e servizi diventano rapidamente caos. Slay ti aiuta a tenere i dati sensibili vicino al progetto e li protegge con master password e crittografia.',      list: [
-        {
-          key: 'coding',
-          title: 'Crittografia AES-256-GCM affidabile',
-          description: 'Massima protezione delle tue credenziali grazie a standard di crittografia avanzati.'
-        },
-        {
-          key: 'frame',
-          title: 'Struttura gerarchica delle cartelle',
-          description: 'Organizza password e dati sensibili in comode cartelle e sottocartelle.'
-        },
-        {
-          key: 'defense',
-          title: 'Protezione con password principale',
-          description: 'I tuoi dati sono crittografati con una password principale unica conosciuta solo da te.'
-        },
-        {
-          key: 'safety',
-          title: 'Archiviazione sicura di qualsiasi informazione',
-          description: 'Archivia non solo password, ma anche note, chiavi API e altri dati sensibili.'
-        }
-      ]
-    },
-    sftp: {
-      title: 'Gestione del server',
-      subtitle: 'Lavorare con il server richiede spesso troppi passaggi',
-      description: 'Trovare l’accesso, aprire il client, connettersi, andare nella cartella giusta, trasferire un file — è una routine ripetitiva. Slay semplifica la connessione al server e la gestione dei file del progetto da un unico contesto di lavoro.',    },
-    reviews: {
-      title: 'Cosa dicono i nostri utenti',
-      list: [
-        {
-          author: 'Alexey K.',
-          role: 'Sviluppatore Frontend (Windows)',
-          text: 'Prima avviare il mio ambiente di lavoro richiedeva un’eternità. Ora con Slay inizio a lavorare con un clic, risparmiando 10 minuti ogni mattina! È una vera salvezza per la produttività.',
-          feature: 'Avvio immediato',
-          date: '07.01.2026'
-        },
-        {
-          author: 'Ivan T.',
-          role: 'Sviluppatore PHP/Laravel',
-          text: 'Gli alias della console in Slay hanno cambiato il mio lavoro con le versioni PHP e Docker. Accesso rapido ai container, passaggio tra versioni PHP su Windows — tutto è diventato molto più semplice. Niente più comandi lunghi!',
-          feature: 'Alias della console',
-          date: '28.05.2026'
-        },
-        {
-          author: 'Maria S.',
-          role: 'Sviluppatore freelance',
-          text: 'Come freelance con decine di progetti, mi trovavo costantemente nel caos. Il gestore di progetti e password di Slay ha messo tutto in ordine. Tutti i progetti sono organizzati e le password sono conservate in modo sicuro. La mia produttività è aumentata notevolmente!',
-          feature: 'Gestore di progetti & password',
-          date: '19.02.2026'
-        },
-        {
-          author: 'Olga P.',
-          role: 'QA Engineer',
-          text: 'Per i test ho bisogno di decine di account (admin, utente, manager). Il gestore di password di Slay mi permette di tenerli tutti in ordine, passare rapidamente da uno all’altro e avere sempre accesso alle credenziali necessarie. Indispensabile!',
-          feature: 'Gestore di password',
-          date: '15.06.2026'
-        },
-        {
-          author: 'Dmitry V.',
-          role: 'Sviluppatore Backend',
-          text: 'Conservare le password di Stripe, Mailgun, Mailtrap e di molti server è un problema. Slay non solo le conserva in modo sicuro, ma gli alias della console hanno anche accelerato il mio accesso ai server e l’esecuzione di comandi complessi. È un must-have per il backend.',
-          feature: 'Alias della console & Gestore di password',
-          date: '03.03.2026'
-        }
-      ]
-    },
-    cta: {
-      title: 'Pronto a smettere di perdere tempo ancora prima di iniziare a lavorare?',
-      subtitle: 'Inizia a usare Slay oggi'
-    }
   },
   account: {
     profile: {
       title: 'Profilo',
       created_at: 'Creato',
       updated_at: 'Aggiornato',
-      trial_ends_at: 'Fine del periodo di prova',
       profileInfo: 'Informazioni del profilo',
       profileDescription: 'Visualizza e gestisci le tue informazioni personali.',
       profileAction: 'Azioni dell’account',
@@ -314,16 +406,13 @@ export default {
       monthly: {
         title: "Mensile",
         subtitle: "Fatturato mensilmente",
-        price: "$7.99",
         discount: "",
-        discountPrice: "",
         badge: "",
         period: 'mese'
       },
       sixMonths: {
         title: "6 mesi",
         subtitle: "Fatturato semestralmente",
-        price: "$41.94",
         discount: "12%",
         discountPrice: "$6.99/mese",
         badge: "",
@@ -332,7 +421,6 @@ export default {
       yearly: {
         title: "Annuale",
         subtitle: "Fatturato annualmente",
-        price: "$71.88",
         discount: "25%",
         discountPrice: "$5.99/mese",
         badge: "Miglior valore",
@@ -418,14 +506,11 @@ export default {
     trial: 'Prova gratuita',
     active: 'Attivo',
     noActive: 'Nessun piano attivo',
-    best: 'Miglior offerta'
   },
   text: {
     allRightsReserved: 'Tutti i diritti riservati',
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
     and: 'e',
-    plan: 'Plan',
-    billed: 'Periodo di fatturazione: {data}',
     charged: 'Addebito {data}',
     monthly: 'mensile',
     semiannually: 'ogni 6 mesi',

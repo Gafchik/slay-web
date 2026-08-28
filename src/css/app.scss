@@ -28,351 +28,203 @@
   font-display: swap;
 }
 
-body {
+html {
+  color: white;
   background: #011C37;
+  font-size: 1em;
+  line-height: normal;
   font-family: 'Nunito', Arial, sans-serif;
 
-  &.body--dark {
-    --q-autofill-bg: #0b0f14;
+  @media (min-width: 37.5em) {
   }
 
-  &.body--light {
-    --q-autofill-bg: transparent;
+  @media (min-width: 64em) {
+  }
+
+  @media (min-width: 77.5em) {
+  }
+
+  @media (min-width: 90em) {
+  }
+
+  @media (min-width: 118.75em) {
+  }
+}
+
+h1 {
+  font-size: 1.75em; // 28px
+  line-height: normal;
+  font-weight: 600;
+
+  @media (min-width: 37.5em) {
+    font-size: 1.875em; // 30px
+  }
+
+  @media (min-width: 64em) {
+    font-size: 2.125em; // 34px
+  }
+
+  @media (min-width: 77.5em) {
+    font-size: 2.5em; // 40px
+  }
+
+  @media (min-width: 90em) {
+    font-size: 3em; // 48px
+  }
+
+  @media (min-width: 118.75em) {
+    font-size: 3.75em; // 60px
+  }
+}
+
+h2 {
+  font-size: 1.375em; // 22px
+  line-height: normal;
+  font-weight: 600;
+
+  @media (min-width: 37.5em) {
+    font-size: 1.5em; // 24px
+  }
+
+  @media (min-width: 64em) {
+    font-size: 1.625em; // 26px
+  }
+
+  @media (min-width: 77.5em) {
+    font-size: 1.875em; // 30px
+  }
+
+  @media (min-width: 90em) {
+    font-size: 2.25em; // 36px
+  }
+
+  @media (min-width: 118.75em) {
+    font-size: 3em; // 48px
+  }
+}
+
+h3 {
+  font-size: 1.25em; // 20px
+  line-height: normal;
+  font-weight: 500;
+
+  @media (min-width: 37.5em) {
+    font-size: 1.375em; // 22px
+  }
+
+  @media (min-width: 64em) {
+    font-size: 1.5em; // 24px
+  }
+
+  @media (min-width: 77.5em) {
+    font-size: 1.625em; // 26px
+  }
+
+  @media (min-width: 90em) {
+    font-size: 2em; // 32px
+  }
+
+  @media (min-width: 118.75em) {
+    font-size: 2.25em; // 36px
+  }
+}
+
+p {
+  font-size: 1em; // 16px
+  line-height: normal;
+  font-weight: 400;
+
+  @media (min-width: 77.5em) {
+    font-size: 1.125em; // 18px
+  }
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  padding: 0 16px;
+
+  @media (min-width: 37.5em) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 64em) {
+    padding: 0 40px;
+  }
+
+  @media (min-width: 77.5em) {
+    padding: 0 60px;
+  }
+
+  @media (min-width: 90em) {
+    padding: 0 80px;
+  }
+
+  @media (min-width: 118.75em) {
+    padding: 0 120px;
+  }
+
+  &-fluid {
+    width: 100%;
+    height: 100%;
+    max-width: 414px;
+    min-height: 0;
+    margin: 0 auto;
+
+    @media (min-width: 37.5em) {
+      max-width: 768px;
+    }
+
+    @media (min-width: 64em) {
+      max-width: 1024px;
+    }
+
+    @media (min-width: 77.5em) {
+      max-width: 1120px;
+    }
+
+    @media (min-width: 90em) {
+      max-width: 1280px;
+    }
+
+    @media (min-width: 118.75em) {
+      max-width: 1660px;
+    }
+  }
+}
+
+.note {
+  position: relative;
+  display: inline-block;
+  color: #E4CD71;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  @media (min-width: 118.75em) {
+    font-size: 1.125em; // 18px
+    letter-spacing: 1px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 16px);
+    height: 1px;
+    width: 120px;
+    margin: auto;
+    background: #E4CD71;
   }
 }
 
 .q-page-container {
   position: relative;
   padding-top: 0 !important;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.liquid-glass {
-  background-color: color-mix(in srgb, #fff 5%, transparent);
-  backdrop-filter: blur(8px) saturate(150%);
-  box-shadow: inset 0 0 0 1px
-  color-mix(in srgb, #fff calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
-  color-mix(in srgb, #fff calc(1 * 90%), transparent), inset -2px -2px 0px -2px
-  color-mix(in srgb, #fff calc(1 * 80%), transparent), inset -3px -8px 1px -6px
-  color-mix(in srgb, #fff calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
-  color-mix(in srgb, #fff calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
-  color-mix(in srgb, #fff calc(1 * 20%), transparent), inset 0px 3px 4px -2px
-  color-mix(in srgb, #fff calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
-  color-mix(in srgb, #fff calc(1 * 10%), transparent), 0px 1px 5px 0px
-  color-mix(in srgb, #fff calc(1 * 10%), transparent), 0px 6px 16px 0px
-  color-mix(in srgb, #fff calc(1 * 8%), transparent);
-  transition: background-color 400ms
-  cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
-  cubic-bezier(1, 0, 0.4, 1), transform 400ms;
-  color: #fff;
-  box-sizing: border-box;
-
-  &--primary {
-    background-color: color-mix(in srgb, #03d5ff 5%, transparent);
-    backdrop-filter: blur(8px) saturate(150%);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, #03d5ff calc(1* 10%), transparent),
-    inset 1.8px 3px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 90%), transparent),
-    inset -2px -2px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 80%), transparent),
-    inset -3px -8px 1px -6px color-mix(in srgb, #03d5ff calc(1 * 60%), transparent),
-    inset -0.3px -1px 4px 0px color-mix(in srgb, #03d5ff calc(1 * 12%), transparent),
-    inset -1.5px 2.5px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
-    inset 0px 3px 4px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
-    inset 2px -6.5px 1px -4px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
-    0px 1px 5px 0px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
-    0px 6px 16px 0px color-mix(in srgb, #03d5ff calc(1 * 8%), transparent);
-    transition: background-color 400ms
-    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
-    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
-    color: #03d5ff;
-    box-sizing: border-box;
-  }
-
-  &--black {
-    background-color: color-mix(in srgb, #000 5%, transparent);
-    backdrop-filter: blur(8px) saturate(150%);
-    box-shadow: inset 0 0 0 1px
-    color-mix(in srgb, #000 calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
-    color-mix(in srgb, #000 calc(1 * 90%), transparent), inset -2px -2px 0px -2px
-    color-mix(in srgb, #000 calc(1 * 80%), transparent), inset -3px -8px 1px -6px
-    color-mix(in srgb, #000 calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
-    color-mix(in srgb, #000 calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
-    color-mix(in srgb, #000 calc(1 * 20%), transparent), inset 0px 3px 4px -2px
-    color-mix(in srgb, #000 calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
-    color-mix(in srgb, #000 calc(1 * 10%), transparent), 0px 1px 5px 0px
-    color-mix(in srgb, #000 calc(1 * 10%), transparent), 0px 6px 16px 0px
-    color-mix(in srgb, #000 calc(1 * 8%), transparent);
-    transition: background-color 400ms
-    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
-    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
-    color: #fff;
-    border: none;
-    box-sizing: border-box;
-  }
-
-  &--red {
-    background-color: color-mix(in srgb, #f44336 5%, transparent);
-    backdrop-filter: blur(8px) saturate(150%);
-    box-shadow: inset 0 0 0 1px
-    color-mix(in srgb, #f44336 calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
-    color-mix(in srgb, #f44336 calc(1 * 90%), transparent), inset -2px -2px 0px -2px
-    color-mix(in srgb, #f44336 calc(1 * 80%), transparent), inset -3px -8px 1px -6px
-    color-mix(in srgb, #f44336 calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
-    color-mix(in srgb, #f44336 calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
-    color-mix(in srgb, #f44336 calc(1 * 20%), transparent), inset 0px 3px 4px -2px
-    color-mix(in srgb, #f44336 calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
-    color-mix(in srgb, #f44336 calc(1 * 10%), transparent), 0px 1px 5px 0px
-    color-mix(in srgb, #f44336 calc(1 * 10%), transparent), 0px 6px 16px 0px
-    color-mix(in srgb, #f44336 calc(1 * 8%), transparent);
-    transition: background-color 400ms
-    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
-    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
-    color: #f44336;
-    border: none;
-    box-sizing: border-box;
-  }
-
-  &--orange {
-    background-color: color-mix(in srgb, orange 5%, transparent);
-    backdrop-filter: blur(8px) saturate(150%);
-    box-shadow: inset 0 0 0 1px
-    color-mix(in srgb, orange calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
-    color-mix(in srgb, orange calc(1 * 90%), transparent), inset -2px -2px 0px -2px
-    color-mix(in srgb, orange calc(1 * 80%), transparent), inset -3px -8px 1px -6px
-    color-mix(in srgb, orange calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
-    color-mix(in srgb, orange calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
-    color-mix(in srgb, orange calc(1 * 20%), transparent), inset 0px 3px 4px -2px
-    color-mix(in srgb, orange calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
-    color-mix(in srgb, orange calc(1 * 10%), transparent), 0px 1px 5px 0px
-    color-mix(in srgb, orange calc(1 * 10%), transparent), 0px 6px 16px 0px
-    color-mix(in srgb, orange calc(1 * 8%), transparent);
-    transition: background-color 400ms
-    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
-    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
-    color: orange;
-    border: none;
-    box-sizing: border-box;
-  }
-}
-
-.text-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.auto-field.q-field--outlined .q-field__control input:-webkit-autofill {
-  -webkit-text-fill-color: #ffffff !important;
-  caret-color: #ffffff !important;
-  border-radius: inherit !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  background-color: transparent !important;
-  transition: background-color 9999s ease-in-out 0s !important;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(30px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 255, 200, 0.05), inset 0 1px 10px rgba(255, 255, 255, 0.05);
-  transition: all 0.4s ease;
-
-  &:hover {
-    box-shadow: 0 15px 45px rgba(0, 255, 200, 0.1), inset 0 1px 12px rgba(255, 255, 255, 0.08);
-  }
-
-  &-red {
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(244, 67, 54, 0.2);
-    border-radius: 18px;
-    box-shadow: 0 10px 40px rgba(244, 67, 54, 0.15), inset 0 1px 10px rgba(244, 67, 54, 0.15);
-    transition: all 0.4s ease;
-
-    &:hover {
-      box-shadow: 0 15px 45px rgba(244, 67, 54, 0.3), inset 0 1px 12px rgba(244, 67, 54, 0.3);
-    }
-  }
-
-  &-orange {
-    background: rgba(#f2c037, 0.15);
-    backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(#f2c037, 0.2);
-    border-radius: 18px;
-    box-shadow: 0 10px 40px rgba(#f2c037, 0.15), inset 0 1px 10px rgba(#f2c037, 0.15);
-    transition: all 0.4s ease;
-
-    &:hover {
-      box-shadow: 0 15px 45px rgba(#f2c037, 0.3), inset 0 1px 12px rgba(#f2c037, 0.3);
-    }
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #00e1ff, #00ffaa);
-  -webkit-background-clip: text; /* для Chrome, Safari */
-  -webkit-text-fill-color: transparent; /* делаем текст прозрачным, чтобы был виден фон */
-  background-clip: text; /* для Firefox */
-  color: transparent;
-  font-weight: 700;
-}
-
-.gradient-bg {
-  background: linear-gradient(135deg, #00e1ff, #00ffaa);
-  color: #000;
-  font-weight: 600;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-  transition: all 0.3s ease;
-}
-
-/* Акцент на кнопке */
-.button {
-  background: linear-gradient(135deg, #00e1ff, #00ffaa);
-  color: #000;
-  font-weight: 600;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  box-shadow: 0 0 40px rgba(0, 255, 200, 0.6);
-  transform: translateY(-2px);
-}
-
-.q-field {
-  &.btn-glass {
-    .q-field {
-      &__control {
-        padding: 0 16px;
-        background: transparent;
-
-        &:before{
-          @extend .liquid-glass;
-        }
-
-        &:after {
-          display: none;
-          opacity: 0;
-        }
-      }
-
-      &--focused {
-        .q-icon{
-          color: #03d5ff;
-        }
-      }
-    }
-  }
-
-  &.btn-path {
-    .q-field {
-      &__control {
-        height: 56px;
-        padding: 8px 8px 8px 16px;
-
-        &-container {
-          height: 100%;
-        }
-      }
-    }
-  }
-
-
-}
-
-.q-field__native:-webkit-autofill,
-.q-field__native:-webkit-autofill:hover,
-.q-field__native:-webkit-autofill:focus,
-.q-field__native:-webkit-autofill:active {
-  -webkit-text-fill-color: inherit !important;
-  caret-color: inherit !important;
-
-  /* перекрываем "заливку" Chrome autofill */
-  -webkit-box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
-  box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
-
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-.container {
-  height: inherit;
-  min-height: inherit;
-  width: 100%;
-  max-width: 414px;
-  margin: 0 auto;
-  padding: 0 16px;
-
-  @media (min-width: 37.5em) {
-    max-width: 768px;
-    padding: 0 24px;
-  }
-
-  @media (min-width: 64em) {
-    max-width: 1024px;
-    padding: 0 32px;
-  }
-
-  @media (min-width: 77.5em) {
-    max-width: 1240px;
-  }
-
-  @media (min-width: 90em) {
-    max-width: 1440px;
-    padding: 0 80px;
-  }
-
-  @media (min-width: 100em) {
-    max-width: 1440px;
-  }
-
-  @media (min-width: 120em) {
-    max-width: 1600px;
-  }
-
-  @media (min-width: 160em) {
-    max-width: 1920px;
-  }
-}
-
-.btn {
-  color: rgba(255, 255, 255, 0.64);
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.25s;
-
-  &:hover {
-    color: rgba(255, 255, 255, 0.84);
-  }
-
-  &:active {
-    color: rgba(255, 255, 255, 1);
-  }
-
-  &.btn-link--blue {
-    color: rgba(10, 253, 255, 0.64);
-
-    &:hover {
-      color: rgba(10, 253, 255, 0.84);
-    }
-
-    &:active {
-      color: rgba(10, 253, 255, 1);
-    }
-  }
 }
 
 .q-btn {
@@ -389,7 +241,7 @@ body {
 
   &.btn-link {
     font-size: 1rem;
-    line-height: 110%;
+    line-height: normal;
     text-transform: capitalize;
 
     @media (min-width: 48em) {
@@ -402,6 +254,14 @@ body {
 
     @media (min-width: 158.75em) {
       font-size: 1.75rem;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    .q-focus-helper {
+      display: none;
     }
 
     &--blue {
@@ -434,7 +294,50 @@ body {
     }
   }
 
+  &.btn-start {
+    padding: 10px 40px;
+    border-radius: 100px;
+    border: 1px solid #E4CD71;
+    background: #E4CD71;
+    box-shadow: -4px -4px 4px 0 #B49E46 inset, 3px 3px 4px 5px #F4E197 inset;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: normal;
+    color: #011C37;
+    text-transform: capitalize;
 
+    @media (min-width: 37.5em) {
+      font-size: 32px;
+    }
+
+    @media (min-width: 64em) {
+      padding: 12px 50px;
+      border-radius: 100px;
+      font-size: 36px;
+    }
+
+    @media (min-width: 77.5em) {
+      padding: 14px 60px;
+      border-radius: 100px;
+      font-size: 40px;
+    }
+
+    @media (min-width: 118.75em) {
+      padding: 16px 80px;
+      border-radius: 100px;
+      font-size: 48px;
+    }
+
+    &:before {
+      display: none;
+      border: none;
+      background: transparent;
+    }
+
+    .q-focus-helper {
+      display: none;
+    }
+  }
 
   &.btn-glass {
     &:before {
@@ -566,8 +469,129 @@ body {
 
 
 
+.text-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.auto-field.q-field--outlined .q-field__control input:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  border-radius: inherit !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  background-color: transparent !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
+
+.gradient-text {
+  background: linear-gradient(135deg, #00e1ff, #00ffaa);
+  -webkit-background-clip: text; /* для Chrome, Safari */
+  -webkit-text-fill-color: transparent; /* делаем текст прозрачным, чтобы был виден фон */
+  background-clip: text; /* для Firefox */
+  color: transparent;
+  font-weight: 700;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #00e1ff, #00ffaa);
+  color: #000;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+
+
+.q-field {
+  &.btn-glass {
+    .q-field {
+      &__control {
+        padding: 0 16px;
+        background: transparent;
+
+        &:before{
+          @extend .liquid-glass;
+        }
+
+        &:after {
+          display: none;
+          opacity: 0;
+        }
+      }
+
+      &--focused {
+        .q-icon{
+          color: #03d5ff;
+        }
+      }
+    }
+  }
+
+  &.btn-path {
+    .q-field {
+      &__control {
+        height: 56px;
+        padding: 8px 8px 8px 16px;
+
+        &-container {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.q-field__native:-webkit-autofill,
+.q-field__native:-webkit-autofill:hover,
+.q-field__native:-webkit-autofill:focus,
+.q-field__native:-webkit-autofill:active {
+  -webkit-text-fill-color: inherit !important;
+  caret-color: inherit !important;
+
+  /* перекрываем "заливку" Chrome autofill */
+  -webkit-box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
+  box-shadow: 0 0 0 1000px var(--q-autofill-bg, #0b0f14) inset !important;
+
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.btn {
+  color: rgba(255, 255, 255, 0.64);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &.btn-link--blue {
+    color: rgba(10, 253, 255, 0.64);
+
+    &:hover {
+      color: rgba(10, 253, 255, 0.84);
+    }
+
+    &:active {
+      color: rgba(10, 253, 255, 1);
+    }
+  }
+}
+
+
+
 .q-input {
   &.q-field {
+    --field-bg: #061525;
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
@@ -587,6 +611,17 @@ body {
 
       &__marginal {
         padding-right: 16px;
+      }
+
+      &__native {
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active{
+          box-shadow: none !important;
+          color: #fff !important;
+          border-color: rgba(255, 255, 255, 0) !important;
+        }
       }
     }
 
@@ -637,49 +672,172 @@ body {
 }
 
 
-.note {
-  position: relative;
-  display: inline-block;
-  color: #E4CD71;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+/* Акцент на кнопке */
+.button {
+  background: linear-gradient(135deg, #00e1ff, #00ffaa);
+  color: #000;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(100% + 16px);
-    height: 1px;
-    width: 120px;
-    margin: auto;
-    background: #E4CD71;
+.button:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.6);
+  transform: translateY(-2px);
+}
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 255, 200, 0.05), inset 0 1px 10px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+
+  &:hover {
+    box-shadow: 0 15px 45px rgba(0, 255, 200, 0.1), inset 0 1px 12px rgba(255, 255, 255, 0.08);
+  }
+
+  &-red {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(244, 67, 54, 0.15), inset 0 1px 10px rgba(244, 67, 54, 0.15);
+    transition: all 0.4s ease;
+
+    &:hover {
+      box-shadow: 0 15px 45px rgba(244, 67, 54, 0.3), inset 0 1px 12px rgba(244, 67, 54, 0.3);
+    }
+  }
+
+  &-orange {
+    background: rgba(#f2c037, 0.15);
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(#f2c037, 0.2);
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(#f2c037, 0.15), inset 0 1px 10px rgba(#f2c037, 0.15);
+    transition: all 0.4s ease;
+
+    &:hover {
+      box-shadow: 0 15px 45px rgba(#f2c037, 0.3), inset 0 1px 12px rgba(#f2c037, 0.3);
+    }
   }
 }
+.liquid-glass {
+  background-color: color-mix(in srgb, #fff 5%, transparent);
+  backdrop-filter: blur(8px) saturate(150%);
+  box-shadow: inset 0 0 0 1px
+  color-mix(in srgb, #fff calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
+  color-mix(in srgb, #fff calc(1 * 90%), transparent), inset -2px -2px 0px -2px
+  color-mix(in srgb, #fff calc(1 * 80%), transparent), inset -3px -8px 1px -6px
+  color-mix(in srgb, #fff calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
+  color-mix(in srgb, #fff calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
+  color-mix(in srgb, #fff calc(1 * 20%), transparent), inset 0px 3px 4px -2px
+  color-mix(in srgb, #fff calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
+  color-mix(in srgb, #fff calc(1 * 10%), transparent), 0px 1px 5px 0px
+  color-mix(in srgb, #fff calc(1 * 10%), transparent), 0px 6px 16px 0px
+  color-mix(in srgb, #fff calc(1 * 8%), transparent);
+  transition: background-color 400ms
+  cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+  cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+  color: #fff;
+  box-sizing: border-box;
 
-h1,h2 {
-  /*font-family: "Plus Jakarta Sans";*/
-  line-height: normal;
-  font-style: normal;
-  font-weight: 600;
+  &--primary {
+    background-color: color-mix(in srgb, #03d5ff 5%, transparent);
+    backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, #03d5ff calc(1* 10%), transparent),
+    inset 1.8px 3px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 90%), transparent),
+    inset -2px -2px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 80%), transparent),
+    inset -3px -8px 1px -6px color-mix(in srgb, #03d5ff calc(1 * 60%), transparent),
+    inset -0.3px -1px 4px 0px color-mix(in srgb, #03d5ff calc(1 * 12%), transparent),
+    inset -1.5px 2.5px 0px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
+    inset 0px 3px 4px -2px color-mix(in srgb, #03d5ff calc(1 * 20%), transparent),
+    inset 2px -6.5px 1px -4px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
+    0px 1px 5px 0px color-mix(in srgb, #03d5ff calc(1 * 10%), transparent),
+    0px 6px 16px 0px color-mix(in srgb, #03d5ff calc(1 * 8%), transparent);
+    transition: background-color 400ms
+    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+    color: #03d5ff;
+    box-sizing: border-box;
+  }
+
+  &--black {
+    background-color: color-mix(in srgb, #000 5%, transparent);
+    backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, #000 calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
+    color-mix(in srgb, #000 calc(1 * 90%), transparent), inset -2px -2px 0px -2px
+    color-mix(in srgb, #000 calc(1 * 80%), transparent), inset -3px -8px 1px -6px
+    color-mix(in srgb, #000 calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
+    color-mix(in srgb, #000 calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
+    color-mix(in srgb, #000 calc(1 * 20%), transparent), inset 0px 3px 4px -2px
+    color-mix(in srgb, #000 calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
+    color-mix(in srgb, #000 calc(1 * 10%), transparent), 0px 1px 5px 0px
+    color-mix(in srgb, #000 calc(1 * 10%), transparent), 0px 6px 16px 0px
+    color-mix(in srgb, #000 calc(1 * 8%), transparent);
+    transition: background-color 400ms
+    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+    color: #fff;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &--red {
+    background-color: color-mix(in srgb, #f44336 5%, transparent);
+    backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, #f44336 calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
+    color-mix(in srgb, #f44336 calc(1 * 90%), transparent), inset -2px -2px 0px -2px
+    color-mix(in srgb, #f44336 calc(1 * 80%), transparent), inset -3px -8px 1px -6px
+    color-mix(in srgb, #f44336 calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
+    color-mix(in srgb, #f44336 calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
+    color-mix(in srgb, #f44336 calc(1 * 20%), transparent), inset 0px 3px 4px -2px
+    color-mix(in srgb, #f44336 calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
+    color-mix(in srgb, #f44336 calc(1 * 10%), transparent), 0px 1px 5px 0px
+    color-mix(in srgb, #f44336 calc(1 * 10%), transparent), 0px 6px 16px 0px
+    color-mix(in srgb, #f44336 calc(1 * 8%), transparent);
+    transition: background-color 400ms
+    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+    color: #f44336;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &--orange {
+    background-color: color-mix(in srgb, orange 5%, transparent);
+    backdrop-filter: blur(8px) saturate(150%);
+    box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, orange calc(1* 10%), transparent), inset 1.8px 3px 0px -2px
+    color-mix(in srgb, orange calc(1 * 90%), transparent), inset -2px -2px 0px -2px
+    color-mix(in srgb, orange calc(1 * 80%), transparent), inset -3px -8px 1px -6px
+    color-mix(in srgb, orange calc(1 * 60%), transparent), inset -0.3px -1px 4px 0px
+    color-mix(in srgb, orange calc(1 * 12%), transparent), inset -1.5px 2.5px 0px -2px
+    color-mix(in srgb, orange calc(1 * 20%), transparent), inset 0px 3px 4px -2px
+    color-mix(in srgb, orange calc(1 * 20%), transparent), inset 2px -6.5px 1px -4px
+    color-mix(in srgb, orange calc(1 * 10%), transparent), 0px 1px 5px 0px
+    color-mix(in srgb, orange calc(1 * 10%), transparent), 0px 6px 16px 0px
+    color-mix(in srgb, orange calc(1 * 8%), transparent);
+    transition: background-color 400ms
+    cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms
+    cubic-bezier(1, 0, 0.4, 1), transform 400ms;
+    color: orange;
+    border: none;
+    box-sizing: border-box;
+  }
 }
-
-h1 {
-  font-size: 48px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-p {
-  color: #FFF;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

@@ -1,25 +1,37 @@
 <script setup>
   import { useI18n } from 'vue-i18n'
   import { useLocaleRoute } from 'src/composables/useLocaleRoute.js'
+  import Logotype from 'assets/images/Logotype.svg'
 
   const { t } = useI18n()
   const { localeTo } = useLocaleRoute()
 </script>
 
 <template>
-  <q-footer class="footer glass text-primary">
-    <q-toolbar class="justify-between">
-      <div class="col-auto">
-        <span>SLAY</span>
-        <p>{{t('sections.home.title')}}.</p>
+  <q-footer class="footer">
+    <div class="container">
+      <div class="footer__head flex q-pb-lg">
+        <div class="col-auto">
+          <router-link class="flex items-center q-mb-sm" :to="localeTo('home')">
+            <img :src="Logotype"
+                 alt="" title=""
+                 height="40" width="40"
+                 class="q-mr-md"/>
+            <span>SLAY SYNERGY</span>
+          </router-link>
+          <p>{{t('sections.home.title')}}.</p>
+        </div>
+        <div class="col-auto">
+          <p>© 2026 SLAY</p>
+          <p>{{t('text.allRightsReserved')}}</p>
+        </div>
       </div>
-      <div class="col">
+      <div class="footer__foot flex justify-center q-pt-lg">
         <q-list class="flex justify-center">
           <q-item class="q-pa-none">
             <q-btn
               flat
               dense
-              color="primary"
               class="btn-link"
               :label="t('routes.terms')"
               :to="localeTo('terms_of_services')"
@@ -29,7 +41,6 @@
             <q-btn
               flat
               dense
-              color="primary"
               class="btn-link"
               :label="t('routes.privacyPolicy')"
               :to="localeTo('privacy_policy')"
@@ -39,7 +50,6 @@
             <q-btn
               flat
               dense
-              color="primary"
               class="btn-link"
               :label="t('routes.refundPolicy')"
               :to="localeTo('refund_policy')"
@@ -49,7 +59,6 @@
             <q-btn
               flat
               dense
-              color="primary"
               class="btn-link"
               :label="t('routes.contacts')"
               :to="localeTo('contacts')"
@@ -57,12 +66,7 @@
           </q-item>
         </q-list>
       </div>
-
-      <div class="col-auto">
-        <p>© 2026 SLAY</p>
-        <p>{{t('text.allRightsReserved')}}</p>
-      </div>
-    </q-toolbar>
+    </div>
   </q-footer>
 </template>
 
@@ -72,53 +76,41 @@
     font-size: 1rem;
     line-height: 120%;
     padding: 16px 0;
-    border-radius: 20px 20px 0 0;
+    background-color: #051826;
     text-align: center;
 
-    .q-toolbar {
+    @media (min-width: 64em) {
+      padding: 24px 0;
+    }
+
+    @media (min-width: 90em) {
+      padding: 40px 0;
+    }
+
+    &__head {
       flex-direction: column;
-      align-items: center;
-      min-height: auto;
-      padding: 0 16px;
+      justify-content: center;
+      border-bottom: 1px solid rgba(26, 88, 90, 0.64);
+      text-align: center;
 
-      @media screen and (min-width: 64em) {
+      @media screen and (min-width: 37.5em) {
         flex-direction: row;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      @media screen and (min-width: 77.5em) {
-        padding: 0 24px;
-      }
-
-      @media (min-width: 158.75em) {
-        padding: 0 48px;
-      }
-    }
-
-    .col-auto {
-      &:first-child {
-        margin-bottom: 16px;
-
-        @media screen and (min-width: 64em) {
-          text-align: left;
-          padding-right: 24px;
-          margin: 0;
+      .col-auto {
+        &:first-child {
+          @media screen and (min-width: 37.5em) {
+            text-align: left;
+          }
         }
-      }
 
-      &:last-child {
-        @media screen and (min-width: 64em) {
-          text-align: right;
-          padding-left: 24px;
+        &:last-child {
+          @media screen and (min-width: 37.5em) {
+            text-align: right;
+          }
         }
-      }
-    }
-
-    .col {
-      @media screen and (min-width: 64em) {
-        margin-top: 24px;
-        order: 1;
-        flex: 100%;
       }
     }
   }
@@ -126,11 +118,10 @@
   .q-list {
     flex-direction: column;
     align-items: center;
-    margin: 0 -16px 16px;
+    margin: 0 -16px;
 
-    @media screen and (min-width: 64em) {
+    @media screen and (min-width: 37.5em) {
       flex-direction: row;
-      margin: 0 -16px;
     }
 
     .q-item {
@@ -141,10 +132,15 @@
 
   .q-btn {
     &.btn-link {
-
       min-height: 1.5rem;
       font-size: inherit;
       line-height: inherit;
     }
+  }
+
+  .router-link-active {
+    display: inline-flex;
+    text-decoration: none;
+    color: #E4CD71;
   }
 </style>

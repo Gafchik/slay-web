@@ -1,8 +1,6 @@
 export default {
   routes: {
-    download: 'Download',
     pricing: 'Pricing',
-    faq: 'FAQ',
     contacts: 'Contact Us',
     terms: 'Terms of Services',
     privacyPolicy: 'Privacy Policy',
@@ -11,13 +9,10 @@ export default {
     feature: 'Feature',
   },
   buttons: {
-    join: 'Join',
     download: 'Download {data}',
     downloadFor: 'Download for',
     login: 'Log in',
     logout: 'Log out',
-    registration: 'Registration',
-    signIn: 'Sign in',
     signUp: 'Sign up',
     profile: 'Profile',
     edit: 'Edit',
@@ -26,11 +21,9 @@ export default {
     send: 'Send',
     delete: 'Delete',
     start: 'Start {data}',
-    upgrade: 'Upgrade {data}',
     choose: 'Choose {data}',
     renew: 'Renew {data}',
     confirm: 'Confirm',
-    open: 'Open {data}',
     continue: 'Continue',
   },
   inputData: {
@@ -46,144 +39,240 @@ export default {
   validation: {
     required: 'This field is required',
     notValid: 'This field is not valid',
-    onlyOneFileAllowed: 'Only one file is allowed',
     passwordMismatch: 'Passwords do not match',
     minLength: 'The minimum length is {min} characters',
   },
-  status: {
-    failed: 'Action failed',
-    success: 'Action was successful',
+  pages: {
+    home: {
+      title: {
+        note: 'Smart Launcher',
+        title: 'Open your full dev workspace in seconds',
+        description: 'Keep projects, apps, comments, passwords, and answers accessible in one place. Start working without hunting for tools, links, and credentials.',
+        list: [
+          {
+            title: 'Project Management',
+            description: 'Keep team projects, links, and context organized. Switch between workspaces without losing the thread.'
+          },
+          {
+            title: 'Saved Access',
+            description: 'Store passwords, credentials, and key links safely. Find what you need without digging through chats.'
+          },
+          {
+            title: 'Routine Simplified',
+            description: 'Reduce repeated setup and daily switching. Spend less time preparing and more time working.'
+          },
+          {
+            title: 'Instant Launch',
+            description: 'Open the right tools, apps, and tabs together. Start the day without rebuilding your setup.'
+          },
+        ],
+      },
+      workspace: {
+        note: 'Workspace Control',
+        title: 'Everything your project needs, always within reach',
+        description: 'Stop searching for projects, reopening tools, and copying commands from old notes. Slay keeps your workspace organized and ready to work from a single place.',
+        society: {
+          title: 'Perfect for:',
+          list: [
+            {
+              title: 'Developers',
+              description: 'Launch your full development environment in one click.'
+            },
+            {
+              title: 'QA Engineers',
+              description: 'Switch between testing environments and projects faster.'
+            },
+            {
+              title: 'Project Managers',
+              description: 'Keep project resources, links, and documentation organized.'
+            },
+            {
+              title: 'DevOps Engineers',
+              description: 'Manage tools, credentials, and environments without repetitive setup.'
+            },
+          ],
+        }
+      },
+      distinction: {
+        note: 'Workflow Cost',
+        title: 'How much does your scattered workflow cost you?',
+        description: 'Instead of paying for separate launchers, vaults, SSH clients, and command tools, get one workspace that brings them together.',
+        competitors: {
+          title: 'Your current workflow receipt',
+          subtitle: 'Total: $155-$371/year',
+          list: [
+            {
+              title: 'SSH/SFTP client',
+              price: '$120/year'
+            },
+            {
+              title: 'Password vault',
+              price: '$36/year'
+            },
+            {
+              title: 'Terminal productivity',
+              price: '$180/year'
+            },
+            {
+              title: 'Workspace launcher',
+              price: '$60/year'
+            },
+            {
+              title: 'Manual setup',
+              price: 'every week'
+            },
+            {
+              title: 'Context switching',
+              price: 'every day'
+            },
+          ],
+        },
+        features: {
+          title: 'Slay workspace',
+          subtitle: 'monthly',
+          list: [
+            {
+              title: 'Projects',
+            },
+            {
+              title: 'Apps',
+            },
+            {
+              title: 'Commands',
+            },
+            {
+              title: 'Credentials',
+            },
+            {
+              title: 'Servers',
+            },
+            {
+              title: 'SSH/SFTP',
+            },
+          ],
+        }
+      },
+      subsequence: {
+        note: 'One-click Workflow',
+        title: 'How many steps before work actually starts?',
+        description: 'Every project starts with folders, apps, credentials, servers, commands, and context. Slay turns that setup into one workspace launch.',
+        before: {
+          note: 'Before Slay',
+          badge: 'Repeat every morning',
+          list: [
+            {
+              title: 'Find the project folder',
+            },
+            {
+              title: 'Open the right IDE',
+            },
+            {
+              title: 'Launch required apps',
+            },
+            {
+              title: 'Search for credentials',
+            },
+            {
+              title: 'Connect to SSH/SFTP',
+            },
+            {
+              title: 'Run saved commands',
+            },
+            {
+              title: 'Reopen notes and context',
+            },
+          ],
+        },
+        after: {
+          note: 'With Slay',
+          title: 'Start Workspace',
+          subtitle: '1 Workspace Launch',
+          list: [
+            {
+              title: 'Projects',
+            },
+            {
+              title: 'Apps',
+            },
+            {
+              title: 'Commands',
+            },
+            {
+              title: 'Credentials',
+            },
+            {
+              title: 'Servers',
+            },
+            {
+              title: 'SSH/SFTP',
+            },
+            {
+              title: 'Context',
+            },
+          ],
+        }
+      },
+      aliases: {
+        note: 'Smart Commands',
+        title: 'Command aliases',
+        description: 'Long commands shouldn\'t live in your head. If you frequently copy-paste commands from notes, terminal history, or README, it\'s likely the routine is taking up too much of your attention. In Slay, you can save commands as short aliases and run them whenever you need them.',
+        before: {
+          badge: 'Repeat every day',
+          description: 'сd /Users /find /var/log -type f -name \'*.log\' -mtime +30 -exec gzip -9 {} \\; && tar -czvf /backup/logs_$(date +%Y%m%d).tar.gz /var/log/*.gz | tee -a /var/log/backup.log | mail -s "Backup done $(date +%Y-%m-%d)" admin@example.com && echo \'Done\' >> /var/log/cron.log'
+        },
+        after: {
+          badge: 'Simple Everyday',
+          description: 'Slay_build_linux',
+        },
+      },
+      passwords: {
+        note: 'Project Credentials',
+        title: 'Password manager',
+        subtitle: 'Project access is too often scattered across chats, notes, and the browser',
+        description: 'Passwords, API keys, test accounts, and access to admin panels and services quickly become a mess. Slay helps keep sensitive data close to your project and protects it with a master password and encryption.',
+        list: [
+          {
+            icon: 'shield',
+            title: 'Reliable AES-256-GCM encryption',
+            subtitle: 'Maximum protection of your credentials using advanced encryption standards.'
+          },
+          {
+            icon: 'lock',
+            title: 'Master password protection',
+            subtitle: 'Your data is encrypted with a unique master password known only to you.'
+          },
+          {
+            icon: 'folder',
+            title: 'Hierarchical folder structure',
+            subtitle: 'Organize passwords and sensitive data into convenient folders and subfolders.'
+          },
+          {
+            icon: 'verified_user',
+            title: 'Secure storage of any information',
+            subtitle: 'Store not only passwords, but also notes, API keys, and other sensitive data.'
+          },
+        ]
+      },
+      cta: {
+        title: 'Server management',
+        description: 'Project access is too often scattered across chats, notes, and the browser Finding access, opening the client, connecting, navigating to the desired folder, and transferring a file is a repeatable routine. Slay simplifies connecting to the server and working with project files from a single workspace.',
+        banner: {
+          title: 'Ready to stop losing time before the work even starts?',
+          subtitle: 'Start using Slay today',
+        },
+      },
+    },
   },
   sections: {
     home: {
       title: 'Smart Launcher for All Your devtools',
-      subtitle: 'Stop rebuilding your dev workspace every morning',
-      description: 'Keep projects, apps, commands, passwords, and server access in one place. <br> Start working without hunting for tools and credentials',
     },
-    about: {
-      titleProject: 'Project Manager',
-      descriptionProject: 'Open all your tools instantly',
-      titleLauncher: 'Instant launch',
-      descriptionLauncher: 'Launch your entire workspace with one click',
-      titleAlias: 'Console aliases',
-      descriptionAlias: 'Create short aliases for any console operations',
-      titlePassword: 'Password manager',
-      descriptionPassword: 'Secure storage and easy password organization',
-      titleServer: 'Server management',
-      descriptionServer: 'Easy server connection and full control over files',
-    },
-    project: {
-      title: 'Project Manager',
-      subtitle: 'Finding a project shouldn\'t be part of development',
-      description: 'You shouldn\'t have to remember where every project is stored or search through your IDE\'s recent projects. Slay keeps all your work within easy reach.',
-    },
-    launcher: {
-      title: 'Instant launch',
-      subtitle: 'A working day shouldn\'t start with ten clicks',
-      description: 'Opening an IDE, terminal, browser, local server, Docker, documentation—it\'s a small task, but it happens every day. Slay launches the required set of tools for a project in a single step.',
-    },
-    alias: {
-      title: 'Console aliases',
-      subtitle: 'Long commands shouldn\'t live in your head',
-      description: 'If you frequently copy-paste commands from notes, terminal history, or README, it\'s likely the routine is taking up too much of your attention. In Slay, you can save commands as short aliases and run them whenever you need them.',
-      list: [
-        {
-          title: 'Customization and flexibility',
-          description: 'Customize aliases to fit your needs and workflows for maximum comfort'
-        },
-        {
-          title: 'Simplifying routine tasks',
-          description: 'Easily access Docker containers, launch local servers with a single command, and manage programming language versions',
-        },
-        {
-          title: 'Increased efficiency',
-          description: 'Reduce the time spent typing commands and boost your terminal productivity',
-        },
-      ],
-    },
-    password: {
-      title: 'Password manager',
-      subtitle: 'Project access is too often scattered across chats, notes, and the browser',
-      description: 'Passwords, API keys, test accounts, and access to admin panels and services quickly become a mess. Slay helps keep sensitive data close to your project and protects it with a master password and encryption.',
-      list: [
-        {
-          key: 'coding',
-          title: 'Reliable AES-256-GCM encryption',
-          description: 'Maximum protection of your credentials using advanced encryption standards.'
-        },
-        {
-          key: 'frame',
-          title: 'Hierarchical folder structure',
-          description: 'Organize passwords and sensitive data into convenient folders and subfolders.'
-        },
-        {
-          key: 'defense',
-          title: 'Master password protection',
-          description: 'Your data is encrypted with a unique master password known only to you.'
-        },
-        {
-          key: 'safety',
-          title: 'Secure storage of any information',
-          description: 'Store not only passwords, but also notes, API keys, and other sensitive data.'
-        }
-      ]
-    },
-    sftp: {
-      title: 'Server management',
-      subtitle: 'Working with the server often requires too many switches',
-      description: 'Finding access, opening the client, connecting, navigating to the desired folder, and transferring a file is a repeatable routine. Slay simplifies connecting to the server and working with project files from a single workspace.',
-    },
-    reviews: {
-      title: 'What our users say',
-      list: [
-        {
-          author: 'Alexey K.',
-          role: 'Frontend Developer (Windows)',
-          text: 'Launching my work environment used to take forever. Now with Slay, I start working with one click, saving 10 minutes every morning! It\'s a real productivity lifesaver.',
-          feature: 'Instant launch',
-          date: '07.01.2026'
-        },
-        {
-          author: 'Ivan T.',
-          role: 'PHP/Laravel developer',
-          text: 'Console aliases in Slay changed my work with PHP versions and Docker. Quick access to containers, switching between PHP versions on Windows — everything has become much easier. No more long commands!',
-          feature: 'Console aliases',
-          date: '28.05.2026'
-        },
-        {
-          author: 'Maria S.',
-          role: 'Freelance developer',
-          text: 'As a freelancer with dozens of projects, I constantly faced chaos. Slay’s project and password manager brought everything in order. All projects are organized, and passwords are securely stored. My productivity has skyrocketed!',
-          feature: 'Project Manager & Password',
-          date: '19.02.2026'
-        },
-        {
-          author: 'Olga P.',
-          role: 'QA Engineer',
-          text: 'For testing, I need dozens of accounts (admin, user, manager). Slay’s password manager allows me to keep them all organized, switch quickly, and always have access to the necessary credentials. Indispensable!',
-          feature: 'Password manager',
-          date: '15.06.2026'
-        },
-        {
-          author: 'Dmitry V.',
-          role: 'Backend developer',
-          text: 'Storing passwords for Stripe, Mailgun, Mailtrap, and many servers is a pain. Slay not only stores them securely, but console aliases have also sped up my access to servers and execution of complex commands. It’s a must-have for backend.',
-          feature: 'Console aliases & Password manager',
-          date: '03.03.2026'
-        }
-      ]
-    },
-    cta: {
-      title: 'Ready to stop losing time before the work even starts?',
-      subtitle: 'Start using Slay today'
-    }
   },
   account: {
     profile: {
       title: 'Profile',
       created_at: 'Created',
       updated_at: 'Updated',
-      trial_ends_at: 'Trial period end',
       profileInfo: 'Profile information',
       profileDescription: 'View and manage your personal information.',
       profileAction: 'Account Actions',
@@ -321,16 +410,13 @@ export default {
       monthly: {
         title: "Monthly",
         subtitle: "Billed monthly",
-        price: "$7.99",
         discount: "",
-        discountPrice: "",
         badge: "",
         period: 'month'
       },
       sixMonths: {
         title: "6 Months",
         subtitle: "Billed semiannually",
-        price: "$41.94",
         discount: "12%",
         discountPrice: "$6.99/month",
         badge: "",
@@ -339,7 +425,6 @@ export default {
       yearly: {
         title: "Yearly",
         subtitle: "Billed annually",
-        price: "$71.88",
         discount: "25%",
         discountPrice: "$5.99/month",
         badge: "Best Value",
@@ -425,14 +510,11 @@ export default {
     trial: 'Free Trial',
     active: 'Active',
     noActive: 'No Active Plan',
-    best: 'Best Value'
   },
   text: {
     allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
     and: 'and',
-    plan: 'Plan',
-    billed: 'Billed {data}',
     charged: 'Charged {data}',
     monthly: 'monthly',
     semiannually: 'semiannually',

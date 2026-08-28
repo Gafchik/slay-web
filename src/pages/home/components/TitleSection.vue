@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
@@ -10,7 +10,7 @@
   import winIcon from 'src/assets/images/home/Icon-windows.svg'
   import ubuntuIcon from 'src/assets/images/home/Icon-ubuntu.svg'
 
-  const { t } = useI18n()
+  const { t, tm } = useI18n()
   const { localeTo } = useLocaleRoute()
 
   const list = ref([
@@ -27,82 +27,57 @@
       text: 'Ubuntu'
     },
   ]);
-
-  const listWorkspace = ref([
-    {
-      title: 'Developers',
-      description: 'Launch your full development environment in one click.'
-    },
-    {
-      title: 'QA Engineers',
-      description: 'Switch between testing environments and projects faster.'
-    },
-    {
-      title: 'Project Managers',
-      description: 'Keep project resources, links, and documentation organized.'
-    },
-    {
-      title: 'DevOps Engineers',
-      description: 'Manage tools, credentials, and environments without repetitive setup.'
-    },
-  ]);
-
-  const listAbout = ref([
-    {
-      title: 'Project Management',
-      description: 'Keep team projects, links, and context organized. Switch between workspaces without losing the thread.'
-    },
-    {
-      title: 'Saved Access',
-      description: 'Store passwords, credentials, and key links safely. Find what you need without digging through chats.'
-    },
-    {
-      title: 'Routine Simplified',
-      description: 'Reduce repeated setup and daily switching. Spend less time preparing and more time working.'
-    },
-    {
-      title: 'Instant Launch',
-      description: 'Open the right tools, apps, and tabs together. Start the day without rebuilding your setup.'
-    },
-  ]);
+  const listAbout = computed(() => {
+    return tm('pages.home.title.list')
+  })
 </script>
 
 <template>
-  <section class="section text-white q-pb-xl q-mb-xl">
+  <section class="section text-white">
     <div class="home text-center">
-      <div class="container column justify-center">
-        <div class="heating column items-center">
-          <figure class="q-mb-lg">
-            <q-img :src="logotype" class="q-mb-md"/>
-            <figcaption>Workspace Synergy</figcaption>
-          </figure>
-          <q-btn :to="localeTo('download')"
-                 unelevated
-                 rounded
-                 class="btn-download btn-glass--primary q-px-xl q-mb-xl">
-            {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
-          </q-btn>
+      <div class="container">
+        <div class="container-fluid">
+          <div class="column justify-center full-height">
+            <div class="heating column items-center">
+              <figure class="q-mb-lg">
+                <q-img :src="logotype" class="q-mb-md"/>
+                <figcaption>Workspace Synergy</figcaption>
+              </figure>
+              <q-btn :to="localeTo('download')"
+                     unelevated
+                     rounded
+                     class="btn-start btn-download q-mb-xl">
+                {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
+              </q-btn>
 
-          <q-list class="flex justify-center no-wrap">
-            <q-item class="column justify-center"
-                    v-for="(item, index) in list"
-                    :key="index">
-              <div class="q-item__body">
-                <q-item-section avatar class="items-center q-mb-sm q-pa-none">
-                  <q-img :src="item.icon" />
-                </q-item-section>
-                <q-item-section>{{ item.text }}</q-item-section>
-              </div>
-            </q-item>
-          </q-list>
+              <q-list class="flex justify-center no-wrap">
+                <q-item class="column justify-center"
+                        v-for="(item, index) in list"
+                        :key="index">
+                  <div class="q-item__body">
+                    <q-item-section avatar class="items-center q-mb-sm q-pa-none">
+                      <q-img :src="item.icon" />
+                    </q-item-section>
+                    <q-item-section>{{ item.text }}</q-item-section>
+                  </div>
+                </q-item>
+              </q-list>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="about">
+    <div class="about q-pb-xl">
       <div class="about__body">
-        <span class="note q-mb-lg">Workspace Control</span>
-        <h1 class="q-mb-md">Open your full dev workspace in seconds</h1>
-        <p class="q-mb-xl">Keep projects, apps, comments, passwords, and answers accessible in one place. Start working without hunting for tools, links, and credentials.</p>
+        <span class="note q-mb-lg">
+          {{ t('pages.home.title.note') }}
+        </span>
+        <h1 class="q-mb-md">
+          {{ t('pages.home.title.title') }}
+        </h1>
+        <p class="q-mb-xl">
+          {{ t('pages.home.title.description') }}
+        </p>
         <div class="q-mb-xl">
           <q-list class="flex">
             <q-item v-for="(item, index) in listAbout" :key="index" class="q-mb-md">
@@ -118,31 +93,13 @@
         <q-img :src="example"/>
       </div>
     </div>
-    <div class="workspace">
-      <div class="container">
-        <div class="heating">
-          <span class="note q-mb-xl">Workspace Control</span>
-          <h2 class="q-mb-md">Everything your project needs, always within reach</h2>
-          <p class="q-mb-md">Stop searching for projects, reopening tools, and copying commands from old notes. Slay keeps your workspace organized and ready to work from a single place.</p>
-          <span class="q-list--title q-mb-sm">Perfect for:</span>
-          <q-list class="q-mb-md">
-            <q-item v-for="(item, index) in listWorkspace" :key="index">
-              <div class="q-item__body">
-                <q-item-section class="q-mb-xs">
-                  <q-item-label>{{ item.title }}</q-item-label>
-                  <q-item-label caption>{{ item.description }}</q-item-label>
-                </q-item-section>
-              </div>
-            </q-item>
-          </q-list>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
 <style scoped lang="scss">
   .home {
+    min-height: 700px;
+    height: 100vh;
     position: relative;
     background-image: url("assets/images/home/Background.png");
     background-position: right center;
@@ -167,13 +124,19 @@
       background: linear-gradient(to bottom, rgba(0, 51, 60, 0.00) 0%, #011C37 100%);
     }
 
-    @media (min-width: 48em) {
+    @media (min-width: 37.5em) {
+      min-height: 500px;
     }
 
     @media (min-width: 64em) {
     }
 
     @media (min-width: 77.5em) {
+      min-height: 810px;
+    }
+
+    @media (min-width: 90em) {
+      height: 100vh;
       min-height: 810px;
     }
 
@@ -189,7 +152,6 @@
       figcaption {
         color: #FFF;
         text-align: center;
-        /*font-family: Geist;*/
         font-size: 20px;
         font-weight: 500;
         letter-spacing: 0.4px;
@@ -199,8 +161,15 @@
 
     .heating {
       width: 100%;
-      max-width: 45%;
-      padding: 0 60px;
+
+      @media (min-width: 77.5em) {
+        max-width: 45%;
+        padding: 0 20px;
+      }
+
+      @media (min-width: 90em) {
+        padding: 0 60px;
+      }
     }
 
     .q-list {
@@ -214,7 +183,19 @@
 
         &__body {
           position: relative;
-          padding: 0 40px 16px;
+          padding: 0 16px 16px;
+
+          @media (min-width: 37.5em) {
+            padding: 0 24px 16px;
+          }
+
+          @media (min-width: 64em) {
+            padding: 0 32px 16px;
+          }
+
+          @media (min-width: 77.5em) {
+            padding: 0 40px 16px;
+          }
 
           &:before,
           &:after {
@@ -249,76 +230,23 @@
       }
 
       .q-img {
-        width: 44px;
-        height: 44px;
-      }
-    }
-  }
+        width: 30px;
+        height: 30px;
 
-  .workspace {
-    @media (min-width: 48em) {
-    }
-
-    @media (min-width: 64em) {
-    }
-
-    @media (min-width: 77.5em) {
-      padding: 40px 0;
-    }
-
-    @media (min-width: 158.75em) {
-    }
-
-    .heating {
-      width: 100%;
-      max-width: 45%;
-      padding-right: 60px;
-    }
-
-    .q-list {
-      &--title {
-        color: rgba(255, 255, 255, 0.86);
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-      }
-
-      .q-item {
-        position: relative;
-        padding: 0 0 0 24px;
-
-        &:before {
-          content: '•';
-          position: relative;
-          left: -12px;
-          font-size: 20px;
-          color: #E4CD71;
+        @media (min-width: 64em) {
+          width: 36px;
+          height: 36px;
         }
 
-        &__label {
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: normal;
-          color: #E4CD71;
-
-          & + .q-item__label {
-            font-size: 18px;
-            color: #FFF;
-          }
+        @media (min-width: 77.5em) {
+          width: 44px;
+          height: 44px;
         }
       }
     }
   }
 
   .about {
-    @media (min-width: 48em) {
-    }
-
-    @media (min-width: 64em) {
-    }
-
     @media (min-width: 77.5em) {
       position: absolute;
       top: 100px;
@@ -330,17 +258,33 @@
       );
     }
 
-    @media (min-width: 158.75em) {
-    }
-
     &__body {
-      position: relative;
       width: 100%;
-      padding: 44px 40px 12px;
-      border-radius: 20px;
-      background: rgba(0, 51, 60, 0.76);
-      box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(8px);
+      max-width: 414px;
+      padding: 0 16px;
+      margin: 0 auto;
+
+      @media (min-width: 37.5em) {
+        max-width: 768px;
+        padding: 0 24px;
+      }
+
+      @media (min-width: 64em) {
+        padding: 0 40px;
+      }
+
+      @media (min-width: 77.5em) {
+        position: relative;
+        padding: 24px 20px 12px;
+        border-radius: 20px;
+        background: rgba(0, 51, 60, 0.76);
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(8px);
+      }
+
+      @media (min-width: 90em) {
+        padding: 44px 40px 12px;
+      }
 
       &:before {
         content: '';
@@ -348,6 +292,7 @@
         z-index: -1;
         top: -1px;
         left: -1px;
+        display: none;
         border-radius: inherit;
         height: calc(100% + 2px);
         width: calc(100% + 2px);
@@ -366,6 +311,10 @@
         mask-composite: exclude;
 
         pointer-events: none;
+
+        @media (min-width: 77.5em) {
+          display: block;
+        }
       }
     }
 
@@ -373,8 +322,12 @@
       margin: 0 -8px;
 
       .q-item {
-        width: 50%;
+        width: 100%;
         padding: 0 8px;
+
+        @media (min-width: 37.5em) {
+          width: 50%;
+        }
 
         &__body {
           position: relative;
@@ -408,11 +361,24 @@
             color: #FFF;
           }
         }
+
+        &:last-child {
+          margin-bottom: 0;
+
+          @media (min-width: 37.5em) {
+            margin-bottom: 16px;
+          }
+        }
       }
     }
 
     .q-img {
       position: relative;
+      display: none;
+
+      @media (min-width: 77.5em) {
+        display: inline-block;
+      }
 
       &:before {
         content: '';

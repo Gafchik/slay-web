@@ -124,92 +124,94 @@
   <q-page class="column justify-center q-pb-xl">
     <section class="section">
       <div class="container">
-        <div class="section__head">
-          <div class="section__title text-center q-mb-xl">
-            <h2 class="gradient-text">{{ t('routes.pricing') }}</h2>
-            <p>{{ t('pricing.subTitle')}}</p>
+        <div class="container-fluid">
+          <div class="section__head">
+            <div class="section__title text-center q-mb-xl">
+              <h2 class="gradient-text">{{ t('routes.pricing') }}</h2>
+              <p>{{ t('pricing.subTitle')}}</p>
+            </div>
           </div>
-        </div>
 
-        <div class="section__main q-mb-xl">
-          <q-list class="cards row justify-center q-mb-md">
-            <q-item v-for="(item, index) in cards" :key="index"
-                    class="card q-py-none q-mb-xl col-md-4 col-sm-6 col-xs-12"
-                    :class="[ index === 0 ? 'card-monthly' : '',
+          <div class="section__main q-mb-xl">
+            <q-list class="cards row justify-center q-mb-md">
+              <q-item v-for="(item, index) in cards" :key="index"
+                      class="card q-py-none q-mb-xl col-md-4 col-sm-6 col-xs-12"
+                      :class="[ index === 0 ? 'card-monthly' : '',
                               index === 2 ? 'card-yearly' : '']">
-              <q-item-section class="card__body q-pa-md">
-                <div class="card__head column items-center q-pb-md q-mb-md">
-                  <h2 class="card-title q-mb-xs">{{item.title}}</h2>
-                  <p class="card-subtitle q-mb-md">{{item.subtitle}}</p>
-                  <p class="card-price q-mb-xs"><span class="card-price--promo">${{item.price}}</span> {{item.period}}</p>
-                  <p class="card-free">{{t('pricing.info.free')}}</p>
-                  <span class="card-badget" v-if="item.badge">{{item.badge}}</span>
-                </div>
-                <div class="card__main column q-pb-md q-mb-md">
-                  <q-list class="column text-white q-mb-md">
-                    <q-item v-for="(itemInfo, itemIndex) in getCardInfo(item)" :key="itemIndex"
-                            class="q-mb-md q-pa-none items-start">
-                      <div class="icon q-mr-md">
-                        <q-icon name="check"/>
-                      </div>
+                <q-item-section class="card__body q-pa-md">
+                  <div class="card__head column items-center q-pb-md q-mb-md">
+                    <h2 class="card-title q-mb-xs">{{item.title}}</h2>
+                    <p class="card-subtitle q-mb-md">{{item.subtitle}}</p>
+                    <p class="card-price q-mb-xs"><span class="card-price--promo">${{item.price}}</span> {{item.period}}</p>
+                    <p class="card-free">{{t('pricing.info.free')}}</p>
+                    <span class="card-badget" v-if="item.badge">{{item.badge}}</span>
+                  </div>
+                  <div class="card__main column q-pb-md q-mb-md">
+                    <q-list class="column text-white q-mb-md">
+                      <q-item v-for="(itemInfo, itemIndex) in getCardInfo(item)" :key="itemIndex"
+                              class="q-mb-md q-pa-none items-start">
+                        <div class="icon q-mr-md">
+                          <q-icon name="check"/>
+                        </div>
 
-                      <q-item-section>
-                        <template v-if="itemInfo.isDiscount">
-                          <p>
-                            {{ itemInfo.beforeDiscount }}
-                            <span>{{ itemInfo.discount }}</span>
-                            {{ itemInfo.middle }}
-                            <span>{{ itemInfo.discountPrice }}</span>
-                            {{ itemInfo.afterPrice }}
+                        <q-item-section>
+                          <template v-if="itemInfo.isDiscount">
+                            <p>
+                              {{ itemInfo.beforeDiscount }}
+                              <span>{{ itemInfo.discount }}</span>
+                              {{ itemInfo.middle }}
+                              <span>{{ itemInfo.discountPrice }}</span>
+                              {{ itemInfo.afterPrice }}
+                            </p>
+                          </template>
+
+                          <p v-else>
+                            {{ itemInfo.title }}
                           </p>
-                        </template>
+                        </q-item-section>
+                      </q-item>
+                    </q-list>
+                    <q-btn @click="clickStartBtn(item.price_id)"
+                           unelevated
+                           rounded
+                           class="btn-glass--primary q-px-xl q-py-sm q-mt-auto">
+                      {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
+                    </q-btn>
+                  </div>
+                  <div class="card__foot">
+                    <p class="card-tax">{{t('pricing.info.taxes')}}</p>
+                  </div>
+                </q-item-section>
+              </q-item>
+            </q-list>
 
-                        <p v-else>
-                          {{ itemInfo.title }}
-                        </p>
-                      </q-item-section>
-                    </q-item>
-                  </q-list>
-                  <q-btn @click="clickStartBtn(item.price_id)"
-                         unelevated
-                         rounded
-                         class="btn-glass--primary q-px-xl q-py-sm q-mt-auto">
-                    {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
-                  </q-btn>
-                </div>
-                <div class="card__foot">
-                  <p class="card-tax">{{t('pricing.info.taxes')}}</p>
-                </div>
-              </q-item-section>
-            </q-item>
-          </q-list>
+            <div class="features liquid-glass--primary q-pa-md q-mb-xl text-white">
+              <h4 class="q-mb-sm">{{t('pricing.features.title')}}</h4>
+              <p class="q-mb-md">{{t('pricing.features.description')}}</p>
+              <q-list class="flex justify-center">
+                <q-item v-for="(item, index) in pricingFeatures" :key="index"
+                        class="column items-center q-px-md q-py-none q-mb-md">
+                  <q-icon :name="item.icon" class="q-mb-md"/>
 
-          <div class="features liquid-glass--primary q-pa-md q-mb-xl text-white">
-            <h4 class="q-mb-sm">{{t('pricing.features.title')}}</h4>
-            <p class="q-mb-md">{{t('pricing.features.description')}}</p>
-            <q-list class="flex justify-center">
-              <q-item v-for="(item, index) in pricingFeatures" :key="index"
-                      class="column items-center q-px-md q-py-none q-mb-md">
-                <q-icon :name="item.icon" class="q-mb-md"/>
+                  <q-item-section class="q-mt-auto">
+                    <span>{{item.title}}</span>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </div>
 
-                <q-item-section class="q-mt-auto">
-                  <span>{{item.title}}</span>
+            <q-list class="details liquid-glass--primary q-px-md q-py-sm">
+              <q-item v-for="(item, index) in pricingDetails" :key="index"
+                      class="q-px-md q-py-md">
+                <q-icon :name="item.icon" class="q-mr-md"/>
+
+                <q-item-section>
+                  <span class="q-mb-xs">{{item.title}}</span>
+                  <p>{{item.description}}</p>
                 </q-item-section>
               </q-item>
             </q-list>
           </div>
-
-          <q-list class="details liquid-glass--primary q-px-md q-py-sm">
-            <q-item v-for="(item, index) in pricingDetails" :key="index"
-                    class="q-px-md q-py-md">
-              <q-icon :name="item.icon" class="q-mr-md"/>
-
-              <q-item-section>
-                <span class="q-mb-xs">{{item.title}}</span>
-                <p>{{item.description}}</p>
-              </q-item-section>
-            </q-item>
-          </q-list>
         </div>
       </div>
       <div id="paddle-checkout"></div>
@@ -218,16 +220,22 @@
 </template>
 
 <style scoped lang="scss">
+.q-page {
+  padding: 100px 0;
+}
+
+.container {
+  &-fluid {
+    @media (min-width: 90em) {
+      max-width: 1280px;
+    }
+  }
+}
+
 .section {
 
   &__title {
     height: auto;
-  }
-}
-
-.container {
-  @media (min-width: 90em) {
-    max-width: 1240px;
   }
 }
 

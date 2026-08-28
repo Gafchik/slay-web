@@ -39,7 +39,7 @@
 </script>
 
 <template>
-  <q-page class="row justify-center q-py-xl">
+  <q-page class="row justify-center">
     <div class="flex column justify-center q-ma-auto">
       <section class="section">
         <div class="section__head q-mb-xl">
@@ -84,7 +84,7 @@
                   type="password"
                   label-color="white"
                   color="white"
-                  class="btn-glass auto-field q-ma-none q-mb-md"
+                  class="auto-field q-ma-none q-mb-md"
                   :label="t('inputData.password')"
                   :rules="[val => !!val || t('validation.required')]"
                 >
@@ -144,8 +144,6 @@
             </div>
           </div>
         </div>
-
-
       </section>
     </div>
 
@@ -155,6 +153,10 @@
 </template>
 
 <style scoped lang="scss">
+  .q-page {
+    padding: 100px 0;
+  }
+
   .section {
     padding:  0;
     color: rgba(255, 255, 255, 0.64);

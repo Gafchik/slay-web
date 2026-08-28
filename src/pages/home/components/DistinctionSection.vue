@@ -1,105 +1,81 @@
 <script setup>
-import { ref } from 'vue'
+  import { computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
 
-import icon from 'src/assets/images/distinction/Icon-2.png'
-import icon3 from 'src/assets/images/distinction/Icon-3.png'
+  import icon from 'src/assets/images/distinction/Icon-2.png'
+  import icon3 from 'src/assets/images/distinction/Icon-3.png'
 
-const listCompetitors = ref([
-  {
-    title: 'SSH/SFTP client',
-    price: '$120/year'
-  },
-  {
-    title: 'Password vault',
-    price: '$36/year'
-  },
-  {
-    title: 'Terminal productivity',
-    price: '$180/year'
-  },
-  {
-    title: 'Workspace launcher',
-    price: '$60/year'
-  },
-  {
-    title: 'Manual setup',
-    price: 'every week'
-  },
-  {
-    title: 'Context switching',
-    price: 'every day'
-  },
-]);
+  const { t, tm } = useI18n()
 
-const listFeatures = ref([
-  {
-    title: 'Projects',
-  },
-  {
-    title: 'Apps',
-  },
-  {
-    title: 'Commands',
-  },
-  {
-    title: 'Credentials',
-  },
-  {
-    title: 'Password manager',
-  },
-  {
-    title: 'SSH/SFTP',
-  },
-]);
+  const listCompetitors = computed(() => {
+    return tm('pages.home.distinction.competitors.list')
+  })
+  const listFeatures = computed(() => {
+    return tm('pages.home.distinction.features.list')
+  })
 </script>
 
 <template>
   <section class="section text-white q-pb-xl q-mb-xl">
     <div class="container">
-      <div class="section__body">
-        <div class="section__head q-mb-xl">
-          <span class="note q-mb-lg">WORKFLOW COST</span>
-          <h1 class="section__title q-mb-md">How much does your scattered workflow cost you?</h1>
-          <p class="section__subtitle">Instead of paying for separate launchers, vaults, SSH clients, and command tools, get one workspace that brings them together.</p>
-        </div>
-        <div class="section__main">
-          <div class="flex">
-            <div class="col">
-              <div class="section__column section__column--left">
-                <div class="section__column-content column items-center">
-                  <q-img :src="icon" class="q-mb-sm"/>
-                  <span class="q-pb-lg">Your current workflow</span>
-                  <q-list class="column">
-                    <q-item v-for="(item, index) in listCompetitors" :key="index">
-                      <div class="q-item__body">
-                        <q-item-section class="row justify-between no-wrap q-pa-none">
-                          <q-item-label>{{ item.title }}</q-item-label>
-                          <q-item-label>{{ item.price }}</q-item-label>
-                        </q-item-section>
-                      </div>
-                    </q-item>
-                  </q-list>
-                  <p>Total: $155-$371/year</p>
+      <div class="container-fluid">
+        <div class="section__body q-pb-xl q-mb-xl">
+          <div class="section__head q-mb-xl">
+            <span class="note q-mb-lg">
+              {{ t('pages.home.distinction.note') }}
+            </span>
+            <h1 class="section__title q-mb-md">
+              {{ t('pages.home.distinction.title') }}
+            </h1>
+            <p class="section__subtitle">
+              {{ t('pages.home.distinction.description') }}
+            </p>
+          </div>
+          <div class="section__main">
+            <div class="flex">
+              <div class="col">
+                <div class="section__column section__column--left">
+                  <div class="section__column-content column items-center">
+                    <q-img :src="icon" class="q-mb-sm"/>
+                    <span class="q-pb-lg">
+                      {{ t('pages.home.distinction.competitors.title') }}
+                    </span>
+                    <q-list class="column">
+                      <q-item v-for="(item, index) in listCompetitors" :key="index">
+                        <div class="q-item__body">
+                          <q-item-section class="row justify-between no-wrap q-pa-none">
+                            <q-item-label>{{ item.title }}</q-item-label>
+                            <q-item-label>{{ item.price }}</q-item-label>
+                          </q-item-section>
+                        </div>
+                      </q-item>
+                    </q-list>
+                    <p>{{ t('pages.home.distinction.competitors.subtitle') }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="section__column section__column--right">
-                <div class="section__column-content column items-center">
-                  <span class="q-pb-lg">Slay workspace</span>
-                  <div class="price q-mb-lg">
-                    <q-img :src="icon3"/>
-                    <span>monthly</span>
+              <div class="col">
+                <div class="section__column section__column--right">
+                  <div class="section__column-content column items-center">
+                    <span class="q-pb-lg">
+                      {{ t('pages.home.distinction.features.title') }}
+                    </span>
+                    <div class="price q-mb-lg">
+                      <q-img :src="icon3"/>
+                      <span>
+                        {{ t('pages.home.distinction.features.subtitle') }}
+                      </span>
+                    </div>
+                    <q-list class="column">
+                      <q-item v-for="(item, index) in listFeatures" :key="index">
+                        <div class="q-item__body">
+                          <q-item-section class="q-pa-none">
+                            <q-item-label>{{ item.title }}</q-item-label>
+                          </q-item-section>
+                        </div>
+                      </q-item>
+                    </q-list>
                   </div>
-                  <q-list class="column">
-                    <q-item v-for="(item, index) in listFeatures" :key="index">
-                      <div class="q-item__body">
-                        <q-item-section class="q-pa-none">
-                          <q-item-label>{{ item.title }}</q-item-label>
-                        </q-item-section>
-                      </div>
-                    </q-item>
-                  </q-list>
                 </div>
               </div>
             </div>
@@ -123,7 +99,11 @@ const listFeatures = ref([
       height: 80%;
       width: 100%;
       background: linear-gradient(180deg, #013A4C 0%, #42938A 38.17%, #011C37 100%);
-      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+      clip-path: polygon(0 18%, 100% 9%, 100% 100%, 0% 100%);
+
+      @media (min-width: 77.5em) {
+        clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+      }
     }
 
     &__head {
@@ -143,10 +123,26 @@ const listFeatures = ref([
     }
 
     &__main {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 200px auto;
-      background-image: url("../../../assets/images/distinction/Icon-1.png");
+      @media (min-width: 77.5em) {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 150px auto;
+        background-image: url("../../../assets/images/distinction/Icon-1.png");
+      }
+
+      @media (min-width: 90em) {
+        background-size: 200px auto;
+      }
+
+      .col {
+        &:first-child {
+          display: none;
+
+          @media (min-width: 77.5em) {
+            display: inline-block;
+          }
+        }
+      }
     }
 
     &__column {
@@ -276,7 +272,11 @@ const listFeatures = ref([
         padding-bottom: 70px;
         background-image: url("../../../assets/images/distinction/Background-right.png");
         background-position: top 10px center;
-        background-size: auto 100%;
+        background-size: 100% 100%;
+
+        @media (min-width: 37.5em) {
+          background-size: auto 100%;
+        }
 
         span {
           display: block;
