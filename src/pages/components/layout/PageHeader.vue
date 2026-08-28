@@ -83,16 +83,16 @@
             <span>{{ t('routes.pricing')}}</span>
           </q-btn>
         </div>
-<!--        <div class="col q-mx-xs">
+        <div class="col q-mx-xs">
           <q-btn
             unelevated
             rounded
             class="btn-link"
-            :to="localeTo('pricing')"
+            :to="localeTo('faq')"
           >
-            <span>{{ t('routes.password')}}</span>
+            <span>{{ t('routes.faq')}}</span>
           </q-btn>
-        </div>-->
+        </div>
       </nav>
       <div v-if="isDesktop" class="desktop-actions flex justify-end">
         <q-btn
@@ -178,9 +178,9 @@
           no-caps
           align="left"
           class="mobile-menu__link"
-          :to="localeTo('pricing')"
+          :to="localeTo('faq')"
         >
-          {{ t('routes.password') }}
+          {{ t('routes.faq') }}
         </q-btn>
       </nav>
 

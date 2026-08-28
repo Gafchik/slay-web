@@ -1,5 +1,9 @@
+import faq from './faq.js'
+
 export default {
+  ...faq,
   routes: {
+    faq: 'FAQ',
     pricing: 'Prezzi',
     contacts: 'Contattaci',
     terms: 'Termini e Privacy',
