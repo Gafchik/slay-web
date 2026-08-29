@@ -1,7 +1,9 @@
 import faq from './faq.js'
+import assistant from './assistant.js'
 
 export default {
   ...faq,
+  ...assistant,
   routes: {
     faq: 'FAQ',
     pricing: 'Prezzi',

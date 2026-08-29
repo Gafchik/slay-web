@@ -3,11 +3,12 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Fuse from 'fuse.js'
 import { useLocaleRoute } from 'src/composables/useLocaleRoute'
+import { useAssistantStore } from 'src/stores/assistant-store'
 
 const { t, tm } = useI18n()
 const { localeTo } = useLocaleRoute()
+const assistantStore = useAssistantStore()
 
-const aiQuery = ref('')
 const searchQuery = ref('')
 
 const categories = computed(() => tm('faq.categories') || [])
@@ -43,17 +44,6 @@ const filteredCategories = computed(() => {
     }))
     .filter((category) => category.items.length > 0)
 })
-
-const suggestions = computed(() => {
-  const c = categories.value
-  return [c[4]?.items?.[0]?.q, c[6]?.items?.[2]?.q, c[3]?.items?.[1]?.q].filter(Boolean)
-})
-
-const pickSuggestion = (text) => {
-  aiQuery.value = text
-}
-
-const submitAiQuery = () => {}
 </script>
 
 <template>
@@ -68,38 +58,6 @@ const submitAiQuery = () => {}
 
       <h1 class="gradient-text">{{ t('faq.title') }}</h1>
       <p>{{ t('faq.subtitle') }}</p>
-
-      <div class="ai-card glass">
-        <q-form @submit="submitAiQuery" class="ai-row">
-          <q-input
-            dark
-            borderless
-            hide-bottom-space
-            v-model="aiQuery"
-            class="ai-input"
-            :placeholder="t('faq.aiPlaceholder')"
-          >
-            <template v-slot:prepend>
-              <span class="ai-icon">
-                <q-icon name="chat" color="dark" size="20px" />
-              </span>
-            </template>
-          </q-input>
-          <q-btn round unelevated type="submit" class="ai-send" icon="arrow_forward" />
-        </q-form>
-
-        <div class="suggestions">
-          <button
-            v-for="text in suggestions"
-            :key="text"
-            type="button"
-            class="suggestion"
-            @click="pickSuggestion(text)"
-          >
-            {{ text }}
-          </button>
-        </div>
-      </div>
     </section>
 
     <div class="divider container">{{ t('faq.browseByTopic') }}</div>
@@ -154,7 +112,7 @@ const submitAiQuery = () => {}
       <h2>{{ t('faq.ctaTitle') }}</h2>
       <p>{{ t('faq.ctaSubtitle') }}</p>
       <div class="faq-cta-actions">
-        <q-btn unelevated rounded class="btn-gold" :label="t('faq.askAi')" icon="chat" />
+        <q-btn unelevated rounded class="btn-gold" :label="t('faq.askAi')" icon="chat" @click="assistantStore.open()" />
         <q-btn unelevated rounded class="btn-glass--primary" :to="localeTo('contacts')" :label="t('routes.contacts')" />
       </div>
     </section>
@@ -197,77 +155,6 @@ const submitAiQuery = () => {}
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-}
-
-.ai-card {
-  position: relative;
-  max-width: 720px;
-  margin: 32px auto 0;
-  padding: 22px 28px;
-  border-radius: 24px;
-  border-color: rgba(228, 205, 113, 0.45) !important;
-  box-shadow: 0 0 0 1px rgba(228, 205, 113, 0.08), 0 20px 60px rgba(228, 205, 113, 0.12), inset 0 1px 20px rgba(228, 205, 113, 0.06) !important;
-}
-
-.ai-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.ai-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00e1ff, #00ffaa);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ai-input {
-  flex: 1;
-
-  :deep(.q-field__control) {
-    font-size: 18px;
-  }
-}
-
-.ai-send {
-  flex: none;
-  background: #E4CD71;
-  color: #00333C;
-
-  &:hover {
-    box-shadow: 0 0 12px #E4CD71;
-  }
-}
-
-.suggestions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.suggestion {
-  appearance: none;
-  cursor: pointer;
-  font-family: inherit;
-  border-radius: 999px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-  transition: border-color 0.2s ease, color 0.2s ease;
-
-  &:hover {
-    border-color: rgba(228, 205, 113, 0.5);
-    color: #E4CD71;
-  }
 }
 
 .divider {

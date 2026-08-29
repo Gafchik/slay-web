@@ -3,7 +3,6 @@ export default {
     aiBadge: 'AI-Powered Support',
     title: 'Ask Slay anything',
     subtitle: 'Get an instant answer from our AI assistant — trained on everything Slay does. Prefer to read? Browse the topics below.',
-    aiPlaceholder: 'Ask about SSH, passwords, billing...',
     browseByTopic: 'Or browse by topic',
     searchPlaceholder: 'Search questions...',
     noResults: 'No questions match "{query}".',
