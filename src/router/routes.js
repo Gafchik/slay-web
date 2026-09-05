@@ -73,6 +73,11 @@ const makeChildren = (prefix = '') => [
     name: `${prefix}auth_callback`,
     component: () => import('components/AuthCallbackGoogle.vue')
   },
+  {
+    path: 'projects-manager',
+    name: `${prefix}projects_manager`,
+    component: () => import('pages/features/ProjectsManagerPage.vue'),
+  },
 ]
 
 const localizedRoutes = Object.values(LOCALES).map((locale) => {

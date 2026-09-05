@@ -353,7 +353,7 @@
           font-size: 20px;
           font-style: normal;
           font-weight: 500;
-          line-height: normal;
+          line-height: normal !important;
           color: #E4CD71;
 
           & + .q-item__label {

@@ -21,9 +21,13 @@
   const route = useRoute()
   const isHeaderScrolled = ref(false)
   const isMobileMenuOpen = ref(false)
+  const isMobileFeaturesOpen = ref(false)
 
   const isLoginRoute = computed(() => route.name === localeRouteName('login'))
   const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
+  const isFeaturesRoute = computed(() => route.name === localeRouteName('projects_manager'))
+  const isPricingRoute = computed(() => route.name === localeRouteName('pricing'))
+  const isFaqRoute = computed(() => route.name === localeRouteName('faq'))
   const isDesktop = computed(() => $q.screen.width >= 1240)
   const mobileMenuWidth = computed(() => Math.min($q.screen.width, 360))
   const accountRoute = computed(() => isLoggedIn.value ? 'profile' : 'login')
@@ -35,6 +39,7 @@
 
   const closeMobileMenu = () => {
     isMobileMenuOpen.value = false
+    isMobileFeaturesOpen.value = false
   }
 
   onMounted(() => {
@@ -64,30 +69,62 @@
         </router-link>
       </q-toolbar-title>
       <nav v-if="isDesktop" class="desktop-nav flex" aria-label="Primary navigation">
-<!--        <div class="col q-mx-xs">
+        <div class="desktop-nav__item q-mx-xs">
           <q-btn
             unelevated
             rounded
             class="btn-link"
-          >
-            <span>{{ t('routes.feature')}}</span>
-          </q-btn>
-        </div>-->
-        <div class="col q-mx-xs">
-          <q-btn
-            unelevated
-            rounded
-            class="btn-link"
+            :class="{ 'btn-link--active': isPricingRoute }"
             :to="localeTo('pricing')"
           >
             <span>{{ t('routes.pricing')}}</span>
           </q-btn>
         </div>
-        <div class="col q-mx-xs">
+        <div class="desktop-nav__item q-mx-xs">
           <q-btn
             unelevated
             rounded
             class="btn-link"
+            :class="{ 'btn-link--active': isFeaturesRoute }"
+          >
+            <span>{{ t('routes.feature')}}</span>
+            <q-icon name="keyboard_arrow_down" size="20px" class="q-ml-xs" v-show="!isDesktop"/>
+
+            <q-menu
+              class="menu-primary no-shadow"
+              anchor="bottom middle"
+              self="top middle"
+              :offset="[0, 12]"
+            >
+              <q-list style="min-width: 220px">
+                <q-item
+                  clickable
+                  v-close-popup
+                >
+                  <q-item-section>
+                    <q-btn
+                      unelevated
+                      rounded
+                      class="btn-link features-menu__link"
+                      :class="{ 'features-menu__link--active': isFeaturesRoute }"
+                      :to="localeTo('projects_manager')"
+                    >
+                      <span>
+                        {{ t('pages.features.projectsManager.title') }}
+                      </span>
+                    </q-btn>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
+        <div class="desktop-nav__item q-mx-xs">
+          <q-btn
+            unelevated
+            rounded
+            class="btn-link"
+            :class="{ 'btn-link--active': isFaqRoute }"
             :to="localeTo('faq')"
           >
             <span>{{ t('routes.faq')}}</span>
@@ -159,9 +196,35 @@
           no-caps
           align="left"
           class="mobile-menu__link"
+          :class="{ 'q-router-link--active': isFeaturesRoute }"
+          @click="isMobileFeaturesOpen = !isMobileFeaturesOpen"
         >
-          {{ t('routes.feature') }}
+          <span class="full-width row items-center no-wrap">
+            <span>{{ t('routes.feature') }}</span>
+            <q-space />
+            <q-icon
+              name="keyboard_arrow_down"
+              size="20px"
+              class="mobile-menu__chevron"
+              :class="{ 'mobile-menu__chevron--open': isMobileFeaturesOpen }"
+            />
+          </span>
         </q-btn>
+        <q-slide-transition>
+          <div v-show="isMobileFeaturesOpen" class="mobile-menu__submenu">
+            <q-btn
+              flat
+              rounded
+              no-caps
+              align="left"
+              class="mobile-menu__link mobile-menu__sublink full-width"
+              :to="localeTo('projects_manager')"
+              @click="closeMobileMenu"
+            >
+              {{ t('pages.features.projectsManager.title') }}
+            </q-btn>
+          </div>
+        </q-slide-transition>
         <q-btn
           flat
           rounded
@@ -283,6 +346,10 @@
     width: 250px;
   }
 
+  .desktop-nav__item {
+    flex: 0 0 auto;
+  }
+
   .mobile-menu-trigger {
     flex: 0 0 auto;
     width: 44px;
@@ -307,6 +374,18 @@
 
     @media (min-width: 158.75em) {
       font-size: 1.75rem;
+    }
+  }
+
+  .btn-link--active {
+    color: #E4CD71;
+  }
+
+  .features-menu__link {
+    color: #fff;
+
+    &--active {
+      color: #E4CD71;
     }
   }
 
@@ -382,6 +461,23 @@
     &.q-router-link--active {
       color: #E4CD71;
       background: rgba(#E4CD71, 0.08);
+    }
+  }
+
+  .mobile-menu__submenu {
+    padding-left: 16px;
+  }
+
+  .mobile-menu__sublink {
+    color: rgba(#fff, 0.72);
+    font-size: 1rem;
+  }
+
+  .mobile-menu__chevron {
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
     }
   }
 

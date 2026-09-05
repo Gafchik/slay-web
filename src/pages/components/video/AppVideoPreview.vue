@@ -42,6 +42,7 @@ const { open } = useVideoDialog()
 const handleClick = () => {
   const videoSources = []
 
+
   if (props.mp4) {
     videoSources.push({
       src: props.mp4,
@@ -61,11 +62,18 @@ const handleClick = () => {
 </script>
 
 <style scoped lang="scss">
-.app-video-preview {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  object-fit: cover;
-  display: block;
-}
+  .app-video-preview {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+  }
+
+  .q-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+  }
 </style>

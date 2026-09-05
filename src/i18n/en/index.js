@@ -12,7 +12,7 @@ export default {
     privacyPolicy: 'Privacy Policy',
     refundPolicy: 'Refund Policy',
     password: 'Password',
-    feature: 'Feature',
+    feature: 'Features',
   },
   buttons: {
     download: 'Download {data}',
@@ -268,6 +268,35 @@ export default {
         },
       },
     },
+    features: {
+      projectsManager: {
+        title: 'Projects Manager',
+        subtitle: "Finding a project shouldn't be part of development",
+        description: "You shouldn't have to remember where every project is stored or search through your IDE's recent projects. Slay keeps all your work within easy reach.",
+        list: [
+          {
+            title: 'ADD YOUR PROJECTS',
+            description: 'Drop your project folders into Slay and keep them organized by profile. No more searching for the right directory before work starts.',
+          },
+          {
+            title: 'CHOOSE YOUR IDE',
+            description: 'Add the apps you use to open project folders — VS Code, WebStorm, PhpStorm, Cursor, or any other editor. Keep them in your “Open with” list and choose the right tool when launching a project from Slay.',
+          },
+          {
+            title: 'CREATE WORK PROFILES',
+            description: 'Group projects by client, team, or workflow. Switch profiles when your context changes and keep the right projects, apps, commands, and access ready for work.',
+          },
+          {
+            title: 'Project settings',
+            description: 'Set the preferred app for each project. Choose the IDE or editor once, and Slay will automatically open the project with that editor next time.',
+          },
+        ],
+        cta: {
+          title: 'Project Access',
+          description: 'Connect to the right server without re-entering IPs, ports, or passwords. Keep project folders, access details, saved commands, and server connections together in one workspace. Rename projects inside Slay to match your workflow — your original folders on the computer stay unchanged.'
+        }
+      }
+    }
   },
   sections: {
     home: {

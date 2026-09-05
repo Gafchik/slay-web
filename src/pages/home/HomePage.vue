@@ -1,6 +1,7 @@
 <script setup>
   import { computed } from 'vue'
   import { useQuasar } from 'quasar'
+  import { useI18n } from 'vue-i18n'
 
   import TitleSection from './components/TitleSection.vue'
   import WorkspaceSection from './components/WorkspaceSection.vue'
@@ -12,6 +13,7 @@
   import AppVideoDialog from '../components/video/AppVideoDialog.vue'
 
   const $q = useQuasar()
+  const { t } = useI18n()
   const showAboutSection = computed(() => $q.screen.width >= 1240)
 </script>
 
@@ -23,7 +25,10 @@
     <SubsequenceSection v-if="showAboutSection"/>
     <AliasesSection v-if="showAboutSection"/>
     <PasswordSection />
-    <CtaSection />
+    <CtaSection
+      :section-title="t('pages.home.cta.title')"
+      :section-subtitle="t('pages.home.cta.description')"
+    />
   </q-page>
 
   <AppVideoDialog />

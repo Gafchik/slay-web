@@ -4,19 +4,33 @@
 
   const { t } = useI18n()
   const { localeTo } = useLocaleRoute()
+
+  const props = defineProps({
+    sectionTitle: {
+      type: String,
+      default: '',
+    },
+    sectionSubtitle: {
+      type: String,
+      default: '',
+    },
+  })
 </script>
 
 <template>
-  <section class="section text-white ">
+  <section class="section section-cta text-white">
     <div class="container">
       <div class="container-fluid">
         <div class="section__body">
-          <div class="section__head text-center q-mb-lg q-mx-auto">
-            <h2 class="section__title q-mb-md">
-              {{ t('pages.home.cta.title') }}
+          <div
+            v-if="props.sectionTitle || props.sectionSubtitle"
+            class="section__head text-center q-mb-lg q-mx-auto"
+          >
+            <h2 v-if="props.sectionTitle" class="section__title q-mb-md">
+              {{ props.sectionTitle }}
             </h2>
-            <p class="section__subtitle">
-              {{ t('pages.home.cta.description') }}
+            <p v-if="props.sectionSubtitle" class="section__subtitle">
+              {{ props.sectionSubtitle }}
             </p>
           </div>
           <div class="section__main">

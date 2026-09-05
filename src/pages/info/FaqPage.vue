@@ -48,80 +48,100 @@ const filteredCategories = computed(() => {
 
 <template>
   <q-page class="faq-page text-white">
-    <section class="container faq-hero">
-      <span class="ai-badge">
-        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 1.5L11.6 7.4L17.5 9L11.6 10.6L10 16.5L8.4 10.6L2.5 9L8.4 7.4L10 1.5Z" fill="#E4CD71"/>
-        </svg>
-        {{ t('faq.aiBadge') }}
-      </span>
+    <div class="column q-pt-xl">
+      <section class="faq-hero">
+        <div class="container">
+          <div class="container-fluid">
+            <span class="ai-badge">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 1.5L11.6 7.4L17.5 9L11.6 10.6L10 16.5L8.4 10.6L2.5 9L8.4 7.4L10 1.5Z" fill="#E4CD71"/>
+              </svg>
+              {{ t('faq.aiBadge') }}
+            </span>
 
-      <h1 class="gradient-text">{{ t('faq.title') }}</h1>
-      <p>{{ t('faq.subtitle') }}</p>
-    </section>
+            <h1 class="gradient-text">{{ t('faq.title') }}</h1>
+            <p>{{ t('faq.subtitle') }}</p>
 
-    <div class="divider container">{{ t('faq.browseByTopic') }}</div>
+            <div class="divider container">{{ t('faq.browseByTopic') }}</div>
 
-    <section class="container faq-search-wrap">
-      <q-input
-        dark
-        rounded
-        outlined
-        hide-bottom-space
-        v-model="searchQuery"
-        class="btn-glass faq-search"
-        :placeholder="t('faq.searchPlaceholder')"
-      >
-        <template v-slot:prepend>
-          <q-icon name="search" color="white" />
-        </template>
-      </q-input>
-    </section>
-
-    <section class="container faq-content">
-      <div v-if="filteredCategories.length === 0" class="faq-no-results">
-        {{ t('faq.noResults', { query: searchQuery }) }}
-      </div>
-
-      <div class="faq-grid">
-        <div v-for="(category, ci) in filteredCategories" :key="category.label" class="faq-category">
-          <span class="note">{{ category.label }}</span>
-
-          <q-list class="faq-items">
-            <q-expansion-item
-              v-for="(item, ii) in category.items"
-              :key="item.q"
-              group="faq-accordion"
-              :default-opened="ci === 0 && ii === 0"
-              header-class="faq-item-header"
-              expand-icon-class="faq-item-icon"
-              class="faq-item"
-            >
-              <template v-slot:header>
-                <q-item-section class="faq-item-question">{{ item.q }}</q-item-section>
-              </template>
-              <div class="faq-item-answer">{{ item.a }}</div>
-            </q-expansion-item>
-          </q-list>
+            <div class="faq-search-wrap">
+              <q-input
+                dark
+                rounded
+                outlined
+                hide-bottom-space
+                v-model="searchQuery"
+                class="btn-glass faq-search"
+                :placeholder="t('faq.searchPlaceholder')"
+              >
+                <template v-slot:prepend>
+                  <q-icon name="search" color="white" />
+                </template>
+              </q-input>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="container faq-cta glass">
-      <span class="note">{{ t('faq.ctaEyebrow') }}</span>
-      <h2>{{ t('faq.ctaTitle') }}</h2>
-      <p>{{ t('faq.ctaSubtitle') }}</p>
-      <div class="faq-cta-actions">
-        <q-btn unelevated rounded class="btn-gold" :label="t('faq.askAi')" icon="chat" @click="assistantStore.open()" />
-        <q-btn unelevated rounded class="btn-glass--primary" :to="localeTo('contacts')" :label="t('routes.contacts')" />
-      </div>
-    </section>
+      <section class="faq-content">
+        <div class="container">
+          <div class="container-fluid">
+            <div v-if="filteredCategories.length === 0" class="faq-no-results">
+              {{ t('faq.noResults', { query: searchQuery }) }}
+            </div>
+
+            <div class="faq-grid">
+              <div v-for="(category, ci) in filteredCategories" :key="category.label" class="faq-category">
+                <span class="note q-mb-lg">{{ category.label }}</span>
+
+                <q-list class="faq-items">
+                  <q-expansion-item
+                    v-for="(item, ii) in category.items"
+                    :key="item.q"
+                    group="faq-accordion"
+                    :default-opened="ci === 0 && ii === 0"
+                    header-class="faq-item-header"
+                    expand-icon-class="faq-item-icon"
+                    class="faq-item"
+                  >
+                    <template v-slot:header>
+                      <q-item-section class="faq-item-question">{{ item.q }}</q-item-section>
+                    </template>
+                    <div class="faq-item-answer">{{ item.a }}</div>
+                  </q-expansion-item>
+                </q-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-cta">
+        <div class="container">
+          <div class="container-fluid">
+            <div class="glass">
+              <span class="note">{{ t('faq.ctaEyebrow') }}</span>
+              <h2>{{ t('faq.ctaTitle') }}</h2>
+              <p>{{ t('faq.ctaSubtitle') }}</p>
+              <div class="faq-cta-actions">
+                <q-btn unelevated rounded class="btn-gold" :label="t('faq.askAi')" icon="chat" @click="assistantStore.open()" />
+                <q-btn unelevated rounded class="btn-glass--primary" :to="localeTo('contacts')" :label="t('routes.contacts')" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </q-page>
 </template>
 
 <style scoped lang="scss">
 .faq-page {
-  padding: 32px 0 96px;
+  padding: 60px 0;
+
+  @media (min-width: 77.5em) {
+    padding: 74px 0;
+  }
 }
 
 .faq-hero {
@@ -255,7 +275,7 @@ const filteredCategories = computed(() => {
 }
 
 .faq-item-answer {
-  padding: 0 24px 20px;
+  padding: 20px 24px;
   font-size: 15px;
   line-height: 156%;
   color: rgba(255, 255, 255, 0.68);
@@ -265,7 +285,6 @@ const filteredCategories = computed(() => {
 .faq-cta {
   margin-top: 96px;
   text-align: center;
-  padding: 64px 40px;
   border-radius: 24px;
 
   h2 {
@@ -277,6 +296,10 @@ const filteredCategories = computed(() => {
     max-width: 480px;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.68);
+  }
+
+  .glass {
+    padding: 64px 40px;
   }
 }
 

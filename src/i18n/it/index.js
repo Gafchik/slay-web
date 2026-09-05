@@ -11,6 +11,7 @@ export default {
     terms: 'Termini e Privacy',
     privacyPolicy: 'Informativa privacy',
     refundPolicy: 'Politica di rimborso',
+    feature: 'Funzionalità',
   },
   buttons: {
     download: 'Scarica',
@@ -264,6 +265,35 @@ export default {
         },
       },
     },
+    features: {
+      projectsManager: {
+        title: 'Gestione progetti',
+        subtitle: 'La ricerca di un progetto non dovrebbe far parte dello sviluppo',
+        description: 'Non dovresti ricordare dove è archiviato ogni progetto né cercarlo tra i progetti recenti del tuo IDE. Slay tiene tutto il tuo lavoro a portata di mano.',
+        list: [
+          {
+            title: 'AGGIUNGI I TUOI PROGETTI',
+            description: 'Aggiungi le cartelle dei progetti a Slay e organizzale per profilo. Non dovrai più cercare la directory giusta prima di iniziare a lavorare.',
+          },
+          {
+            title: 'SCEGLI IL TUO IDE',
+            description: 'Aggiungi le applicazioni che usi per aprire le cartelle dei progetti — VS Code, WebStorm, PhpStorm, Cursor o qualsiasi altro editor. Conservale nell’elenco “Apri con” e scegli lo strumento giusto quando avvii un progetto da Slay.',
+          },
+          {
+            title: 'CREA PROFILI DI LAVORO',
+            description: 'Raggruppa i progetti per cliente, team o flusso di lavoro. Cambia profilo quando cambia il contesto e tieni a portata di mano i progetti, le applicazioni, i comandi e gli accessi necessari.',
+          },
+          {
+            title: 'IMPOSTAZIONI DEL PROGETTO',
+            description: 'Imposta l’applicazione preferita per ogni progetto. Scegli una volta l’IDE o l’editor e Slay aprirà automaticamente il progetto con quell’applicazione la volta successiva.',
+          },
+        ],
+        cta: {
+          title: 'Accesso ai progetti',
+          description: 'Connettiti al server giusto senza reinserire indirizzi IP, porte o password. Mantieni cartelle di progetto, dati di accesso, comandi salvati e connessioni ai server in un unico ambiente di lavoro. Rinomina i progetti in Slay in base al tuo flusso di lavoro: le cartelle originali sul computer rimarranno invariate.'
+        }
+      }
+    }
   },
   sections: {
     home: {
