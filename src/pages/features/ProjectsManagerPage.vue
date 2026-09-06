@@ -3,6 +3,7 @@
   import { useI18n } from 'vue-i18n'
   import { useLocaleRoute } from 'src/composables/useLocaleRoute'
   import { gsap } from 'gsap'
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
   import AppVideoDialog from 'pages/components/video/AppVideoDialog.vue'
@@ -34,6 +35,7 @@
   const stepIcons = [Icon1, Icon2, Icon3, Icon4]
   const nextStepOpacity = 1
   const nextStepGap = 32
+  const nextStepVisibleRatio = 0.5
 
   const sectionInfo = computed(() => {
     const steps = tm('pages.features.projectsManager.list')
@@ -61,35 +63,39 @@
       }
 
       const intro = section.querySelector('.section__intro')
+      const stepsList = section.querySelector('.steps-list')
       const textItems = gsap.utils.toArray('.step-item', section)
       const imageItems = gsap.utils.toArray('.visual-item', section)
       const stepsCount = Math.min(textItems.length, imageItems.length)
 
-      if (!intro || stepsCount === 0) {
+      if (!intro || !stepsList || stepsCount === 0) {
         return
       }
 
-      textItems.forEach((item, index) => {
-        const isActiveStep = index === 0
-        const isNextStep = index === 1
-
-        gsap.set(item, {
-          autoAlpha: isActiveStep || isNextStep ? 1 : 0,
-          y: isActiveStep ? 0 : isNextStep ? nextStepGap : nextStepGap * 2,
-          yPercent: isActiveStep ? 0 : isNextStep ? 100 : 200,
-        })
-      })
-
-      gsap.set(imageItems, { autoAlpha: 0, x: 120 })
-      gsap.set(imageItems[0], { autoAlpha: 1, x: 0 })
+      // Keep an unrefreshed baseline so matchMedia can restore the mobile styles.
+      gsap.set(textItems, { autoAlpha: 1, y: 0, yPercent: 0 })
+      gsap.set(imageItems, { autoAlpha: 0 })
+      gsap.set(imageItems[0], { autoAlpha: 1 })
 
       if (stepsCount === 1) {
         return
       }
 
+      const getNextStepOffset = (index) => {
+        // Measure the list independently of the intro's animated height.
+        const collapsedListTop = stepsList.getBoundingClientRect().top
+          - section.getBoundingClientRect().top
+          - intro.getBoundingClientRect().height
+        const listTop = collapsedListTop + (index === 1 ? intro.scrollHeight : 0)
+        const previewOffset = section.clientHeight - listTop
+          - textItems[index].offsetHeight * nextStepVisibleRatio
+
+        return Math.max(textItems[index - 1].offsetHeight + nextStepGap, previewOffset)
+      }
+
       const timeline = gsap.timeline({
         defaults: {
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         },
         scrollTrigger: {
           trigger: section,
@@ -97,16 +103,43 @@
           end: () => `+=${window.innerHeight * (stepsCount - 1)}`,
           pin: true,
           pinSpacing: true,
-          scrub: 0.6,
+          scrub: true,
+          snap: {
+            snapTo: 1 / (stepsCount - 1),
+            directional: true,
+            inertia: false,
+            delay: 0.001,
+            duration: {
+              min: 0.25,
+              max: 0.3,
+            },
+            ease: 'power3.out',
+          },
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       })
 
+      timeline.set(textItems, {
+        autoAlpha: (index) => index < 2 ? 1 : 0,
+        yPercent: 0,
+        y: (index) => {
+          if (index === 0) {
+            return 0
+          }
+
+          const previewOffset = getNextStepOffset(index)
+
+          return index === 1
+            ? previewOffset
+            : previewOffset + textItems[index].offsetHeight + nextStepGap
+        },
+      }, 0)
+
       timeline.to(intro, {
         autoAlpha: 0,
         height: 0,
-        duration: 0.35,
+        duration: 0.2,
       }, 0)
 
       for (let index = 1; index < stepsCount; index += 1) {
@@ -115,32 +148,134 @@
         timeline
           .to(textItems[index - 1], {
             autoAlpha: 0,
-            duration: 0.4,
+            duration: 0.2,
           }, transitionStart)
           .to(textItems[index], {
             autoAlpha: 1,
             y: 0,
             yPercent: 0,
-            duration: 0.55,
-          }, transitionStart + 0.1)
-          .to(imageItems[index - 1], {
+            duration: 0.6,
+            ease: 'power3.inOut',
+          }, transitionStart + 0.05)
+          .set(imageItems[index - 1], {
             autoAlpha: 0,
-            duration: 0.4,
-          }, transitionStart)
-          .to(imageItems[index], {
+          }, transitionStart + 0.05)
+          .set(imageItems[index], {
             autoAlpha: 1,
-            x: 0,
-            duration: 0.65,
-          }, transitionStart + 0.25)
+          }, transitionStart + 0.05)
 
         if (index + 1 < stepsCount) {
-          timeline.to(textItems[index + 1], {
-            autoAlpha: nextStepOpacity,
-            y: nextStepGap,
-            yPercent: 100,
-            duration: 0.35,
-          }, transitionStart + 0.65)
+          timeline
+            .to(textItems[index + 1], {
+              autoAlpha: nextStepOpacity,
+              duration: 0.5,
+              ease: 'sine.inOut',
+            }, transitionStart + 0.2)
+            .to(textItems[index + 1], {
+              y: () => getNextStepOffset(index + 1),
+              yPercent: 0,
+              duration: 0.1,
+            }, transitionStart + 0.45)
         }
+      }
+
+      let scrollTween
+
+      const handleWheel = (event) => {
+        const scrollTrigger = timeline.scrollTrigger
+        const currentScroll = window.scrollY
+        const direction = Math.sign(event.deltaY)
+
+        if (
+          !scrollTrigger
+          || Math.abs(event.deltaY) <= Math.abs(event.deltaX)
+          || Math.abs(event.deltaY) < 4
+          || direction === 0
+          || currentScroll < scrollTrigger.start - 1
+          || currentScroll > scrollTrigger.end + 1
+        ) {
+          return
+        }
+
+        const isFirstStep = currentScroll <= scrollTrigger.start + 1
+        const isLastStep = currentScroll >= scrollTrigger.end - 1
+
+        if ((direction < 0 && isFirstStep) || (direction > 0 && isLastStep)) {
+          return
+        }
+
+        event.preventDefault()
+
+        if (scrollTween?.isActive()) {
+          return
+        }
+
+        const lastStepIndex = stepsCount - 1
+        const scrollRange = scrollTrigger.end - scrollTrigger.start
+
+        if (scrollRange <= 0) {
+          return
+        }
+
+        const progress = gsap.utils.clamp(
+          0,
+          1,
+          (currentScroll - scrollTrigger.start) / scrollRange,
+        )
+        const rawStepIndex = progress * lastStepIndex
+        const currentStepIndex = direction > 0
+          ? Math.floor(rawStepIndex + 0.001)
+          : Math.ceil(rawStepIndex - 0.001)
+        const targetStepIndex = gsap.utils.clamp(
+          0,
+          lastStepIndex,
+          currentStepIndex + direction,
+        )
+        const targetScroll = scrollTrigger.start
+          + scrollRange * (targetStepIndex / lastStepIndex)
+
+        scrollTween = gsap.to(window, {
+          scrollTo: {
+            y: targetScroll,
+            autoKill: false,
+          },
+          duration: 0.5,
+          ease: 'power2.out',
+          overwrite: 'auto',
+          onComplete: () => {
+            scrollTween = undefined
+          },
+          onInterrupt: () => {
+            scrollTween = undefined
+          },
+        })
+      }
+
+      window.addEventListener('wheel', handleWheel, { passive: false })
+
+      let refreshFrameId
+      const sizeObserver = new ResizeObserver(() => {
+        if (refreshFrameId !== undefined) {
+          return
+        }
+
+        refreshFrameId = window.requestAnimationFrame(() => {
+          refreshFrameId = undefined
+          ScrollTrigger.refresh()
+        })
+      })
+
+      // Images, fonts and translated text can change the preview's height.
+      textItems.forEach((item) => sizeObserver.observe(item))
+      Array.from(intro.children).forEach((item) => sizeObserver.observe(item))
+
+      return () => {
+        sizeObserver.disconnect()
+        if (refreshFrameId !== undefined) {
+          window.cancelAnimationFrame(refreshFrameId)
+        }
+        window.removeEventListener('wheel', handleWheel)
+        scrollTween?.kill()
       }
     })
   }
@@ -181,7 +316,7 @@
   }
 
   onMounted(() => {
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
     rebuildDesktopAnimation()
   })
 
@@ -216,13 +351,30 @@
                   </div>
                   <q-list class="steps-list">
                     <q-item
-                      v-for="step in sectionInfo"
+                      v-for="(step, index) in sectionInfo"
                       :key="step.id"
                       class="step-item column items-start"
                     >
                       <span class="note q-mb-lg">{{ step.title }}</span>
                       <p class="q-mb-md">{{ step.description }}</p>
-                      <img v-if="step.icon" :src="step.icon" alt="">
+                      <div v-if="step.icon" class="step-icon">
+                        <img :src="step.icon" alt="">
+                        <span
+                          v-if="index === 0"
+                          class="step-icon__highlight"
+                          aria-hidden="true"
+                        >
+                          <span class="step-icon__highlight-line step-icon__highlight-line--top"></span>
+                          <span class="step-icon__highlight-line step-icon__highlight-line--right"></span>
+                          <span class="step-icon__highlight-line step-icon__highlight-line--left"></span>
+                          <span class="step-icon__highlight-line step-icon__highlight-line--bottom"></span>
+                        </span>
+                        <span
+                          v-if="index === 0"
+                          class="step-icon__arrow"
+                          aria-hidden="true"
+                        ></span>
+                      </div>
                     </q-item>
                   </q-list>
                 </div>
@@ -254,9 +406,9 @@
       </section>
 
       <section class="section-video q-pb-xl q-mb-xl">
-        <div class="section__body">
-          <div class="container">
-            <div class="container-fluid">
+        <div class="container">
+          <div class="container-fluid">
+            <div class="section__body">
               <div class="video">
                 <AppVideoPreview
                   :mp4="Video1"
@@ -332,10 +484,40 @@
       }
 
       .section__body {
+        position: relative;
         padding-top: 40px;
 
         @media (min-width: 77.5em) {
           padding-top: 74px;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          bottom: -200px;
+          left: 0;
+          width: 298px;
+          height: 352px;
+          display: none;
+          background:
+            linear-gradient(
+                -234deg,
+                rgba(1, 28, 55, 0) 0%,
+                rgba(1, 28, 55, 0.92) 61.96%,
+                #011c37 100%
+            ),
+            url("../../assets/images/features/projects/Decor-1.png")
+            center / cover no-repeat;
+
+
+          @media (min-width: 77.5em) {
+            display: block;
+          }
+
+          @media (min-width: 100em) {
+            width: 408px;
+          }
         }
       }
 
@@ -351,40 +533,10 @@
       display: flex;
       justify-content: center;
 
-      &:after,
       &:before {
         content: '';
         position: absolute;
         z-index: 1;
-        pointer-events: none;
-      }
-
-      &:after {
-        top: -200px;
-        left: 0;
-        width: 298px;
-        height: 352px;
-        display: none;
-        background:
-          linear-gradient(
-              -234deg,
-              rgba(1, 28, 55, 0) 0%,
-              rgba(1, 28, 55, 0.92) 61.96%,
-              #011c37 100%
-          ),
-          url("../../assets/images/features/projects/Decor-1.png")
-          center / cover no-repeat;
-
-        @media (min-width: 77.5em) {
-          display: block;
-        }
-
-        @media (min-width: 100em) {
-          top: -60px;
-        }
-      }
-
-      &:before {
         right: 0;
         top: -30px;
         width: 150px;
@@ -398,6 +550,7 @@
           ),
           url("../../assets/images/features/projects/Decor-1.png")
           center / cover no-repeat;
+        pointer-events: none;
 
         @media (min-width: 48em) {
           top: -50px;
@@ -499,17 +652,119 @@
         @media (min-width: 77.5em) {
           visibility: hidden;
           opacity: 0;
-          transform: translateX(120px);
         }
       }
     }
   }
 
+  .steps {
+    &-list {
+      z-index: 1;
+
+      @media (min-width: 77.5em) {
+        align-items: start;
+      }
+    }
+  }
+
   .step {
+    &-icon {
+      --highlight-fill-delay: 2s;
+      --highlight-fill-duration: 0.3s;
+
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 320px;
+      line-height: 0;
+
+      @media (min-width: 48em) {
+        width: auto;
+        max-width: none;
+      }
+
+      &__highlight {
+        position: absolute;
+        inset: -8px;
+        pointer-events: none;
+        color: #03d5ff;
+        filter: drop-shadow(0 0 5px rgba(3, 213, 255, 0.7));
+        animation: fill-step-highlight var(--highlight-fill-duration) ease-in-out var(--highlight-fill-delay) forwards;
+
+        &-line {
+          position: absolute;
+          display: block;
+          opacity: 0;
+          background: currentColor;
+
+          &--top,
+          &--bottom {
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left center;
+            animation: draw-step-highlight-horizontal 0.6s ease-in-out forwards;
+          }
+
+          &--left,
+          &--right {
+            top: 0;
+            width: 2px;
+            height: 100%;
+            transform: scaleY(0);
+            transform-origin: center top;
+            animation: draw-step-highlight-vertical 0.6s ease-in-out forwards;
+          }
+
+          &--top {
+            top: 0;
+            animation-delay: 0.8s;
+          }
+
+          &--right {
+            right: 0;
+            animation-delay: 1.4s;
+          }
+
+          &--left {
+            left: 0;
+            animation-delay: 0.8s;
+          }
+
+          &--bottom {
+            bottom: 0;
+            animation-delay: 1.4s;
+          }
+        }
+      }
+
+      &__arrow {
+        position: absolute;
+        z-index: 2;
+        top: 25%;
+        left: calc(100% - 7px);
+        width: 464px;
+        aspect-ratio: 464 / 62;
+        transform: translateY(-50%);
+        pointer-events: none;
+        background: url("../../assets/images/features/projects/Step-arrow.svg") center / contain no-repeat;
+        clip-path: inset(0 100% 0 0);
+        animation: reveal-step-arrow 1.2s linear forwards;
+        animation-delay: calc(var(--highlight-fill-delay) + var(--highlight-fill-duration));
+
+        @media (min-width: 100em) {
+          width: 720px;
+        }
+      }
+    }
+
     &-item {
       padding: 0;
 
       img {
+        position: relative;
+        z-index: 1;
         width: 100%;
         max-width: 320px;
         height: auto;
@@ -575,6 +830,68 @@
           object-fit: contain;
         }
       }
+    }
+  }
+
+  @keyframes reveal-step-arrow {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes fill-step-highlight {
+    from {
+      background-color: rgba(9, 95, 165, 0);
+    }
+
+    to {
+      background-color: rgba(9, 95, 165, 0.10);
+    }
+  }
+
+  @keyframes draw-step-highlight-horizontal {
+    from {
+      opacity: 1;
+      transform: scaleX(0);
+    }
+
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes draw-step-highlight-vertical {
+    from {
+      opacity: 1;
+      transform: scaleY(0);
+    }
+
+    to {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .step-icon__arrow {
+      animation: none;
+      clip-path: none;
+    }
+
+    .step-icon__highlight {
+      animation: none;
+      background-color: rgba(9, 95, 165, 0.10);
+    }
+
+    .step-icon__highlight-line {
+      animation: none;
+      opacity: 1;
+      transform: none;
     }
   }
 

@@ -47,7 +47,7 @@ html {
   @media (min-width: 90em) {
   }
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
   }
 }
 
@@ -72,7 +72,7 @@ h1 {
     font-size: 3em; // 48px
   }
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
     font-size: 3.75em; // 60px
   }
 }
@@ -98,7 +98,7 @@ h2 {
     font-size: 2.25em; // 36px
   }
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
     font-size: 3em; // 48px
   }
 }
@@ -124,7 +124,7 @@ h3 {
     font-size: 2em; // 32px
   }
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
     font-size: 2.25em; // 36px
   }
 }
@@ -162,7 +162,7 @@ p {
     padding: 0 80px;
   }
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
     padding: 0 120px;
   }
 
@@ -189,7 +189,7 @@ p {
       max-width: 1280px;
     }
 
-    @media (min-width: 118.75em) {
+    @media (min-width: 100em) {
       max-width: 1660px;
     }
   }
@@ -204,7 +204,7 @@ p {
   letter-spacing: 0.8px;
   text-transform: uppercase;
 
-  @media (min-width: 118.75em) {
+  @media (min-width: 100em) {
     font-size: 1.125em; // 18px
     letter-spacing: 1px;
   }
@@ -317,13 +317,13 @@ p {
     }
 
     @media (min-width: 77.5em) {
-      padding: 14px 60px;
+      padding: 14px 40px;
       border-radius: 100px;
       font-size: 40px;
     }
 
-    @media (min-width: 118.75em) {
-      padding: 16px 80px;
+    @media (min-width: 100em) {
+      padding: 16px 50px;
       border-radius: 100px;
       font-size: 48px;
     }
@@ -467,8 +467,6 @@ p {
   }
 }
 
-
-
 .text-link {
   text-decoration: none;
   color: inherit;
@@ -483,8 +481,6 @@ p {
   background-color: transparent !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
-
-
 
 .gradient-text {
   background: linear-gradient(135deg, #00e1ff, #00ffaa);
@@ -503,8 +499,6 @@ p {
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
   transition: all 0.3s ease;
 }
-
-
 
 .q-field {
   &.btn-glass {
