@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useLocaleRoute } from 'src/composables/useLocaleRoute'
 
 import { useAuthStore } from 'stores/auth-store.js'
+
 const authStore = useAuthStore()
 const {registerRequest, loginGoggleRequest} = authStore
 

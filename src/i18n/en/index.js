@@ -224,8 +224,7 @@ export default {
         description: 'Long commands shouldn\'t live in your head. If you frequently copy-paste commands from notes, terminal history, or README, it\'s likely the routine is taking up too much of your attention. In Slay, you can save commands as short aliases and run them whenever you need them.',
         before: {
           badge: 'Repeat every day',
-          description: 'сd /Users /find /var/log -type f -name \'*.log\' -mtime +30 -exec gzip -9 {} \\; && tar -czvf /backup/logs_$(date +%Y%m%d).tar.gz /var/log/*.gz | tee -a /var/log/backup.log | mail -s "Backup done $(date +%Y-%m-%d)" admin@example.com && echo \'Done\' >> /var/log/cron.log'
-        },
+          description: "find /var/log -type f -name '*.log' -mtime +30 -exec gzip -9 {} \\; && tar -czvf /backup/logs_$(date +%Y%m%d).tar.gz /var/log/*.gz | tee -a /var/log/backup.log | mail -s \"Backup done $(date +%Y-%m-%d)\" admin@example.com && echo 'Done' >> /var/log/cron.log"        },
         after: {
           badge: 'Simple Everyday',
           description: 'Slay_build_linux',

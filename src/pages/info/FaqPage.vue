@@ -60,9 +60,11 @@ const filteredCategories = computed(() => {
             </span>
 
             <h1 class="gradient-text">{{ t('faq.title') }}</h1>
-            <p>{{ t('faq.subtitle') }}</p>
+            <p class="q-mb-lg">{{ t('faq.subtitle') }}</p>
 
-            <div class="divider container">{{ t('faq.browseByTopic') }}</div>
+            <div class="flex justify-center q-mb-lg q-py-xs">
+              <span class="divider">{{ t('faq.browseByTopic') }}</span>
+            </div>
 
             <div class="faq-search-wrap">
               <q-input
@@ -175,27 +177,6 @@ const filteredCategories = computed(() => {
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  max-width: 560px;
-  margin: 40px auto 24px;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-
-  &:before,
-  &:after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.14);
-  }
 }
 
 .faq-search-wrap {

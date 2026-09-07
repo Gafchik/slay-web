@@ -752,6 +752,11 @@
         clip-path: inset(0 100% 0 0);
         animation: reveal-step-arrow 1.2s linear forwards;
         animation-delay: calc(var(--highlight-fill-delay) + var(--highlight-fill-duration));
+        display: none;
+
+        @media (min-width: 77.5em) {
+          display: inline-block;
+        }
 
         @media (min-width: 100em) {
           width: 720px;

@@ -97,21 +97,18 @@
 </template>
 
 <style scoped lang="scss">
-  .home {
-    min-height: 700px;
-    height: 100vh;
+  .section {
     position: relative;
-    background-image: url("assets/images/home/Background.png");
-    background-position: right center;
-    background-size: cover;
 
     &:before,
     &:after {
       content: '';
       position: absolute;
+      z-index: 1;
       left: 0;
       width: 100%;
       height: 139px;
+      pointer-events: none;
     }
 
     &:before {
@@ -122,6 +119,30 @@
     &:after {
       bottom: 0;
       background: linear-gradient(to bottom, rgba(0, 51, 60, 0.00) 0%, #011C37 100%);
+    }
+  }
+
+  .home {
+    min-height: 700px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url("assets/images/home/Background.png");
+      background-position: right center;
+      background-size: cover;
+      transform-origin: right center;
+      animation: home-background-pulse 8s ease-in-out infinite alternate;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
     }
 
     @media (min-width: 37.5em) {
@@ -246,9 +267,20 @@
     }
   }
 
+  @keyframes home-background-pulse {
+    from {
+      transform: scale(1);
+    }
+
+    to {
+      transform: scale(1.12);
+    }
+  }
+
   .about {
     @media (min-width: 77.5em) {
       position: absolute;
+      z-index: 2;
       top: 100px;
       right: max(80px, calc((100vw - 1440px) / 2 + 80px));
       width: 100%;

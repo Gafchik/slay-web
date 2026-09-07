@@ -289,7 +289,13 @@ p {
 
     &:hover {
       &:before {
-        box-shadow: 0 0 10px #E4CD71;
+        background: #FEE78C;
+      }
+    }
+
+    &:active {
+      &:before {
+        background: #B5A252;
       }
     }
   }
@@ -305,6 +311,7 @@ p {
     line-height: normal;
     color: #011C37;
     text-transform: capitalize;
+    transition: 0.25s;
 
     @media (min-width: 37.5em) {
       font-size: 32px;
@@ -336,6 +343,15 @@ p {
 
     .q-focus-helper {
       display: none;
+    }
+
+    &:hover {
+      background: #FEE78C;
+    }
+
+    &:active {
+      background: #B5A252;
+      box-shadow: -4px -4px 4px 0 #B49E46 inset, 3px 3px 4px 5px rgba(244, 225, 151, 0.40) inset;
     }
   }
 
@@ -581,6 +597,36 @@ p {
   }
 }
 
+.divider {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.64;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 1px;
+    width: 80%;
+    margin: auto;
+    opacity: 0.4;
+    background: #FFF;
+  }
+
+  &:before {
+    left: calc(100% + 12px);
+  }
+
+  &:after {
+    right: calc(100% + 12px);
+  }
+}
 
 
 .q-input {
@@ -605,6 +651,11 @@ p {
 
       &__marginal {
         padding-right: 16px;
+
+        &.q-field__append {
+          padding: 0;
+          margin-left: 16px;
+        }
       }
 
       &__native {
@@ -616,6 +667,10 @@ p {
           color: #fff !important;
           border-color: rgba(255, 255, 255, 0) !important;
         }
+      }
+
+      &__bottom {
+        padding-top: 4px;
       }
     }
 

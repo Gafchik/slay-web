@@ -73,7 +73,12 @@ const handleClick = () => {
 
   .q-btn {
     position: absolute;
-    top: 25px;
-    left: 25px;
+    top: 10px;
+    left: 10px;
+
+    @media (min-width: 77.5em) {
+      top: 20px;
+      left: 20px;
+    }
   }
 </style>
