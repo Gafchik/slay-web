@@ -19,7 +19,7 @@
   const language = computed(() => locale.value.split('-')[0])
 
   const billingStore = useBillingStore()
-  const {checkout} = billingStore // getPrices
+  const {getPrices, checkout} = billingStore
   const {priceCards} = storeToRefs(billingStore)
 
   const authStore = useAuthStore()
@@ -29,7 +29,7 @@
     return user.value?.has_active_trial || user.value?.has_active_subscription
   })
 
-  /*getPrices()*/
+  getPrices();
 
   const pricingSteps = computed(() => {
     return tm('pricing.steps.list')
