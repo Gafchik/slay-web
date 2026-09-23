@@ -10,8 +10,8 @@
 <template>
   <q-footer class="footer">
     <div class="container">
-      <div class="footer__head flex q-pb-lg">
-        <div class="col-auto">
+      <div class="footer__head flex">
+        <div class="footer__column footer__column-left">
           <router-link class="flex items-center q-mb-sm" :to="localeTo('home')">
             <img :src="Logotype"
                  alt="" title=""
@@ -19,52 +19,108 @@
                  class="q-mr-md"/>
             <span>SLAY SYNERGY</span>
           </router-link>
-          <p>{{t('sections.home.title')}}.</p>
+          <p>{{t('components.footer.description')}}</p>
         </div>
-        <div class="col-auto">
-          <p>© 2026 SLAY</p>
-          <p>{{t('text.allRightsReserved')}}</p>
+        <div class="footer__column footer__column-right">
+          <div class="flex">
+            <div class="col">
+              <span>{{t('components.footer.titles.features')}}</span>
+              <q-list>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('pages.features.projectsManager.title')"
+                    :to="localeTo('projects-manager')"
+                  />
+                </q-item>
+              </q-list>
+            </div>
+            <div class="col">
+              <span>{{t('components.footer.titles.start')}}</span>
+              <q-list>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.download')"
+                    :to="localeTo('download')"
+                  />
+                </q-item>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.pricing')"
+                    :to="localeTo('pricing')"
+                  />
+                </q-item>
+              </q-list>
+            </div>
+            <div class="col">
+              <span>{{t('components.footer.titles.support')}}</span>
+              <q-list>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.faq')"
+                    :to="localeTo('faq')"
+                  />
+                </q-item>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.contacts')"
+                    :to="localeTo('contacts')"
+                  />
+                </q-item>
+              </q-list>
+            </div>
+            <div class="col">
+              <span>{{t('components.footer.titles.legal')}}</span>
+              <q-list>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    align="left"
+                    class="btn-link"
+                    :label="t('routes.terms')"
+                    :to="localeTo('terms_of_services')"
+                  />
+                </q-item>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.privacyPolicy')"
+                    :to="localeTo('privacy_policy')"
+                  />
+                </q-item>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('routes.refundPolicy')"
+                    :to="localeTo('refund_policy')"
+                  />
+                </q-item>
+              </q-list>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer__foot flex justify-center q-pt-lg">
-        <q-list class="flex justify-center">
-          <q-item class="q-pa-none">
-            <q-btn
-              flat
-              dense
-              class="btn-link"
-              :label="t('routes.terms')"
-              :to="localeTo('terms_of_services')"
-            />
-          </q-item>
-          <q-item class="q-pa-none">
-            <q-btn
-              flat
-              dense
-              class="btn-link"
-              :label="t('routes.privacyPolicy')"
-              :to="localeTo('privacy_policy')"
-            />
-          </q-item>
-          <q-item class="q-pa-none">
-            <q-btn
-              flat
-              dense
-              class="btn-link"
-              :label="t('routes.refundPolicy')"
-              :to="localeTo('refund_policy')"
-            />
-          </q-item>
-          <q-item class="q-pa-none">
-            <q-btn
-              flat
-              dense
-              class="btn-link"
-              :label="t('routes.contacts')"
-              :to="localeTo('contacts')"
-            />
-          </q-item>
-        </q-list>
+      <div class="footer__foot q-pt-lg text-left">
+        <p>© 2026 SLAY {{t('components.footer.allRightsReserved')}}</p>
       </div>
     </div>
   </q-footer>
@@ -75,16 +131,12 @@
     position: absolute;
     font-size: 1rem;
     line-height: 120%;
-    padding: 16px 0;
     background-color: #051826;
     text-align: center;
-
-    @media (min-width: 64em) {
-      padding: 24px 0;
-    }
+    padding: 32px 0;
 
     @media (min-width: 90em) {
-      padding: 40px 0;
+      padding: 50px 0;
     }
 
     &__head {
@@ -92,49 +144,113 @@
       justify-content: center;
       border-bottom: 1px solid rgba(26, 88, 90, 0.64);
       text-align: center;
+      padding-bottom: 22px;
 
       @media screen and (min-width: 37.5em) {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+      }
+    }
+
+    &__column {
+      &-left {
+        text-align: left;
+        margin-bottom: 32px;
+
+        @media (min-width: 90em) {
+          max-width: 20%;
+          margin: 0;
+        }
       }
 
-      .col-auto {
-        &:first-child {
-          @media screen and (min-width: 37.5em) {
-            text-align: left;
+      &-right {
+        width: 100%;
+
+        @media (min-width: 90em) {
+          width: auto;
+        }
+
+        .flex {
+          width: 100%;
+          flex-wrap: wrap;
+          margin: 0 -34px;
+
+          @media (min-width: 90em) {
+            width: auto;
           }
         }
 
-        &:last-child {
-          @media screen and (min-width: 37.5em) {
-            text-align: right;
+        .col {
+          flex: 50%;
+          padding: 0 34px;
+          text-align: left;
+          margin-bottom: 18px;
+
+          @media (min-width: 64em) {
+            flex: 25%;
           }
+
+          @media (min-width: 90em) {
+            flex: auto;
+          }
+        }
+
+        span {
+          display: inline-block;
+          margin-bottom: 14px;
+          font-size: 1rem;
+          line-height: 120%;
+          color: #E4CD71;
+          font-weight: 700;
         }
       }
     }
   }
 
-  .q-list {
-    flex-direction: column;
-    align-items: center;
-    margin: 0 -16px;
+  p {
+    color: #738094;
+    font-size: 0.875rem;
+    line-height: 120%;
+    font-weight: 500;
 
-    @media screen and (min-width: 37.5em) {
-      flex-direction: row;
+    @media (min-width: 90em) {
+      font-size: 1rem;
     }
+  }
 
-    .q-item {
-      min-height: auto;
-      padding: 0 16px;
-    }
+  .q-item {
+    min-height: auto;
+    padding: 0;
+    margin-bottom: 10px;
   }
 
   .q-btn {
     &.btn-link {
+      padding: 0;
       min-height: 1.5rem;
       font-size: inherit;
       line-height: inherit;
+      color: #A6B2C7;
+
+
+      @media (min-width: 90em) {
+        white-space: nowrap;
+      }
+
+      &:hover {
+        color: #3DC7C7;
+      }
+
+      &:active {
+        color: #268C8C;
+      }
+
+      :deep {
+        span {
+          text-align: left;
+        }
+      }
     }
   }
 

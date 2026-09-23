@@ -12,6 +12,7 @@ export default {
     privacyPolicy: 'Informativa privacy',
     refundPolicy: 'Politica di rimborso',
     feature: 'Funzionalità',
+    download: 'Scarica',
   },
   buttons: {
     download: 'Scarica',
@@ -295,9 +296,16 @@ export default {
       }
     }
   },
-  sections: {
-    home: {
-      title: 'Launcher intelligente per tutti i tuoi strumenti di sviluppo',
+  components: {
+    footer: {
+      description: 'Un ambiente di sviluppo multi-workspace e uno strumento di orchestrazione pensato per la massima produttività quotidiana.',
+      allRightsReserved: 'Tutti i diritti riservati',
+      titles: {
+        features: 'Funzionalità',
+        start: 'Ottieni SLAY',
+        support: 'Supporto',
+        legal: 'Informazioni legali',
+      },
     },
   },
   account: {
@@ -357,112 +365,121 @@ export default {
     ]
   },
   pricing: {
-    freeTrial: 'gratis',
-    subTitle: 'Scegli il tuo piano tariffario e ottieni l\'accesso completo a tutte le funzionalità di SLAY',
-    info: {
-      free: 'dopo 1 mese gratuito',
+    title: 'Inizia con 30 giorni gratuiti oppure scegli un’opzione a pagamento quando vuoi.',
+    subtitle: 'Disponibile dopo il periodo di prova gratuito',
+    description: 'Gli abbonamenti a pagamento si rinnovano automaticamente fino alla cancellazione. L’accesso continua fino alla fine del periodo di fatturazione. Al momento del pagamento potrebbero essere applicate imposte in base alla tua posizione.',
+    cards: {
+      trial: {
+        title: 'Prova Slay gratis per 30 giorni',
+        description: 'Accesso completo a tutte le funzionalità di Slay. Nessuna carta di credito richiesta. Nessun addebito automatico.',
+        subtitle: 'PROVA GRATUITA DI 30 GIORNI',
+        list: ['Tutte le funzionalità di Slay incluse', 'Disponibile su macOS, Windows e Linux', 'Nessun dato di pagamento richiesto'],
+        btn: 'Inizia la prova gratuita di 30 giorni',
+        notice: 'Il periodo di prova inizia dopo che accedi al tuo account e apri Slay per la prima volta.'
+      },
+      monthly: {
+        title: 'Mensile',
+        discountPrice: "",
+        badge: "",
+        period: 'mese',
+        list: ['Fatturazione mensile', 'Annulla in qualsiasi momento'],
+      },
+      sixMonths: {
+        title: '6 mesi',
+        discountPrice: 'Equivalente a $6.99/mese',
+        badge: 'Risparmia il 12%',
+        period: '6 mesi',
+        list: ['Fatturazione ogni 6 mesi']
+      },
+      yearly: {
+        title: 'Annuale',
+        discountPrice: 'Equivalente a $5.99/mese',
+        badge: 'Risparmia il 25%',
+        period: 'anno',
+        list: ['Fatturazione annuale']
+      }
+    },
+    steps: {
+      title: 'Inizia in 4 semplici passaggi',
       list: [
         {
-          key: 'full',
-          title: 'Accesso completo a tutte le funzionalità'
+          title: 'Scarica Slay',
+          description: 'Scarica Slay per macOS, Windows o Linux e avvia la rapida installazione locale.'
         },
         {
-          key: 'cancel',
-          title: 'Annulla in qualsiasi momento'
+          title: 'Accedi',
+          description: 'Crea un account Slay sicuro oppure accedi per configurare i tuoi ambienti di lavoro.'
         },
         {
-          key: 'period',
-          title: 'Accesso fino alla fine del periodo di fatturazione'
+          title: '30 giorni gratuiti',
+          description: 'Prova tutte le funzionalità dello Smart Launcher senza limitazioni. Nessun dato di pagamento richiesto.'
         },
         {
-          key: 'renewal',
-          title: 'Rinnovo automatico'
-        },
-        {
-          key: 'discount',
-          title: 'Risparmia {discount} - solo {discountPrice}'
+          title: 'Scegli un piano',
+          description: 'Scegli un’opzione di fatturazione a pagamento solo quando vuoi continuare dopo il periodo di prova.'
         },
       ],
-      taxes: 'Le tasse possono essere applicate al momento del pagamento in base alla tua posizione.',
     },
     features: {
-      title: 'Tutto incluso',
-      description: 'Accesso completo a tutte le funzionalità di SLAY in ogni piano',
+      title: 'Tutte le funzionalità sono disponibili durante la prova',
+      note: 'TUTTO INCLUSO',
+      description: 'Accesso completo a tutte le funzionalità di SLAY con ogni piano',
       list: [
         {
           icon: 'folder',
-          title: 'Gestore di progetti'
+          title: 'Progetti',
+          description: 'Organizza i tuoi progetti e aprili con gli strumenti che utilizzi.'
         },
         {
-          icon: 'rocket_launch',
-          title: 'Avvio rapido'
+          icon: 'workspaces',
+          title: 'Avvio dell’ambiente di lavoro',
+          description: 'Avvia insieme l’ambiente di lavoro del progetto, le applicazioni e gli strumenti.'
         },
         {
           icon: 'terminal',
-          title: 'Alias della console'
+          title: 'Alias della console',
+          description: 'Salva i comandi del terminale più usati come alias brevi e riutilizzabili.'
         },
         {
-          icon: 'lock',
-          title: 'Gestore di password'
+          icon: 'key',
+          title: 'Password',
+          description: 'Mantieni organizzati password, chiavi API e dati sensibili.'
         },
         {
           icon: 'cloud',
-          title: 'Gestione dei server'
+          title: 'Server',
+          description: 'Connettiti ai server e gestisci ambienti e file remoti.'
         },
       ],
     },
-    details: [
-      {
-        icon: 'calendar_month',
-        title: 'Inizia con una prova gratuita di 1 mese.',
-        description: 'La versione di prova inizia dal momento della registrazione.',
-      },
-      {
-        icon: 'cached',
-        title: 'Dopo la fine del periodo di prova, sarà richiesto il pagamento per continuare a utilizzare il servizio.',
-        description: 'Dopo il pagamento, l\'accesso verrà ripristinato senza perdita di dati.',
-      },
-      {
-        icon: 'free_cancellation',
-        title: 'Puoi annullare in qualsiasi momento.',
-        description: 'L\'accesso rimane attivo fino alla fine del periodo di fatturazione.',
-      },
-      {
-        icon: 'safety_check',
-        title: 'Pagamenti sicuri elaborati da Paddle.',
-        description: 'Le tue informazioni di pagamento sono protette e non vengono mai memorizzate da noi.',
-      },
-      {
-        icon: 'lock',
-        title: 'Utilizziamo la crittografia end-to-end.',
-        description: 'Per mantenere i tuoi dati al sicuro e protetti.',
-      },
-    ],
-    cards: {
-      monthly: {
-        title: "Mensile",
-        subtitle: "Fatturato mensilmente",
-        discount: "",
-        badge: "",
-        period: 'mese'
-      },
-      sixMonths: {
-        title: "6 mesi",
-        subtitle: "Fatturato semestralmente",
-        discount: "12%",
-        discountPrice: "$6.99/mese",
-        badge: "",
-        period: 'ogni 6 mesi'
-      },
-      yearly: {
-        title: "Annuale",
-        subtitle: "Fatturato annualmente",
-        discount: "25%",
-        discountPrice: "$5.99/mese",
-        badge: "Miglior valore",
-        period: 'all’anno'
-      }
-    }
+    faq: {
+      title: 'Domande frequenti',
+      description: 'Tutto ciò che devi sapere sulla prova, sui pagamenti e su come iniziare.',
+      note: 'DOMANDE COMUNI',
+      list: [
+        {
+          title: 'Quando inizia il periodo di prova?',
+          description: 'La prova gratuita di 30 giorni inizia la prima volta che accedi e avvii SLAY.',
+        },
+        {
+          title: 'È necessaria una carta di credito?',
+          description: 'No. Puoi iniziare la prova gratuita di 30 giorni senza aggiungere una carta di credito o altri dati di pagamento.',
+        },
+        {
+          title: 'Mi verrà addebitato automaticamente un importo?',
+          description: 'Non durante la prova gratuita. L’addebito avverrà solo dopo che avrai scelto e acquistato un piano di abbonamento.',
+        },
+        {
+          title: 'Cosa succede dopo 30 giorni?',
+          description: 'La prova gratuita terminerà, ma il tuo account resterà disponibile. Scegli un piano di abbonamento per continuare a utilizzare SLAY.',
+        },
+      ],
+    },
+    cta: {
+      title: 'Prova gratuitamente tutte le funzionalità di Slay per 30 giorni',
+      subtitle: 'Nessuna carta di credito. Nessun addebito automatico.',
+      btn: 'Inizia la prova gratuita di 30 giorni',
+    },
   },
   subscription: {
     title: 'Abbonamento',
@@ -544,7 +561,7 @@ export default {
     noActive: 'Nessun piano attivo',
   },
   text: {
-    allRightsReserved: 'Tutti i diritti riservati',
+
     haveQuestion: "Hai una domanda o hai bisogno di aiuto? Siamo sempre pronti ad aiutarti.",
     and: 'e',
     charged: 'Addebito {data}',

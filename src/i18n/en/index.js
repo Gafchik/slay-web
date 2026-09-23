@@ -13,6 +13,7 @@ export default {
     refundPolicy: 'Refund Policy',
     password: 'Password',
     feature: 'Features',
+    download: 'Download',
   },
   buttons: {
     download: 'Download {data}',
@@ -297,9 +298,16 @@ export default {
       }
     }
   },
-  sections: {
-    home: {
-      title: 'Smart Launcher for All Your devtools',
+  components: {
+    footer: {
+      description: 'The multi-workspace developer environment & orchestration tool built for raw daily productivity.',
+      allRightsReserved: 'All rights reserved',
+      titles: {
+        features: 'Features',
+        start: 'Get SLAY',
+        support: 'Support',
+        legal: 'Legal',
+      },
     },
   },
   account: {
@@ -359,111 +367,120 @@ export default {
     ]
   },
   pricing: {
-    freeTrial: 'Free Trial',
-    subTitle: 'Choose your plan and get full access to all SLAY features',
-    info: {
-      free: 'after 1 month free',
+    title: 'Start with 30 days free, or select a paid option whenever you\'re ready.',
+    subtitle: 'Available after your free trial',
+    description: 'Paid subscriptions renew automatically until canceled. Access continues until the end of the billing period. Taxes may apply at checkout based on your location.',
+    cards: {
+      trial: {
+        title: "Try Slay free for 30 days",
+        description: "Full access to every Slay feature. No credit card required. No automatic charge.",
+        subtitle: "30-DAY FREE TRIAL",
+        list: ["Every Slay feature included", "Available on macOS, Windows and Linux", "No payment details required"],
+        btn: "Start 30-Day Free Trial",
+        notice: "Your trial starts after you sign in and Slay opens in your account for the first time."
+      },
+      monthly: {
+        title: "Monthly",
+        discountPrice: "",
+        badge: "",
+        period: 'month',
+        list: ["Billed monthly", "Cancel anytime"],
+      },
+      sixMonths: {
+        title: "6 Months",
+        discountPrice: "Equivalent to $6.99/month",
+        badge: "Save 12%",
+        period: '6 months',
+        list: ["Billed every 6 months"]
+      },
+      yearly: {
+        title: "Yearly",
+        discountPrice: "Equivalent to $5.99/month",
+        badge: "Save 25%",
+        period: 'year',
+        list: ["Billed annually"]
+      }
+    },
+    steps: {
+      title: 'Getting started in 4 simple steps',
       list: [
         {
-          key: 'full',
-          title: 'Full access to all features'
+          title: 'Download Slay',
+          description: 'Get Slay for macOS, Windows, or Linux and start the quick local installation.'
         },
         {
-          key: 'cancel',
-          title: 'Cancel anytime'
+          title: 'Sign In',
+          description: 'Create a secure Slay account or sign in to configure your workspaces.'
         },
         {
-          key: 'period',
-          title: 'Access until the end of the billing period'
+          title: '30 Days Free',
+          description: 'Explore every smart launcher feature unlocked. No payment details required.'
         },
         {
-          key: 'renewal',
-          title: 'Automatic renewal'
-        },
-        {
-          key: 'discount',
-          title: 'Save {discount} - only {discountPrice}'
+          title: 'Choose Billing',
+          description: 'Only select a paid billing option when you are ready to continue after your trial.'
         },
       ],
-      taxes: 'Taxes may be applied at checkout based on your location.',
     },
     features: {
-      title: 'Everything included',
+      title: 'Everything is unlocked during your trial',
+      note: 'EVERYTHING INCLUDED',
       description: 'Full access to all SLAY features in every plan',
       list: [
         {
           icon: 'folder',
-          title: 'Project Manager'
+          title: 'Projects',
+          description: 'Organize your projects and open them with the tools you use.'
         },
         {
-          icon: 'rocket_launch',
-          title: 'Launcher workspace'
+          icon: 'workspaces',
+          title: 'Launch Workspace',
+          description: 'Launch your project workspace, applications and tools together.'
         },
         {
           icon: 'terminal',
-          title: 'Console aliases'
+          title: 'Console Aliases',
+          description: 'Save frequently used terminal commands as short, reusable aliases.'
         },
         {
-          icon: 'lock',
-          title: 'Password Manager'
+          icon: 'key',
+          title: 'Passwords',
+          description: 'Keep passwords, API keys and sensitive information organized.'
         },
         {
           icon: 'cloud',
-          title: 'Servers'
+          title: 'Servers',
+          description: 'Connect to servers and manage remote environments and files.'
         },
       ],
     },
-    details: [
-      {
-        icon: 'calendar_month',
-        title: 'Start with a 1-month free trial.',
-        description: 'The trial version starts from the moment of registration.',
-      },
-      {
-        icon: 'cached',
-        title: 'After the trial period ends, access to the service will require payment.',
-        description: 'After payment, access will be restored without data loss.',
-      },
-      {
-        icon: 'free_cancellation',
-        title: 'You can cancel anytime.',
-        description: 'Access remains active until the end of the billing period.',
-      },
-      {
-        icon: 'safety_check',
-        title: 'Secure payments processed by Paddle.',
-        description: 'Your payment information is safe and never stored by us.',
-      },
-      {
-        icon: 'lock',
-        title: 'We use end-to-end encryption.',
-        description: 'To keep your data safe and private.',
-      },
-    ],
-    cards: {
-      monthly: {
-        title: "Monthly",
-        subtitle: "Billed monthly",
-        discount: "",
-        badge: "",
-        period: 'month'
-      },
-      sixMonths: {
-        title: "6 Months",
-        subtitle: "Billed semiannually",
-        discount: "12%",
-        discountPrice: "$6.99/month",
-        badge: "",
-        period: 'every 6 month',
-      },
-      yearly: {
-        title: "Yearly",
-        subtitle: "Billed annually",
-        discount: "25%",
-        discountPrice: "$5.99/month",
-        badge: "Best Value",
-        period: 'per year'
-      }
+    faq: {
+      title: 'Frequently Asked Questions',
+      description: 'Everything you need to know about the trial, payment, and getting started.',
+      note: 'COMMON QUESTIONS',
+      list: [
+        {
+          title: 'When does my trial start?',
+          description: 'Your 30-day free trial starts the first time you sign in and launch SLAY.',
+        },
+        {
+          title: 'Do I need a credit card?',
+          description: 'No. You can start your 30-day free trial without adding a credit card or any payment details.',
+        },
+        {
+          title: 'Will I be charged automatically?',
+          description: 'Not during your free trial. You’ll only be charged after you choose and purchase a subscription plan.',
+        },
+        {
+          title: 'What happens after 30 days?',
+          description: 'Your free trial ends, but your account stays available. Choose a subscription plan to continue using SLAY.',
+        },
+      ],
+    },
+    cta: {
+      title: 'Try every Slay feature free for 30 days',
+      subtitle: 'No credit card. No automatic charge.',
+      btn: 'Start 30-Day Free Trial',
     },
   },
   subscription: {
@@ -546,7 +563,6 @@ export default {
     noActive: 'No Active Plan',
   },
   text: {
-    allRightsReserved: 'All rights reserved',
     haveQuestion: "Have a question or need help? We're here for you",
     and: 'and',
     charged: 'Charged {data}',

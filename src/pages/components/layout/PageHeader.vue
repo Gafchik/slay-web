@@ -350,14 +350,7 @@
     flex: 0 0 auto;
   }
 
-  .mobile-menu-trigger {
-    flex: 0 0 auto;
-    width: 44px;
-    height: 44px;
-  }
-
-  .btn-link,
-  .btn-glass--primary {
+  .btn-link {
     min-height: auto;
     font-size: 1rem;
     line-height: 110%;
@@ -375,10 +368,45 @@
     @media (min-width: 158.75em) {
       font-size: 1.75rem;
     }
-  }
 
-  .btn-link--active {
-    color: #E4CD71;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      width: 0;
+      margin: auto;
+      background-color: #0AFDFF;
+      transition: 0.25s;
+    }
+
+    &:hover {
+      color: #3DC7C7;
+    }
+
+    &:active {
+      color: #0AFDFF;
+    }
+
+    &--active {
+      color: #0AFDFF;
+
+      &:after {
+        width: 100%;
+      }
+
+      &:hover {
+        color: #0AFDFF;
+      }
+    }
+
+    :deep {
+      .q-ripple {
+        display: none !important;
+      }
+    }
   }
 
   .features-menu__link {
@@ -386,24 +414,6 @@
 
     &--active {
       color: #E4CD71;
-    }
-  }
-
-  .btn-glass--primary {
-    &:before {
-      box-shadow: 0 0 4px #03d5ff, inset 0 0 12px #03d5ff;
-    }
-
-    &:hover {
-      &:before {
-        box-shadow: 0 0 6px #03d5ff, inset 0 0 6px #03d5ff;
-      }
-    }
-
-    &:active {
-      &:before {
-        box-shadow: 0 0 12px #03d5ff, inset 0 0 4px #03d5ff;
-      }
     }
   }
 
@@ -423,80 +433,88 @@
     border-left: 1px solid rgba(#E4CD71, 0.28);
   }
 
-  .mobile-menu__content {
-    min-height: 100%;
-    padding: 16px;
-  }
-
-  .mobile-menu__header {
-    min-height: 40px;
-  }
-
-  .mobile-menu__close {
-    width: 44px;
-    height: 44px;
-  }
-
-  .mobile-menu__logo {
-    color: #E4CD71;
-    text-decoration: none;
-
-    img {
-      height: 30px;
+  .mobile-menu {
+    &__content {
+      min-height: 100%;
+      padding: 16px;
     }
-  }
 
-  .mobile-menu__nav {
-    gap: 8px;
-    margin-top: 32px;
-  }
+    &__header {
+      min-height: 40px;
+    }
 
-  .mobile-menu__link {
-    min-height: 48px;
-    padding: 0 16px;
-    color: #fff;
-    font-size: 1.125rem;
+    &__close {
+      width: 44px;
+      height: 44px;
+    }
 
-    &:hover,
-    &.q-router-link--active {
+    &__logo {
       color: #E4CD71;
-      background: rgba(#E4CD71, 0.08);
+      text-decoration: none;
+
+      img {
+        height: 30px;
+      }
     }
-  }
 
-  .mobile-menu__submenu {
-    padding-left: 16px;
-  }
-
-  .mobile-menu__sublink {
-    color: rgba(#fff, 0.72);
-    font-size: 1rem;
-  }
-
-  .mobile-menu__chevron {
-    transition: transform 0.2s ease;
-
-    &--open {
-      transform: rotate(180deg);
+    &__nav {
+      gap: 8px;
+      margin-top: 32px;
     }
-  }
 
-  .mobile-menu__actions {
-    padding-top: 24px;
-    border-top: 1px solid rgba(#fff, 0.12);
-  }
+    &__link {
+      min-height: 48px;
+      padding: 0 16px;
+      color: #fff;
+      font-size: 1.125rem;
 
-  .mobile-menu__account {
-    min-height: 48px;
-    font-size: 1rem;
-  }
+      &:hover,
+      &.q-router-link--active {
+        color: #E4CD71;
+        background: rgba(#E4CD71, 0.08);
+      }
+    }
 
-  .mobile-menu__language {
-    min-height: 48px;
-    color: rgba(#fff, 0.72);
-  }
+    &__submenu {
+      padding-left: 16px;
+    }
 
-  .mobile-menu__language-switcher {
-    margin-left: 8px;
+    &__sublink {
+      color: rgba(#fff, 0.72);
+      font-size: 1rem;
+    }
+
+    &__chevron {
+      transition: transform 0.2s ease;
+
+      &--open {
+        transform: rotate(180deg);
+      }
+    }
+
+    &__actions {
+      padding-top: 24px;
+      border-top: 1px solid rgba(#fff, 0.12);
+    }
+
+    &__account {
+      min-height: 48px;
+      font-size: 1rem;
+    }
+
+    &__language {
+      min-height: 48px;
+      color: rgba(#fff, 0.72);
+
+      &-switcher {
+        margin-left: 8px;
+      }
+    }
+
+    &-trigger {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+    }
   }
 </style>
