@@ -27,6 +27,8 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
 
   const isOpen = ref(false)
   const isSending = ref(false)
+  const hasSendError = ref(false)
+  const hasUnreadReply = ref(false)
   const draft = ref('')
   const conversationId = ref(stored?.conversationId || null)
   const messages = ref(stored?.messages || [])
@@ -53,10 +55,15 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
     isOpen.value = !isOpen.value
   }
 
+  const markReplyRead = () => {
+    hasUnreadReply.value = false
+  }
+
   const sendMessage = async (text) => {
     const content = (text ?? draft.value).trim()
     if (!content || isSending.value) return
 
+    hasSendError.value = false
     messages.value.push({ role: 'user', content })
     draft.value = ''
     isSending.value = true
@@ -70,8 +77,11 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
 
       conversationId.value = data.conversation_id
       messages.value.push({ role: 'assistant', content: data.answer })
+      hasUnreadReply.value = true
     } catch {
       messages.value.pop()
+      draft.value = content
+      hasSendError.value = true
     } finally {
       isSending.value = false
       persist()
@@ -79,6 +89,8 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
   }
 
   const reset = () => {
+    hasSendError.value = false
+    hasUnreadReply.value = false
     conversationId.value = null
     messages.value = []
     localStorage.removeItem(STORAGE_KEY)
@@ -87,6 +99,8 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
   return {
     isOpen,
     isSending,
+    hasSendError,
+    hasUnreadReply,
     draft,
     conversationId,
     messages,
@@ -94,6 +108,7 @@ export const useAssistantStore = defineStore('useAssistantStore', () => {
     open,
     close,
     toggle,
+    markReplyRead,
     sendMessage,
     reset,
   }

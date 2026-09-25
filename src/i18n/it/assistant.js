@@ -1,16 +1,17 @@
 export default {
   assistant: {
-    openLabel: 'Ask AI Assistant',
-    closeLabel: 'Close',
-    panelTitle: 'Slay Assistant',
-    status: 'AI-powered',
-    greeting: "Hi! I'm the Slay assistant. Ask me anything about projects, SSH, passwords, or your subscription.",
-    placeholder: 'Ask a question...',
-    typing: 'Typing...',
+    title: 'Assistente IA',
+    subtitle: 'Come posso aiutarti con SLAY?',
+    btn: "Chiedi all'assistente IA",
+    typing: "L'IA sta pensando…",
+    closeLabel: 'Chiudi',
+    status: "Basato sull'IA",
+    greeting: "Ciao! Posso aiutarti con le funzionalità, i piani, la configurazione e l'uso quotidiano di SLAY.",
+    placeholder: 'Fai una domanda...',
     suggestions: [
-      'Does it support port forwarding?',
-      'Can I get a refund?',
-      'How is my vault encrypted?',
+      'Cosa posso fare con SLAY?',
+      'Come funziona la prova gratuita?',
+      'Come viene crittografato il mio archivio di password?',
     ],
   },
 }

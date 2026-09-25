@@ -1,15 +1,16 @@
 export default {
   assistant: {
-    openLabel: 'Ask AI Assistant',
+    title: 'AI Assistant',
+    subtitle: 'How can I help you with SLAY?',
+    btn: 'Ask AI Assistant',
+    typing: 'AI is thinking…',
     closeLabel: 'Close',
-    panelTitle: 'Slay Assistant',
     status: 'AI-powered',
-    greeting: "Hi! I'm the Slay assistant. Ask me anything about projects, SSH, passwords, or your subscription.",
+    greeting: "Hi! I can help with SLAY features, plans, setup, and everyday use.",
     placeholder: 'Ask a question...',
-    typing: 'Typing...',
     suggestions: [
-      'Does it support port forwarding?',
-      'Can I get a refund?',
+      'What can I do with SLAY?',
+      'How does the free trial work?',
       'How is my vault encrypted?',
     ],
   },
