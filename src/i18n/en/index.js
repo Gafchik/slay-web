@@ -27,7 +27,7 @@ export default {
     cancel: 'Cancel {data}',
     send: 'Send',
     delete: 'Delete',
-    start: 'Start {data}',
+    start: 'Start Free Trial',
     choose: 'Choose {data}',
     renew: 'Renew {data}',
     confirm: 'Confirm',
@@ -295,6 +295,9 @@ export default {
           title: 'Project Access',
           description: 'Connect to the right server without re-entering IPs, ports, or passwords. Keep project folders, access details, saved commands, and server connections together in one workspace. Rename projects inside Slay to match your workflow — your original folders on the computer stay unchanged.'
         }
+      },
+      launcherWorkspace: {
+        title: 'Launcher Workspace',
       }
     }
   },

@@ -35,6 +35,15 @@
                     :to="localeTo('projects-manager')"
                   />
                 </q-item>
+                <q-item class="q-pa-none">
+                  <q-btn
+                    flat
+                    dense
+                    class="btn-link"
+                    :label="t('pages.features.launcherWorkspace.title')"
+                    :to="localeTo('launcher_workspace')"
+                  />
+                </q-item>
               </q-list>
             </div>
             <div class="col">

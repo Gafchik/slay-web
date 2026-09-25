@@ -22,10 +22,13 @@
   const isHeaderScrolled = ref(false)
   const isMobileMenuOpen = ref(false)
   const isMobileFeaturesOpen = ref(false)
+  const isFeaturesMenuOpen = ref(false)
 
   const isLoginRoute = computed(() => route.name === localeRouteName('login'))
   const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
-  const isFeaturesRoute = computed(() => route.name === localeRouteName('projects_manager'))
+  const isProjectsManagerRoute = computed(() => route.name === localeRouteName('projects_manager'))
+  const isLauncherWorkspaceRoute = computed(() => route.name === localeRouteName('launcher_workspace'))
+  const isFeaturesRoute = computed(() => isProjectsManagerRoute.value || isLauncherWorkspaceRoute.value)
   const isPricingRoute = computed(() => route.name === localeRouteName('pricing'))
   const isFaqRoute = computed(() => route.name === localeRouteName('faq'))
   const isDesktop = computed(() => $q.screen.width >= 1240)
@@ -74,27 +77,17 @@
             unelevated
             rounded
             class="btn-link"
-            :class="{ 'btn-link--active': isPricingRoute }"
-            :to="localeTo('pricing')"
-          >
-            <span>{{ t('routes.pricing')}}</span>
-          </q-btn>
-        </div>
-        <div class="desktop-nav__item q-mx-xs">
-          <q-btn
-            unelevated
-            rounded
-            class="btn-link"
             :class="{ 'btn-link--active': isFeaturesRoute }"
           >
             <span>{{ t('routes.feature')}}</span>
-            <q-icon name="keyboard_arrow_down" size="20px" class="q-ml-xs" v-show="!isDesktop"/>
+            <q-icon :name="isFeaturesMenuOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" size="24px" class="q-ml-xs" v-show="isDesktop"/>
 
             <q-menu
-              class="menu-primary no-shadow"
+              class="menu-header no-shadow"
               anchor="bottom middle"
               self="top middle"
               :offset="[0, 12]"
+              v-model="isFeaturesMenuOpen"
             >
               <q-list style="min-width: 220px">
                 <q-item
@@ -104,9 +97,8 @@
                   <q-item-section>
                     <q-btn
                       unelevated
-                      rounded
                       class="btn-link features-menu__link"
-                      :class="{ 'features-menu__link--active': isFeaturesRoute }"
+                      :class="{ 'features-menu__link--active': isProjectsManagerRoute }"
                       :to="localeTo('projects_manager')"
                     >
                       <span>
@@ -115,8 +107,36 @@
                     </q-btn>
                   </q-item-section>
                 </q-item>
+                <q-item
+                  clickable
+                  v-close-popup
+                >
+                  <q-item-section>
+                    <q-btn
+                      unelevated
+                      class="btn-link features-menu__link"
+                      :class="{ 'features-menu__link--active': isLauncherWorkspaceRoute }"
+                      :to="localeTo('launcher_workspace')"
+                    >
+                      <span>
+                        {{ t('pages.features.launcherWorkspace.title') }}
+                      </span>
+                    </q-btn>
+                  </q-item-section>
+                </q-item>
               </q-list>
             </q-menu>
+          </q-btn>
+        </div>
+        <div class="desktop-nav__item q-mx-xs">
+          <q-btn
+            unelevated
+            rounded
+            class="btn-link"
+            :class="{ 'btn-link--active': isPricingRoute }"
+            :to="localeTo('pricing')"
+          >
+            <span>{{ t('routes.pricing')}}</span>
           </q-btn>
         </div>
         <div class="desktop-nav__item q-mx-xs">
@@ -222,6 +242,17 @@
               @click="closeMobileMenu"
             >
               {{ t('pages.features.projectsManager.title') }}
+            </q-btn>
+            <q-btn
+              flat
+              rounded
+              no-caps
+              align="left"
+              class="mobile-menu__link mobile-menu__sublink full-width"
+              :to="localeTo('launcher_workspace')"
+              @click="closeMobileMenu"
+            >
+              {{ t('pages.features.launcherWorkspace.title') }}
             </q-btn>
           </div>
         </q-slide-transition>
@@ -410,10 +441,52 @@
   }
 
   .features-menu__link {
+    position: relative;
+    padding: 10px 20px;
     color: #fff;
+    border-radius: 0;
+
+
+    &:after {
+      display: none;
+    }
+
+
 
     &--active {
+      padding-left: 25px;
       color: #E4CD71;
+      background: #14243D;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 14px;
+        display: inline-block;
+        height: calc(100% - 20px);
+        width: 3px;
+        margin: auto 0;
+        border-radius: 2px;
+        background: #E0C134;
+      }
+
+      &:hover {
+        color: #E4CD71;
+      }
+    }
+
+    :deep {
+      .q-focus-helper {
+        display: none !important;
+        opacity: 0 !important;
+      }
+
+      span {
+        justify-content: flex-start;
+        text-align: left;
+      }
     }
   }
 

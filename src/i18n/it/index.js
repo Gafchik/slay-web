@@ -26,7 +26,7 @@ export default {
     cancel: 'Annulla',
     send: 'Inviare',
     delete: 'Eliminare',
-    start: 'Inizia {data}',
+    start: 'Inizia la prova gratuita',
     choose: 'Scegli {data}',
     renew: 'Rinnova {data}',
     confirm: 'Conferma',
@@ -114,25 +114,25 @@ export default {
               price: '$36/anno'
             },
             {
-              title: 'Produttività nel terminale',
+              title: 'Terminale smart',
               price: '$180/anno'
             },
             {
-              title: 'Launcher dell’ambiente di lavoro',
+              title: 'Avvio spazio',
               price: '$60/anno'
             },
             {
-              title: 'Configurazione manuale',
+              title: 'Setup manuale',
               price: 'ogni settimana'
             },
             {
-              title: 'Cambio di contesto',
+              title: 'Cambio contesto',
               price: 'ogni giorno'
             },
           ],
         },
         features: {
-          title: 'Ambiente di lavoro Slay',
+          title: 'Spazio Slay',
           subtitle: 'al mese',
           list: [
             {

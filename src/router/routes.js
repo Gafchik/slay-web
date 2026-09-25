@@ -78,6 +78,11 @@ const makeChildren = (prefix = '') => [
     name: `${prefix}projects_manager`,
     component: () => import('pages/features/ProjectsManagerPage.vue'),
   },
+  {
+    path: 'launcher-workspace',
+    name: `${prefix}launcher_workspace`,
+    component: () => import('pages/features/LauncherPage.vue'),
+  },
 ]
 
 const localizedRoutes = Object.values(LOCALES).map((locale) => {

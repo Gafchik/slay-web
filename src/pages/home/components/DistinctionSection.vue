@@ -5,7 +5,10 @@
   import icon from 'src/assets/images/distinction/Icon-2.png'
   import icon3 from 'src/assets/images/distinction/Icon-3.png'
 
-  const { t, tm } = useI18n()
+  const { t, tm, locale } = useI18n()
+
+  const language = computed(() => locale.value.split('-')[0])
+
 
   const listCompetitors = computed(() => {
     return tm('pages.home.distinction.competitors.list')
@@ -16,7 +19,7 @@
 </script>
 
 <template>
-  <section class="section text-white q-pb-xl q-mb-xl">
+  <section class="section text-white q-pb-xl q-mb-xl" :data-locale="language">
     <div class="container">
       <div class="container-fluid">
         <div class="section__body q-pb-xl q-mb-xl">
@@ -184,7 +187,7 @@
 
       &-content {
         width: 100%;
-        max-width: 280px;
+        max-width: 270px;
         margin: 0 auto;
       }
 
@@ -229,65 +232,100 @@
 
         .q-list {
           margin: 0 auto 24px;
+        }
 
-          .q-item {
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+        .q-item {
+          padding: 16px;
+          border-bottom: 1px solid rgba(255,255,255,0.2);
 
-            &__section {
-              flex-direction: row;
-            }
+          &__section {
+            flex-direction: row;
+          }
 
-            &__label {
-              white-space: nowrap;
-              margin: 0;
-            }
+          &__label {
+            white-space: nowrap;
+            margin: 0;
+          }
 
-            &:last-child {
-              &:before {
-                content: '';
-                position: absolute;
-                bottom: -2px;
-                left: 0;
-                right: 0;
-                margin: auto;
-                width: 4px;
-                height: 4px;
-                border-radius: 50px;
-                background-color: #0AFDFF;
-                box-shadow: 0 0 10px #0AFDFF,
-                0 0 10px #0AFDFF,
-                0 0 10px #0AFDFF,
-                0 0 10px #0AFDFF,
-                0 0 10px #0AFDFF,
-                0 0 10px #0AFDFF;
-              }
+          &:last-child {
+            &:before {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              right: 0;
+              margin: auto;
+              width: 4px;
+              height: 4px;
+              border-radius: 50px;
+              background-color: #0AFDFF;
+              box-shadow: 0 0 10px #0AFDFF,
+              0 0 10px #0AFDFF,
+              0 0 10px #0AFDFF,
+              0 0 10px #0AFDFF,
+              0 0 10px #0AFDFF,
+              0 0 10px #0AFDFF;
             }
           }
         }
       }
 
       &--right {
-        padding-top: 80px;
-        padding-bottom: 70px;
-        background-image: url("../../../assets/images/distinction/Background-right.png");
-        background-position: top 10px center;
-        background-size: 100% 100%;
+
+        @media (min-width: 26em) {
+          padding-top: 80px;
+          padding-bottom: 70px;
+          background-image: url("../../../assets/images/distinction/Background-right.png");
+          background-position: top 10px center;
+          background-size: 520px auto;
+        }
 
         @media (min-width: 37.5em) {
           background-size: auto 100%;
+          padding-bottom: 100px;
+        }
+
+        @media (min-width: 77.5em) {
+          padding-bottom: 125px;
         }
 
         span {
+          position: relative;
           display: block;
           color: #E4CD71;
           font-size: 38px;
+
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            right: -10%;
+            margin: auto;
+            height: 20px;
+            width: 100%;
+            background-image: url("../../../assets/images/distinction/Decor.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            @media (min-width: 37.5em) {
+              width: 100%;
+            }
+          }
         }
 
         .price {
           span {
-            &:first-child {
-              font-size: 200px;
+            &:before {
+              bottom: -20px;
+              left: -50%;
+              right: -50%;
+              width: 170%;
+
+              @media (min-width: 37.5em) {
+                width: 150%;
+              }
             }
           }
         }
@@ -297,6 +335,7 @@
         }
 
         .q-list {
+          padding-left: 50px;
           font-size: 20px;
 
           .q-item {
@@ -316,7 +355,31 @@
         }
       }
     }
+
+    &[data-locale="ru"] {
+      .section {
+        &__column {
+          &--left {
+            .q-item {
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &[data-locale="ua"] {
+      .section {
+        &__column {
+          &--left {
+            .q-item {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+    }
   }
-
-
 </style>

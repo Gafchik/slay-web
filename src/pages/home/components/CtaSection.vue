@@ -46,7 +46,7 @@
                        unelevated
                        rounded
                        class="btn-start btn-download">
-                  {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
+                  {{ t('buttons.start') }}
                 </q-btn>
               </div>
             </div>

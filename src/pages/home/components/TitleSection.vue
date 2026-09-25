@@ -47,7 +47,7 @@
                      unelevated
                      rounded
                      class="btn-start btn-download q-mb-xl">
-                {{ t('buttons.start', { data: t('pricing.freeTrial') }) }}
+                {{ t('buttons.start') }}
               </q-btn>
 
               <q-list class="flex justify-center no-wrap">
