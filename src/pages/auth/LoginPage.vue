@@ -134,9 +134,8 @@
                       <q-btn
                         flat
                         dense
-                        rounded
                         no-caps
-                        class="btn-link--blue q-px-sm q-mb-md"
+                        class="btn btn-link--blue q-px-sm q-mb-md"
                         :label="t('account.login.forgotPassword')"
                         @click="openForgotPasswordDialog"
                       />

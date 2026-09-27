@@ -56,12 +56,12 @@
 <template>
   <q-dialog v-model="isOpen" backdrop-filter="blur(4px)" persistent>
     <q-card dense class="glass text-white">
-      <q-card-section class="flex justify-between no-wrap q-pb-sm">
+      <q-card-section class="flex justify-between no-wrap">
         <div class="q-mr-xl">
-          <div class="text-h5 text-weight-bold gradient-text">
+          <div class="text-h5 text-weight-bold gradient-text q-mb-md">
             {{ t('account.forgotPassword.title') }}
           </div>
-          <div class="text-grey-5 q-mt-sm">
+          <div class="text-grey-5">
             {{ t('account.forgotPassword.description') }}
           </div>
         </div>
@@ -80,24 +80,20 @@
       <q-card-section>
         <q-form ref="form" @submit.prevent="onSubmit">
           <q-input
-            v-model="email"
             dark
-            rounded
             outlined
             lazy-rules
-            autofocus
+            v-model="email"
             type="email"
-            autocomplete="email"
-            label-color="white"
             color="white"
-            class="btn-glass auto-field"
-            :label="t('inputData.email')"
+            class="auto-field q-ma-none"
+            :placeholder="t('inputData.email')"
             :rules="[
-                val => !!val || t('validation.required'),
-                val => /.+@.+\..+/.test(val) || t('validation.notValid'),
-              ]"
+                    val => !!val || t('validation.required'),
+                    val => /.+@.+\..+/.test(val) || t('validation.notValid'),
+                  ]"
           >
-            <template #prepend>
+            <template v-slot:prepend>
               <q-icon name="mail" color="white" />
             </template>
           </q-input>
@@ -107,8 +103,7 @@
               outline
               rounded
               unelevated
-              class="btn-glass--primary"
-              color="white"
+              class="btn-gold"
               icon-right="send"
               type="submit"
               size="md"
@@ -122,7 +117,8 @@
 </template>
 
 <style scoped lang="scss">
-  .glass {
-    border-radius: 16px;
+  .q-card{
+    background-color: #011C37;
+    border-radius: 20px;
   }
 </style>

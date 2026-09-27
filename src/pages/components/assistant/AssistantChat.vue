@@ -29,6 +29,13 @@ const submit = () => {
   assistantStore.sendMessage()
 }
 
+const handleEnter = (event) => {
+  if (event.shiftKey || event.isComposing) return
+
+  event.preventDefault()
+  if (!event.repeat) submit()
+}
+
 const pickSuggestion = (text) => {
   assistantStore.draft = text;
   submit();
@@ -107,6 +114,7 @@ const pickSuggestion = (text) => {
         :placeholder="t('assistant.placeholder')"
         :disabled="assistantStore.isSending"
         @focus="assistantStore.markReplyRead()"
+        @keydown.enter="handleEnter"
       ></textarea>
       <button type="submit" class="assistant-panel__send"
               :disabled="assistantStore.isSending || !assistantStore.draft.trim()">
@@ -120,24 +128,34 @@ const pickSuggestion = (text) => {
 .assistant {
   &-panel {
     position: fixed;
-    right: 32px;
-    bottom: 108px;
     z-index: 3999;
-    width: 480px;
-    height: 680px;
-    max-height: calc(100vh - 140px);
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    overscroll-behavior: contain;
     transform-origin: bottom right;
-    transform: scale(0.9) translateY(12px);
+    transform: translateY(100%);
     opacity: 0;
-    border-radius: 22px;
-    border: 1px solid #2E5763;
+
     background: #061825;
     box-shadow: 0 16px 34px 0 rgba(0, 0, 0, 0.42);
     pointer-events: none;
     transition: transform 0.25s ease, opacity 0.25s ease;
+
+    @media (min-width: 48em) {
+      right: 32px;
+      bottom: 108px;
+      border-radius: 22px;
+      border: 1px solid #2E5763;
+      width: 480px;
+      height: 680px;
+      max-height: calc(100vh - 140px);
+      transform: scale(0.9) translateY(12px);
+    }
 
     &__head {
       display: flex;
@@ -348,9 +366,13 @@ const pickSuggestion = (text) => {
     }
 
     &--open {
-      transform: scale(1) translateY(0);
+      transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
+
+      @media (min-width: 48em) {
+        transform: scale(1) translateY(0);
+      }
     }
   }
 
@@ -514,21 +536,5 @@ const pickSuggestion = (text) => {
 @keyframes assistant-dot-bounce {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
   30% { transform: translateY(-4px); opacity: 1; }
-}
-
-@media (max-width: 37.5em) {
-  .assistant-panel {
-    inset: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    transform: translateY(100%);
-
-    &.assistant-panel--open {
-      transform: translateY(0);
-    }
-  }
 }
 </style>
