@@ -293,7 +293,90 @@ export default {
           title: 'Accesso ai progetti',
           description: 'Connettiti al server giusto senza reinserire indirizzi IP, porte o password. Mantieni cartelle di progetto, dati di accesso, comandi salvati e connessioni ai server in un unico ambiente di lavoro. Rinomina i progetti in Slay in base al tuo flusso di lavoro: le cartelle originali sul computer rimarranno invariate.'
         }
-      }
+      },
+      launcherWorkspace: {
+        title: 'Avvio dell’ambiente di lavoro',
+        note: "IL TUO AMBIENTE DI LAVORO, PRONTO CON UN CLIC",
+        description: 'Salva le applicazioni che usi per ogni flusso di lavoro. Cambia profilo, avvia la selezione salvata e inizia a lavorare senza riconfigurare tutto.',
+        home: {
+          start: 'INIZIO DELLA GIORNATA DI LAVORO',
+          end: 'Un clic<br> per iniziare',
+        },
+        about: {
+          title: 'Aggiungi le applicazioni che usi già',
+          description: 'Trascina applicazioni e collegamenti in Slay. Nomi, percorsi e icone disponibili vengono aggiunti automaticamente al profilo attivo.',
+          note: 'AGGIUNGI APPLICAZIONI',
+          step1: 'PASSAGGIO 1 — TRASCINA',
+          step2: 'PASSAGGIO 2 — PRONTO',
+          list: [
+            {
+              title: 'Nessuna configurazione manuale',
+            },
+            {
+              title: 'Aggiunte al profilo attivo',
+            },
+            {
+              title: 'Pronte per essere selezionate o avviate',
+            },
+          ],
+        },
+        steps: {
+          title: 'Configura una volta. <br>Avvia con un clic.',
+          description: 'Scegli le applicazioni che usi in ogni sessione. Slay ricorda la tua selezione, così il tuo ambiente di lavoro abituale è pronto ogni volta che torni.',
+          note: 'AMBIENTE DI LAVORO CON UN CLIC',
+          extra: 'Niente ricerche nei menu. Niente avvio delle stesse applicazioni una alla volta.',
+          list: [
+            {
+              title: 'Scegli le applicazioni di tutti i giorni',
+            },
+            {
+              title: 'Slay ricorda la tua selezione',
+            },
+            {
+              title: 'Fai clic su Open Selected',
+            },
+          ],
+        },
+        profiles: {
+          title: 'Cambia profilo. <br>Cambia ambiente di lavoro.',
+          description: 'Ogni profilo conserva il proprio elenco di applicazioni e la selezione salvata. Passa da un flusso di lavoro all’altro senza riconfigurare gli stessi strumenti.',
+          note: 'PROFILI',
+          list: [
+            {
+              title: 'APP DEL PROFILO + SELEZIONE QUOTIDIANA SALVATA',
+            },
+            {
+              title: 'APP DEL PROFILO + SELEZIONE QUOTIDIANA SALVATA',
+            },
+            {
+              title: 'APP DEL PROFILO + SELEZIONE QUOTIDIANA SALVATA',
+            },
+          ],
+        },
+        essential: {
+          title: 'Avvia l’essenziale. <br>Tieni il resto a portata di mano.',
+          description: 'Le applicazioni selezionate si avviano insieme con Open Selected. Lascia deselezionati gli strumenti che usi occasionalmente e avviali singolarmente quando ti servono.',
+          note: 'STRUMENTI QUOTIDIANI E OCCASIONALI',
+          list: [
+            {
+              title: 'PRONTI PER OGNI SESSIONE',
+              subtitle: 'Mantieni selezionati gli strumenti di tutti i giorni e avvia l’intera selezione insieme.'
+            },
+            {
+              title: 'DISPONIBILI QUANDO SERVONO',
+              subtitle: 'Avvia gli strumenti che usi occasionalmente uno alla volta con il pulsante Play.'
+            },
+          ],
+        },
+        platforms: {
+          title: 'Il tuo ambiente di lavoro, sulla tua piattaforma',
+          description: 'Crea e avvia la tua selezione di applicazioni su Windows, macOS e Ubuntu.',
+        },
+        cta: {
+          title: 'Ogni ambiente di lavoro a un clic di distanza',
+          subtitle: 'Crea un profilo per ogni modo di lavorare e tieni pronte le applicazioni giuste per ogni sessione.',
+        }
+      },
     }
   },
   components: {

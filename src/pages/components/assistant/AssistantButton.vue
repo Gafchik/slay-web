@@ -27,7 +27,7 @@ const assistantStore = useAssistantStore()
     position: fixed;
     right: 32px;
     bottom: 32px;
-    z-index: 4000;
+    z-index: 2999;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -36,12 +36,22 @@ const assistantStore = useAssistantStore()
     background: #061825;
     box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.28);
     font-family: inherit;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1rem;
+    line-height: 1.25rem;
     font-weight: 700;
     color: white;
     cursor: pointer;
     transition: 0.25s;
+
+    @media (min-width: 77.5em) {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+    }
+
+    @media (min-width: 120em) {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+    }
 
     &:before {
       content: '';
@@ -70,11 +80,25 @@ const assistantStore = useAssistantStore()
       border-radius: 12px;
       border: 1px solid #2E5763;
       background: #09202D;
-      font-size: 11px;
-      line-height: 15px;
+      font-size: 0.688rem;
+      line-height: 0.938rem;
       color: #38ADA3;
       text-transform: uppercase;
       transition: 0.25s;
+
+      @media (min-width: 77.5em) {
+        width: 40px;
+        height: 40px;
+        font-size: 0.938rem;
+        line-height: 1.188rem;
+      }
+
+      @media (min-width: 120em) {
+        width: 44px;
+        height: 44px;
+        font-size: 1.188rem;
+        line-height: 1.438rem;
+      }
 
       &--unread::after {
         content: '';

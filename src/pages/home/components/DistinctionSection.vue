@@ -9,7 +9,6 @@
 
   const language = computed(() => locale.value.split('-')[0])
 
-
   const listCompetitors = computed(() => {
     return tm('pages.home.distinction.competitors.list')
   })

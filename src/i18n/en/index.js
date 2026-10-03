@@ -298,8 +298,91 @@ export default {
       },
       launcherWorkspace: {
         title: 'Launcher Workspace',
-      }
-    }
+        note: "YOUR WORKSPACE, READY IN ONE CLICK",
+        description: 'Save the apps you use for each workflow. Switch profiles, open your selected set, and start working without rebuilding your setup.',
+        home: {
+          start: 'START OF WORKDAY',
+          end: 'One click<br> to start',
+        },
+        about: {
+          title: 'Drop in the apps you already use',
+          description: 'Drag apps and shortcuts into Slay. Their names, paths, and available icons are added automatically to the active profile.',
+          note: 'ADD APPS',
+          step1: 'STEP 1 — DROP',
+          step2: 'STEP 2 — READY',
+          list: [
+            {
+              title: 'No manual setup',
+            },
+            {
+              title: 'Added to the active profile',
+            },
+            {
+              title: 'Ready to select or launch',
+            },
+          ],
+        },
+        steps: {
+          title: 'Set it once. <br>Start with one click.',
+          description: 'Choose the apps you use in every session. Slay remembers your selection, so your regular workspace is ready whenever you return.',
+          note: 'ONE-CLICK WORKSPACE',
+          extra: 'No searching through menus. No opening the same apps one by one.',
+          list: [
+            {
+              title: 'Choose your everyday apps',
+            },
+            {
+              title: 'Slay remembers your selection',
+            },
+            {
+              title: 'Click Open Selected',
+            },
+          ],
+        },
+        profiles: {
+          title: 'Switch profiles. <br>Switch your workspace.',
+          description: 'Every profile keeps its own app list and saved selection. Move between workflows without setting up the same tools again.',
+          note: 'PROFILES',
+          list: [
+            {
+              title: 'PROFILE-SPECIFIC LIST + SAVED EVERYDAY SET',
+            },
+            {
+              title: 'PROFILE-SPECIFIC LIST + SAVED EVERYDAY SET',
+            },
+            {
+              title: 'PROFILE-SPECIFIC LIST + SAVED EVERYDAY SET',
+            },
+          ],
+        },
+        essential: {
+          title: 'Launch the essentials. <br>Keep everything else close.',
+          description: 'Selected apps open together with Open Selected. Leave occasional tools unselected and launch them individually whenever you need them.',
+          note: 'EVERYDAY AND OCCASIONAL TOOLS',
+          list: [
+            {
+              title: 'READY FOR EVERY SESSION',
+              subtitle: 'Keep your everyday tools selected and open the full set together.'
+            },
+            {
+              title: 'AVAILABLE WHEN NEEDED',
+              subtitle: 'Launch occasional tools individually with the Play button.'
+            },
+          ],
+        },
+        platforms: {
+          title: 'Your workspace, on your platform',
+          description: 'Build and launch your app setup on Windows, macOS, and Ubuntu.',
+        },
+        cta: {
+          title: 'Make every workspace one click away',
+          subtitle: 'Create a profile for each way you work and keep the right apps ready for every session.',
+        }
+      },
+      consoleAliases: {
+
+      },
+    },
   },
   components: {
     footer: {
