@@ -455,7 +455,7 @@
                     <p>{{item.subtitle}}</p>
                   </q-item-section>
                 </q-item>
-                <q-item>
+                <q-item class="q-mb-md">
                   <q-item-section>
                     <img :src="imageEssential" alt=""/>
                   </q-item-section>
@@ -1399,6 +1399,7 @@
         @media (min-width: 48em) {
           flex: 50%;
           padding: 0 9px;
+          margin: 0;
         }
 
         @media (min-width: 64em) {
