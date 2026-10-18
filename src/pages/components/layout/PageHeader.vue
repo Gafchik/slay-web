@@ -28,7 +28,8 @@
   const isRegistrationRoute = computed(() => route.name === localeRouteName('registration'))
   const isProjectsManagerRoute = computed(() => route.name === localeRouteName('projects_manager'))
   const isLauncherWorkspaceRoute = computed(() => route.name === localeRouteName('launcher_workspace'))
-  const isFeaturesRoute = computed(() => isProjectsManagerRoute.value || isLauncherWorkspaceRoute.value)
+  const isConsoleAliasRoute = computed(() => route.name === localeRouteName('console_alias'))
+  const isFeaturesRoute = computed(() => isProjectsManagerRoute.value || isLauncherWorkspaceRoute.value|| isConsoleAliasRoute.value)
   const isPricingRoute = computed(() => route.name === localeRouteName('pricing'))
   const isFaqRoute = computed(() => route.name === localeRouteName('faq'))
   const isDesktop = computed(() => $q.screen.width >= 1240)
@@ -120,6 +121,23 @@
                     >
                       <span>
                         {{ t('pages.features.launcherWorkspace.title') }}
+                      </span>
+                    </q-btn>
+                  </q-item-section>
+                </q-item>
+                <q-item
+                  clickable
+                  v-close-popup
+                >
+                  <q-item-section>
+                    <q-btn
+                      unelevated
+                      class="btn-link features-menu__link"
+                      :class="{ 'features-menu__link--active': isConsoleAliasRoute }"
+                      :to="localeTo('console_alias')"
+                    >
+                      <span>
+                        {{ t('pages.features.consoleAliases.title') }}
                       </span>
                     </q-btn>
                   </q-item-section>

@@ -380,7 +380,210 @@ export default {
         }
       },
       consoleAliases: {
-
+        title: 'Console Aliases',
+        note: "Run command from terminal",
+        description: 'Give recurring commands a clear name in Slay, then run them from your terminal without retyping the full command. Save a command once. Run it from any terminal.',
+        home: {
+          subtitle: 'Manage in Slay → Run in your terminal',
+        },
+        about: {
+          title: 'Stop rebuilding commands from memory',
+          description: 'Long SSH strings, project paths, and chained commands can be difficult to remember and easy to mistype. Save the exact command once and reuse it through a name you recognize.',
+          note: 'LESS TO REMEMBER',
+          before: 'MANUAL ENTRY',
+          after: 'WITH CONSOLE ALIASES',
+          notice: 'Save the full command once. Run it later by name.'
+        },
+        steps: {
+          title: 'From recurring command to reusable alias',
+          note: 'HOW IT WORKS',
+          list: [
+            {
+              title: 'Save a command',
+              description: 'Select Add New Alias in Slay, give the alias a memorable name, and enter the exact command it should run.',
+              extra: {
+                btn: 'Add New Alias',
+                title: 'Name: start-dev',
+                subtitle: 'Command',
+                code: 'cd ~/Projects/mobile-app && npm start',
+              }
+            },
+            {
+              title: 'Run it from your terminal',
+              description: 'Use the Slay CLI and the alias name instead of entering the full command again.',
+              code: 'slay run start-dev',
+            },
+            {
+              title: 'Search when you forget',
+              description: 'Open the interactive alias list to search and select a saved alias.',
+              code: 'slay alias list',
+            },
+          ],
+        },
+        management: {
+          title: 'Keep recurring commands easy to find',
+          description: 'Create, search, edit, copy, and remove saved commands from one organized list in Slay.',
+          note: 'SEARCH BY NAME: MOBILE',
+          listContent: [
+            {
+              title: 'COMMAND MANAGEMENT',
+            },
+            {
+              title: 'YOUR SAVED ALIASES',
+            },
+          ],
+          list: [
+            {
+              title: 'Search aliases by name',
+              icon: 'search',
+            },
+            {
+              title: 'Edit alias names and commands',
+              icon: 'edit',
+            },
+            {
+              title: 'Copy a name or its full command',
+              icon: 'content_copy',
+            },
+            {
+              title: 'Delete aliases you no longer need',
+              icon: 'delete',
+            },
+          ],
+        },
+        tasks: {
+          title: 'One name for every repeated task',
+          description: 'Save the commands behind recurring development and operational tasks, then call each one through a name you can remember.',
+          note: 'YOUR RECURRING TASKS',
+          notice: 'Examples shown are user-created aliases, not built-in Slay templates.',
+          list: [
+            {
+              title: 'START DEVELOPMENT',
+              icon: 'code',
+              command: 'start-dev',
+              code: 'slay run start-dev'
+            },
+            {
+              title: 'RUN TESTS',
+              icon: 'science',
+              command: 'mobile-test',
+              code: 'slay run mobile-test'
+            },
+            {
+              title: 'OPEN A PROJECT DIRECTORY',
+              icon: 'folder_open',
+              command: 'open-mobile',
+              code: 'slay run start-dev'
+            },
+            {
+              title: 'CONNECT TO A SERVER',
+              icon: 'dns',
+              command: 'production-server',
+              code: 'slay run production-server'
+            },
+          ],
+        },
+        arguments: {
+          title: 'Add arguments when you need them',
+          description: 'Anything entered after the alias name is passed to the saved command as an argument.',
+          subtitle: 'Reuse the saved command while keeping each run flexible..',
+          note: 'ARGUMENTS',
+          content: {
+            before: 'BASE COMMAND',
+            after: 'WITH AN ARGUMENT',
+          }
+        },
+        commands: {
+          title: 'Chain the steps you repeat',
+          description: 'Save a sequence of terminal commands under one memorable name.',
+          note: 'COMMAND CHAINS',
+          subtitle: 'The tools used by a saved command must already be installed and available in the user’s terminal.',
+          notice: 'When an alias needs to change directories or set an environment variable in the current shell session, Slay automatically prepares the required shell integration.',
+          card: {
+            title: 'SAVED COMMAND',
+            command: 'cd ~/Projects/mobile-app && npm run build && npm test',
+            list: [
+              {
+                title: 'Alias',
+                command: 'verify-mobile'
+              },
+              {
+                title: 'Run',
+                command: 'slay run verify-mobile'
+              },
+            ]
+          },
+        },
+        search: {
+          title: 'Forgot the name? Search instead of guessing.',
+          description: 'Open the interactive alias list and find the saved command you need without searching through notes or terminal history.',
+          notice: 'Choose from the aliases available in the current CLI profile.',
+          note: 'SEARCH FROM YOUR TERMINAL',
+        },
+        profiles: {
+          title: 'Keep command sets separated by profile',
+          description: 'Console Aliases uses the profile selected in the Slay CLI. Switch CLI profiles to access the commands saved for a different context.',
+          notice: 'The desktop app and Slay CLI select profiles independently.',
+          note: 'CLI PROFILES',
+          list: [
+            {
+              title: 'MOBILE DEVELOPMENT',
+              command: 'slay run mobile-test',
+              subtitle: 'EXAMPLE ALIASES IN THIS CLI PROFILE',
+              commandsList: ['ios-run','android-run','mobile-test','open-mobile'],
+            },
+            {
+              title: 'CLIENT PROJECT',
+              command: 'slay run start-dev',
+              subtitle: 'EXAMPLE ALIASES IN THIS CLI PROFILE',
+              commandsList: ['start-dev','test','logs','production-server'],
+            },
+          ],
+          listCommands: ['slay profile', 'slay profile list', 'slay profile use "profile-name"'],
+        },
+        faq: {
+          title: 'Frequently asked questions',
+          note: 'COMMON QUESTIONS',
+          list: [
+            {
+              title: 'What is a Console Alias?',
+              description: 'A Console Alias is a saved terminal command with a name. You manage aliases in Slay and run them through the Slay command-line tool.',
+            },
+            {
+              title: 'How do I run an alias?',
+              description: 'Enter slay run <alias-name> in your terminal. If the alias name contains spaces, place the name in quotation marks.',
+            },
+            {
+              title: 'Can I run an alias without keeping Slay open?',
+              description: 'Yes. Once the Slay CLI is set up and authorized, aliases can be run from your terminal without keeping the Slay window open.',
+            },
+            {
+              title: 'What if I do not remember an alias name?',
+              description: 'Run slay alias list to open an interactive, searchable list of saved aliases.',
+            },
+            {
+              title: 'Can an alias accept additional arguments?',
+              description: 'Yes. Extra words entered after the alias name are passed to the saved command as arguments.',
+            },
+            {
+              title: 'Can an alias contain several commands?',
+              description: 'Yes. An alias can store a command chain. Its syntax and behavior depend on the tools and shell used by the command.',
+            },
+            {
+              title: 'Can an alias change my current directory?',
+              description: 'Yes. When a command such as cd needs to affect the current terminal session, Slay automatically prepares the required shell integration.',
+            },
+            {
+              title: 'Are aliases connected to profiles?',
+              description: 'Yes. The aliases available through the Slay CLI come from the profile currently selected in the CLI. The desktop app and CLI select profiles independently.',
+            },
+          ]
+        },
+        cta: {
+          title: 'Put recurring commands within reach',
+          subtitle: 'Save the commands you want to reuse and run them by name from your terminal.',
+          command: 'slay run your-next-command'
+        }
       },
     },
   },

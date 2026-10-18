@@ -83,6 +83,11 @@ const makeChildren = (prefix = '') => [
     name: `${prefix}launcher_workspace`,
     component: () => import('pages/features/LauncherPage.vue'),
   },
+  {
+    path: 'console-alias',
+    name: `${prefix}console_alias`,
+    component: () => import('pages/features/AliasesPage.vue'),
+  },
 ]
 
 const localizedRoutes = Object.values(LOCALES).map((locale) => {

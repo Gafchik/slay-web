@@ -377,6 +377,212 @@ export default {
           subtitle: 'Crea un profilo per ogni modo di lavorare e tieni pronte le applicazioni giuste per ogni sessione.',
         }
       },
+      consoleAliases: {
+        title: 'Alias della console',
+        note: 'Esegui i comandi dal terminale',
+        description: 'Assegna un nome chiaro ai comandi ricorrenti in Slay, poi eseguili dal terminale senza riscrivere ogni volta il comando completo. Salva un comando una volta. Eseguilo da qualsiasi terminale.',
+        home: {
+          subtitle: 'Gestisci in Slay → Esegui nel terminale',
+        },
+        about: {
+          title: 'Smetti di ricostruire i comandi a memoria',
+          description: 'I lunghi comandi SSH, i percorsi dei progetti e le catene di comandi possono essere difficili da ricordare e facili da digitare male. Salva il comando esatto una volta e riutilizzalo con un nome che riconosci.',
+          note: 'MENO COSE DA RICORDARE',
+          before: 'INSERIMENTO MANUALE',
+          after: 'CON GLI ALIAS DELLA CONSOLE',
+          notice: 'Salva il comando completo una volta. Poi eseguilo per nome.'
+        },
+        steps: {
+          title: 'Da comando ricorrente ad alias riutilizzabile',
+          note: 'COME FUNZIONA',
+          list: [
+            {
+              title: 'Salva un comando',
+              description: 'Seleziona «Aggiungi nuovo alias» in Slay, assegna all’alias un nome facile da ricordare e inserisci il comando esatto da eseguire.',
+              extra: {
+                btn: 'Aggiungi nuovo alias',
+                title: 'Nome: start-dev',
+                subtitle: 'Comando',
+                code: 'cd ~/Projects/mobile-app && npm start',
+              }
+            },
+            {
+              title: 'Eseguilo dal terminale',
+              description: 'Usa la CLI di Slay e il nome dell’alias invece di inserire di nuovo il comando completo.',
+              code: 'slay run start-dev',
+            },
+            {
+              title: 'Non ricordi il nome? Cercalo',
+              description: 'Apri l’elenco interattivo degli alias per cercare e selezionare un alias salvato.',
+              code: 'slay alias list',
+            },
+          ],
+        },
+        management: {
+          title: 'Trova facilmente i comandi ricorrenti',
+          description: 'Crea, cerca, modifica, copia ed elimina i comandi salvati da un unico elenco organizzato in Slay.',
+          note: 'RICERCA PER NOME: MOBILE',
+          listContent: [
+            {
+              title: 'GESTIONE DEI COMANDI',
+            },
+            {
+              title: 'I TUOI ALIAS SALVATI',
+            },
+          ],
+          list: [
+            {
+              title: 'Cerca gli alias per nome',
+              icon: 'search',
+            },
+            {
+              title: 'Modifica i nomi degli alias e i comandi',
+              icon: 'edit',
+            },
+            {
+              title: 'Copia un nome o il comando completo',
+              icon: 'content_copy',
+            },
+            {
+              title: 'Elimina gli alias che non ti servono più',
+              icon: 'delete',
+            },
+          ],
+        },
+        tasks: {
+          title: 'Un nome per ogni attività ripetitiva',
+          description: 'Salva i comandi per le attività ricorrenti di sviluppo e amministrazione, poi richiama ciascuno con un nome facile da ricordare.',
+          note: 'LE TUE ATTIVITÀ RICORRENTI',
+          notice: 'Gli esempi mostrano alias creati dagli utenti, non modelli integrati in Slay.',
+          list: [
+            {
+              title: 'AVVIA LO SVILUPPO',
+              icon: 'code',
+              command: 'start-dev',
+              code: 'slay run start-dev'
+            },
+            {
+              title: 'ESEGUI I TEST',
+              icon: 'science',
+              command: 'mobile-test',
+              code: 'slay run mobile-test'
+            },
+            {
+              title: 'APRI LA CARTELLA DI UN PROGETTO',
+              icon: 'folder_open',
+              command: 'open-mobile',
+              code: 'slay run start-dev'
+            },
+            {
+              title: 'CONNETTITI A UN SERVER',
+              icon: 'dns',
+              command: 'production-server',
+              code: 'slay run production-server'
+            },
+          ],
+        },
+        arguments: {
+          title: 'Aggiungi argomenti quando servono',
+          description: 'Tutto ciò che inserisci dopo il nome dell’alias viene passato al comando salvato come argomento.',
+          subtitle: 'Riutilizza il comando salvato mantenendo flessibile ogni esecuzione.',
+          note: 'ARGOMENTI',
+          content: {
+            before: 'COMANDO BASE',
+            after: 'CON UN ARGOMENTO',
+          }
+        },
+        commands: {
+          title: 'Concatena i passaggi che ripeti',
+          description: 'Salva una sequenza di comandi del terminale con un unico nome facile da ricordare.',
+          note: 'CATENE DI COMANDI',
+          subtitle: 'Gli strumenti usati da un comando salvato devono essere già installati e disponibili nel terminale dell’utente.',
+          notice: 'Quando un alias deve cambiare directory o impostare una variabile d’ambiente nella sessione corrente della shell, Slay configura automaticamente l’integrazione necessaria con la shell.',
+          card: {
+            title: 'COMANDO SALVATO',
+            command: 'cd ~/Projects/mobile-app && npm run build && npm test',
+            list: [
+              {
+                title: 'Alias',
+                command: 'verify-mobile'
+              },
+              {
+                title: 'Esegui',
+                command: 'slay run verify-mobile'
+              },
+            ]
+          },
+        },
+        search: {
+          title: 'Non ricordi il nome? Cercalo invece di tirare a indovinare.',
+          description: 'Apri l’elenco interattivo degli alias e trova il comando salvato che ti serve senza cercare tra le note o nella cronologia del terminale.',
+          notice: 'Scegli tra gli alias disponibili nel profilo CLI corrente.',
+          note: 'CERCA DAL TERMINALE',
+        },
+        profiles: {
+          title: 'Separa i gruppi di comandi per profilo',
+          description: 'Gli alias della console usano il profilo selezionato nella CLI di Slay. Cambia profilo nella CLI per accedere ai comandi salvati per un altro contesto.',
+          notice: 'L’app desktop e la CLI di Slay selezionano i profili in modo indipendente.',
+          note: 'PROFILI CLI',
+          list: [
+            {
+              title: 'SVILUPPO MOBILE',
+              command: 'slay run mobile-test',
+              subtitle: 'ESEMPI DI ALIAS IN QUESTO PROFILO CLI',
+              commandsList: ['ios-run','android-run','mobile-test','open-mobile'],
+            },
+            {
+              title: 'PROGETTO CLIENTE',
+              command: 'slay run start-dev',
+              subtitle: 'ESEMPI DI ALIAS IN QUESTO PROFILO CLI',
+              commandsList: ['start-dev','test','logs','production-server'],
+            },
+          ],
+          listCommands: ['slay profile', 'slay profile list', 'slay profile use "profile-name"'],
+        },
+        faq: {
+          title: 'Domande frequenti',
+          note: 'DOMANDE COMUNI',
+          list: [
+            {
+              title: 'Che cos’è un alias della console?',
+              description: 'Un alias della console è un comando del terminale salvato con un nome. Gestisci gli alias in Slay e li esegui tramite lo strumento da riga di comando di Slay.',
+            },
+            {
+              title: 'Come eseguo un alias?',
+              description: 'Inserisci slay run <alias-name> nel terminale. Se il nome dell’alias contiene spazi, racchiudilo tra virgolette.',
+            },
+            {
+              title: 'Posso eseguire un alias senza tenere aperto Slay?',
+              description: 'Sì. Dopo aver configurato la CLI di Slay e completato l’autorizzazione, puoi eseguire gli alias dal terminale senza tenere aperta la finestra di Slay.',
+            },
+            {
+              title: 'Cosa faccio se non ricordo il nome di un alias?',
+              description: 'Esegui slay alias list per aprire un elenco interattivo degli alias salvati con funzione di ricerca.',
+            },
+            {
+              title: 'Un alias può accettare argomenti aggiuntivi?',
+              description: 'Sì. Le parole aggiuntive inserite dopo il nome dell’alias vengono passate al comando salvato come argomenti.',
+            },
+            {
+              title: 'Un alias può contenere più comandi?',
+              description: 'Sì. Un alias può memorizzare una catena di comandi. La sintassi e il comportamento dipendono dagli strumenti e dalla shell usati dal comando.',
+            },
+            {
+              title: 'Un alias può cambiare la directory corrente?',
+              description: 'Sì. Quando un comando come cd deve agire sulla sessione corrente del terminale, Slay configura automaticamente l’integrazione necessaria con la shell.',
+            },
+            {
+              title: 'Gli alias sono collegati ai profili?',
+              description: 'Sì. Gli alias disponibili nella CLI di Slay provengono dal profilo attualmente selezionato nella CLI. L’app desktop e la CLI selezionano i profili in modo indipendente.',
+            },
+          ]
+        },
+        cta: {
+          title: 'Tieni i comandi ricorrenti a portata di mano',
+          subtitle: 'Salva i comandi che vuoi riutilizzare ed eseguili per nome dal terminale.',
+          command: 'slay run your-next-command'
+        }
+      },
     }
   },
   components: {
