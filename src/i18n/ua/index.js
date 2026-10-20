@@ -404,8 +404,8 @@ export default {
                 btn: 'Додати новий аліас',
                 title: 'Ім’я: start-dev',
                 subtitle: 'Команда',
-                code: 'cd ~/Projects/mobile-app && npm start',
-              }
+                code: 'cd ~/Projects/shop/frontend && npm run dev',
+              },
             },
             {
               title: 'Запустіть із термінала',
@@ -413,8 +413,8 @@ export default {
               code: 'slay run start-dev',
             },
             {
-              title: 'Забули ім’я? Знайдіть його',
-              description: 'Відкрийте інтерактивний список, щоб знайти й вибрати збережений аліас.',
+              title: 'Забули ім’я? Виберіть зі списку',
+              description: 'slay alias list покаже всі аліаси разом із командами — виберіть потрібний стрілками й натисніть Enter.',
               code: 'slay alias list',
             },
           ],
@@ -457,67 +457,72 @@ export default {
           notice: 'У прикладах показано користувацькі аліаси, а не вбудовані шаблони Slay.',
           list: [
             {
-              title: 'ЗАПУСК РОЗРОБКИ',
+              title: 'ЗАПУСК ПРОЄКТУ',
               icon: 'code',
               command: 'start-dev',
-              code: 'slay run start-dev'
+              saved: 'cd ~/Projects/shop/frontend && npm run dev',
+              code: 'slay run start-dev',
             },
             {
-              title: 'ЗАПУСК ТЕСТІВ',
-              icon: 'science',
-              command: 'mobile-test',
-              code: 'slay run mobile-test'
+              title: 'МІГРАЦІЇ В DOCKER',
+              icon: 'storage',
+              command: 'migrate',
+              saved: 'cd ~/Projects/shop && docker compose exec app php artisan migrate',
+              code: 'slay run migrate',
             },
             {
-              title: 'ВІДКРИТТЯ ПАПКИ ПРОЄКТУ',
-              icon: 'folder_open',
-              command: 'open-mobile',
-              code: 'slay run start-dev'
+              title: 'ВЕРСІЯ NODE.JS',
+              icon: 'swap_horiz',
+              command: 'node 20',
+              saved: 'nvm use 20',
+              code: 'slay run node 20',
             },
             {
-              title: 'ПІДКЛЮЧЕННЯ ДО СЕРВЕРА',
+              title: 'ЛОГИ З СЕРВЕРА',
               icon: 'dns',
-              command: 'production-server',
-              code: 'slay run production-server'
+              command: 'prod-logs',
+              saved: 'ssh deploy@shop.example.com "tail -f /var/www/shop/storage/logs/laravel.log"',
+              code: 'slay run prod-logs',
             },
           ],
         },
         arguments: {
           title: 'Додавайте аргументи, коли вони потрібні',
-          description: 'Усе, що ви вводите після імені аліаса, передається збереженій команді як аргументи.',
-          subtitle: 'Використовуйте збережену команду, доповнюючи кожен запуск потрібними аргументами.',
+          description: 'Усе, що ви вводите після імені аліаса, дописується в кінець збереженої команди.',
+          subtitle: 'Один аліас на всі випадки: artisan migrate, artisan tinker, artisan queue:work — змінюються лише аргументи.',
           note: 'АРГУМЕНТИ',
           content: {
-            before: 'БАЗОВА КОМАНДА',
-            after: 'З АРГУМЕНТОМ',
-          }
+            before: 'ЗБЕРЕЖЕНА КОМАНДА · АЛІАС ARTISAN',
+            after: 'ЗАПУСК З АРГУМЕНТАМИ',
+            result: 'ЩО ВИКОНАЄТЬСЯ',
+          },
         },
         commands: {
           title: 'Об’єднуйте повторювані дії в ланцюжки',
-          description: 'Збережіть послідовність команд термінала під одним іменем, яке легко запам’ятати.',
+          description: 'Збережіть послідовність команд термінала під одним іменем. Оператор && запускає наступний крок, лише якщо попередній пройшов успішно: якщо збирання впало, файли на сервер не підуть.',
           note: 'ЛАНЦЮЖКИ КОМАНД',
           subtitle: 'Інструменти, які використовує збережена команда, мають бути заздалегідь установлені й доступні в терміналі користувача.',
-          notice: 'Якщо аліас має змінити каталог або задати змінну середовища в поточному сеансі оболонки, Slay автоматично налаштовує потрібну інтеграцію з оболонкою.',
+          notice: 'Якщо аліас змінює папку або оточення поточного термінала (cd, nvm use, export), потрібна shell-інтеграція Slay. Застосунок встановлює її сам — після встановлення один раз відкрийте нове вікно термінала. Синтаксис ланцюжка залежить від оболонки: у Windows PowerShell 5.1 немає &&.',
           card: {
             title: 'ЗБЕРЕЖЕНА КОМАНДА',
-            command: 'cd ~/Projects/mobile-app && npm run build && npm test',
+            command: 'cd ~/Projects/shop && npm run build && scp -r dist deploy@staging.shop.example.com:/var/www/shop/',
             list: [
               {
                 title: 'Аліас',
-                command: 'verify-mobile'
+                command: 'release-staging',
               },
               {
                 title: 'Запуск',
-                command: 'slay run verify-mobile'
+                command: 'slay run release-staging',
               },
-            ]
+            ],
           },
         },
         search: {
-          title: 'Забули ім’я? Знайдіть його через пошук.',
-          description: 'Відкрийте інтерактивний список аліасів і знайдіть потрібну збережену команду без пошуку в нотатках чи історії термінала.',
+          title: 'Не пам’ятаєте ім’я? Список завжди під рукою.',
+          description: 'slay alias list покаже всі аліаси поточного профілю CLI разом із командами. Виберіть потрібний стрілками й натисніть Enter. Помилилися в імені в slay run — список відкриється сам.',
           notice: 'Вибирайте з аліасів, доступних у поточному профілі CLI.',
-          note: 'ПОШУК ІЗ ТЕРМІНАЛА',
+          note: 'СПИСОК АЛІАСІВ У ТЕРМІНАЛІ',
         },
         profiles: {
           title: 'Розділяйте набори команд за профілями',
@@ -526,19 +531,20 @@ export default {
           note: 'ПРОФІЛІ CLI',
           list: [
             {
-              title: 'МОБІЛЬНА РОЗРОБКА',
-              command: 'slay run mobile-test',
-              subtitle: 'ПРИКЛАДИ АЛІАСІВ У ЦЬОМУ ПРОФІЛІ CLI',
-              commandsList: ['ios-run','android-run','mobile-test','open-mobile'],
-            },
-            {
-              title: 'КЛІЄНТСЬКИЙ ПРОЄКТ',
+              title: 'РОБОТА: SHOP',
               command: 'slay run start-dev',
               subtitle: 'ПРИКЛАДИ АЛІАСІВ У ЦЬОМУ ПРОФІЛІ CLI',
-              commandsList: ['start-dev','test','logs','production-server'],
+              commandsList: ['start-dev', 'migrate', 'artisan', 'prod-logs'],
+            },
+            {
+              title: 'СВІЙ ПРОЄКТ',
+              command: 'slay run start',
+              subtitle: 'ПРИКЛАДИ АЛІАСІВ У ЦЬОМУ ПРОФІЛІ CLI',
+              commandsList: ['start', 'test', 'deploy', 'db-shell'],
             },
           ],
-          listCommands: ['slay profile', 'slay profile list', 'slay profile use "profile-name"'],
+          switchCommand: 'slay profile use "Свій проєкт"',
+          listCommands: ['slay profile', 'slay profile list', 'slay profile use "ім’я-профілю"'],
         },
         faq: {
           title: 'Поширені запитання',
@@ -550,19 +556,19 @@ export default {
             },
             {
               title: 'Як запустити аліас?',
-              description: 'Введіть slay run <alias-name> у терміналі. Якщо ім’я аліаса містить пробіли, візьміть його в лапки.',
+              description: 'Введіть slay run <ім’я-аліаса> у терміналі. Імена з пробілами працюють і без лапок, регістр літер не важливий.',
             },
             {
               title: 'Чи можна запускати аліаси, не залишаючи Slay відкритим?',
-              description: 'Так. Після налаштування й авторизації Slay CLI ви можете запускати аліаси з термінала, не залишаючи вікно Slay відкритим.',
+              description: 'Так. Достатньо один раз увійти в застосунок Slay — потім вікно можна закрити. CLI отримує аліаси із сервера Slay, тому потрібен доступ до інтернету.',
             },
             {
               title: 'Що робити, якщо я не пам’ятаю ім’я аліаса?',
-              description: 'Виконайте slay alias list, щоб відкрити інтерактивний список збережених аліасів із пошуком.',
+              description: 'Виконайте slay alias list і виберіть аліас стрілками. Якщо помилилися в імені в slay run, список відкриється сам.',
             },
             {
               title: 'Чи може аліас приймати додаткові аргументи?',
-              description: 'Так. Додаткові слова після імені аліаса передаються збереженій команді як аргументи.',
+              description: 'Так. Усе, що набрано після імені аліаса, включно з прапорцями, дописується в кінець збереженої команди. Винятки — --print-command і -h/--help: їх обробляє сам Slay.',
             },
             {
               title: 'Чи може аліас містити кілька команд?',
@@ -570,13 +576,29 @@ export default {
             },
             {
               title: 'Чи може аліас змінити мій поточний каталог?',
-              description: 'Так. Якщо команда, наприклад cd, має вплинути на поточний сеанс термінала, Slay автоматично налаштовує потрібну інтеграцію з оболонкою.',
+              description: 'Так, через shell-інтеграцію Slay. Настільний застосунок встановлює її сам; після встановлення один раз відкрийте нове вікно термінала.',
             },
             {
               title: 'Чи пов’язані аліаси з профілями?',
               description: 'Так. У Slay CLI доступні аліаси з профілю, який зараз вибрано в CLI. У настільному застосунку та CLI профілі вибираються незалежно.',
             },
-          ]
+            {
+              title: 'Чи можна переглянути команду перед запуском?',
+              description: 'Так. slay run <ім’я-аліаса> --print-command покаже підготовлену команду, не виконуючи її.',
+            },
+            {
+              title: 'Чи працюють аліаси в терміналі IDE?',
+              description: 'Так. Аліаси працюють у вбудованому терміналі VS Code, PhpStorm та інших IDE — просто відкрийте нову вкладку термінала.',
+            },
+            {
+              title: 'Чи можна створити аліас із термінала?',
+              description: 'Ні. Аліаси створюються, редагуються й видаляються в застосунку Slay, а CLI їх запускає.',
+            },
+            {
+              title: 'Які оболонки підтримуються?',
+              description: 'zsh, bash, PowerShell, cmd і Git Bash на macOS, Windows і Linux. Пишіть аліас у синтаксисі тієї оболонки, з якої його запускаєте.',
+            },
+          ],
         },
         cta: {
           title: 'Тримайте часто використовувані команди під рукою',

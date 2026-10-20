@@ -109,13 +109,13 @@ const faqList = computed(() => {
               <div class="col q-mb-xl">
                 <div class="code">
                   <span>{{ t('pages.features.consoleAliases.about.before') }}</span>
-                  <code>cd ~/Projects/mobile-app && npm run build && npm test</code>
+                  <code>ssh -i ~/.ssh/shop_staging -p 2222 deploy@staging.shop.example.com "cd /var/www/shop && docker compose logs -f --tail=200 app"</code>
                 </div>
               </div>
               <div class="col q-mb-xl">
                 <div class="code">
                   <span>{{ t('pages.features.consoleAliases.about.after') }}</span>
-                  <code>slay run verify-mobile</code>
+                  <code>slay run staging-logs</code>
                 </div>
               </div>
             </div>
@@ -243,6 +243,7 @@ const faqList = computed(() => {
                     <q-icon :name="item.icon"/>
                     <span class="q-mb-sm">{{item.title}}</span>
                     <p>{{item.command}}</p>
+                    <code class="saved">{{item.saved}}</code>
                     <code>{{item.code}}</code>
                   </q-item-section>
                 </q-item>
@@ -282,14 +283,18 @@ const faqList = computed(() => {
                   <span class="q-mb-md">
                     {{ t('pages.features.consoleAliases.arguments.content.before') }}
                   </span>
-                  <code class="q-mb-md">slay run mobile-test</code>
+                  <code class="q-mb-md">cd ~/Projects/shop && docker compose exec app php artisan</code>
                   <span class="q-mb-md">
                     {{ t('pages.features.consoleAliases.arguments.content.after') }}
                   </span>
                   <div class="code">
                     <img :src="imageTerminal" alt=""/>
-                    <code>slay run mobile-test --watch</code>
+                    <code>slay run artisan migrate --seed</code>
                   </div>
+                  <span class="q-mt-md q-mb-md">
+                    {{ t('pages.features.consoleAliases.arguments.content.result') }}
+                  </span>
+                  <code>cd ~/Projects/shop && docker compose exec app php artisan migrate --seed</code>
                 </div>
               </div>
             </div>
@@ -426,7 +431,7 @@ const faqList = computed(() => {
                   <q-item>
                     <q-item-section class="items-center">
                       <q-icon name="arrow_forward"/>
-                      <code>slay profile use "Client Project"</code>
+                      <code>{{ t('pages.features.consoleAliases.profiles.switchCommand') }}</code>
                     </q-item-section>
                   </q-item>
                 </q-list>
@@ -1453,7 +1458,6 @@ const faqList = computed(() => {
       }
 
       p {
-        margin-top: auto;
         margin-bottom: 10px;
         color: #FFF;
         font-size: 1rem;
@@ -1491,6 +1495,17 @@ const faqList = computed(() => {
 
         @media (min-width: 158.5em) {
           font-size: 1.375rem;
+        }
+
+        &.saved {
+          margin-top: auto;
+          margin-bottom: 10px;
+          color: rgba(255, 255, 255, 0.6);
+          overflow-wrap: anywhere;
+
+          @media (min-width: 77.5em) {
+            margin-bottom: 16px;
+          }
         }
       }
     }

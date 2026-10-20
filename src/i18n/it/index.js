@@ -403,8 +403,8 @@ export default {
                 btn: 'Aggiungi nuovo alias',
                 title: 'Nome: start-dev',
                 subtitle: 'Comando',
-                code: 'cd ~/Projects/mobile-app && npm start',
-              }
+                code: 'cd ~/Projects/shop/frontend && npm run dev',
+              },
             },
             {
               title: 'Eseguilo dal terminale',
@@ -412,8 +412,8 @@ export default {
               code: 'slay run start-dev',
             },
             {
-              title: 'Non ricordi il nome? Cercalo',
-              description: 'Apri l’elenco interattivo degli alias per cercare e selezionare un alias salvato.',
+              title: 'Hai dimenticato il nome? Sceglilo dall’elenco',
+              description: 'slay alias list mostra tutti i tuoi alias con i relativi comandi: scegli quello giusto con le frecce e premi Invio.',
               code: 'slay alias list',
             },
           ],
@@ -456,67 +456,72 @@ export default {
           notice: 'Gli esempi mostrano alias creati dagli utenti, non modelli integrati in Slay.',
           list: [
             {
-              title: 'AVVIA LO SVILUPPO',
+              title: 'AVVIA IL PROGETTO',
               icon: 'code',
               command: 'start-dev',
-              code: 'slay run start-dev'
+              saved: 'cd ~/Projects/shop/frontend && npm run dev',
+              code: 'slay run start-dev',
             },
             {
-              title: 'ESEGUI I TEST',
-              icon: 'science',
-              command: 'mobile-test',
-              code: 'slay run mobile-test'
+              title: 'MIGRAZIONI IN DOCKER',
+              icon: 'storage',
+              command: 'migrate',
+              saved: 'cd ~/Projects/shop && docker compose exec app php artisan migrate',
+              code: 'slay run migrate',
             },
             {
-              title: 'APRI LA CARTELLA DI UN PROGETTO',
-              icon: 'folder_open',
-              command: 'open-mobile',
-              code: 'slay run start-dev'
+              title: 'VERSIONE DI NODE.JS',
+              icon: 'swap_horiz',
+              command: 'node 20',
+              saved: 'nvm use 20',
+              code: 'slay run node 20',
             },
             {
-              title: 'CONNETTITI A UN SERVER',
+              title: 'LOG DAL SERVER',
               icon: 'dns',
-              command: 'production-server',
-              code: 'slay run production-server'
+              command: 'prod-logs',
+              saved: 'ssh deploy@shop.example.com "tail -f /var/www/shop/storage/logs/laravel.log"',
+              code: 'slay run prod-logs',
             },
           ],
         },
         arguments: {
           title: 'Aggiungi argomenti quando servono',
-          description: 'Tutto ciò che inserisci dopo il nome dell’alias viene passato al comando salvato come argomento.',
-          subtitle: 'Riutilizza il comando salvato mantenendo flessibile ogni esecuzione.',
+          description: 'Tutto ciò che scrivi dopo il nome dell’alias viene aggiunto alla fine del comando salvato.',
+          subtitle: 'Un solo alias per ogni caso: artisan migrate, artisan tinker, artisan queue:work — cambiano solo gli argomenti.',
           note: 'ARGOMENTI',
           content: {
-            before: 'COMANDO BASE',
-            after: 'CON UN ARGOMENTO',
-          }
+            before: 'COMANDO SALVATO · ALIAS ARTISAN',
+            after: 'ESECUZIONE CON ARGOMENTI',
+            result: 'COSA VIENE ESEGUITO',
+          },
         },
         commands: {
           title: 'Concatena i passaggi che ripeti',
-          description: 'Salva una sequenza di comandi del terminale con un unico nome facile da ricordare.',
+          description: 'Salva una sequenza di comandi del terminale con un unico nome. L’operatore && esegue il passo successivo solo se il precedente è riuscito: se la build fallisce, nessun file viene caricato sul server.',
           note: 'CATENE DI COMANDI',
           subtitle: 'Gli strumenti usati da un comando salvato devono essere già installati e disponibili nel terminale dell’utente.',
-          notice: 'Quando un alias deve cambiare directory o impostare una variabile d’ambiente nella sessione corrente della shell, Slay configura automaticamente l’integrazione necessaria con la shell.',
+          notice: 'Se un alias cambia la cartella o l’ambiente del terminale corrente (cd, nvm use, export), serve l’integrazione con la shell di Slay. L’app desktop la installa automaticamente: dopo l’installazione apri una volta una nuova finestra del terminale. La sintassi delle catene dipende dalla shell: Windows PowerShell 5.1 non ha &&.',
           card: {
             title: 'COMANDO SALVATO',
-            command: 'cd ~/Projects/mobile-app && npm run build && npm test',
+            command: 'cd ~/Projects/shop && npm run build && scp -r dist deploy@staging.shop.example.com:/var/www/shop/',
             list: [
               {
                 title: 'Alias',
-                command: 'verify-mobile'
+                command: 'release-staging',
               },
               {
                 title: 'Esegui',
-                command: 'slay run verify-mobile'
+                command: 'slay run release-staging',
               },
-            ]
+            ],
           },
         },
         search: {
-          title: 'Non ricordi il nome? Cercalo invece di tirare a indovinare.',
-          description: 'Apri l’elenco interattivo degli alias e trova il comando salvato che ti serve senza cercare tra le note o nella cronologia del terminale.',
+          title: 'Non ricordi il nome? L’elenco è a portata di mano.',
+          description: 'slay alias list mostra tutti gli alias del profilo CLI corrente insieme ai loro comandi. Scegli quello giusto con le frecce e premi Invio. Hai sbagliato il nome in slay run? L’elenco si apre da solo.',
           notice: 'Scegli tra gli alias disponibili nel profilo CLI corrente.',
-          note: 'CERCA DAL TERMINALE',
+          note: 'ELENCO DEGLI ALIAS NEL TERMINALE',
         },
         profiles: {
           title: 'Separa i gruppi di comandi per profilo',
@@ -525,19 +530,20 @@ export default {
           note: 'PROFILI CLI',
           list: [
             {
-              title: 'SVILUPPO MOBILE',
-              command: 'slay run mobile-test',
-              subtitle: 'ESEMPI DI ALIAS IN QUESTO PROFILO CLI',
-              commandsList: ['ios-run','android-run','mobile-test','open-mobile'],
-            },
-            {
-              title: 'PROGETTO CLIENTE',
+              title: 'LAVORO: SHOP',
               command: 'slay run start-dev',
               subtitle: 'ESEMPI DI ALIAS IN QUESTO PROFILO CLI',
-              commandsList: ['start-dev','test','logs','production-server'],
+              commandsList: ['start-dev', 'migrate', 'artisan', 'prod-logs'],
+            },
+            {
+              title: 'PROGETTO PERSONALE',
+              command: 'slay run start',
+              subtitle: 'ESEMPI DI ALIAS IN QUESTO PROFILO CLI',
+              commandsList: ['start', 'test', 'deploy', 'db-shell'],
             },
           ],
-          listCommands: ['slay profile', 'slay profile list', 'slay profile use "profile-name"'],
+          switchCommand: 'slay profile use "Progetto personale"',
+          listCommands: ['slay profile', 'slay profile list', 'slay profile use "nome-profilo"'],
         },
         faq: {
           title: 'Domande frequenti',
@@ -549,19 +555,19 @@ export default {
             },
             {
               title: 'Come eseguo un alias?',
-              description: 'Inserisci slay run <alias-name> nel terminale. Se il nome dell’alias contiene spazi, racchiudilo tra virgolette.',
+              description: 'Digita slay run <nome-alias> nel terminale. I nomi con spazi funzionano con o senza virgolette e maiuscole e minuscole non contano.',
             },
             {
               title: 'Posso eseguire un alias senza tenere aperto Slay?',
-              description: 'Sì. Dopo aver configurato la CLI di Slay e completato l’autorizzazione, puoi eseguire gli alias dal terminale senza tenere aperta la finestra di Slay.',
+              description: 'Sì. Basta accedere una volta all’app Slay, poi puoi chiudere la finestra. La CLI riceve gli alias dal server di Slay, quindi serve una connessione a Internet.',
             },
             {
               title: 'Cosa faccio se non ricordo il nome di un alias?',
-              description: 'Esegui slay alias list per aprire un elenco interattivo degli alias salvati con funzione di ricerca.',
+              description: 'Esegui slay alias list e scegli l’alias con le frecce. Se sbagli il nome in slay run, l’elenco si apre da solo.',
             },
             {
               title: 'Un alias può accettare argomenti aggiuntivi?',
-              description: 'Sì. Le parole aggiuntive inserite dopo il nome dell’alias vengono passate al comando salvato come argomenti.',
+              description: 'Sì. Tutto ciò che scrivi dopo il nome dell’alias, opzioni comprese, viene aggiunto alla fine del comando salvato. Le eccezioni sono --print-command e -h/--help, gestite da Slay stesso.',
             },
             {
               title: 'Un alias può contenere più comandi?',
@@ -569,13 +575,29 @@ export default {
             },
             {
               title: 'Un alias può cambiare la directory corrente?',
-              description: 'Sì. Quando un comando come cd deve agire sulla sessione corrente del terminale, Slay configura automaticamente l’integrazione necessaria con la shell.',
+              description: 'Sì, tramite l’integrazione con la shell di Slay. L’app desktop la installa automaticamente; dopo l’installazione apri una volta una nuova finestra del terminale.',
             },
             {
               title: 'Gli alias sono collegati ai profili?',
               description: 'Sì. Gli alias disponibili nella CLI di Slay provengono dal profilo attualmente selezionato nella CLI. L’app desktop e la CLI selezionano i profili in modo indipendente.',
             },
-          ]
+            {
+              title: 'Posso vedere un comando prima di eseguirlo?',
+              description: 'Sì. slay run <nome-alias> --print-command mostra il comando preparato senza eseguirlo.',
+            },
+            {
+              title: 'Funziona nel terminale del mio IDE?',
+              description: 'Sì. Gli alias funzionano nel terminale integrato di VS Code, PhpStorm e altri IDE: basta aprire una nuova scheda del terminale.',
+            },
+            {
+              title: 'Posso creare un alias dal terminale?',
+              description: 'No. Gli alias si creano, modificano ed eliminano nell’app Slay; la CLI li esegue.',
+            },
+            {
+              title: 'Quali shell sono supportate?',
+              description: 'zsh, bash, PowerShell, cmd e Git Bash su macOS, Windows e Linux. Scrivi ogni alias con la sintassi della shell da cui lo esegui.',
+            },
+          ],
         },
         cta: {
           title: 'Tieni i comandi ricorrenti a portata di mano',

@@ -404,8 +404,8 @@ export default {
                 btn: 'Добавить новый алиас',
                 title: 'Имя: start-dev',
                 subtitle: 'Команда',
-                code: 'cd ~/Projects/mobile-app && npm start',
-              }
+                code: 'cd ~/Projects/shop/frontend && npm run dev',
+              },
             },
             {
               title: 'Запустите из терминала',
@@ -413,8 +413,8 @@ export default {
               code: 'slay run start-dev',
             },
             {
-              title: 'Забыли имя? Найдите его',
-              description: 'Откройте интерактивный список, чтобы найти и выбрать сохранённый алиас.',
+              title: 'Забыли имя? Выберите из списка',
+              description: 'slay alias list покажет все алиасы вместе с командами — выберите нужный стрелками и нажмите Enter.',
               code: 'slay alias list',
             },
           ],
@@ -457,67 +457,72 @@ export default {
           notice: 'В примерах показаны пользовательские алиасы, а не встроенные шаблоны Slay.',
           list: [
             {
-              title: 'ЗАПУСК РАЗРАБОТКИ',
+              title: 'ЗАПУСК ПРОЕКТА',
               icon: 'code',
               command: 'start-dev',
-              code: 'slay run start-dev'
+              saved: 'cd ~/Projects/shop/frontend && npm run dev',
+              code: 'slay run start-dev',
             },
             {
-              title: 'ЗАПУСК ТЕСТОВ',
-              icon: 'science',
-              command: 'mobile-test',
-              code: 'slay run mobile-test'
+              title: 'МИГРАЦИИ В DOCKER',
+              icon: 'storage',
+              command: 'migrate',
+              saved: 'cd ~/Projects/shop && docker compose exec app php artisan migrate',
+              code: 'slay run migrate',
             },
             {
-              title: 'ОТКРЫТИЕ ПАПКИ ПРОЕКТА',
-              icon: 'folder_open',
-              command: 'open-mobile',
-              code: 'slay run start-dev'
+              title: 'ВЕРСИЯ NODE.JS',
+              icon: 'swap_horiz',
+              command: 'node 20',
+              saved: 'nvm use 20',
+              code: 'slay run node 20',
             },
             {
-              title: 'ПОДКЛЮЧЕНИЕ К СЕРВЕРУ',
+              title: 'ЛОГИ С СЕРВЕРА',
               icon: 'dns',
-              command: 'production-server',
-              code: 'slay run production-server'
+              command: 'prod-logs',
+              saved: 'ssh deploy@shop.example.com "tail -f /var/www/shop/storage/logs/laravel.log"',
+              code: 'slay run prod-logs',
             },
           ],
         },
         arguments: {
           title: 'Добавляйте аргументы, когда они нужны',
-          description: 'Всё, что вы вводите после имени алиаса, передаётся сохранённой команде в качестве аргументов.',
-          subtitle: 'Используйте сохранённую команду, дополняя каждый запуск нужными аргументами.',
+          description: 'Всё, что вы вводите после имени алиаса, дописывается в конец сохранённой команды.',
+          subtitle: 'Один алиас на все случаи: artisan migrate, artisan tinker, artisan queue:work — меняются только аргументы.',
           note: 'АРГУМЕНТЫ',
           content: {
-            before: 'БАЗОВАЯ КОМАНДА',
-            after: 'С АРГУМЕНТОМ',
-          }
+            before: 'СОХРАНЁННАЯ КОМАНДА · АЛИАС ARTISAN',
+            after: 'ЗАПУСК С АРГУМЕНТАМИ',
+            result: 'ЧТО ВЫПОЛНИТСЯ',
+          },
         },
         commands: {
           title: 'Объединяйте повторяющиеся действия в цепочки',
-          description: 'Сохраните последовательность команд терминала под одним запоминающимся именем.',
+          description: 'Сохраните последовательность команд терминала под одним именем. Оператор && запускает следующий шаг, только если предыдущий прошёл успешно: если сборка упала, файлы на сервер не уйдут.',
           note: 'ЦЕПОЧКИ КОМАНД',
           subtitle: 'Инструменты, которые использует сохранённая команда, должны быть заранее установлены и доступны в терминале пользователя.',
-          notice: 'Если алиас должен сменить каталог или задать переменную окружения в текущем сеансе оболочки, Slay автоматически настраивает необходимую интеграцию с оболочкой.',
+          notice: 'Если алиас меняет папку или окружение текущего терминала (cd, nvm use, export), нужна shell-интеграция Slay. Приложение устанавливает её само — после установки один раз откройте новое окно терминала. Синтаксис цепочки зависит от оболочки: в Windows PowerShell 5.1 нет &&.',
           card: {
             title: 'СОХРАНЁННАЯ КОМАНДА',
-            command: 'cd ~/Projects/mobile-app && npm run build && npm test',
+            command: 'cd ~/Projects/shop && npm run build && scp -r dist deploy@staging.shop.example.com:/var/www/shop/',
             list: [
               {
                 title: 'Алиас',
-                command: 'verify-mobile'
+                command: 'release-staging',
               },
               {
                 title: 'Запуск',
-                command: 'slay run verify-mobile'
+                command: 'slay run release-staging',
               },
-            ]
+            ],
           },
         },
         search: {
-          title: 'Забыли имя? Найдите его через поиск.',
-          description: 'Откройте интерактивный список алиасов и найдите нужную сохранённую команду без поиска в заметках или истории терминала.',
+          title: 'Не помните имя? Список всегда под рукой.',
+          description: 'slay alias list покажет все алиасы текущего профиля CLI вместе с командами. Выберите нужный стрелками и нажмите Enter. Ошиблись в имени в slay run — список откроется сам.',
           notice: 'Выбирайте из алиасов, доступных в текущем профиле CLI.',
-          note: 'ПОИСК ИЗ ТЕРМИНАЛА',
+          note: 'СПИСОК АЛИАСОВ В ТЕРМИНАЛЕ',
         },
         profiles: {
           title: 'Разделяйте наборы команд по профилям',
@@ -526,19 +531,20 @@ export default {
           note: 'ПРОФИЛИ CLI',
           list: [
             {
-              title: 'МОБИЛЬНАЯ РАЗРАБОТКА',
-              command: 'slay run mobile-test',
-              subtitle: 'ПРИМЕРЫ АЛИАСОВ В ЭТОМ ПРОФИЛЕ CLI',
-              commandsList: ['ios-run','android-run','mobile-test','open-mobile'],
-            },
-            {
-              title: 'КЛИЕНТСКИЙ ПРОЕКТ',
+              title: 'РАБОТА: SHOP',
               command: 'slay run start-dev',
               subtitle: 'ПРИМЕРЫ АЛИАСОВ В ЭТОМ ПРОФИЛЕ CLI',
-              commandsList: ['start-dev','test','logs','production-server'],
+              commandsList: ['start-dev', 'migrate', 'artisan', 'prod-logs'],
+            },
+            {
+              title: 'СВОЙ ПРОЕКТ',
+              command: 'slay run start',
+              subtitle: 'ПРИМЕРЫ АЛИАСОВ В ЭТОМ ПРОФИЛЕ CLI',
+              commandsList: ['start', 'test', 'deploy', 'db-shell'],
             },
           ],
-          listCommands: ['slay profile', 'slay profile list', 'slay profile use "profile-name"'],
+          switchCommand: 'slay profile use "Свой проект"',
+          listCommands: ['slay profile', 'slay profile list', 'slay profile use "имя-профиля"'],
         },
         faq: {
           title: 'Часто задаваемые вопросы',
@@ -550,19 +556,19 @@ export default {
             },
             {
               title: 'Как запустить алиас?',
-              description: 'Введите slay run <alias-name> в терминале. Если имя алиаса содержит пробелы, заключите его в кавычки.',
+              description: 'Введите slay run <имя-алиаса> в терминале. Имена с пробелами работают и без кавычек, регистр букв не важен.',
             },
             {
               title: 'Можно ли запускать алиасы, не оставляя Slay открытым?',
-              description: 'Да. После настройки и авторизации Slay CLI вы можете запускать алиасы из терминала, не оставляя окно Slay открытым.',
+              description: 'Да. Достаточно один раз войти в приложение Slay — потом окно можно закрыть. CLI получает алиасы с сервера Slay, поэтому нужен доступ в интернет.',
             },
             {
               title: 'Что делать, если я не помню имя алиаса?',
-              description: 'Выполните slay alias list, чтобы открыть интерактивный список сохранённых алиасов с поиском.',
+              description: 'Выполните slay alias list и выберите алиас стрелками. Если ошиблись в имени в slay run, список откроется сам.',
             },
             {
               title: 'Может ли алиас принимать дополнительные аргументы?',
-              description: 'Да. Дополнительные слова после имени алиаса передаются сохранённой команде в качестве аргументов.',
+              description: 'Да. Всё, что набрано после имени алиаса, включая флаги, дописывается в конец сохранённой команды. Исключения — --print-command и -h/--help: их обрабатывает сам Slay.',
             },
             {
               title: 'Может ли алиас содержать несколько команд?',
@@ -570,13 +576,29 @@ export default {
             },
             {
               title: 'Может ли алиас изменить мой текущий каталог?',
-              description: 'Да. Если команда, например cd, должна повлиять на текущий сеанс терминала, Slay автоматически настраивает необходимую интеграцию с оболочкой.',
+              description: 'Да, через shell-интеграцию Slay. Настольное приложение устанавливает её само; после установки один раз откройте новое окно терминала.',
             },
             {
               title: 'Связаны ли алиасы с профилями?',
               description: 'Да. В Slay CLI доступны алиасы из профиля, который сейчас выбран в CLI. В настольном приложении и CLI профили выбираются независимо.',
             },
-          ]
+            {
+              title: 'Можно ли посмотреть команду перед запуском?',
+              description: 'Да. slay run <имя-алиаса> --print-command покажет подготовленную команду, не выполняя её.',
+            },
+            {
+              title: 'Работают ли алиасы в терминале IDE?',
+              description: 'Да. Алиасы работают во встроенном терминале VS Code, PhpStorm и других IDE — просто откройте новую вкладку терминала.',
+            },
+            {
+              title: 'Можно ли создать алиас из терминала?',
+              description: 'Нет. Алиасы создаются, редактируются и удаляются в приложении Slay, а CLI их запускает.',
+            },
+            {
+              title: 'Какие оболочки поддерживаются?',
+              description: 'zsh, bash, PowerShell, cmd и Git Bash на macOS, Windows и Linux. Пишите алиас в синтаксисе той оболочки, из которой его запускаете.',
+            },
+          ],
         },
         cta: {
           title: 'Держите часто используемые команды под рукой',
